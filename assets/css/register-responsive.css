@@ -1,0 +1,331 @@
+/* Keep the card within the viewport; scroll only the form below its header. */
+html { height: 100%; overflow: hidden; background: #10110f; }
+body {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    overflow: hidden;
+    padding: 40px 24px;
+    justify-content: flex-start;
+    background-color: #10110f;
+    line-height: 1.5;
+}
+body::before {
+    background: radial-gradient(ellipse at 50% 0, rgba(190, 151, 52, .16), transparent 65%),
+        linear-gradient(rgba(10, 12, 10, .83), rgba(10, 12, 10, .94));
+}
+.login-container {
+    flex: 0 0 auto;
+    height: 100%;
+    max-height: 900px;
+    min-height: 0;
+    margin: auto 0;
+    overflow: hidden;
+    background: linear-gradient(155deg, rgba(39, 39, 32, .98), rgba(19, 21, 19, .98) 60%);
+    border-color: rgba(224, 190, 100, .26);
+    box-shadow: 0 24px 80px #0008, 0 1px 0 #ffffff0d inset;
+}
+.login-header { padding: 30px 28px 24px; }
+.logo-wrap { margin-bottom: 12px; }
+.login-header img { width: 68px; height: 68px; animation: none; }
+.login-header h2 { font-size: clamp(25px, 4vw, 34px); line-height: 1.2; }
+.login-header p { color: #bdbdb2; font-size: 14px; }
+.form-content { flex: 1 1 auto; min-height: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior-y: contain; scrollbar-gutter: stable; scrollbar-width: thin; scrollbar-color: #96a38e #d4dbcd; padding: 28px 32px 32px; }
+.role-selector h3 { font-size: 16px; margin-bottom: 20px; }
+.role-options { gap: 16px; margin-bottom: 0; align-items: stretch; }
+.role-option {
+    max-width: none;
+    min-width: 0;
+    padding: 24px 20px;
+    font: inherit;
+    background: linear-gradient(145deg, #ffffff08, #ffffff02);
+    border-color: #d4af3740;
+    border-radius: 16px;
+    -webkit-tap-highlight-color: transparent;
+}
+.role-option i { font-size: 32px; color: #dfbc58; margin-bottom: 14px; }
+.role-option h4 { font-size: 17px; }
+.role-option p { color: #bcbcb2; font-size: 13px; }
+.role-option:hover, .role-option.active { background: #d4af3710; transform: translateY(-2px); }
+.role-option:focus-visible, a:focus-visible, button:focus-visible {
+    outline: 2px solid #f0d584; outline-offset: 4px;
+}
+.additional-buttons { margin-top: 24px; padding-top: 22px; gap: 12px; }
+.additional-btn { min-height: 48px; justify-content: center; padding: 12px 18px; }
+.additional-btn.home, .btn { background: linear-gradient(120deg, #ebcf7a, #c7a138); }
+.form-row > *, .caterer-grid > *, .form-group { min-width: 0; }
+.form-group input, .form-group select, .form-group textarea { min-width: 0; max-width: 100%; }
+.password-toggle { min-width: 44px; min-height: 44px; right: 5px; }
+.agreement-checkbox input[type="checkbox"] { flex-shrink: 0; }
+.agreement-content, .alert, .form-group small { overflow-wrap: anywhere; }
+@media (min-width: 769px) {
+    .login-container { max-width: 600px; height: auto; max-height: 100%; }
+    .login-header { padding: 20px 24px 18px; }
+    .logo-wrap { margin-bottom: 8px; }
+    .login-header img { width: 52px; height: 52px; }
+    .login-header h2 { font-size: 26px; margin-bottom: 6px; }
+    .login-header p { font-size: 13px; }
+    .form-content { padding: 20px 24px; }
+    .role-selector h3 { font-size: 15px; margin-bottom: 14px; }
+    .role-options { gap: 12px; }
+    .role-option { padding: 18px 16px; border-radius: 12px; }
+    .role-option i { font-size: 26px; margin-bottom: 10px; }
+    .role-option h4 { font-size: 15px; margin-bottom: 0; }
+    .additional-buttons { margin-top: 18px; padding-top: 16px; }
+    .additional-btn { min-height: 40px; padding: 9px 14px; font-size: 12px; }
+    #registration-form .form-row { gap: 12px; margin-bottom: 12px; }
+    #registration-form .form-group { margin-bottom: 14px; }
+    #registration-form .form-row > .form-group { margin-bottom: 0; }
+    #registration-form .form-group label { font-size: 13px; margin-bottom: 6px; }
+    #registration-form .form-group input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+    #registration-form .form-group select,
+    #registration-form .form-group textarea {
+        padding: 8px 12px;
+        min-height: 40px;
+        font-size: 14px;
+        line-height: 1.5;
+        border-radius: 8px;
+    }
+    #registration-form .password-field input { padding-right: 54px; }
+    #registration-form .form-group textarea { min-height: 70px; }
+    #registration-form .ph-address-picker { gap: 12px; }
+    #registration-form .caterer-grid { gap: 12px; }
+    #registration-form .caterer-grid > .form-group { margin-bottom: 0; }
+}
+@media (max-width: 768px) {
+    body { padding: 24px 16px; }
+    .role-options { flex-direction: row; }
+    .form-content { padding: 24px; }
+    .additional-buttons { flex-direction: row; }
+    .additional-btn { flex: 1; font-size: 13px; }
+    .form-links { flex-direction: row; flex-wrap: nowrap; gap: 12px; }
+    .form-links a { min-width: 0; white-space: nowrap; font-size: 12px; gap: 5px; }
+    /* Compact registration fields on mobile without changing desktop sizing. */
+    #registration-form .form-row { gap: 10px; margin-bottom: 10px; }
+    #registration-form .form-group { margin-bottom: 12px; }
+    #registration-form .form-row > .form-group { margin-bottom: 0; }
+    #registration-form .form-group label { margin-bottom: 6px; font-size: 13px; }
+    #registration-form .form-group input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+    #registration-form .form-group select,
+    #registration-form .form-group textarea {
+        padding: 9px 12px;
+        border-radius: 9px;
+        font-size: 16px;
+        line-height: 1.5;
+        min-height: 44px;
+    }
+    #registration-form .password-field input { padding-right: 54px; }
+    #registration-form .ph-address-picker { gap: 10px; }
+    #registration-form .caterer-grid { gap: 12px; }
+    #registration-form .caterer-grid > .form-group { margin-bottom: 0; }
+    #registration-form .caterer-fields h4 { margin-bottom: 12px; padding-bottom: 8px; }
+}
+@media (max-width: 480px) {
+    body {
+        padding: max(16px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right))
+            max(20px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+        background-attachment: scroll;
+    }
+    .login-container { border-radius: 22px; margin: 0; }
+    .login-header { padding: 24px 16px 20px; }
+    .login-header img { width: 58px; height: 58px; }
+    .login-header h2 { margin-bottom: 8px; }
+    .form-content { padding: 22px 16px; }
+    .role-selector h3 { margin-bottom: 16px; font-size: 15px; }
+    .role-options { flex-direction: column; gap: 12px; }
+    .role-option {
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr);
+        column-gap: 14px;
+        padding: 18px 16px;
+        text-align: left;
+        width: 100%;
+    }
+    .role-option i { grid-row: span 2; align-self: center; text-align: center; margin: 0; font-size: 28px; }
+    .role-option h4 { margin-bottom: 4px; font-size: 16px; }
+    .role-option p { font-size: 13px; line-height: 1.5; }
+    .additional-buttons { flex-direction: column; margin-top: 20px; padding-top: 18px; gap: 10px; }
+    .additional-btn { width: 100%; font-size: 14px; }
+    .caterer-fields, .subscription-agreement, .customer-agreement { padding: 16px; }
+    .agreement-content { max-height: none; overflow: visible; padding: 12px; }
+    .form-links a { min-height: 44px; justify-content: center; }
+}
+/* Keep expanded agreement terms scrollable, including on narrow screens. */
+#subscription-agreement .subscription-agreement-details .agreement-content,
+#customer-agreement .customer-agreement-details .agreement-content {
+    max-height: 220px;
+    max-height: min(220px, 35dvh);
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: #708b6b #d4dbcd;
+}
+#subscription-agreement .agreement-content::-webkit-scrollbar,
+#customer-agreement .agreement-content::-webkit-scrollbar { width: 7px; }
+#subscription-agreement .agreement-content::-webkit-scrollbar-track,
+#customer-agreement .agreement-content::-webkit-scrollbar-track { background: #d4dbcd; }
+#subscription-agreement .agreement-content::-webkit-scrollbar-thumb,
+#customer-agreement .agreement-content::-webkit-scrollbar-thumb {
+    background: #708b6b;
+    border-radius: 6px;
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* Consistent registration inputs inside the available mobile card space. */
+@media (max-width: 768px) {
+ .register-page .form-content > * { flex-shrink: 0; min-width: 0; }
+ .register-page #registration-form { width: 100%; min-width: 0; }
+ .register-page #registerForm { width: 100%; min-width: 0; }
+ .register-page #registration-form .form-group { min-width: 0; margin-bottom: 14px; }
+ .register-page #registration-form .form-row > .form-group { flex: 0 0 auto; margin-bottom: 14px; }
+ .register-page #registration-form .form-group label { font-size: 12px; line-height: 1.5; letter-spacing: 0; margin-bottom: 6px; }
+ .register-page #registration-form .form-group label i { width: 16px; margin-right: 5px; text-align: center; }
+ .register-page #registration-form .form-group input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+ .register-page #registration-form .form-group select,
+ .register-page #registration-form .form-group textarea {
+  display: block; width: 100%; min-width: 0; max-width: 100%;
+  box-sizing: border-box; min-height: 44px; padding: 10px 12px;
+  border: 1px solid #96a38e; border-radius: 10px;
+  font-size: 16px; line-height: 1.4; box-shadow: none;
+ }
+ .register-page #registration-form .form-group textarea { min-height: 88px; resize: vertical; }
+ .register-page #registration-form .password-field { position: relative; width: 100%; min-width: 0; }
+ .register-page #registration-form .password-field input { padding-right: 52px; }
+ .register-page #registration-form .password-toggle { top: 50%; right: 2px; transform: translateY(-50%); width: 44px; height: 44px; }
+ .register-page #registration-form .form-group small { display: block; margin-top: 5px; font-size: 11px; line-height: 1.5; }
+ .register-page #registration-form .caterer-fields { padding: 14px; border-radius: 12px; }
+ .register-page #registration-form .file-upload-area { padding: 14px 10px; min-width: 0; }
+ .register-page #registration-form input[type="file"] { font-size: 12px !important; padding: 8px !important; }
+ .register-page #registration-form .back-btn { margin-bottom: 16px; min-height: 40px; }
+ .register-page #registerForm > .form-group:last-child { margin-bottom: 0; }
+ .register-page #registerForm > .form-group:last-child .btn { width: 100%; min-height: 46px; border-radius: 10px; }
+ .register-page .form-content { scroll-padding-block: 16px; }
+ .register-page #registration-form input,
+ .register-page #registration-form select,
+ .register-page #registration-form textarea { scroll-margin-block: 16px; }
+}
+/* Plain back navigation within the registration form. */
+.auth-sage-theme .register-page #registration-form .back-btn,
+.auth-sage-theme .register-page #registration-form .back-btn:hover {
+ background: transparent !important;
+ border: 0 !important;
+ box-shadow: none !important;
+ border-radius: 0;
+ padding: 0;
+ color: #173d32 !important;
+ transform: none;
+}
+.auth-sage-theme .register-page #registration-form .back-btn:hover { text-decoration: underline; }
+/* The 440px registration card needs full-width upload rows. */
+.register-page #registration-form .caterer-fields { padding: 16px; border-radius: 14px; }
+.register-page #registration-form .caterer-fields h4 { display: flex; align-items: center; gap: 8px; margin: 0 0 16px; padding-bottom: 12px; font-size: 15px; line-height: 1.4; }
+.register-page #registration-form .caterer-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.register-page #registration-form .caterer-grid > .form-group { width: 100%; min-width: 0; margin: 0; }
+.register-page #registration-form .caterer-grid label { display: block; margin-bottom: 7px; font-size: 13px; line-height: 1.5; }
+.register-page #registration-form input[type="file"] {
+ display: block; box-sizing: border-box; width: 100%; min-width: 0; max-width: 100%;
+ min-height: 46px; padding: 8px !important; font-size: 12px !important;
+ line-height: 1.5; border: 1px dashed #96a38e; border-radius: 10px;
+ overflow: hidden; text-overflow: ellipsis;
+}
+.register-page #registration-form input[type="file"]::file-selector-button {
+ font: inherit; font-weight: 600; margin-right: 8px; padding: 7px 10px; border-radius: 6px;
+}
+.register-page #registration-form .file-preview { max-width: 100%; overflow-wrap: anywhere; }
+.register-page #registration-form .file-preview img { display: block; max-width: 100%; height: auto; max-height: 160px; object-fit: contain; margin-top: 8px; border-radius: 8px; }
+/* Compact upload rows without squeezing filenames into narrow columns. */
+.register-page #registration-form .caterer-fields { padding: 12px; }
+.register-page #registration-form .caterer-fields h4 { margin-bottom: 10px; padding-bottom: 8px; font-size: 14px; }
+.register-page #registration-form .caterer-grid { gap: 9px; }
+.register-page #registration-form .caterer-grid label { margin-bottom: 4px; font-size: 12px; line-height: 1.3; }
+.register-page #registration-form .caterer-grid input[type="file"] { min-height: 36px; padding: 4px 6px !important; font-size: 11px !important; border-radius: 7px; }
+.register-page #registration-form .caterer-grid input[type="file"]::file-selector-button { padding: 4px 8px; margin-right: 6px; line-height: 1.5; }
+.register-page #registration-form .caterer-grid .file-preview:empty { display: none; }
+/* Compact consent cards while preserving the complete agreement text. */
+.register-page #registration-form :is(.subscription-agreement, .customer-agreement) { padding: 12px; margin: 12px 0; border-radius: 12px; }
+.register-page #registration-form details > summary { font-size: 12px; font-weight: 600; line-height: 1.4; cursor: pointer; }
+.register-page #registration-form .agreement-checkbox { gap: 8px; margin-top: 8px; padding-top: 8px; }
+.register-page #registration-form .agreement-checkbox label { margin: 0; font-size: 12px; font-weight: 400; line-height: 1.4; letter-spacing: 0; }
+.register-page #registration-form .agreement-checkbox input[type="checkbox"] { flex: 0 0 16px; width: 16px; height: 16px; min-height: 0; margin: 2px 0 0; padding: 0; }
+.register-page #registration-form .agreement-content { padding: 10px; margin-top: 8px; font-size: 12px; line-height: 1.45; }
+.register-page #registration-form .agreement-content :is(p, li) { font-size: 12px; line-height: 1.45; }
+/* Distinct account choices with compact icon badges and clear affordance. */
+html.auth-sage-theme .register-page #role-selection .role-option {
+ display: flex; align-items: center; gap: 12px;
+ padding: 12px 14px; min-height: 64px; border-radius: 14px;
+ background: linear-gradient(135deg, #e2e8dc, #d2ddc9) !important;
+ border: 1px solid #9aaa92 !important;
+ box-shadow: inset 0 1px 0 rgb(255 255 255 / 55%), 0 3px 8px rgb(23 61 50 / 5%);
+ transition: border-color .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+html.auth-sage-theme .register-page #role-selection .role-option > i {
+ display: flex; align-items: center; justify-content: center;
+ flex: 0 0 36px; width: 36px; height: 36px; margin: 0;
+ border-radius: 50%; background: #173d32; color: #ead5a0 !important; font-size: 17px;
+}
+html.auth-sage-theme .register-page #role-selection .role-option h4 { flex: 1; text-align: left; font-size: 14px; font-weight: 600; color: #20372b; }
+html.auth-sage-theme .register-page #role-selection .role-option::after {
+ content: '\203A'; display: flex; align-items: center; justify-content: center;
+ flex: 0 0 24px; width: 24px; height: 24px; border-radius: 50%;
+ background: rgb(23 61 50 / 6%); color: #426b53; font-size: 22px; line-height: 1;
+}
+html.auth-sage-theme .register-page #role-selection .role-option:hover,
+html.auth-sage-theme .register-page #role-selection .role-option.active {
+ background: linear-gradient(135deg, #e5ecdf, #cbdcc2) !important;
+ border-color: #426b53 !important;
+ box-shadow: 0 4px 12px rgb(23 61 50 / 11%);
+ transform: none;
+}
+html.auth-sage-theme .register-page #role-selection .role-option:focus-visible { outline: 2px solid #426b53; outline-offset: 3px; }
+@media (max-height: 600px) {
+ html.auth-sage-theme .register-page #role-selection .role-option { min-height: 52px; padding: 8px 12px; }
+ html.auth-sage-theme .register-page #role-selection .role-option > i { flex-basis: 32px; width: 32px; height: 32px; font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+ html.auth-sage-theme .register-page #role-selection .role-option { transition: none; }
+}
+/* Refined registration rhythm without adding bulky field containers. */
+.register-page #registration-form .form-row { align-items: flex-start; gap: 12px; }
+.register-page #registration-form .form-group label { display: flex; align-items: baseline; gap: 6px; font-size: 12px; font-weight: 600; line-height: 1.45; letter-spacing: 0; }
+.register-page #registration-form .form-group label > i { flex: 0 0 14px; width: 14px; margin: 0; text-align: center; font-size: 12px; }
+.register-page #registration-form .form-group:focus-within > label { color: #245b40 !important; }
+.register-page #registration-form .form-group:focus-within > label > i { color: #245b40 !important; }
+.register-page #registration-form .back-btn { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; margin-bottom: 18px; }
+.register-page #registration-form .ph-address-picker { padding: 12px; gap: 12px; border: 1px solid #a6b39c; border-radius: 12px; background: rgb(255 255 255 / 13%); }
+.register-page #registration-form .ph-address-picker label { font-size: 11px; margin-bottom: 5px; color: #425642; }
+.register-page #registration-form .ph-address-help:empty { display: none; }
+.register-page #registration-form .ph-address-picker select { color-scheme: light; }
+.register-page #registration-form .ph-address-picker select option,
+.register-page #registration-form .ph-address-picker select optgroup { background: #e3e8dd; color: #20372b; }
+.register-page #registration-form .ph-address-picker select:disabled { opacity: .65; cursor: not-allowed; }
+.register-page #registration-form .form-group small { font-size: 11px; line-height: 1.45; }
+.register-page .form-content { scrollbar-width: thin; scrollbar-color: #8a9e7f transparent; }
+@media (max-width: 768px) {
+ .register-page #registration-form .form-row { gap: 0; }
+}
+/* Account choices use the same surface and proportions as login inputs. */
+html.auth-sage-theme .register-page #role-selection .role-option {
+ min-height: 46px; padding: 11px 12px; gap: 10px;
+ border-radius: 12px; border: 1px solid #9ba991 !important;
+ background: linear-gradient(180deg, #e3e8dd, #dce3d5) !important;
+ box-shadow: inset 0 1px 0 rgb(255 255 255 / 55%), 0 2px 4px rgb(23 61 50 / 4%);
+}
+html.auth-sage-theme .register-page #role-selection .role-option > i {
+ flex: 0 0 20px; width: 20px; height: auto;
+ border-radius: 0; background: transparent; color: #70501e !important; font-size: 18px;
+}
+html.auth-sage-theme .register-page #role-selection .role-option::after { content: none; }
+html.auth-sage-theme .register-page #role-selection .role-option:hover {
+ border-color: #708b6b !important;
+ background: linear-gradient(180deg, #e3e8dd, #dce3d5) !important;
+ box-shadow: inset 0 1px 0 rgb(255 255 255 / 55%), 0 2px 4px rgb(23 61 50 / 4%);
+}
+html.auth-sage-theme .register-page #role-selection .role-option:focus-visible,
+html.auth-sage-theme .register-page #role-selection .role-option.active {
+ outline: none; border-color: #426b53 !important;
+ background: linear-gradient(180deg, #e3e8dd, #dce3d5) !important;
+ box-shadow: 0 0 0 3px rgb(66 107 83 / 14%), inset 0 1px 0 rgb(255 255 255 / 60%);
+}

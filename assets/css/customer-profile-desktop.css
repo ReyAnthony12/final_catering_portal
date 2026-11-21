@@ -1,0 +1,90 @@
+/* Desktop profile workspace. Keep the established mobile layout intact. */
+@media (min-width: 993px) {
+    .customer-page-shell .customer-profile-page {
+        width: 100%; max-width: none; margin: 0 auto;
+    }
+    .customer-page-shell .customer-profile-page > .profile-main-grid.card {
+        grid-template-columns: minmax(280px, .8fr) minmax(0, 1.65fr);
+        align-content: center; align-items: stretch; gap: 28px;
+        padding: clamp(20px, 2.5vw, 40px);
+        background: var(--card-bg) !important;
+        border: 1px solid var(--border-color); border-radius: 22px;
+        overflow-y: auto; scrollbar-gutter: auto;
+    }
+    .customer-page-shell .customer-profile-page .profile-summary {
+        padding: 28px 24px; border: 1px solid var(--border-color);
+        border-radius: 18px; background: var(--secondary-bg);
+        box-shadow: 0 8px 24px rgb(23 61 50 / 5%);
+    }
+    .customer-profile-page .profile-summary > div:first-child {
+        width: 128px !important; height: 128px !important; margin-bottom: 20px !important;
+    }
+    .customer-profile-page .profile-summary > div:first-child img {
+        box-sizing: border-box; border: 4px solid var(--card-bg) !important;
+        box-shadow: 0 0 0 1px #8b9e7f, 0 8px 20px rgb(23 61 50 / 12%);
+    }
+    .customer-profile-page .profile-summary label[for="profile_image_upload"] {
+        background: #173d32 !important; color: #fff !important;
+        border: 3px solid var(--secondary-bg); box-sizing: border-box;
+    }
+    .customer-profile-page .profile-summary > h2 {
+        font-size: 22px; line-height: 1.35; letter-spacing: -.5px; margin-top: 0;
+    }
+    .customer-profile-page .profile-summary > p {
+        display: inline-block; font-size: 11px; font-weight: 600;
+        padding: 5px 12px; border-radius: 20px; background: var(--card-bg); color: #315c43 !important;
+        margin-top: 8px; margin-bottom: 20px !important;
+    }
+    .customer-profile-page .profile-summary > div:last-child {
+        padding-top: 18px !important; border-color: var(--border-color) !important;
+    }
+    .customer-profile-page .profile-summary > div:last-child p {
+        display: flex; align-items: baseline; gap: 8px;
+        font-size: 13px; line-height: 1.6; margin-bottom: 12px !important;
+    }
+    .customer-profile-page .profile-summary > div:last-child i {
+        flex: 0 0 18px; width: 18px !important; text-align: center; color: #42674c !important;
+    }
+    .customer-profile-page .profile-main-grid > .profile-summary + div {
+        padding: 32px; border: 1px solid var(--border-color); border-radius: 18px;
+        background: var(--card-bg); box-shadow: 0 8px 24px rgb(23 61 50 / 4%);
+    }
+    .customer-profile-page .profile-main-grid .profile-form-section > h3 {
+        font-size: 23px; letter-spacing: -.5px; margin: 0 0 26px;
+        padding-bottom: 18px; border-color: var(--border-color); color: #173d32;
+    }
+    .customer-profile-page .profile-main-grid .form-label {
+        display: block; font-size: 12px; font-weight: 600; color: #3d553f;
+        margin-bottom: 8px;
+    }
+    .customer-profile-page .profile-main-grid .form-control {
+        box-sizing: border-box; width: 100%; min-height: 46px;
+        padding: 12px 14px; font-size: 14px; line-height: 1.5;
+        border: 1px solid var(--border-color); border-radius: 10px;
+        background: var(--input-bg) !important; color: #20372b;
+        box-shadow: inset 0 1px 2px rgb(23 61 50 / 3%);
+    }
+    .customer-profile-page .profile-main-grid .form-control:focus {
+        outline: none; border-color: #426b53;
+        box-shadow: 0 0 0 3px rgb(66 107 83 / 14%);
+    }
+    .customer-profile-page .profile-main-grid .profile-basic-grid { gap: 14px; margin-bottom: 22px; }
+    .customer-profile-page .profile-main-grid .form-group { margin-bottom: 22px; }
+    .customer-profile-page .profile-main-grid .profile-basic-grid > .form-group { margin-bottom: 0; }
+    .customer-profile-page .profile-main-grid textarea.form-control { min-height: 94px; }
+    .customer-profile-page .profile-actions {
+        margin-top: 26px; padding-top: 22px; border-top: 1px solid var(--border-color);
+    }
+    .customer-profile-page .profile-actions .btn {
+        min-height: 44px; padding: 11px 18px; font-size: 13px; border-radius: 10px;
+    }
+    .customer-profile-page .profile-actions .profile-password-button {
+        background: transparent !important; color: #31543e !important; border: 1px solid var(--border-color);
+    }
+    .customer-profile-page .profile-actions .profile-password-button:hover { background: #dce6d4 !important; }
+    @media (max-height: 760px) {
+        .customer-page-shell .customer-profile-page > .profile-main-grid.card { align-content: start; padding: 20px; gap: 20px; }
+        .customer-profile-page .profile-main-grid > .profile-summary + div { padding: 24px; }
+        .customer-profile-page .profile-main-grid .form-group { margin-bottom: 16px; }
+    }
+}

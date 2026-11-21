@@ -1,0 +1,56 @@
+/* Keep dialogs within the visible viewport, including mobile browser chrome. */
+#storesModal { padding: 28px; box-sizing: border-box; overflow: hidden; }
+#storesModal .modal-content {
+    margin: auto; width: 100%; max-width: 1060px;
+    max-height: calc(100dvh - 56px); display: flex; flex-direction: column;
+    overflow: hidden; border-radius: 24px;
+    background: linear-gradient(145deg, #24231f, #151719 45%);
+}
+#storesModal .modal-header { flex-shrink: 0; padding: 22px 26px; }
+.caterer-dialog-heading p { margin: 7px 0 0; color: var(--text-muted); font-size: 14px; line-height: 1.5; }
+#storesModal .close-modal, #catererMenuModal .close-caterer-menu {
+    display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px;
+    border: 1px solid #41413b; border-radius: 50%; background: #ffffff08; color: #eee;
+}
+#storesModal .stores-modal-body {
+    min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+    padding: 24px 26px; -webkit-overflow-scrolling: touch;
+}
+#storesModal .stores-grid-modal { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+#storesModal .caterer-card-modal {
+    min-width: 0; display: flex; flex-direction: column; border-radius: 18px;
+    background: #222527; border-color: #ffffff16; box-shadow: 0 8px 24px #0002;
+}
+#storesModal .caterer-image-modal { height: 180px; padding: 14px; background: #faf8f2; }
+#storesModal .caterer-image-modal img { object-fit: contain; border-radius: 8px; }
+#storesModal .caterer-info-modal { padding: 20px; display: flex; flex-direction: column; flex: 1; }
+#storesModal .caterer-info-modal h3 { font-size: 19px; line-height: 1.35; overflow-wrap: anywhere; }
+#storesModal .caterer-info-modal p { font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }
+#storesModal .menu-count-modal { align-self: flex-start; font-size: 12px; padding: 7px 10px; border-radius: 8px; margin: 8px 0 18px; }
+#storesModal .btn-view-modal {
+    margin-top: auto; min-height: 48px; border-radius: 10px; font-weight: 700;
+    background: linear-gradient(135deg, #eed78a, #d4af37); color: #211b0b;
+    border-color: transparent; cursor: pointer;
+}
+#storesModal .btn-view-modal:hover { background: #f4dfa1; color: #211b0b; }
+#storesModal button:focus-visible, #catererMenuModal button:focus-visible { outline: 3px solid #eed78a; outline-offset: 3px; }
+#catererMenuModal .modal-content { max-height: calc(100dvh - 40px) !important; overflow: hidden; }
+#catererMenuModalContent { min-height: 0; }
+#catererMenuModalContent > .modal-header { flex-shrink: 0; }
+#catererMenuModalContent > .modal-body { min-height: 0; overscroll-behavior: contain; }
+#catererMenuModal .available-menu-set-head { gap: 12px; flex-wrap: wrap; }
+#catererMenuModal .available-menu-set { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 600px) {
+    #storesModal { padding: max(10px, env(safe-area-inset-top)) 10px max(10px, env(safe-area-inset-bottom)); }
+    #storesModal .modal-content { max-height: calc(100dvh - 20px - env(safe-area-inset-top) - env(safe-area-inset-bottom)); border-radius: 20px; }
+    #storesModal .modal-header { padding: 18px 16px; gap: 12px; }
+    #storesModal .modal-header h2 { font-size: 22px; }
+    .caterer-dialog-heading p { font-size: 13px; }
+    #storesModal .stores-modal-body { padding: 16px; }
+    #storesModal .stores-grid-modal { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    #storesModal .caterer-image-modal { height: 170px; }
+    #storesModal .caterer-info-modal { padding: 18px; }
+    #catererMenuModal { padding: 10px !important; }
+    #catererMenuModal .modal-content { padding: 18px !important; border-radius: 20px !important; max-height: calc(100dvh - 20px) !important; }
+    #catererMenuModal .modal-header { padding: 0 0 14px !important; gap: 12px; }
+}

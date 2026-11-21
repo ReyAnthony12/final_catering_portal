@@ -1,0 +1,1163 @@
+/* Scoped booking presentation, including rows refreshed by polling. */
+.reservations-page-header {
+    padding: 26px 28px;
+    border: 1px solid rgba(212,175,55,.22);
+    border-radius: 20px;
+    background: radial-gradient(ellipse at top right, rgba(212,175,55,.13), transparent 65%), var(--card-bg);
+    gap: 10px;
+}
+.reservations-eyebrow { color: var(--accent-gold); font-size: 10px; font-weight: 700; letter-spacing: .18em; }
+.reservations-page-header h1 { color: var(--text-main); font-size: clamp(24px, 3vw, 34px); letter-spacing: -.04em; line-height: 1.2; }
+.reservations-page-header p { font-size: 14px; line-height: 1.6; }
+.tabs-wrapper { gap: 12px; }
+.reservations-card > .tabs-wrapper {
+    margin: 0 0 14px !important;
+    padding: 0 0 12px;
+    border: 0 !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    border-radius: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+    min-width: 0;
+}
+.tabs-wrapper .tabs-container { max-width: 100% !important; gap: 8px; padding: 6px; background: rgba(128,128,128,.06); border-radius: 14px; }
+.tabs-wrapper .tab-link { padding: 12px 16px !important; border: 0 !important; border-radius: 10px; font-size: 13px; white-space: nowrap; }
+.tabs-wrapper .tab-link.active { background: rgba(212,175,55,.13); box-shadow: inset 0 0 0 1px rgba(212,175,55,.25); }
+.reservations-card { padding: 12px; border-radius: 20px; border: 1px solid var(--border-color); }
+.reservations-card .table { margin: 0; width: 100%; }
+.reservations-card .table th { font-size: 10px; letter-spacing: .1em; padding: 16px 12px; }
+.reservations-card .table td { padding: 18px 12px; vertical-align: middle; }
+.reservations-card .caterer-group-header strong { color: var(--text-main) !important; }
+.reservations-card .details-link { border-radius: 10px; min-height: 44px; }
+.reservations-card .status-select { min-height: 44px; border-radius: 10px; }
+.reservations-card .status-badge { display: inline-flex; align-items: center; padding: 6px 10px; border-radius: 7px; font-size: 10px; letter-spacing: .04em; }
+.reservations-card button:focus-visible, .reservations-card select:focus-visible,
+.tabs-wrapper a:focus-visible, .caterer-group-header:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 3px; }
+@media (max-width: 768px) {
+    .reservations-page-header { padding: 22px 18px; margin-bottom: 16px; border-radius: 18px; }
+    .reservations-page-header p { font-size: 13px; max-width: 28ch; }
+    .tabs-wrapper { flex-wrap: wrap; border-bottom: 0 !important; margin-bottom: 18px !important; }
+    .tabs-wrapper .tabs-container { flex: 1 1 100% !important; display: grid; grid-template-columns: 1fr 1fr; width: 100%; box-sizing: border-box; white-space: normal; overflow: visible; }
+    .tabs-wrapper .tab-link { display: flex; justify-content: center; gap: 7px; font-size: 12px; padding: 13px 8px !important; }
+    .tabs-wrapper > form { margin-left: auto !important; }
+    .reservations-card { padding: 0; background: transparent; border: 0; box-shadow: none; }
+    .reservations-card .table { table-layout: fixed; min-width: 0; border-spacing: 0; }
+    .reservations-card .table tr { margin: 0 0 14px; padding: 18px; border-radius: 18px; background: var(--card-bg); box-shadow: 0 8px 24px rgba(0,0,0,.1); }
+    .reservations-card .table td { width: auto; box-sizing: border-box; padding: 10px 0; font-size: 14px; overflow-wrap: anywhere; }
+    .reservations-card .table td::before { font-size: 10px; letter-spacing: .12em; margin-bottom: 7px; }
+    .reservations-card .table tr[class^="customer-order-"] td:first-child { padding-top: 0; padding-bottom: 16px; border-bottom: 1px solid var(--border-color); margin-bottom: 6px; }
+    .reservations-card .table tr[class^="customer-order-"] td:first-child strong { font-size: 15px; letter-spacing: .02em; }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(3) > div { line-height: 1.6; }
+    .reservations-card .table td:nth-child(5) form { display: block !important; }
+    .reservations-card .table td:nth-child(5) .details-link { min-height: 46px; font-size: 13px !important; }
+    .reservations-card .table tr.caterer-group-header { background: var(--primary-bg); border-color: var(--border-color); padding: 16px; margin-bottom: 10px; }
+    .reservations-card .table tr.caterer-group-header td { padding: 0 !important; }
+    .reservations-card .table tr.caterer-group-header td::before,
+    .reservations-card .table td[colspan]::before { display: none; }
+    .reservations-card .caterer-group-header td > div { gap: 12px; }
+    .reservations-card .caterer-group-header td > div > div { display: flex !important; flex-wrap: nowrap; align-items: center; gap: 8px !important; flex: 1; min-width: 0; }
+    .reservations-card .caterer-group-header strong { font-size: 15px !important; line-height: 1.4; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .reservations-card .caterer-group-header span { flex-shrink: 0; white-space: nowrap; margin-top: 0; padding: 4px 10px !important; }
+    .reservations-card .mobile-status-btn { min-height: 46px; }
+    .reservations-card .table td:last-child > div { gap: 8px !important; }
+    .reservations-card .table td:last-child .btn { min-height: 44px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border-radius: 10px; }
+    .reservations-card .status-select { font-size: 16px; max-width: 100%; }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(3) > div { font-size: 12px !important; }
+    .reservations-card .mobile-inline-actions .btn { min-height: 44px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; }
+    /* A compact ticket layout; inline display:none still controls collapsed bookings. */
+    .reservations-card .table tr[class^="customer-order-"] {
+        display: grid;
+        grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+        column-gap: 16px;
+        padding: 20px 18px 16px;
+        border: 1px solid rgba(212,175,55,.2);
+        background: radial-gradient(ellipse at top right, rgba(212,175,55,.07), transparent 60%), var(--card-bg) !important;
+        box-shadow: 0 12px 28px rgba(0,0,0,.16), inset 0 1px 0 rgba(255,255,255,.04);
+        position: relative;
+        overflow: hidden;
+    }
+    .reservations-card .table tr[class^="customer-order-"]::after { content: ''; position: absolute; top: 0; left: 18px; right: 18px; height: 2px; background: linear-gradient(90deg, transparent, var(--accent-gold), transparent); opacity: .65; }
+    .reservations-card .table tr[class^="customer-order-"] td { min-width: 0; }
+    .reservations-card .table tr[class^="customer-order-"] td:first-child,
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(n+4) { grid-column: 1 / -1; }
+    .reservations-card .table tr[class^="customer-order-"] td:first-child strong { font-size: 14px; font-weight: 600; }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(2),
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(3) { padding: 12px 0; }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(3) > strong { font-size: 20px; letter-spacing: -.04em; color: var(--accent-gold); }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(4) { padding: 10px 0 14px; border-bottom: 1px solid var(--border-color); }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(4)::before { display: inline; margin-right: 10px; }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(5) { padding: 16px 0 8px; }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(5)::before,
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(6)::before { display: none; }
+    .reservations-card .table td:nth-child(5) .details-link {
+        background: linear-gradient(115deg, #e5c96c, #c5a039) !important;
+        color: #201b0d !important;
+        border: 1px solid rgba(255,231,157,.35) !important;
+        font-weight: 700;
+        box-shadow: 0 4px 14px rgba(212,175,55,.13);
+    }
+    .reservations-card .table tr[class^="customer-order-"] td:last-child { padding: 0; }
+    .reservations-card .table tr[class^="customer-order-"] td:last-child > div {
+        display: grid !important;
+        grid-template-columns: minmax(0,1fr) 44px 44px;
+        gap: 6px !important;
+        align-items: center !important;
+    }
+    .reservations-card .table td:last-child .status-select { width: 100% !important; min-width: 0; padding-left: 10px; }
+    .reservations-card .table td:last-child form { min-width: 0; }
+    .reservations-card .table td:last-child a.btn { color: var(--accent-gold) !important; }
+    .reservations-card .caterer-group-header { transition: border-color .2s, box-shadow .2s; }
+    .reservations-card .caterer-group-header:hover { border-color: var(--accent-gold); box-shadow: 0 4px 18px rgba(212,175,55,.08); }
+    #orderDetailsModal .modal-content { width: calc(100% - 24px); max-height: 88dvh; border-radius: 20px; }
+    #customerBookingsModal .modal-content { width: calc(100% - 24px); box-sizing: border-box; padding: 18px !important; margin: 20px auto !important; }
+}
+
+/* Customer photos in both initial and automatically refreshed lists. */
+.reservations-card .reservation-customer-avatar {
+    width:42px; height:42px; min-width:42px; flex:0 0 42px;
+    border-radius:50%; object-fit:cover;
+    border:1px solid rgba(212,175,55,.4); background:var(--card-bg);
+}
+.reservations-card .reservation-avatar-fallback {
+    display:flex; align-items:center; justify-content:center; color:var(--accent-gold);
+}
+.reservations-card .reservation-customer-avatar[hidden] { display:none !important; }
+
+/* Keep the booking count at the right edge on every screen size. */
+.reservations-card .caterer-group-header td > div {
+    width: 100%;
+    min-width: 0;
+}
+.reservations-card .caterer-group-header td > div > div {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+}
+.reservations-card .caterer-group-header strong {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.reservations-card .caterer-group-header td > div > div > span {
+    margin-left: auto;
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* Match the Messages contact containers, including refreshed customer rows. */
+.reservations-card .table tr.caterer-group-header {
+    background: var(--primary-bg) !important;
+    border-color: var(--border-color);
+}
+.reservations-card .table tr.caterer-group-header > td {
+    background: transparent !important;
+}
+.reservations-card .table tr.caterer-group-header:hover {
+    background: rgba(255,255,255,.05) !important;
+    border-color: var(--border-color);
+}
+
+/* A balanced status switcher with a clear gold selected state. */
+.tabs-wrapper {
+    align-items: center !important;
+    border-bottom: 0 !important;
+    gap: 14px;
+}
+.tabs-wrapper .tabs-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    background: var(--primary-bg);
+    box-shadow: 0 8px 24px rgba(0,0,0,.16);
+    box-sizing: border-box;
+    min-width: 0;
+}
+.tabs-wrapper .tab-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    min-height: 58px;
+    padding: 10px 14px !important;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background: rgba(255,255,255,.025);
+    color: var(--text-muted);
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.35;
+    white-space: normal;
+    transition: background .2s, box-shadow .2s;
+}
+.tabs-wrapper .tab-link > i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    border-radius: 10px;
+    background: rgba(255,255,255,.06);
+    font-size: 13px;
+}
+.tabs-wrapper .tab-link:hover { background: rgba(255,255,255,.07); }
+.tabs-wrapper .tab-link.active {
+    background: linear-gradient(125deg, rgba(212,175,55,.24), rgba(212,175,55,.09));
+    box-shadow: inset 0 0 0 1px rgba(212,175,55,.45), 0 3px 12px rgba(0,0,0,.12);
+    color: var(--accent-gold) !important;
+}
+.tabs-wrapper .tab-link.active > i {
+    background: var(--accent-gold);
+    color: #201a09;
+    box-shadow: 0 2px 8px rgba(212,175,55,.18);
+}
+@media (max-width: 768px) {
+    .tabs-wrapper .tabs-container { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+    .tabs-wrapper .tab-link { min-height: 62px; padding: 10px !important; gap: 8px; font-size: 12px; }
+}
+@media (max-width: 360px) {
+    .tabs-wrapper .tab-link { gap: 6px; font-size: 11px; padding: 8px !important; }
+    .tabs-wrapper .tab-link > i { width: 26px; height: 28px; flex-basis: 26px; }
+}
+
+/* Compact status buttons stay together in one row, including on phones. */
+.tabs-wrapper .tabs-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 4px;
+    padding: 5px;
+    border-radius: 12px;
+    overflow-x: auto;
+}
+.tabs-wrapper .tab-link {
+    flex: 1 0 auto;
+    justify-content: center;
+    gap: 5px;
+    min-height: 36px;
+    padding: 8px 10px !important;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+.tabs-wrapper .tab-link > i {
+    display: inline;
+    width: auto;
+    height: auto;
+    flex: 0 0 auto;
+    border-radius: 0;
+    background: transparent;
+    font-size: 11px;
+}
+.tabs-wrapper .tab-link.active > i {
+    background: transparent;
+    color: inherit;
+    box-shadow: none;
+}
+@media (max-width: 768px) {
+    .tabs-wrapper .tabs-container { gap: 2px; padding: 4px; }
+    .tabs-wrapper .tab-link { min-height: 34px; padding: 7px 5px !important; gap: 4px; font-size: 10px; }
+    .tabs-wrapper .tab-link > i { font-size: 10px; }
+}
+@media (max-width: 360px) {
+    .tabs-wrapper .tab-link { font-size: 9px; padding: 7px 4px !important; gap: 3px; }
+    .tabs-wrapper .tab-link > i { font-size: 9px; }
+}
+
+.reservation-unread-badge {
+    display:inline-flex; align-items:center; justify-content:center;
+    min-width:19px; height:19px; padding:0 5px; box-sizing:border-box;
+    flex:0 0 auto; border-radius:999px; background:#ef4444; color:#fff;
+    font-size:10px; font-weight:700; line-height:1;
+}
+
+/* Keep the reservation list inside the viewport with the footer always visible. */
+html:has(.reservations-card),
+body:has(.reservations-card) {
+    overflow: hidden !important;
+}
+body:has(.reservations-card) {
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+}
+body:has(.reservations-card) > .main-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    min-height: 0;
+    height: auto;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+body:has(.reservations-card) > .main-content > :not(.reservations-card) {
+    flex-shrink: 0;
+}
+body:has(.reservations-card) .reservations-card {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-height: 0;
+    min-width: 0;
+    margin-bottom: 0;
+    padding: 10px;
+    border: 1px solid #96a38e;
+    border-radius: 16px;
+    background: #d4dbcd;
+    overflow: hidden;
+}
+body:has(.reservations-card) .reservations-table-wrap {
+    flex: 1 1 0;
+    min-height: 0;
+    min-width: 0;
+    width: 100%;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: #708b6b #d4dbcd;
+    -webkit-overflow-scrolling: touch;
+}
+body:has(.reservations-card) .reservations-table-wrap::-webkit-scrollbar { width: 6px; height: 6px; }
+body:has(.reservations-card) .reservations-table-wrap::-webkit-scrollbar-thumb { background: #708b6b; border-radius: 8px; }
+body:has(.reservations-card) > .main-footer { margin-top: 0; }
+@media (max-width: 992px) {
+    body:has(.reservations-card) > .main-content { padding: 66px 12px 8px; }
+    body:has(.reservations-card) .tabs-wrapper { margin-bottom: 10px !important; }
+    body:has(.reservations-card) .reservations-card { padding: 8px; border-radius: 14px; }
+    body:has(.reservations-card) > .main-footer {
+        margin-left: 0;
+        padding-bottom: max(6px, env(safe-area-inset-bottom));
+    }
+    body:has(.reservations-card) > .main-footer .footer-content { font-size: 10px; gap: 2px 10px; }
+}
+
+/* Consistent customer rows within the scrollable reservation panel. */
+body:has(.reservations-card) .reservations-table-wrap { padding: 2px; box-sizing: border-box; }
+.reservations-card .caterer-group-header td > div > div {
+    display: flex !important;
+    align-items: center;
+    gap: 10px !important;
+}
+.reservations-card .caterer-group-header strong {
+    font-size: 14px !important;
+    font-weight: 600;
+    line-height: 1.4;
+}
+.reservations-card .caterer-group-header td > div > div > span {
+    padding: 4px 8px !important;
+    font-size: 10px !important;
+    line-height: 1.3;
+}
+.reservations-card .caterer-group-header .reservation-unread-badge {
+    min-width: 17px;
+    height: 17px;
+    padding: 0 4px;
+    font-size: 9px;
+}
+.reservations-card .caterer-group-header .reservation-customer-avatar {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    flex-basis: 36px;
+}
+@media (max-width: 768px) {
+    body:has(.reservations-card) .reservations-card { padding: 10px; }
+    .reservations-card .table tr.caterer-group-header {
+        box-sizing: border-box;
+        width: 100%;
+        min-height: 62px;
+        margin: 0 0 8px;
+        padding: 12px !important;
+        border: 1px solid #a4b19b;
+        border-radius: 10px;
+        box-shadow: none;
+    }
+    .reservations-card .table tr.caterer-group-header:last-child { margin-bottom: 0; }
+    .reservations-card .table tr.caterer-group-header td { display: block; width: 100%; margin: 0; }
+    .reservations-card .caterer-group-header strong { font-size: 13px !important; }
+    .reservations-card .caterer-group-header td > div > div { gap: 8px !important; }
+}
+
+/* Customer rows share the panel surface without a highlighted background. */
+.soft-sage-theme .reservations-card .table tr.caterer-group-header,
+.soft-sage-theme .reservations-card .table tr.caterer-group-header:hover,
+.soft-sage-theme .reservations-card .table tr.caterer-group-header > td,
+.soft-sage-theme .reservations-card .table tr.caterer-group-header:hover > td {
+    background: transparent !important;
+    box-shadow: none;
+}
+
+/* Booking totals are plain text, without badge containers. */
+.soft-sage-theme .reservations-card .caterer-group-header td > div > div > span {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    color: #425642 !important;
+    font-weight: 500 !important;
+}
+
+/* Desktop customer rows use the same outlined boundaries as mobile. */
+@media (min-width: 769px) {
+    .reservations-card .table {
+        border-collapse: separate;
+        border-spacing: 0 8px;
+    }
+    .soft-sage-theme .reservations-card .table tr.caterer-group-header > td {
+        border: 1px solid #a4b19b !important;
+        border-radius: 10px;
+        padding: 12px 16px !important;
+    }
+}
+
+/* Expanded bookings: stable columns on desktop and a compact grid on phones. */
+.reservations-card .table tr[class^="customer-order-"] {
+    background: transparent !important;
+    box-shadow: none;
+}
+.reservations-card .table tr[class^="customer-order-"] > td {
+    vertical-align: middle;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+.reservations-card .table tr[class^="customer-order-"] td:nth-child(2) > div:first-child {
+    color: #20372b !important;
+    font-size: 14px;
+    font-weight: 600;
+}
+.reservations-card .table tr[class^="customer-order-"] td:nth-child(3) > strong {
+    font-size: 16px;
+    color: #173d32 !important;
+    font-variant-numeric: tabular-nums;
+}
+.reservations-card .table tr[class^="customer-order-"] td:nth-child(5) .details-link {
+    min-height: 40px;
+    background: #173d32 !important;
+    color: #f0f1e6 !important;
+    border: 1px solid #426052 !important;
+    border-radius: 8px;
+    box-shadow: none;
+    justify-content: center;
+    white-space: normal;
+}
+.reservations-card .table tr[class^="customer-order-"] td:last-child > div {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 6px !important;
+}
+.reservations-card .table tr[class^="customer-order-"] .status-select {
+    flex: 1 1 130px;
+    width: 100% !important;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 40px;
+    font-size: 12px;
+}
+.reservations-card .table tr[class^="customer-order-"] td:last-child :is(a.btn, button.btn) {
+    min-width: 36px;
+    min-height: 40px;
+    border-radius: 8px;
+}
+@media (min-width: 769px) {
+    .reservations-card .table { table-layout: fixed; }
+    .reservations-card .table th:nth-child(1) { width: 7%; }
+    .reservations-card .table th:nth-child(2) { width: 20%; }
+    .reservations-card .table th:nth-child(3) { width: 17%; }
+    .reservations-card .table th:nth-child(4) { width: 13%; }
+    .reservations-card .table th:nth-child(5) { width: 16%; }
+    .reservations-card .table th:nth-child(6) { width: 27%; }
+    .reservations-card .table tr[class^="customer-order-"] > td { padding: 16px 10px; }
+}
+@media (max-width: 768px) {
+    .reservations-card .table tr[class^="customer-order-"] {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas: 'number status' 'date amount' 'details details' 'actions actions';
+        gap: 14px 12px;
+        padding: 14px !important;
+        border: 1px solid #a4b19b;
+        border-radius: 10px;
+        margin: 0 0 10px;
+    }
+    .reservations-card .table tr[class^="customer-order-"]::after { display: none; }
+    .reservations-card .table tr[class^="customer-order-"] > td:nth-child(n) {
+        width: auto;
+        min-width: 0;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        font-size: 12px;
+    }
+    .reservations-card .table tr[class^="customer-order-"] > td:nth-child(1) { grid-area: number; }
+    .reservations-card .table tr[class^="customer-order-"] > td:nth-child(2) { grid-area: date; }
+    .reservations-card .table tr[class^="customer-order-"] > td:nth-child(3) { grid-area: amount; }
+    .reservations-card .table tr[class^="customer-order-"] > td:nth-child(4) { grid-area: status; }
+    .reservations-card .table tr[class^="customer-order-"] > td:nth-child(5) { grid-area: details; }
+    .reservations-card .table tr[class^="customer-order-"] > td:nth-child(6) { grid-area: actions; }
+    .reservations-card .table tr[class^="customer-order-"] td::before { font-size: 9px; margin-bottom: 4px; }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(4)::before { display: block; }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(5) .details-link { width: 100%; }
+    .reservations-card .table tr[class^="customer-order-"] td:last-child > div {
+        display: grid !important;
+        grid-template-columns: minmax(0, 1fr) 40px 40px;
+        gap: 6px !important;
+    }
+    .reservations-card .table tr[class^="customer-order-"] .status-select { font-size: 16px; }
+}
+
+/* Compact expanded booking rows while keeping phone controls easy to tap. */
+.reservations-card .table tr[class^="customer-order-"] > td {
+    font-size: 12px;
+    line-height: 1.35;
+}
+.reservations-card .table tr[class^="customer-order-"] td:nth-child(2) > div:first-child { font-size: 12px; }
+.reservations-card .table tr[class^="customer-order-"] td:nth-child(3) > strong { font-size: 14px; }
+.reservations-card .table tr[class^="customer-order-"] .status-badge {
+    font-size: 9px;
+    padding: 4px 7px;
+}
+.reservations-card .table tr[class^="customer-order-"] td:nth-child(5) .details-link {
+    font-size: 11px !important;
+    padding: 5px 9px !important;
+}
+@media (min-width: 769px) {
+    .reservations-card .table tr[class^="customer-order-"] > td { padding: 10px 8px; }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(5) .details-link,
+    .reservations-card .table tr[class^="customer-order-"] .status-select,
+    .reservations-card .table tr[class^="customer-order-"] td:last-child :is(a.btn, button.btn) {
+        min-height: 32px;
+        height: 32px;
+        border-radius: 6px;
+    }
+    .reservations-card .table tr[class^="customer-order-"] td:last-child :is(a.btn, button.btn) { min-width: 32px; }
+    .reservations-card .table tr[class^="customer-order-"] .status-select { font-size: 11px; padding: 5px 24px 5px 8px; }
+}
+@media (max-width: 768px) {
+    .reservations-card .table tr[class^="customer-order-"] { gap: 10px; padding: 12px !important; }
+    .reservations-card .table tr[class^="customer-order-"] > td:nth-child(n) { font-size: 11px; }
+}
+
+/* Denser phone booking details with aligned, usable actions. */
+@media (max-width: 768px) {
+    .reservations-card .table tr[class^="customer-order-"] {
+        gap: 7px 10px;
+        padding: 9px 10px !important;
+        margin-bottom: 8px;
+        border-radius: 8px;
+    }
+    .reservations-card .table tr[class^="customer-order-"] > td:nth-child(n) {
+        font-size: 11px;
+        line-height: 1.3;
+    }
+    .reservations-card .table tr[class^="customer-order-"] td::before {
+        font-size: 8px;
+        letter-spacing: .06em;
+        margin-bottom: 2px;
+    }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(2) > div:first-child { font-size: 11px; }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(3) > strong { font-size: 12px; }
+    .reservations-card .table tr[class^="customer-order-"] td:first-child strong { font-size: 12px; }
+    .reservations-card .table tr[class^="customer-order-"] .status-badge {
+        padding: 3px 5px;
+        font-size: 8px;
+        letter-spacing: .02em;
+    }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(5) .details-link {
+        min-height: 34px;
+        padding: 5px 8px !important;
+        font-size: 10px !important;
+        border-radius: 6px;
+    }
+    .reservations-card .table tr[class^="customer-order-"] td:last-child > div {
+        grid-template-columns: minmax(0, 1fr) 34px 34px;
+        gap: 5px !important;
+    }
+    .reservations-card .table tr[class^="customer-order-"] .status-select,
+    .reservations-card .table tr[class^="customer-order-"] td:last-child :is(a.btn, button.btn) {
+        height: 34px;
+        min-height: 34px;
+        min-width: 0;
+        padding: 4px 6px;
+        border-radius: 6px;
+    }
+    .reservations-card .table tr[class^="customer-order-"] .status-select {
+        font-size: 16px;
+        padding-right: 24px;
+    }
+}
+
+.reservations-card .reservations-list-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    flex: 0 0 auto;
+    padding: 0 2px 8px;
+}
+.reservations-card .reservations-list-toolbar form { margin: 0; }
+.reservations-card .reservations-bulk-delete {
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    min-height: 28px;
+    padding: 0;
+    border-radius: 6px;
+    font-size: 11px;
+    cursor: pointer;
+}
+.reservations-card .reservations-list-toolbar { gap: 6px; }
+
+#reservationBulkConfirm {
+    width: calc(100% - 32px);
+    max-width: 380px;
+    max-height: calc(100dvh - 32px);
+    overflow-y: auto;
+    box-sizing: border-box;
+    margin: auto;
+    padding: 24px;
+    border: 1px solid #96a38e;
+    border-radius: 18px;
+    background: #d4dbcd;
+    color: #20372b;
+    box-shadow: 0 20px 70px #0c201940;
+}
+#reservationBulkConfirm::backdrop { background: #0c201999; backdrop-filter: blur(4px); }
+#reservationBulkConfirm .reservation-confirm-icon {
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    background: #c0ceb7;
+    color: #173d32;
+}
+#reservationBulkConfirm h2 { margin: 0 0 10px; font-size: 19px; line-height: 1.3; color: #20372b; }
+#reservationBulkConfirm p { margin: 0; font-size: 13px; line-height: 1.6; color: #425642; }
+#reservationBulkConfirm .reservation-confirm-actions { display: flex; gap: 8px; margin-top: 24px; }
+#reservationBulkConfirm button {
+    flex: 1;
+    min-height: 40px;
+    padding: 8px 12px;
+    border: 1px solid #96a38e;
+    border-radius: 8px;
+    background: transparent;
+    color: #20372b;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    cursor: pointer;
+}
+#reservationBulkConfirm #reservationBulkProceed { background: #173d32; color: #f0f1e6; border-color: #173d32; }
+#reservationBulkConfirm[data-action="delete"] #reservationBulkProceed { background: #913b34; border-color: #913b34; }
+#reservationBulkConfirm button:focus-visible { outline: 2px solid #173d32; outline-offset: 3px; }
+
+/* Plain, natural-case booking statuses. */
+.soft-sage-theme .reservations-card .table tr[class^="customer-order-"] .status-badge {
+    display: inline;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Balanced Trash rows, including newly refreshed bookings. */
+.reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) > td {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #afbaa6;
+}
+.reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) td:nth-child(3) > div:first-child {
+    font-size: 13px !important;
+    line-height: 1.4;
+    color: #173d32 !important;
+}
+.reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) td:nth-child(5) form,
+.reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) td:last-child form {
+    display: block !important;
+    margin: 0;
+}
+.reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) :is(.details-link, button[name="restore_order"]) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 112px;
+    max-width: 100%;
+    height: 32px;
+    min-height: 32px;
+    padding: 5px 8px !important;
+    border-radius: 6px;
+    font-size: 11px !important;
+    font-weight: 600;
+    line-height: 1.3;
+}
+.soft-sage-theme .reservations-card .table button[name="restore_order"] {
+    background: transparent !important;
+    color: #173d32 !important;
+    border: 1px solid #708b6b !important;
+    box-shadow: none;
+}
+@media (min-width: 769px) {
+    .reservations-card .table:has(button[name="restore_order"]) th:nth-child(1) { width: 7%; }
+    .reservations-card .table:has(button[name="restore_order"]) th:nth-child(2) { width: 25%; }
+    .reservations-card .table:has(button[name="restore_order"]) th:nth-child(3) { width: 22%; }
+    .reservations-card .table:has(button[name="restore_order"]) th:nth-child(4) { width: 14%; }
+    .reservations-card .table:has(button[name="restore_order"]) th:nth-child(5),
+    .reservations-card .table:has(button[name="restore_order"]) th:nth-child(6) { width: 16%; }
+}
+@media (max-width: 768px) {
+    .reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) {
+        grid-template-areas: 'number status' 'date amount' 'details actions';
+        align-items: start;
+        gap: 12px 14px;
+        padding: 12px !important;
+        border-radius: 10px;
+    }
+    .reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) > td { padding: 0; border: 0; }
+    .reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) > td:nth-child(n) {
+        font-size: 12px;
+        line-height: 1.45;
+    }
+    .reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) td::before {
+        font-size: 9px;
+        font-weight: 500;
+        letter-spacing: .02em;
+        text-transform: none;
+        margin-bottom: 4px;
+        color: #425642;
+    }
+    .reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) td:nth-child(2) > div:first-child {
+        font-size: 12px;
+        font-weight: 600;
+    }
+    .reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) td:nth-child(2) small,
+    .reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) td:nth-child(2) > div:not(:first-child),
+    .reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) td:nth-child(3) > div:not(:first-child) {
+        font-size: 11px !important;
+        line-height: 1.5;
+    }
+    .reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) td:nth-child(3),
+    .reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) td:nth-child(4) { text-align: right; }
+    .reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) td:nth-child(5),
+    .reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) td:nth-child(6) {
+        padding-top: 10px;
+        border-top: 1px solid #b7c2ad;
+        align-self: end;
+    }
+    .reservations-card .table tr[class^="customer-order-"]:has(button[name="restore_order"]) :is(.details-link, button[name="restore_order"]) {
+        width: 100%;
+        height: 36px;
+        min-height: 36px;
+    }
+}
+
+/* Simple navigation within the shared booking container. */
+.reservations-card .tabs-wrapper .tabs-container {
+    display: flex;
+    width: 100%;
+    max-width: 100% !important;
+    padding: 0;
+    gap: 16px;
+    border: 0 !important;
+    border-radius: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+.reservations-card .tabs-wrapper .tab-link {
+    flex: 0 1 auto;
+    min-height: 40px;
+    padding: 10px 6px !important;
+    border: 0 !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+    font-weight: 500;
+}
+.reservations-card .tabs-wrapper .tab-link.active {
+    border-bottom-color: var(--accent-gold) !important;
+    font-weight: 700;
+}
+@media (max-width: 600px) {
+    .reservations-card .tabs-wrapper .tabs-container { gap: 6px; }
+    .reservations-card .tabs-wrapper .tab-link {
+        flex: 1 1 auto;
+        padding: 9px 2px !important;
+        font-size: 10px;
+        gap: 4px;
+    }
+}
+
+.reservations-actions-heading-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+.reservations-card .reservations-actions-heading .reservations-list-toolbar {
+    margin: 0;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+@media (max-width: 768px) {
+    .reservations-card .table thead { display: block; width: 100%; }
+    .reservations-card .table thead tr {
+        display: grid;
+        grid-template-columns: .75fr 1fr .85fr .85fr .85fr 1.35fr;
+        align-items: center;
+        width: 100%;
+    }
+    .reservations-card .table thead th {
+        display: block;
+        width: auto !important;
+        min-width: 0;
+        padding: 10px 3px;
+        font-size: clamp(7px, 1.9vw, 10px);
+        letter-spacing: 0;
+        line-height: 1.4;
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+    .reservations-actions-heading-content { gap: 3px; flex-wrap: wrap; }
+    .reservations-card .reservations-actions-heading .reservations-bulk-delete {
+        width: 28px;
+        min-width: 28px;
+        height: 28px;
+        min-height: 28px;
+        padding: 4px;
+        font-size: 11px;
+    }
+}
+
+/* Align labels consistently and reserve enough room for the booking number. */
+.reservations-card .table thead th {
+    vertical-align: middle;
+    text-align: left;
+    white-space: nowrap;
+    letter-spacing: .04em;
+    line-height: 1.4;
+}
+@media (min-width: 769px) {
+    .reservations-card .table th:nth-child(1) { width: 10%; }
+    .reservations-card .table th:nth-child(2) { width: 19%; }
+    .reservations-card .table th:nth-child(3) { width: 16%; }
+    .reservations-card .table th:nth-child(4) { width: 14%; }
+    .reservations-card .table th:nth-child(5) { width: 15%; }
+    .reservations-card .table th:nth-child(6) { width: 26%; }
+}
+@media (max-width: 768px) {
+    .reservations-card .table thead tr {
+        grid-template-columns: 1fr 1.4fr 1fr .9fr .9fr 1.3fr;
+        gap: 4px;
+        padding: 0 4px;
+        box-sizing: border-box;
+    }
+    .reservations-card .table thead th {
+        padding: 12px 0;
+        font-size: clamp(8px, 2.1vw, 10px);
+        letter-spacing: 0;
+        overflow-wrap: normal;
+    }
+    .reservations-card .reservations-actions-heading-content {
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        gap: 4px;
+    }
+    .reservations-card .reservations-actions-heading .reservations-list-toolbar { gap: 3px; }
+    .reservations-card .reservations-actions-heading .reservations-bulk-delete {
+        width: 24px;
+        min-width: 24px;
+        height: 28px;
+        min-height: 28px;
+        padding: 3px;
+        font-size: 10px;
+    }
+    .reservations-card .table:has(.reservations-bulk-delete) thead tr {
+        grid-template-columns: 1fr 1.35fr 1fr .9fr .9fr 1.7fr;
+    }
+}
+
+/* One continuous mobile table heading instead of separate cell highlights. */
+@media (max-width: 768px) {
+    .reservations-card .reservations-table-wrap .table thead {
+        background: var(--primary-bg) !important;
+        border-radius: 8px;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .reservations-card .reservations-table-wrap .table thead tr {
+        background: transparent !important;
+        border: 0;
+        min-height: 44px;
+    }
+    .reservations-card .reservations-table-wrap .table thead th {
+        align-self: stretch;
+        display: flex;
+        align-items: center;
+        background: transparent !important;
+        border: 0 !important;
+        border-radius: 0;
+        box-shadow: none !important;
+        margin: 0;
+    }
+}
+
+/* Keep mobile headings directly on the booking card without a nested panel. */
+@media (max-width: 768px) {
+    .reservations-card .reservations-table-wrap {
+        background: transparent !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+    }
+    .reservations-card .reservations-table-wrap .table thead {
+        background: transparent !important;
+        border: 0 !important;
+        border-bottom: 1px solid var(--border-color) !important;
+        border-radius: 0;
+        box-shadow: none !important;
+        overflow: visible;
+    }
+    .reservations-card .reservations-table-wrap .table thead tr {
+        padding: 0 2px;
+        min-height: 42px;
+        border-radius: 0;
+        box-shadow: none !important;
+    }
+    .reservations-card .reservations-table-wrap .table {
+        background: transparent !important;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+}
+
+/* Mobile booking cards already include their own field labels. */
+@media (max-width: 768px) {
+    .reservations-card .reservations-table-wrap .table thead {
+        display: none;
+    }
+    .reservations-card .reservations-table-wrap .table:has(.reservations-bulk-delete) thead {
+        display: block;
+        border: 0 !important;
+    }
+    .reservations-card .reservations-table-wrap .table:has(.reservations-bulk-delete) thead tr {
+        display: flex;
+        justify-content: flex-end;
+        min-height: 0;
+        padding: 0 0 6px;
+    }
+    .reservations-card .reservations-table-wrap .table thead th {
+        display: none;
+    }
+    .reservations-card .reservations-table-wrap .table thead th.reservations-actions-heading:has(.reservations-bulk-delete) {
+        display: block;
+        padding: 0;
+    }
+    .reservations-card .reservations-actions-heading-content > span {
+        display: none;
+    }
+}
+
+/* Separate bulk actions from the customer list on mobile. */
+@media (max-width: 768px) {
+    .reservations-card .reservations-table-wrap .table:has(.reservations-bulk-delete) thead {
+        border-bottom: 1px solid var(--border-color) !important;
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+    }
+    .reservations-card .reservations-actions-heading .reservations-bulk-delete {
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+    }
+}
+
+/* Hide redundant column headings on desktop while retaining bulk actions. */
+@media (min-width: 769px) {
+    .reservations-card .reservations-table-wrap .table thead { display: none; }
+    .reservations-card .reservations-table-wrap .table:has(.reservations-bulk-delete) thead {
+        display: table-header-group;
+    }
+    .reservations-card .reservations-table-wrap .table:has(.reservations-bulk-delete) thead tr {
+        display: flex;
+        justify-content: flex-end;
+        background: transparent !important;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .reservations-card .reservations-table-wrap .table thead th { display: none; }
+    .reservations-card .reservations-table-wrap .table thead th.reservations-actions-heading:has(.reservations-bulk-delete) {
+        display: block;
+        width: auto !important;
+        padding: 0 0 10px;
+        background: transparent !important;
+        border: 0;
+    }
+    .reservations-card .reservations-actions-heading-content > span { display: none; }
+}
+
+/* Compact bulk-action strip across screen sizes. */
+.reservations-card .reservations-table-wrap .table:has(.reservations-bulk-delete) thead {
+    margin-bottom: 4px;
+    padding-bottom: 3px;
+}
+.reservations-card .reservations-table-wrap .table:has(.reservations-bulk-delete) thead tr {
+    min-height: 0;
+    padding: 0;
+}
+.reservations-card .reservations-table-wrap .table thead th.reservations-actions-heading:has(.reservations-bulk-delete) {
+    padding: 2px 0 4px;
+}
+.reservations-card .reservations-actions-heading .reservations-list-toolbar {
+    min-height: 0;
+    gap: 4px;
+}
+.reservations-card .reservations-actions-heading .reservations-bulk-delete {
+    width: 26px;
+    min-width: 26px;
+    height: 26px;
+    min-height: 26px;
+    padding: 4px;
+    font-size: 11px;
+}
+
+/* Let the desktop bulk-action strip span the full table width. */
+@media (min-width: 769px) {
+    .reservations-card .reservations-table-wrap .table:has(.reservations-bulk-delete) thead {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .reservations-card .reservations-table-wrap .table:has(.reservations-bulk-delete) thead tr {
+        display: flex;
+        width: 100%;
+        box-sizing: border-box;
+        justify-content: flex-end;
+        background: transparent !important;
+    }
+    .reservations-card .reservations-table-wrap .table thead th.reservations-actions-heading:has(.reservations-bulk-delete) {
+        margin-left: auto;
+        padding: 2px 6px 5px 0;
+        background: transparent !important;
+    }
+    .reservations-card .reservations-actions-heading-content {
+        justify-content: flex-end;
+    }
+}
+
+/* Remove extra vertical space around the bulk-action icon. */
+.reservations-card > .tabs-wrapper {
+    margin-bottom: 4px !important;
+    padding-bottom: 4px;
+}
+.reservations-card .reservations-table-wrap .table:has(.reservations-bulk-delete) thead {
+    margin: 0 0 3px;
+    padding: 0;
+}
+.reservations-card .reservations-table-wrap .table:has(.reservations-bulk-delete) thead tr {
+    margin: 0;
+    padding: 0;
+    min-height: 0;
+    height: auto;
+}
+.reservations-card .reservations-table-wrap .table thead th.reservations-actions-heading:has(.reservations-bulk-delete) {
+    padding: 0 4px 2px 0;
+    line-height: 1;
+}
+.reservations-card .reservations-actions-heading .reservations-list-toolbar form {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+/* Stable column sizing survives hidden headings and automatic row refreshes. */
+.reservations-card {
+    --reservation-success: #27613f;
+    --reservation-warning: #79520c;
+    --error-color: #963d35;
+    --success-color: #27613f;
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+.reservations-card .reservation-col-number { width: 7%; }
+.reservations-card .reservation-col-date { width: 22%; }
+.reservations-card .reservation-col-amount { width: 23%; }
+.reservations-card .reservation-col-status { width: 12%; }
+.reservations-card .reservation-col-details { width: 15%; }
+.reservations-card .reservation-col-actions { width: 21%; }
+.reservations-card .table tr[class^="customer-order-"] > td {
+    padding: 16px 10px;
+    line-height: 1.55;
+}
+.reservations-card .table tr[class^="customer-order-"] td:nth-child(3) > div:first-child {
+    color: #173d32;
+    font-size: 15px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+}
+.reservations-card .table tr[class^="customer-order-"] td:last-child > div {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) 40px 40px;
+    gap: 6px !important;
+    align-items: center;
+}
+.reservations-card .table tr[class^="customer-order-"] td:last-child :is(a.btn, button.btn),
+.reservations-card .table tr[class^="customer-order-"] .status-select,
+.reservations-card .table tr[class^="customer-order-"] td:nth-child(5) .details-link {
+    box-sizing: border-box;
+    min-height: 40px;
+    height: auto;
+}
+.reservations-card .table tr[class^="customer-order-"] td:last-child form { margin: 0; }
+.reservations-card .table tr[class^="customer-order-"] td:last-child :is(a.btn, button.btn) { width: 40px; }
+.reservations-card .table tr[class^="customer-order-"] td:last-child a.btn { color: #245548 !important; }
+.reservations-card .status-select option { color: #20372b !important; background: #eef1e9; }
+.reservations-card .status-select option:disabled { color: #657160 !important; }
+@media (min-width: 769px) and (max-width: 1200px) {
+    .reservations-card .table tr[class^="customer-order-"] td:last-child > div {
+        grid-template-columns: repeat(2, 40px);
+        justify-content: start;
+    }
+    .reservations-card .table tr[class^="customer-order-"] .status-select { grid-column: 1 / -1; width: 100% !important; }
+}
+@media (max-width: 768px) {
+    .reservations-card .table colgroup { display: none; }
+    .reservations-card .table tr[class^="customer-order-"] {
+        padding: 16px !important;
+        gap: 14px 12px;
+    }
+    .reservations-card .table tr[class^="customer-order-"] > td:nth-child(n) { font-size: 12px; line-height: 1.55; }
+    .reservations-card .table tr[class^="customer-order-"] td::before { font-size: 10px; margin-bottom: 5px; }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(2) > div:first-child { font-size: 13px; }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(5) .details-link,
+    .reservations-card .table tr[class^="customer-order-"] td:last-child :is(a.btn, button.btn),
+    .reservations-card .table tr[class^="customer-order-"] .status-select { min-height: 44px; }
+    .reservations-card .table tr[class^="customer-order-"] .status-select { font-size: 16px; }
+    .reservations-card .table tr[class^="customer-order-"] td:nth-child(6) { padding-top: 10px; border-top: 1px solid var(--border-color); }
+}
+@media (max-width: 380px) {
+    .reservations-card .table tr[class^="customer-order-"] {
+        grid-template-areas: 'number status' 'date date' 'amount amount' 'details details' 'actions actions';
+    }
+}
+
+/* Keep bulk actions outside the table's column sizing. */
+.reservations-card .reservations-bulk-strip { display:flex; justify-content:flex-end; width:100%; box-sizing:border-box; }
+.reservations-card .reservations-bulk-strip:empty { display:none; }
+.reservations-card .reservations-bulk-strip .reservations-list-toolbar { display:flex; justify-content:flex-end; margin:0 0 6px auto; padding:0; }
+.reservations-card .reservations-bulk-strip .reservations-bulk-delete { width:36px; height:36px; min-height:36px; padding:8px; border-radius:9px; background:#173d32; color:#edf1e7; }

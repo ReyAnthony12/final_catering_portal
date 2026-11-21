@@ -1,0 +1,409 @@
+/* Use the dashboard's available content width without a centered width cap. */
+#booking-capacity-calendar .capacity-lead-disabled {
+    cursor: not-allowed;
+    background: rgba(100, 110, 95, .12);
+}
+#booking-capacity-calendar .capacity-lead-disabled .fc-daygrid-day-number,
+#booking-capacity-calendar .capacity-lead-disabled .fc-event {
+    opacity: .4;
+    pointer-events: none;
+}
+body:has(.capacity-page) { min-height: 100dvh; }
+.main-content:has(.capacity-page) {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 6px;
+}
+.capacity-page {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+.capacity-page .capacity-layout {
+    box-sizing: border-box;
+    width: 100%;
+    flex: 1;
+    grid-template-rows: auto minmax(0, 1fr);
+}
+.capacity-page .capacity-layout > .capacity-calendar-card {
+    display: flex;
+    flex-direction: column;
+}
+#booking-capacity-calendar { flex: 0 0 auto; }
+html:has(.capacity-page) {
+    overflow-x: hidden;
+    overflow-y: auto !important;
+    scrollbar-width: none;
+}
+html:has(.capacity-page)::-webkit-scrollbar,
+body:has(.capacity-page)::-webkit-scrollbar,
+.main-content:has(.capacity-page)::-webkit-scrollbar {
+    display: none;
+}
+body:has(.capacity-page) {
+    overflow-x: clip;
+    overflow-y: visible !important;
+    scrollbar-width: none;
+}
+.main-content:has(.capacity-page) {
+    height: auto;
+    overflow: visible;
+    scrollbar-width: none;
+}
+html:has(body.store-sidebar-open):has(.capacity-page),
+body.store-sidebar-open:has(.capacity-page),
+body:has(.capacity-page):has(#capacity-day-modal[open]) {
+    overflow: hidden !important;
+}
+.main-content:has(.capacity-page) {
+    padding-right: 10px;
+}
+.capacity-page {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
+}
+.capacity-page .capacity-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding: 18px;
+    margin-bottom: 0;
+}
+.capacity-page .capacity-layout > .capacity-settings-card,
+.capacity-page .capacity-layout > .capacity-calendar-card {
+    min-width: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    margin: 0;
+}
+.capacity-page .capacity-settings-card::before { display: none; }
+.capacity-page .capacity-layout > .capacity-settings-card {
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-color);
+    overflow: visible;
+}
+.capacity-page .capacity-settings-card .booking-capacity-form,
+.capacity-page .capacity-settings-card .booking-capacity-form > div {
+    min-width: 0;
+}
+.capacity-page .capacity-settings-card .form-control {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+.capacity-page .capacity-settings-card .form-control:focus-visible {
+    outline: 2px solid #496d53;
+    outline-offset: -2px;
+}
+.capacity-page .capacity-calendar-card .capacity-legend {
+    margin-bottom: 8px;
+}
+.capacity-page .capacity-calendar-card .fc .fc-daygrid-day-frame {
+    min-height: 0;
+    padding: 0;
+}
+#booking-capacity-calendar .fc-col-header-cell {
+    padding-bottom: 4px;
+}
+#booking-capacity-calendar .fc-col-header-cell-cushion {
+    padding: 6px 0;
+}
+@media (max-width: 992px) {
+    .capacity-page .capacity-layout { padding: 14px; }
+    .capacity-page .capacity-calendar-card .fc .fc-daygrid-day-frame { min-height: 56px; }
+}
+.capacity-page .capacity-layout > .card {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin-bottom: 0;
+}
+.capacity-page .capacity-calendar-card {
+    padding: 16px 18px;
+}
+.capacity-page .capacity-calendar-card .calendar-heading {
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+}
+#booking-capacity-calendar {
+    width: 100%;
+    min-width: 0;
+}
+.soft-sage-theme .capacity-page .capacity-calendar-card,
+.soft-sage-theme #booking-capacity-calendar {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+.soft-sage-theme #booking-capacity-calendar .fc-scrollgrid-section > :is(td, th) {
+    border: 0 !important;
+}
+.soft-sage-theme #booking-capacity-calendar .fc-daygrid-day {
+    border-width: 0 0 1px;
+    border-color: rgb(32 55 43 / 14%) !important;
+}
+.soft-sage-theme #booking-capacity-calendar .fc-daygrid-body tr:last-child .fc-daygrid-day {
+    border-bottom-width: 0;
+}
+#booking-capacity-calendar .fc-toolbar.fc-header-toolbar {
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.capacity-page .capacity-settings-card .form-control {
+    min-height: 44px;
+    height: 44px;
+    font-size: 16px;
+}
+.capacity-page .capacity-settings-card .capacity-save {
+    min-height: 44px;
+}
+@media (min-width: 1101px) {
+    .main-content:has(.capacity-page) {
+        padding: 24px 10px 6px 24px;
+    }
+}
+@media (max-width: 992px) {
+    .capacity-page .capacity-settings-card {
+        padding: 16px;
+    }
+    .capacity-page .capacity-settings-card form > div:last-child {
+        margin-top: 14px !important;
+    }
+    .capacity-page .capacity-settings-card .capacity-save {
+        width: 100%;
+        font-size: 13px;
+    }
+}
+@media (max-width: 600px) {
+    .main-content:has(.capacity-page) {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .capacity-page .capacity-layout { gap: 14px; }
+    .capacity-page .capacity-calendar-card { padding: 16px 10px; }
+    .capacity-page .capacity-calendar-card .capacity-legend {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 8px 14px;
+        margin-bottom: 14px;
+    }
+    .capacity-page .capacity-calendar-card .capacity-legend span { font-size: 11px; }
+    #booking-capacity-calendar .fc-toolbar-chunk:first-child { width: auto; min-width: 0; }
+    #booking-capacity-calendar .fc-toolbar-chunk:nth-child(3) { flex-wrap: wrap; }
+    #booking-capacity-calendar .fc-button-primary { min-height: 44px; }
+    #booking-capacity-calendar .fc-daygrid-day-frame { min-height: 56px; }
+    #booking-capacity-calendar .capacity-event { padding: 2px; font-size: 10px; gap: 2px; }
+}
+@media (max-width: 360px) {
+    .capacity-page .booking-capacity-form { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Keep the availability heading, key, and navigation legible and aligned. */
+.capacity-page .capacity-calendar-card .calendar-heading {
+    margin: 0 0 12px;
+    padding: 0;
+    border: 0;
+}
+.capacity-page .capacity-calendar-card .calendar-heading h3 {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 600;
+}
+.capacity-page .capacity-calendar-card .capacity-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin: 0 0 16px;
+}
+.capacity-page .capacity-calendar-card .capacity-legend span {
+    font-size: 12px;
+    line-height: 1.5;
+}
+#booking-capacity-calendar .fc-toolbar.fc-header-toolbar {
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+}
+#booking-capacity-calendar .fc-toolbar-chunk:nth-child(2) { display: none; }
+#booking-capacity-calendar .fc-toolbar-chunk:nth-child(3) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+#booking-capacity-calendar .fc-today-button { margin-left: 0; }
+@media (max-width: 600px) {
+    .capacity-page .capacity-calendar-card .calendar-heading h3 { font-size: 15px; }
+    .capacity-page .capacity-calendar-card .capacity-legend {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: clamp(6px, 2vw, 12px);
+        padding: 0 4px;
+        box-sizing: border-box;
+        margin-bottom: 8px;
+    }
+    .capacity-page .capacity-calendar-card .capacity-legend span {
+        font-size: clamp(8px, 2.5vw, 11px);
+        gap: 3px;
+        white-space: nowrap;
+    }
+    #booking-capacity-calendar .fc-toolbar.fc-header-toolbar { gap: 10px; }
+    #booking-capacity-calendar .fc-toolbar-title { font-size: 17px; line-height: 1.4; }
+    #booking-capacity-calendar .fc-button-primary {
+        min-width: 36px;
+        min-height: 40px;
+        padding: 6px 8px;
+        font-size: 12px;
+    }
+    #booking-capacity-calendar .fc-toolbar-chunk:nth-child(3) { gap: 6px; }
+}
+
+@media (max-width: 600px) {
+    .capacity-page .capacity-layout { padding: 10px; gap: 8px; }
+    .capacity-page .capacity-layout > .capacity-settings-card { padding-bottom: 8px; }
+    .capacity-page .capacity-settings-card form {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 8px;
+        align-items: center;
+    }
+    .capacity-page .capacity-settings-card .booking-capacity-form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 6px;
+    }
+    .capacity-page .capacity-settings-card label { font-size: 11px; margin-bottom: 3px; }
+    .capacity-page .capacity-settings-card .form-control {
+        min-height: 36px;
+        height: 36px;
+    }
+    .capacity-page .capacity-settings-card .capacity-field-hint { display: none; }
+    .capacity-page .capacity-settings-card form > div:last-child {
+        margin-top: 15px !important;
+        min-width: 0;
+    }
+    .capacity-page .capacity-settings-card .capacity-save {
+        min-width: 0;
+        min-height: 36px;
+        padding: 6px 10px;
+        font-size: 11px;
+        white-space: nowrap;
+    }
+    .capacity-page .capacity-calendar-card .calendar-heading { margin-bottom: 6px; }
+    #booking-capacity-calendar .fc-toolbar.fc-header-toolbar { margin-bottom: 8px; gap: 6px; }
+    #booking-capacity-calendar .fc-toolbar-title { font-size: 16px; }
+    #booking-capacity-calendar .fc-button-primary { min-height: 36px; }
+}
+
+.capacity-page .capacity-settings-title {
+    color: var(--text-main);
+    font-size: 19px;
+    margin: 0 0 14px;
+}
+.capacity-page .capacity-settings-card form {
+    display: block;
+}
+.capacity-page .capacity-settings-card .booking-capacity-form {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px 16px;
+}
+.capacity-page .capacity-settings-card .form-control {
+    box-sizing: border-box;
+    width: 100%;
+}
+.capacity-page .capacity-settings-card .capacity-settings-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 14px !important;
+}
+.capacity-page .capacity-settings-card .capacity-save {
+    width: auto;
+    min-height: 42px;
+}
+.capacity-page .capacity-calendar-card .calendar-heading h3 {
+    color: var(--text-main);
+}
+@media (max-width: 1150px) {
+    .capacity-page .capacity-settings-card .booking-capacity-form {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media (max-width: 600px) {
+    .capacity-page .capacity-settings-card .capacity-save {
+        width: 100%;
+    }
+}
+
+/* Availability calendar */
+.capacity-page .capacity-layout > .capacity-calendar-card {
+    padding: clamp(10px, 2vw, 22px);
+    border: 1px solid #9cae96;
+    border-radius: 16px;
+    background: #ced8c7;
+    color: #19392e;
+}
+.capacity-page .capacity-calendar-card .calendar-heading h3 {
+    color: inherit;
+}
+.capacity-page .capacity-calendar-card .capacity-legend {
+    flex-wrap: wrap;
+    gap: 6px 14px;
+}
+#booking-capacity-calendar {
+    --fc-border-color: #aebbA7;
+    --fc-neutral-bg-color: #c1cfba;
+    --fc-today-bg-color: #d8d2a8;
+}
+#booking-capacity-calendar .fc-scrollgrid {
+    border-radius: 10px;
+    overflow: hidden;
+    background: #dce4d5;
+}
+#booking-capacity-calendar .fc-col-header-cell {
+    background: #c1cfba;
+    color: #25473a;
+}
+#booking-capacity-calendar .fc-daygrid-day:not(.capacity-lead-disabled):not(.fc-day-other):hover {
+    background-color: #c9dac1;
+}
+#booking-capacity-calendar .fc-daygrid-day-number {
+    font-weight: 650;
+}
+#booking-capacity-calendar .fc-toolbar.fc-header-toolbar {
+    flex-wrap: wrap;
+    gap: 8px 12px;
+}
+#booking-capacity-calendar .fc-button-primary:focus-visible {
+    outline: 2px solid #19392e;
+    outline-offset: 2px;
+}
+#booking-capacity-calendar .capacity-event[data-status] {
+    display: block;
+    border-radius: 6px;
+    padding: 3px 2px;
+    text-align: center;
+    background: #bdd6b9;
+    color: #1e482d;
+}
+#booking-capacity-calendar .capacity-event[data-status="almost_full"] {
+    background: #e9d5a2;
+    color: #644605;
+}
+#booking-capacity-calendar .capacity-event[data-status="fully_booked"] {
+    background: #e8c4be;
+    color: #802d26;
+}
+#booking-capacity-calendar .capacity-event[data-status="holiday"] {
+    background: #dfcee8;
+    color: #573466;
+}
+@media (max-width: 600px) {
+    #booking-capacity-calendar .capacity-event[data-status] {
+        font-size: clamp(8px, 2.5vw, 11px);
+    }
+}

@@ -1,0 +1,302 @@
+/* Calendar dialog is mounted on body to escape dashboard layout containers. */
+#storeModalOverlay { position: fixed !important; inset: 0; width: 100%; height: 100%; z-index: 20000 !important; background: rgba(5, 7, 11, .76); backdrop-filter: blur(8px); }
+#caterer-modal { position: fixed !important; inset: 0 !important; width: 100% !important; height: 100% !important; height: 100dvh !important; padding: 24px; box-sizing: border-box; z-index: 20001 !important; align-items: center !important; justify-content: center; background: transparent; }
+#caterer-modal .modal-dialog { position: relative !important; inset: auto !important; margin: 0 !important; width: 100% !important; max-width: 1000px !important; max-height: 90vh !important; max-height: 90dvh !important; overflow: hidden; border: 1px solid #454037; border-radius: 24px !important; background: #191a1d; box-shadow: 0 30px 100px #0009; }
+#storeModalContent { display: flex; flex-direction: column; max-height: inherit; min-height: 0; }
+#caterer-modal .modal-header { flex: 0 0 auto; padding: 28px 78px 24px 28px !important; border-bottom: 1px solid #ffffff12; background: linear-gradient(120deg, #d4af3710, transparent); }
+#caterer-modal .modal-header::before { content: 'BOOKING CALENDAR'; display: block; font-size: 10px; font-weight: 700; letter-spacing: .18em; color: #aaa28e; margin-bottom: 10px; }
+#caterer-modal h2 { font-size: clamp(18px, 3vw, 25px); line-height: 1.4; margin: 0; color: #f1d484; }
+#caterer-modal .close-btn { top: 23px !important; right: 20px !important; width: 44px !important; height: 44px !important; border: 1px solid #ffffff1c !important; background: #ffffff09 !important; }
+#caterer-modal .close-btn:hover { background: #ffffff20 !important; }
+#caterer-modal :focus-visible { outline: 2px solid #f1d484; outline-offset: 3px; }
+#caterer-modal .modal-body { min-height: 0; max-height: none !important; overflow-y: auto !important; padding: 20px 24px 26px; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+#caterer-modal .table { width: 100%; margin: 0; border-collapse: collapse; }
+#caterer-modal .table td { padding: 16px 10px; font-size: 13px; }
+#caterer-modal .status-badge { white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 760px) {
+    #caterer-modal { padding: max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom)); }
+    #caterer-modal .modal-dialog { max-height: 92vh !important; max-height: 92dvh !important; border-radius: 20px !important; }
+    #caterer-modal .modal-header { padding: 22px 64px 20px 20px !important; }
+    #caterer-modal .close-btn { right: 14px !important; top: 18px !important; }
+    #caterer-modal .modal-body { padding: 14px; }
+    #caterer-modal .table, #caterer-modal .table tbody { display: block; width: 100%; white-space: normal; overflow: visible; }
+    #caterer-modal .table thead { display: none; }
+    #caterer-modal .table tr { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 12px; padding: 18px; margin-bottom: 12px; border: 1px solid #ffffff12 !important; border-radius: 16px; background: linear-gradient(135deg, #ffffff05, #ffffff01); }
+    #caterer-modal .table tr:last-child { margin-bottom: 0; }
+    #caterer-modal .table td { display: block; min-width: 0; padding: 0; border: 0; white-space: normal !important; overflow-wrap: anywhere; font-size: 14px !important; }
+    #caterer-modal .table td::before { content: attr(data-label); display: block; color: #a6a6ad; font: 500 10px/1.5 system-ui, sans-serif; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 5px; }
+    #caterer-modal .table td:nth-child(1), #caterer-modal .table td:nth-child(2), #caterer-modal .table td:last-child { grid-column: 1 / -1; }
+    #caterer-modal .table td:nth-child(1) { padding-bottom: 12px; border-bottom: 1px solid #ffffff10; font-size: 12px !important; }
+    #caterer-modal .table td:nth-child(2) { font-size: 18px !important; }
+}
+/* A quiet, compact booking header with a clear reading order. */
+#caterer-modal .modal-header { display: block; padding: 24px 76px 22px 24px !important; }
+#caterer-modal .modal-header::before { content: none; }
+.orders-heading-copy { min-width: 0; }
+.orders-heading-eyebrow { display: block; margin-bottom: 8px; color: #ad9c75; font-size: 9px; font-weight: 700; letter-spacing: .18em; }
+#caterer-modal .orders-heading-copy h2 { color: #f3e9d3; font-size: 22px; font-weight: 600; letter-spacing: -.035em; line-height: 1.25; }
+.orders-heading-copy p { margin: 8px 0 0; color: #92929a; font-size: 11px; line-height: 1.5; }
+.orders-heading-copy p span { margin: 0 5px; color: #bda671; }
+#caterer-modal .close-btn { width: 36px !important; height: 36px !important; font-size: 21px !important; border-radius: 12px !important; color: #bdbbc1 !important; }
+.orders-reference-link { display: inline-flex; gap: 8px; align-items: center; max-width: 100%; color: #a9a7ac; text-decoration: none; overflow-wrap: anywhere; }
+.orders-reference-link span { color: #d8bd7e; }
+.orders-reference-link:hover { color: #ead198; }
+@media (max-width: 760px) {
+    #caterer-modal .modal-dialog { max-width: 460px !important; border-color: #d5b56428; border-radius: 22px !important; background: #17181b; }
+    #caterer-modal .modal-header { padding: 22px 62px 20px 20px !important; background: radial-gradient(ellipse at top left, #c5a45e12, transparent 85%); }
+    #caterer-modal .orders-heading-copy h2 { font-size: clamp(18px, 5vw, 22px); }
+    #caterer-modal .close-btn { top: 20px !important; right: 16px !important; }
+    #caterer-modal .modal-body { padding: 12px; }
+    #caterer-modal .table tr { gap: 18px 14px; padding: 18px 16px; background: linear-gradient(145deg, #ffffff04, transparent); border-color: #ffffff0e !important; border-radius: 15px; }
+    #caterer-modal .table td::before { font-size: 9px; letter-spacing: .12em; color: #8f8e98; margin-bottom: 6px; }
+    #caterer-modal .table td:nth-child(1) { padding-bottom: 13px; font-size: 11px !important; }
+    #caterer-modal .table td:nth-child(2) { font-size: 20px !important; line-height: 1.3; letter-spacing: -.025em; padding-bottom: 2px; }
+    #caterer-modal .table td:nth-child(4) { font-size: 18px !important; color: #e8ce91 !important; font-weight: 600 !important; letter-spacing: -.025em; }
+    #caterer-modal .table td:nth-child(4)::before { letter-spacing: .12em; }
+    #caterer-modal .table td:nth-child(3) > span { font-size: 11px !important; padding: 5px 8px !important; background: #ffffff08 !important; border: 1px solid #ffffff0a; border-radius: 7px !important; }
+    #caterer-modal .table td:nth-child(5) .status-badge { display: inline-block; font-size: 9px !important; letter-spacing: .05em !important; padding: 5px 9px !important; line-height: 1.3; }
+    #caterer-modal .table td:nth-child(6) { font-size: 13px !important; color: #dfdde2; }
+    #caterer-modal .table td:last-child { padding-top: 13px; border-top: 1px solid #ffffff0b; font-size: 12px !important; }
+    #caterer-modal .table td:last-child small { display: inline-block; margin-top: 3px; }
+}
+
+/* Readable text and status colors on the sage booking dialog. */
+.soft-sage-theme #caterer-modal {
+    --text-main: #20372b;
+    --text-muted: #425642;
+    color: var(--text-main);
+}
+.soft-sage-theme #caterer-modal .orders-heading-copy h2 {
+    color: #183d30 !important;
+    font-weight: 700;
+}
+.soft-sage-theme #caterer-modal .orders-heading-copy p,
+.soft-sage-theme #caterer-modal .orders-heading-copy p span,
+.soft-sage-theme #caterer-modal .table td::before,
+.soft-sage-theme #caterer-modal .table td:last-child small {
+    color: #425642 !important;
+    opacity: 1 !important;
+}
+.soft-sage-theme #caterer-modal .orders-heading-copy p { font-size: 12px; }
+.soft-sage-theme #caterer-modal .table th {
+    color: #294737 !important;
+    font-weight: 700 !important;
+}
+.soft-sage-theme #caterer-modal .orders-reference-link {
+    color: #173d32 !important;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+.soft-sage-theme #caterer-modal .orders-reference-link span { color: inherit; }
+.soft-sage-theme #caterer-modal .orders-reference-link:hover { color: #305f48 !important; }
+.soft-sage-theme #caterer-modal .table td[data-label="Customer"] { color: #183d30 !important; }
+.soft-sage-theme #caterer-modal .table td[data-label="Amount"] {
+    color: #173d32 !important;
+    font-weight: 700 !important;
+    font-variant-numeric: tabular-nums;
+}
+.soft-sage-theme #caterer-modal .table td[data-label="Type"] > span {
+    background: #c3cebb !important;
+    color: #304b36 !important;
+    border: 1px solid #9eaf95;
+}
+.soft-sage-theme #caterer-modal .status-badge {
+    font-weight: 700;
+    border: 1px solid currentColor;
+}
+.soft-sage-theme #caterer-modal .status-badge.status-closed {
+    background: #ecd3cc !important;
+    color: #7c2926 !important;
+}
+.soft-sage-theme #caterer-modal .status-badge.status-active {
+    background: #bfd5be !important;
+    color: #214e31 !important;
+}
+.soft-sage-theme #caterer-modal .status-badge.status-pending {
+    background: #e6d9b8 !important;
+    color: #694714 !important;
+}
+.soft-sage-theme #caterer-modal :focus-visible {
+    outline-color: #173d32;
+}
+
+/* Plain labels; desktop rows become compact details on narrow screens. */
+.soft-sage-theme #caterer-modal .table td[data-label="Type"] > span,
+.soft-sage-theme #caterer-modal .table .status-badge {
+    display: inline !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    white-space: nowrap !important;
+    font-size: 11px !important;
+    letter-spacing: 0 !important;
+}
+#caterer-modal .table td[data-label="Booked"] > div,
+#caterer-modal .table td[data-label="Booked"] > small {
+    display: inline !important;
+    margin: 0 !important;
+}
+#caterer-modal .table td[data-label="Booked"] > small { margin-left: 6px !important; }
+#caterer-modal .modal-body {
+    overflow-x: auto !important;
+}
+#caterer-modal .table {
+    min-width: 760px;
+    white-space: nowrap;
+}
+#caterer-modal .table :is(th, td) {
+    white-space: nowrap !important;
+    vertical-align: middle;
+    text-align: left;
+}
+@media (max-width: 760px) {
+    #caterer-modal .modal-body { overflow-x: hidden !important; }
+    #caterer-modal .table {
+        display: block !important;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        white-space: normal;
+        overflow: visible;
+        border-collapse: collapse;
+    }
+    #caterer-modal .table thead { display: none !important; }
+    #caterer-modal .table tbody { display: block !important; min-width: 0; }
+    #caterer-modal .table tr {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas: 'booking type' 'customer customer' 'amount status' 'time booked';
+        gap: 14px 12px;
+        background: transparent;
+        border: 0 !important;
+        border-bottom: 1px solid #a8b59f !important;
+        border-radius: 0;
+        padding: 16px 4px;
+        margin: 0;
+    }
+    #caterer-modal .table td:nth-child(n) {
+        display: block !important;
+        grid-column: auto;
+        min-width: 0;
+        padding: 0 !important;
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+        letter-spacing: normal !important;
+        border: 0 !important;
+        white-space: normal !important;
+        overflow-wrap: anywhere;
+    }
+    #caterer-modal .table td:nth-child(1) { grid-area: booking; }
+    #caterer-modal .table td:nth-child(2) { grid-area: customer; font-size: 17px !important; }
+    #caterer-modal .table td:nth-child(3) { grid-area: type; }
+    #caterer-modal .table td:nth-child(4) { grid-area: amount; }
+    #caterer-modal .table td:nth-child(5) { grid-area: status; }
+    #caterer-modal .table td:nth-child(6) { grid-area: time; }
+    #caterer-modal .table td:nth-child(7) { grid-area: booked; }
+    #caterer-modal .table td::before {
+        display: block !important;
+        margin-bottom: 3px;
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: .06em;
+    }
+    #caterer-modal .table td[data-label="Booked"] > small {
+        display: block !important;
+        margin: 2px 0 0 !important;
+    }
+    .soft-sage-theme #caterer-modal .table .status-badge {
+        white-space: normal !important;
+        overflow-wrap: anywhere;
+    }
+    #caterer-modal .modal-dialog { max-width: 100% !important; }
+}
+
+/* Keep navigation visible for the single booking on each slide. */
+#caterer-modal .orders-pagination {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 20px;
+    border-top: 1px solid #a8b59f;
+    color: #425642;
+    font-size: 12px;
+    background: #d4dbcd;
+}
+#caterer-modal .orders-pagination > div { display: flex; align-items: center; gap: 10px; }
+#caterer-modal .orders-pagination button {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid #96a38e;
+    border-radius: 8px;
+    background: transparent;
+    color: #173d32;
+    font-size: 24px;
+    cursor: pointer;
+}
+#caterer-modal .orders-pagination button:disabled { opacity: .35; cursor: default; }
+@media (max-width: 760px) {
+    #caterer-modal .modal-body { padding: 0 16px; }
+    #caterer-modal .table tr {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-areas: 'customer amount' 'booking status' 'type time' 'booked booked';
+        align-items: baseline;
+        gap: 6px 16px;
+        padding: 16px 0;
+    }
+    #caterer-modal .table td:nth-child(n) { font-size: 12px !important; line-height: 1.45 !important; }
+    #caterer-modal .table td:nth-child(2) { font-size: 15px !important; font-weight: 600; }
+    #caterer-modal .table td:nth-child(1) .orders-reference-link {
+        gap: 0;
+        font-size: 12px;
+        text-decoration: none;
+    }
+    #caterer-modal .table .orders-reference-link span { display: none; }
+    #caterer-modal .table td:nth-child(3) { color: #425642 !important; }
+    .soft-sage-theme #caterer-modal .table td[data-label="Type"] > span { font-size: 11px !important; }
+    #caterer-modal .table td[data-label="Type"] i { display: none; }
+    .soft-sage-theme #caterer-modal .table .status-badge { font-size: 11px !important; font-weight: 600; }
+    #caterer-modal .table td:nth-child(4) { font-size: 14px !important; text-align: right; }
+    #caterer-modal .table td:nth-child(5),
+    #caterer-modal .table td:nth-child(6) { text-align: right; }
+    #caterer-modal .table td::before { display: none !important; }
+    #caterer-modal .table td[data-label="Time"]::before {
+        display: inline !important;
+        content: 'Event: ';
+        font-size: 10px;
+        text-transform: none;
+        letter-spacing: normal;
+    }
+    #caterer-modal .table td[data-label="Booked"] { color: #425642 !important; font-size: 11px !important; }
+    #caterer-modal .table td[data-label="Booked"]::before {
+        display: inline !important;
+        content: 'Booked: ';
+        font-size: inherit;
+        text-transform: none;
+        letter-spacing: normal;
+    }
+    #caterer-modal .table td[data-label="Booked"] > small {
+        display: inline !important;
+        margin: 0 0 0 6px !important;
+        font-size: inherit !important;
+    }
+    #caterer-modal .table td[data-label="Time"],
+    #caterer-modal .table td[data-label="Booked"] {
+        margin-top: 2px;
+        font-size: 11px !important;
+        font-variant-numeric: tabular-nums;
+    }
+    #caterer-modal .table td[data-label="Booked"] {
+        padding-top: 7px !important;
+        margin-top: 2px;
+        border-top: 1px solid #bdc8b5 !important;
+    }
+    #caterer-modal .orders-pagination { padding: 10px 16px; font-size: 11px; }
+}

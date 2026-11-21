@@ -1,0 +1,294 @@
+/* Final screen styles for the sage admin workspace. */
+@media screen {
+    body.portal-layout .backup-page h1 { margin-bottom: 16px !important; }
+    body.portal-layout .backup-page .content-body h2 { margin-bottom: 14px; }
+    body.portal-layout .messages-page :is(.inbox-heading, #trash-tab > h3) {
+        border-bottom: 1px solid #96a38e;
+        padding-bottom: 10px; margin-bottom: 10px;
+    }
+    body.portal-layout .messages-page .inbox-heading h3 { margin-bottom: 0; }
+    body.portal-layout .messages-page .data-table td:nth-child(3) { display: none !important; }
+    @media (min-width: 601px) {
+        body.portal-layout .messages-page .data-table td:nth-child(3) {
+            width: 110px; text-align: right !important; padding-right: 0; padding-left: 0;
+        }
+        body.portal-layout .messages-page .data-table td:last-child {
+            width: 46px; padding-right: 0; padding-left: 6px; text-align: right;
+        }
+        body.portal-layout .messages-page .data-table td:last-child > div { justify-content: flex-end; }
+    }
+    body.portal-layout .messages-page .data-table thead {
+        position: absolute; width: 1px; height: 1px; padding: 0;
+        overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+    }
+    body.portal-layout .reports-page .reports-summary-grid {
+        display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px; margin-bottom: 12px;
+    }
+    body.portal-layout .reports-page .reports-summary-grid > :is(.stats-grid, .grid-3) { display: contents; }
+    body.portal-layout .reports-page .reports-summary-grid :is(.stat-card, .revenue-card) {
+        min-width: 0; min-height: 0; margin: 0; padding: 10px 12px;
+        border-radius: 9px; box-shadow: none;
+    }
+    body.portal-layout .reports-page .reports-summary-grid h3 {
+        font-size: 10px; line-height: 1.4; letter-spacing: .4px;
+        margin: 0 0 4px; overflow-wrap: anywhere;
+    }
+    body.portal-layout .reports-page .reports-summary-grid [data-report-stat] {
+        font-size: 22px !important; line-height: 1.2; font-weight: 700 !important;
+        margin: 0; overflow-wrap: anywhere;
+    }
+    @media (max-width: 768px) {
+        body.portal-layout .reports-page .reports-summary-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+        body.portal-layout .reports-page .reports-summary-grid :is(.stat-card, .revenue-card) { padding: 9px 10px; }
+        body.portal-layout .reports-page .reports-summary-grid [data-report-stat] { font-size: 20px !important; }
+    }
+    /* Only the workspace scrolls; global public-page rules force duplicate gutters. */
+    html.portal-sage-theme:has(body.portal-layout),
+    html.portal-sage-theme body.portal-layout { overflow: hidden !important; }
+    body.portal-layout > .main-content.messages-page {
+        padding: 8px !important; scrollbar-gutter: auto;
+    }
+    body.portal-layout .messages-page :is(.messages-layout, .messages-list-container, .messages-list-container > .content-body, .table-container) {
+        width: 100%; max-width: none; min-width: 0; margin-inline: 0;
+    }
+    body.portal-layout .messages-page .messages-list-container > .content-body {
+        padding: 0 !important;
+    }
+    body.portal-layout .messages-page .message-tabs { padding: 4px 0; }
+    body.portal-layout .messages-page :is(.inbox-heading, #trash-tab > h3) { padding-inline: 4px; }
+    @media (max-width: 600px) {
+        body.portal-layout > .main-content.messages-page { padding: 5px !important; }
+    }
+    /* The shared theme groups selectors containing two IDs. Match that
+       specificity for these existing, uniquely identified settings controls. */
+    html.portal-sage-theme body.portal-layout .settings-page
+    :is(#settings-button-1, #settings-button-2, #settings-button-3, #settings-button-4, #settings-button-5):is(#settings-button-1, #settings-button-2, #settings-button-3, #settings-button-4, #settings-button-5)[aria-expanded="true"] {
+        background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important;
+    }
+    html.portal-sage-theme body.portal-layout {
+        --text-main: #20372b;
+        --text-muted: #425642;
+        --accent-gold: #76591f;
+        --accent-gold-hover: #604719;
+        --success-color: #245c3d;
+        --error-color: #873d32;
+        --warning-color: #76521c;
+        --info-color: #285c59;
+    }
+    .portal-sage-theme .main-content,
+    .portal-sage-theme :is(.compose-modal, .modal-content, #messageModal) {
+        overflow-wrap: anywhere;
+    }
+    .portal-sage-theme .main-content :is(form, section, article, fieldset, .finance-shell, .settings-layout, .settings-preferences, .settings-grid, .setting-item, .messages-layout, .messages-list-container, .contact-person, .contact-copy, .report-info-grid, .report-info-cell) {
+        min-width: 0; max-width: 100%;
+    }
+    .portal-sage-theme .main-content :is(input, select, textarea, button, .btn) {
+        box-sizing: border-box; max-width: 100%;
+    }
+    .portal-sage-theme .main-content :is(.contact-copy strong, .conversation-link:hover .contact-copy strong, .recipient-group-label, .settings-card-title, .settings-disclosure summary, .report-name, .caterer-info strong) {
+        color: #20372b !important;
+    }
+    .portal-sage-theme .main-content :is(.info-label, .settings-kicker, .subscription-eyebrow),
+    .portal-sage-theme .manage-users-page .data-table td[data-label]::before {
+        color: #4c6149 !important;
+    }
+    .portal-sage-theme .main-content :is(.finance-kpi-value, .finance-money, .pricing-overview-value) {
+        color: #173d32 !important;
+    }
+    .portal-sage-theme .main-content :is(.alert-success, .ur-alert-success, .settings-success-notice) {
+        background: #c4d8bc !important; color: #245237 !important; border-color: #78976e !important;
+    }
+    .portal-sage-theme .main-content :is(.alert-error, .ur-alert-error) {
+        background: #ead4ca !important; color: #71342d !important; border-color: #b7897b !important;
+    }
+    .portal-sage-theme .main-content :is(.status-expired, .status-inactive, .caterer-closed, .coverage-expired, .finance-status.rejected) {
+        background: #ead4ca !important; color: #71342d !important; border-color: #b7897b !important;
+    }
+    .portal-sage-theme .main-content .settings-section-button[aria-expanded="true"],
+    .portal-sage-theme .main-content .settings-section-button[aria-expanded="true"] :is(span, .settings-card-title) {
+        background-color: #173d32 !important; color: #f0f1e6 !important;
+    }
+    .portal-sage-theme .main-content .settings-section-button {
+        background-image: none !important; box-shadow: none; min-width: 0;
+    }
+    .portal-sage-theme .settings-page :is(.note-editable, .note-editable *, .note-placeholder) {
+        color: #20372b !important;
+    }
+    .portal-sage-theme .settings-page :is(.note-editor, .note-toolbar, .note-statusbar, .note-editable) {
+        background: #c9d2c1 !important; border-color: #96a38e !important;
+    }
+    .portal-sage-theme .settings-page .note-editable { line-height: 1.75; }
+    .portal-sage-theme .main-content .settings-actions { flex-wrap: wrap; }
+    .portal-sage-theme .main-content :is(.finance-history-header, .finance-detail-profile, .report-actions, .user-type-tabs, .filter-tabs) {
+        flex-wrap: wrap; gap: 12px;
+    }
+    .portal-sage-theme .main-content :is(.finance-table-wrap, .table-container, .reports-table-wrap) {
+        min-width: 0; max-width: 100%;
+    }
+    .portal-sage-theme .main-content :is(.finance-table, .reports-table, .data-table) { width: 100%; }
+    .portal-sage-theme .main-content :is(.finance-table, .reports-table) :is(th, td) {
+        white-space: normal; overflow-wrap: anywhere;
+    }
+    .portal-sage-theme .manage-users-page .account-name-toggle span {
+        white-space: normal; overflow-wrap: anywhere;
+    }
+    .portal-sage-theme .main-content .qr-preview { max-width: 100%; }
+    .portal-sage-theme .main-content .qr-preview img { max-width: 100%; height: auto; object-fit: contain; }
+    .portal-sage-theme #composeModal { max-width: calc(100vw - 24px); overscroll-behavior: contain; }
+    .portal-sage-theme #composeModal .compose-card { padding: 20px; }
+    .portal-sage-theme #composeModal .recipient-menu {
+        position: static; margin-top: 8px; box-shadow: none;
+        background: #c9d2c1 !important; border-color: #96a38e !important;
+    }
+    .portal-sage-theme #composeModal .recipient-group-label { color: #425642 !important; font-weight: 700; }
+    .portal-sage-theme #composeModal .recipient-option { white-space: normal; overflow-wrap: anywhere; }
+    .portal-sage-theme #composeModal .recipient-option:hover,
+    .portal-sage-theme #composeModal .recipient-option[aria-pressed="true"] {
+        background: #b7c8ae !important; color: #173d32 !important;
+    }
+    .portal-sage-theme #messageModal { padding: 12px; }
+    .portal-sage-theme #messageModal .message-header { flex-wrap: wrap; gap: 4px 12px; }
+    .portal-sage-theme #messageModal .reply-form h4 { color: #20372b !important; }
+    .portal-sage-theme #messageModal .conversation-subject {
+        margin-top: 6px; font-size: 13px; font-weight: 600;
+        line-height: 1.5; color: #20372b; overflow-wrap: anywhere;
+    }
+    .portal-sage-theme #messageModal .thread-subject {
+        font-size: 12px; font-weight: 600; margin-bottom: 6px;
+        color: #20372b !important;
+    }
+    .portal-sage-theme #messageModal details.thread-message > summary {
+        list-style: none; cursor: pointer;
+    }
+    .portal-sage-theme #messageModal details.thread-message > summary::-webkit-details-marker { display: none; }
+    .portal-sage-theme #messageModal details.thread-message > summary:focus-visible {
+        outline: 1px solid #426052; outline-offset: 2px; border-radius: 3px;
+    }
+    .portal-sage-theme #messageModal .message-thread { padding: 12px 16px; gap: 8px; }
+    .portal-sage-theme #messageModal details.thread-message {
+        width: fit-content; min-width: 0; max-width: 85%;
+        padding: 8px 10px; margin: 0; box-shadow: none;
+    }
+    .portal-sage-theme #messageModal details.thread-message > summary.chat-body {
+        padding: 0; margin: 0; min-height: 0; line-height: 1.45;
+        border: 0; background: transparent;
+    }
+    .portal-sage-theme #messageModal details.thread-message[open] > .thread-subject {
+        margin: 6px 0 2px; padding-top: 5px;
+        border-top: 1px solid rgb(66 86 66 / 18%);
+        font-size: 11px; line-height: 1.35; font-weight: 500;
+    }
+    .portal-sage-theme #messageModal details.thread-message > .message-header {
+        justify-content: flex-start; gap: 4px 8px; margin: 0; padding: 0;
+        line-height: 1.4;
+    }
+    .portal-sage-theme #messageModal details.thread-message .message-time {
+        font-size: 10px; white-space: normal;
+    }
+    @media (max-width: 640px) {
+        .portal-sage-theme #messageModal .message-thread { padding: 10px; gap: 7px; }
+        .portal-sage-theme #messageModal details.thread-message { max-width: 90%; padding: 7px 9px; }
+        .portal-sage-theme #messageModal details.thread-message > summary.chat-body { font-size: 13px; }
+    }
+    .portal-sage-theme #messageModal :is(.conversation-subject, .thread-subject) > span {
+        color: #425642; font-weight: 400;
+    }
+    .portal-sage-theme #messageModal .reply-form {
+        padding: 10px 16px max(10px, env(safe-area-inset-bottom));
+    }
+    .portal-sage-theme #messageModal .reply-form h4 {
+        margin-bottom: 8px !important; font-size: 12px; line-height: 1.4;
+    }
+    .portal-sage-theme #messageModal .reply-form .form-group { margin-bottom: 6px; }
+    .portal-sage-theme #messageModal .reply-form label {
+        margin-bottom: 3px; line-height: 1.4; font-size: 11px;
+    }
+    .portal-sage-theme #messageModal .reply-form input.form-control {
+        height: 34px; min-height: 34px; padding: 6px 10px;
+    }
+    .portal-sage-theme #messageModal .reply-form textarea.form-control {
+        height: 56px; min-height: 56px; max-height: 100px;
+        padding: 7px 10px; line-height: 1.4; resize: vertical;
+    }
+    .portal-sage-theme #messageModal .reply-form form > div:last-child {
+        margin-top: 6px !important; gap: 8px !important;
+    }
+    .portal-sage-theme #messageModal .reply-form .btn {
+        min-height: 38px; padding: 7px 12px; border-radius: 8px;
+    }
+    @media (max-width: 640px) {
+        .portal-sage-theme #messageModal .reply-form { padding-inline: 12px; }
+        .portal-sage-theme #messageModal .reply-form .form-control { font-size: 16px; }
+        .portal-sage-theme #messageModal .reply-form .btn { min-height: 44px; }
+    }
+    .portal-sage-theme .main-content :is(button, .btn, a):focus-visible {
+        outline: 2px solid #173d32; outline-offset: -3px;
+    }
+    @media (max-width: 1099px) {
+        .portal-sage-theme .settings-page .settings-layout { grid-template-columns: minmax(0, 1fr); }
+        .portal-sage-theme .settings-page #change-password { width: 100%; }
+    }
+    @media (max-width: 768px) {
+        .portal-sage-theme .main-content .settings-section-buttons { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .portal-sage-theme .main-content .settings-section-button { padding: 12px; min-height: 52px; }
+        .portal-sage-theme .main-content .pricing-grid { grid-template-columns: minmax(0, 1fr); }
+        .portal-sage-theme .main-content .pricing-overview { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+        .portal-sage-theme .main-content .pricing-overview-item { min-width: 0; padding: 12px; border: 0; }
+        .portal-sage-theme .main-content .pricing-card { min-width: 0; padding: 16px; border-left: 0; }
+        .portal-sage-theme .payouts-page .finance-payment-records { min-width: 0; table-layout: fixed; }
+        .portal-sage-theme .payouts-page .finance-payment-records :is(tbody, tr) { display: block; width: 100%; }
+        .portal-sage-theme .payouts-page .finance-payment-records thead { display: none; }
+        .portal-sage-theme .payouts-page .finance-payment-records tr { padding: 12px; border-bottom: 1px solid #96a38e; }
+        .portal-sage-theme .payouts-page .finance-payment-records td {
+            display: grid; grid-template-columns: minmax(90px, .7fr) minmax(0, 1fr); gap: 12px;
+            padding: 8px 0; border: 0; width: 100%;
+        }
+        .portal-sage-theme .payouts-page .finance-payment-records td::before {
+            content: attr(data-label); color: #425642; font-size: 11px; font-weight: 600;
+        }
+        .portal-sage-theme .payouts-page .finance-payment-records td[colspan] { display: block; }
+        .portal-sage-theme .payouts-page .finance-payment-records td[colspan]::before { content: none; }
+    }
+    @media (max-width: 600px) {
+        body.portal-layout > .main-content { scrollbar-gutter: auto; }
+        .portal-sage-theme .main-content :is(input, select, textarea, .form-control) { font-size: 16px; min-width: 0; }
+        .portal-sage-theme .main-content :is(.btn, .message-tab, .compose-close, .recipient-option) { min-height: 44px; }
+        .portal-sage-theme .messages-page .data-table { min-width: 0; }
+        body.portal-layout .messages-page .data-table tr {
+            display: grid; grid-template-columns: minmax(0, 1fr) 44px;
+            grid-template-rows: auto auto; gap: 2px 10px;
+            padding: 12px; margin-bottom: 8px;
+            border: 1px solid #a5b29b; border-radius: 12px;
+            background: #c9d2c1; align-items: center;
+        }
+        body.portal-layout .messages-page .data-table td {
+            min-width: 0; padding: 0; border: 0; background: transparent;
+        }
+        body.portal-layout .messages-page .data-table td:first-child { grid-column: 1; grid-row: 1; }
+        body.portal-layout .messages-page .data-table td:nth-child(3) {
+            grid-column: 1; grid-row: 2; padding: 0 0 0 44px;
+            text-align: left; font-size: 11px; line-height: 1.5;
+            color: #425642; align-self: start;
+        }
+        body.portal-layout .messages-page .data-table td:last-child {
+            grid-column: 2; grid-row: 1 / 3; align-self: center; justify-self: end;
+        }
+        body.portal-layout .messages-page .contact-person { gap: 10px; align-items: center; }
+        body.portal-layout .messages-page .contact-avatar { width: 34px; height: 34px; flex: 0 0 34px; }
+        body.portal-layout .messages-page .contact-copy strong { font-size: 13px; line-height: 1.4; }
+        body.portal-layout .messages-page .conversation-link { padding: 0; }
+        body.portal-layout .messages-page .data-table .btn {
+            width: 40px; min-width: 40px; min-height: 44px;
+            display: inline-flex; align-items: center; justify-content: center;
+        }
+        body.portal-layout .messages-page .message-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+        body.portal-layout .messages-page .message-tab { flex: 1 1 0; font-size: 12px; min-height: 40px; }
+        body.portal-layout .messages-page .compose-trigger { flex: 1 0 100%; margin: 0; min-height: 42px; }
+        body.portal-layout .messages-page .inbox-heading { margin-bottom: 12px; }
+        body.portal-layout .messages-page .messages-list-container > .content-body { padding: 0; }
+        .portal-sage-theme .main-content .settings-actions-buttons { width: 100%; }
+        .portal-sage-theme #composeModal .compose-card { padding: 16px; }
+        .portal-sage-theme .main-content .report-actions .btn { flex: 1 1 160px; white-space: normal; }
+    }
+}

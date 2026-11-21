@@ -1,0 +1,208 @@
+/* Caterer directory only; detail pages keep their own presentation. */
+.customer-page-shell .caterer-directory-panel .caterer-card { min-height: 0; border-radius: 12px; }
+.customer-page-shell .caterer-directory-panel .caterer-logo-stage { height: 150px; padding: 24px 16px; }
+.customer-page-shell .caterer-directory-panel .caterer-logo-stage .caterer-image { width: 88px; height: 88px; padding: 0; border-radius: 8px; }
+.customer-page-shell .caterer-directory-panel .caterer-content { padding: 36px 12px 12px; gap: 8px; }
+.customer-page-shell .caterer-directory-panel .caterer-stats span { padding: 4px 7px; }
+.customer-page-shell .caterer-directory-panel .favorite-btn { width: 32px !important; height: 32px !important; font-size: 16px; }
+@media (max-width: 768px) {
+    .customer-page-shell .caterer-directory-panel .caterer-logo-stage { height: 136px; padding: 24px 12px; }
+    .customer-page-shell .caterer-directory-panel .caterer-logo-stage .caterer-image { width: 80px; height: 80px; }
+    .customer-page-shell .caterer-directory-panel .caterer-content { padding: 34px 10px 10px; }
+}
+.customer-page-shell .caterer-directory-panel .section-header :is(.form-control, .btn) { padding: 7px 12px !important; min-height: 34px; height: 34px; box-sizing: border-box; }
+.customer-page-shell .caterer-directory-panel .section-header .search-box { width: 250px !important; max-width: 100%; }
+.customer-page-shell .caterer-directory-panel .section-header { margin-bottom: 14px; }
+.customer-page-shell .caterer-directory-panel .section-header :is(.form-control, .btn) { font-size: 12px; }
+.customer-page-shell .caterer-directory-panel .caterer-name { font-size: 14px; }
+.customer-page-shell .caterer-directory-panel .caterer-stats { font-size: 11px; }
+.customer-page-shell:has(.caterer-directory-panel) {
+    height: 100dvh;
+}
+.customer-page-shell > .container:has(.caterer-directory-panel) {
+    flex: 1 1 0;
+    min-height: 0;
+    margin-top: 100px;
+    padding-inline: 12px;
+    box-sizing: border-box;
+}
+.customer-page-shell > .container > .caterer-directory-panel {
+    flex: 1 1 0;
+    min-height: 0;
+    padding: 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background: var(--card-bg) !important;
+    box-shadow: var(--surface-shadow);
+}
+.caterer-directory-panel > .section-header {
+    flex-shrink: 0;
+}
+.caterer-directory-panel > .caterer-directory {
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
+    scrollbar-width: thin;
+    scrollbar-color: #708b6b #c9d2c1;
+    align-content: start;
+    padding: 4px 6px 4px 0;
+}
+.caterer-directory-panel > .caterer-directory::-webkit-scrollbar { width: 8px; }
+.caterer-directory-panel > .caterer-directory::-webkit-scrollbar-track { background: #c9d2c1; border-radius: 8px; }
+.caterer-directory-panel > .caterer-directory::-webkit-scrollbar-thumb { background: #708b6b; border-radius: 8px; }
+@media (max-width: 768px) {
+    .customer-page-shell > .container:has(.caterer-directory-panel) {
+        margin-top: 90px;
+        padding-inline: 10px;
+        min-width: 0;
+    }
+    .customer-page-shell > .container > .caterer-directory-panel {
+        padding: 10px;
+        border-radius: 14px;
+        min-width: 0;
+    }
+    .customer-page-shell .caterer-directory-panel .section-header > div {
+        flex-wrap: wrap;
+        gap: 8px !important;
+        width: 100%;
+        min-width: 0;
+    }
+    .customer-page-shell .caterer-directory-panel .section-header .search-box {
+        flex: 1 1 180px;
+        width: auto !important;
+        min-width: 0;
+    }
+}
+.caterer-directory {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 18px;
+    align-items: stretch;
+}
+.caterer-directory .caterer-card-wrapper { min-width: 0; }
+.caterer-directory .caterer-card {
+    display: flex !important;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    transition: transform .2s ease, box-shadow .2s ease;
+}
+.caterer-directory .caterer-logo-stage {
+    position: relative;
+    overflow: visible;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    isolation: isolate;
+    display: grid;
+    place-items: center;
+    height: 190px;
+    padding: 24px 48px;
+    background: linear-gradient(145deg, #f5f5ed, #e5eadf);
+    border-bottom: 1px solid var(--border-color);
+}
+.caterer-directory .caterer-logo-stage .caterer-card-cover {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+.caterer-directory .caterer-logo-stage .caterer-image {
+    position: absolute;
+    left: 12px;
+    bottom: -22px;
+    z-index: 1;
+    display: block;
+    box-sizing: border-box;
+    width: 132px;
+    height: 132px;
+    max-width: 100%;
+    aspect-ratio: 1;
+    min-height: 0;
+    object-fit: contain;
+    object-position: center;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 16px rgb(23 61 50 / 22%);
+}
+.caterer-directory .caterer-content {
+    padding: 40px 18px 18px;
+    flex: 1;
+    gap: 14px;
+    min-width: 0;
+}
+.caterer-directory .caterer-name {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.45;
+    letter-spacing: -.25px;
+    margin: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+.caterer-directory .caterer-stats {
+    margin-top: auto;
+    padding: 0;
+    border: 0;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+.caterer-directory .caterer-stats span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 9px;
+    border-radius: 6px;
+    background: #c5d0be;
+}
+.caterer-directory .favorite-btn {
+    width: 44px !important;
+    height: 44px !important;
+    border: 1px solid #708b6b !important;
+    box-shadow: 0 3px 10px rgb(23 61 50 / 15%);
+}
+.caterer-directory .caterer-card:focus-visible {
+    outline: 2px solid #173d32;
+    outline-offset: 3px;
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .caterer-directory .caterer-card:hover { transform: translateY(-4px); }
+}
+@media (max-width: 1100px) and (min-width: 769px) {
+    .caterer-directory { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+}
+@media (max-width: 768px) {
+    .caterer-directory { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .caterer-directory .caterer-logo-stage { height: 154px; padding: 40px 12px 12px; }
+    .caterer-directory .caterer-logo-stage .caterer-image { width: 80px; height: 80px; padding: 0; }
+    .caterer-directory .caterer-content { padding: 36px 13px 13px; gap: 10px; }
+    .caterer-directory .caterer-name { font-size: 14px; }
+    .caterer-directory .caterer-stats { font-size: 11px; }
+}
+@media (max-width: 380px) {
+    .caterer-directory { grid-template-columns: minmax(0, 1fr); }
+    .caterer-directory .caterer-logo-stage { height: 170px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .caterer-directory .caterer-card { transition: none; transform: none; }
+}
+
+/* Preserve a true circular favorite button even in narrow flex rows. */
+.customer-page-shell .favorite-btn {
+    width: 32px !important; height: 32px !important;
+    min-width: 32px !important; max-width: 32px !important;
+    min-height: 32px !important; max-height: 32px !important;
+    flex: 0 0 32px !important; aspect-ratio: 1 / 1;
+    padding: 0 !important; box-sizing: border-box; border-radius: 50% !important;
+    display: inline-flex !important; align-items: center; justify-content: center;
+    line-height: 1 !important;
+}
+.customer-page-shell .favorite-btn i { font-size: 14px !important; line-height: 1 !important; margin: 0 !important; }

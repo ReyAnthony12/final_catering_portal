@@ -1,0 +1,532 @@
+/* Match the reservation panel while keeping inbox controls and threads intact. */
+html:has(.messages-inbox), body:has(.messages-inbox) { overflow: hidden !important; }
+body:has(.messages-inbox) {
+    height: 100dvh;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+}
+body:has(.messages-inbox) > .main-content {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+body:has(.messages-inbox) > .main-content > :not(.messages-inbox) { flex-shrink: 0; }
+body:has(.messages-inbox) > .main-footer { margin-top: 0; }
+.main-content .messages-inbox {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+    margin: 0;
+    padding: 12px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+.messages-inbox .message-tabs {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+    margin: 0 0 10px;
+    padding: 0 0 8px;
+    border-bottom: 1px solid var(--border-color);
+}
+.messages-inbox .message-tab {
+    border: 0;
+    border-radius: 0;
+    background: transparent !important;
+    padding: 8px 6px;
+    min-height: 40px;
+    font-size: 13px;
+    box-shadow: none;
+}
+.messages-inbox .message-toolbar { gap: 12px; margin-bottom: 12px; }
+.messages-inbox .search-box { flex: 1; min-width: 140px; }
+.messages-inbox .search-box input { min-height: 40px; border-radius: 10px; }
+.messages-inbox .filter-btn { min-height: 36px; border-radius: 8px; padding: 7px 10px; }
+.messages-inbox .btn-delete-all { min-height: 36px; border-radius: 8px; font-size: 12px; }
+.messages-inbox > :is(#all-tab, #trash-tab) {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    padding: 2px;
+}
+.messages-inbox .message-list { margin: 0; padding: 0; }
+.messages-inbox .message-list .message-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px 14px;
+    margin: 0 0 8px;
+    gap: 10px;
+    min-height: 58px;
+    box-sizing: border-box;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background: transparent !important;
+}
+.messages-inbox .conversation-avatar { width: 34px; height: 34px; border-radius: 50%; }
+.messages-inbox .message-sender { font-size: 14px; gap: 6px; }
+.messages-inbox .message-meta { flex: 0 0 auto; padding: 0; border: 0; margin-left: auto; }
+.messages-inbox .unread-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #b83d3d;
+    color: #fff;
+    border: 0;
+    box-shadow: none;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+.messages-inbox .btn-delete { display: inline-flex; align-items: center; justify-content: center; min-width: 32px; min-height: 32px; padding: 6px; border-radius: 8px; }
+@media (max-width: 992px) {
+    body:has(.messages-inbox) > .main-content { padding: 66px 12px 8px; }
+    body:has(.messages-inbox) > .main-footer .footer-content { font-size: 10px; gap: 2px 10px; }
+}
+@media (max-width: 600px) {
+    .main-content .messages-inbox { padding: 8px; border-radius: 14px; }
+    .messages-inbox .message-tabs { gap: 12px; margin-bottom: 8px; padding-bottom: 5px; }
+    .messages-inbox .message-toolbar { display: flex; flex-direction: column; align-items: stretch; gap: 8px; margin-bottom: 8px; }
+    .messages-inbox .search-box { flex: 0 0 auto; width: 100%; }
+    .messages-inbox .message-toolbar .filter-buttons { display: flex; width: 100%; gap: 4px; }
+    .messages-inbox .message-toolbar .filter-buttons > button { flex: 1 1 auto; padding: 7px 4px; min-height: 36px; font-size: 10px; }
+    .messages-inbox .message-list .message-item { padding: 8px 10px; gap: 8px; min-height: 54px; }
+    .messages-inbox .message-sender { font-size: 13px; }
+    .messages-inbox .message-content { flex: 1; min-width: 0; }
+    .messages-inbox .conversation-avatar { flex: 0 0 30px; width: 30px; height: 30px; }
+}
+
+/* The conversation uses the same full-height shell as reservations. */
+html:has(.conversation-view), body:has(.conversation-view) { overflow: hidden !important; }
+body:has(.conversation-view) {
+    height: 100dvh;
+    min-height: 0;
+    display: grid;
+    grid-template-rows: minmax(0, 1fr) auto;
+}
+body:has(.conversation-view) > .main-content {
+    position: relative;
+    inset: auto;
+    top: auto;
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding-bottom: 10px;
+}
+body:has(.conversation-view) > .main-footer {
+    display: block;
+    margin-top: 0;
+}
+.main-content .conversation-view {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    width: 100%;
+    min-height: 0;
+    min-width: 0;
+    margin: 0 !important;
+    border-radius: 16px !important;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.conversation-view .modern-modal-header { flex-shrink: 0; padding: 14px 18px; }
+.conversation-view .modern-modal-body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    height: auto !important;
+    max-height: none !important;
+    overflow: hidden;
+}
+.conversation-view .modern-right-col {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    min-width: 0;
+    overflow: hidden;
+}
+.conversation-view .modern-chat-area {
+    flex: 1;
+    min-height: 0;
+    max-height: none;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 18px;
+    scrollbar-width: thin;
+}
+.conversation-view .modern-message { flex-shrink: 0; }
+.conversation-view .modern-message-bubble { overflow-wrap: anywhere; }
+.conversation-view .modern-reply-area { flex-shrink: 0; padding: 10px 14px; }
+.conversation-view .conversation-avatar { width: 36px; height: 36px; border-radius: 50%; }
+.conversation-view .conversation-composer textarea { box-sizing: border-box; min-width: 0; font-size: 16px; scrollbar-width: thin; }
+@media (max-width: 992px) {
+    body:has(.conversation-view) > .main-content { padding: 66px 12px 8px; }
+    body:has(.conversation-view) > .main-footer .footer-content { font-size: 10px; gap: 2px 10px; }
+}
+@media (max-width: 768px) {
+    .main-content .conversation-view { border-radius: 14px !important; }
+    .conversation-view .modern-modal-header { padding: 10px 12px; gap: 10px; }
+    .conversation-view .modern-modal-body { flex-direction: column; }
+    .conversation-view .modern-left-col { flex: 0 1 auto; max-height: 30%; overflow-y: auto; padding: 12px; }
+    .conversation-view .modern-chat-area { padding: 12px; }
+    .conversation-view .modern-message { max-width: 90%; }
+    .conversation-view .modern-message-bubble { font-size: 14px; padding: 10px 12px; }
+    .conversation-view .modern-reply-area { padding: 8px; }
+}
+
+@media (max-width: 992px) {
+    body:has(.conversation-view) > .main-footer,
+    body:has(.messages-inbox) > .main-footer {
+        display: block !important;
+        position: relative;
+        margin: 0;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 6px 0 max(6px, env(safe-area-inset-bottom));
+        flex-shrink: 0;
+    }
+    body:has(.conversation-view) > .main-footer .container,
+    body:has(.messages-inbox) > .main-footer .container { padding: 0 8px !important; }
+    body:has(.conversation-view) > .main-footer .footer-content,
+    body:has(.messages-inbox) > .main-footer .footer-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 3px 10px;
+        font-size: 10px;
+        line-height: 1.4;
+        text-align: center;
+    }
+}
+
+/* Keep chat scrolling inside the rounded conversation panel. */
+.main-content .conversation-view {
+    isolation: isolate;
+    overflow: hidden !important;
+}
+.conversation-view .modern-modal-body,
+.conversation-view .modern-right-col {
+    border-radius: 0;
+    overflow: hidden !important;
+}
+.conversation-view .modern-chat-area {
+    scrollbar-width: thin;
+    scrollbar-color: #84977e transparent;
+    margin-right: 4px;
+    box-sizing: border-box;
+}
+.conversation-view .modern-chat-area::-webkit-scrollbar,
+.conversation-view .conversation-composer textarea::-webkit-scrollbar { width: 4px; }
+.conversation-view .modern-chat-area::-webkit-scrollbar-track,
+.conversation-view .conversation-composer textarea::-webkit-scrollbar-track { background: transparent; }
+.conversation-view .modern-chat-area::-webkit-scrollbar-thumb,
+.conversation-view .conversation-composer textarea::-webkit-scrollbar-thumb { background: #84977e; border-radius: 8px; }
+.conversation-view .modern-chat-area::-webkit-scrollbar-button,
+.conversation-view .conversation-composer textarea::-webkit-scrollbar-button { display: none; width: 0; height: 0; }
+.conversation-view .modern-reply-area { min-width: 0; box-sizing: border-box; }
+.conversation-view .conversation-composer { margin: 0; min-width: 0; }
+
+/* Inset the textarea scrollbar within its rounded input edge. */
+.conversation-view .conversation-composer textarea.modern-form-control {
+    padding-right: 14px;
+    border-right: 10px solid var(--input-bg, #c9d2c1) !important;
+    background-clip: padding-box;
+    scrollbar-width: thin;
+    scrollbar-color: #84977e transparent;
+}
+.conversation-view .conversation-composer textarea.modern-form-control::-webkit-scrollbar {
+    width: 4px;
+}
+.conversation-view .conversation-composer textarea.modern-form-control::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 14px 0;
+}
+.conversation-view .conversation-composer textarea.modern-form-control::-webkit-scrollbar-thumb {
+    background: #84977e;
+    border-radius: 8px;
+}
+.conversation-view .conversation-composer textarea.modern-form-control::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Keep the reply scrollable without showing its scrollbar. */
+.conversation-view .conversation-composer textarea.modern-form-control {
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.conversation-view .conversation-composer textarea.modern-form-control::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+/* Inbox actions and filters share one compact row. */
+.messages-inbox .message-toolbar { flex-wrap: wrap; }
+.messages-inbox .message-toolbar .filter-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 6px;
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.messages-inbox .filter-buttons::-webkit-scrollbar { display: none; }
+.messages-inbox .filter-buttons .message-tab {
+    flex: 0 0 auto;
+    min-height: 36px;
+    padding: 7px 9px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    white-space: nowrap;
+    font-size: 12px;
+}
+@media (max-width: 600px) {
+    .messages-inbox .message-toolbar .filter-buttons > button {
+        flex: 0 0 auto;
+        min-height: 36px;
+        padding: 7px 6px;
+        font-size: 10px;
+        white-space: nowrap;
+    }
+    .messages-inbox .message-toolbar .filter-buttons { gap: 4px; }
+}
+
+#message-action-modal {
+    box-sizing: border-box;
+    width: min(440px, calc(100% - 32px));
+    max-height: calc(100dvh - 32px);
+    margin: auto;
+    padding: 24px;
+    overflow: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    background: var(--card-bg);
+    color: var(--text-main);
+    box-shadow: 0 24px 70px rgba(0,0,0,.25);
+    outline: none;
+}
+#message-action-modal::backdrop { background: rgba(16,30,23,.55); backdrop-filter: blur(3px); }
+.message-action-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.message-action-heading h3 { margin: 8px 0 0; font-size: 19px; line-height: 1.4; }
+.message-action-close { flex: 0 0 44px; height: 44px; border: 0; background: transparent; color: inherit; font-size: 28px; cursor: pointer; }
+#message-action-description { font-size: 14px; line-height: 1.7; margin: 14px 0 24px; }
+.message-action-footer { display: flex; justify-content: flex-end; gap: 10px; }
+.message-action-footer button { min-height: 44px; padding: 10px 16px; border: 1px solid var(--border-color); border-radius: 10px; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; background: transparent; color: inherit; }
+.message-action-footer .message-action-confirm { background: #173d32; color: #f0f1e6; border-color: #173d32; }
+#message-action-modal button:focus-visible { outline: 2px solid #496d53; outline-offset: 3px; }
+@media (max-width: 480px) {
+    #message-action-modal { padding: 18px; }
+    .message-action-heading h3 { font-size: 17px; }
+    .message-action-footer button { flex: 1; padding: 10px; }
+}
+
+/* Fit every inbox control on phones without tiny text or hidden actions. */
+@media (max-width: 600px) {
+    .messages-inbox .message-toolbar .filter-buttons {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 6px;
+        width: 100%;
+        overflow: visible;
+        max-width: 100%;
+    }
+    .messages-inbox .message-toolbar .filter-buttons > button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        width: 100%;
+        min-width: 0;
+        min-height: 40px;
+        margin: 0;
+        padding: 8px 4px;
+        font-size: 11px;
+        line-height: 1.3;
+        border-radius: 8px;
+        box-sizing: border-box;
+        white-space: normal;
+    }
+}
+
+/* A single compact row, with an icon-only compose action. */
+.messages-inbox .filter-buttons .compose-button {
+    flex: 0 0 36px;
+    width: 36px;
+    min-width: 36px;
+    padding: 7px;
+    justify-content: center;
+}
+@media (max-width: 600px) {
+    .messages-inbox .message-toolbar .filter-buttons {
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 3px;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    .messages-inbox .message-toolbar .filter-buttons > button {
+        flex: 1 0 auto;
+        width: auto;
+        min-height: 36px;
+        padding: 7px 4px;
+        gap: 3px;
+        font-size: 10px;
+        white-space: nowrap;
+    }
+    .messages-inbox .message-toolbar .filter-buttons > .compose-button {
+        flex: 0 0 30px;
+        width: 30px;
+        min-width: 30px;
+        padding: 7px 4px;
+    }
+}
+
+/* Clear typography and contrast in the message composer. */
+#composeModal #composeTitle {
+    color: #173d32 !important;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: -.5px;
+}
+#composeModal .compose-content label {
+    color: #203e32 !important;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+    letter-spacing: .1px;
+    margin-bottom: 7px !important;
+}
+#composeModal .compose-content .form-control {
+    font-family: inherit;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #20372b !important;
+}
+#composeModal .compose-content .form-control::placeholder {
+    color: #526450 !important;
+    opacity: 1;
+    font-size: 14px;
+}
+#composeModal .compose-content > form > .modern-btn-primary {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .1px;
+}
+@media (max-width: 600px) {
+    #composeModal #composeTitle { font-size: 23px; }
+    #composeModal .compose-content .form-control { font-size: 16px; }
+}
+
+/* Keep the recipient picker inside the responsive compose dialog. */
+#composeModal { box-sizing: border-box; padding: 16px; height: 100dvh; }
+#composeModal .compose-content { box-sizing: border-box; width: min(500px, 100%); max-height: calc(100dvh - 32px); overflow-y: auto; overscroll-behavior: contain; }
+#composeModal [hidden] { display: none !important; }
+#recipientToggle { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 48px; padding: 12px 14px; border: 1px solid #96a38e; border-radius: 10px; background: #c9d2c1; color: #20372b; font: inherit; font-size: 16px; text-align: left; cursor: pointer; }
+#recipientToggle span { min-width: 0; overflow-wrap: anywhere; }
+#recipientToggle[aria-expanded="true"] { border-color: #245539; box-shadow: 0 0 0 2px #24553920; }
+#recipientPanel { margin-top: 8px; padding: 12px; border: 1px solid #96a38e; border-radius: 12px; background: #e0e6da; }
+#composeModal .recipient-search-label { font-size: 12px; margin-bottom: 6px; }
+#recipientSearch { box-sizing: border-box; width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid #96a38e; border-radius: 8px; background: #f1f4ed; color: #20372b; font-size: 16px; }
+#recipientOptions { max-height: min(240px, 30dvh); overflow-y: auto; overscroll-behavior: contain; margin-top: 8px; scrollbar-width: thin; }
+#recipientOptions h4 { margin: 12px 8px 6px; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: #425642; }
+#recipientOptions button { display: block; width: 100%; min-height: 44px; padding: 11px 12px; border: 0; border-radius: 8px; background: transparent; color: #20372b; font: inherit; font-size: 15px; text-align: left; overflow-wrap: anywhere; cursor: pointer; }
+#recipientOptions button:hover, #recipientOptions button.selected { background: #173d32; color: #f0f1e6; }
+#recipientPicker :is(button, input):focus-visible { outline: 2px solid #245539; outline-offset: 2px; }
+#recipientEmpty, #recipientError { margin: 10px 0 0; font-size: 13px; color: #8c3030; }
+@media (max-width: 600px) {
+    #composeModal .compose-content { padding: 22px 18px; border-radius: 18px; }
+}
+
+.conversation-view .message-sent-notice {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 5px;
+    color: #245539;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+.conversation-view .message-sent-notice i { color: inherit; flex-shrink: 0; }
+
+.conversation-view .conversation-identity {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    flex: 1;
+}
+.conversation-view .conversation-identity h2 {
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.conversation-view .conversation-identity .message-sent-notice {
+    flex-shrink: 0;
+    margin-top: 0;
+    white-space: nowrap;
+}
+@media (max-width: 600px) {
+    .conversation-view .conversation-identity { gap: 6px; }
+    .conversation-view .conversation-identity h2 { font-size: 14px; }
+    .conversation-view .conversation-identity .message-sent-notice { gap: 4px; font-size: 10px; }
+}
+
+.conversation-view .conversation-time[hidden] { display: none !important; }
+.conversation-view .modern-message-bubble[role="button"] { cursor: pointer; }
+.conversation-view .modern-message-bubble[role="button"]:focus-visible { outline: 2px solid #245539; outline-offset: 3px; }
+
+/* Refund controls share the portal sage palette and stay readable on phones. */
+.caterer-refund-card { background:#d4dbcd !important; border:1px solid #96a38e !important; border-radius:14px; padding:18px !important; box-sizing:border-box; min-width:0; }
+.caterer-refund-card h4 { color:#173d32 !important; margin:0 0 16px !important; }
+.caterer-refund-card :is(div,label) { color:#20372b !important; overflow-wrap:anywhere; }
+.caterer-refund-card [style*="background:#111"] { background:#c9d2c1 !important; border:1px solid #a4b299; }
+.caterer-refund-card :is(input,textarea) { max-width:100%; box-sizing:border-box; background:#c9d2c1 !important; color:#20372b !important; border-color:#96a38e !important; font-size:16px !important; }
+.caterer-refund-card input[type="file"] { width:100%; white-space:normal; }
+.caterer-refund-card input::file-selector-button { padding:9px; margin:0 8px 5px 0; border:1px solid #96a38e; border-radius:7px; background:#d4dbcd; color:#173d32; }
+.caterer-refund-card button { min-height:44px; background:#173d32 !important; color:#f0f1e6 !important; border:1px solid #426052 !important; }
+.caterer-refund-card #refundRejectToggle { background:#c9d2c1 !important; color:#173d32 !important; border-color:#96a38e !important; }
+.caterer-refund-dialog { width:min(520px,calc(100% - 24px)); padding:16px; }
+.caterer-refund-heading { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:14px; }
+.caterer-refund-heading h2 { margin:0; }
+.caterer-refund-heading > button { padding:6px 12px; font-size:24px; }
+.caterer-refund-dialog .caterer-refund-card { margin:0 !important; }
+.caterer-refund-dialog .caterer-refund-card > h4 { display:none; }
+.caterer-refund-card [style*="font-size:11px"], .caterer-refund-card label { font-size:13px !important; color:#425642 !important; }
+.caterer-refund-open { min-height:40px; padding:8px 12px; border:1px solid #96a38e; border-radius:9px; background:#c9d2c1; color:#173d32; font:inherit; font-size:13px; font-weight:600; cursor:pointer; }
+@media(max-width:768px) {
+ .conversation-view .modern-left-col.refund-panel-empty { display:none !important; }
+ .conversation-view .modern-modal-header { flex-wrap:wrap; }
+ .conversation-view .caterer-refund-open { flex:1 0 100%; width:100%; }
+ .caterer-refund-dialog .caterer-refund-card { padding:14px !important; }
+}

@@ -1,0 +1,166 @@
+/* Shared theme for the Catering Portal public and dashboard surfaces */
+:root {
+    --primary-bg: #c3cbbd;
+    --secondary-bg: #c9d2c1;
+    --card-bg: #d4dbcd;
+    --page-bg: #c3cbbd;
+    --text-main: #20372b;
+    --text-muted: #425642;
+    --border-color: #96a38e;
+    --input-bg: #c9d2c1;
+    --accent-gold: #70501e;
+    --accent-gold-hover: #5c4018;
+    --primary-color: #173d32;
+    --secondary-color: #c9d2c1;
+    --success-color: #245539;
+    --error-color: #913b34;
+    --warning-color: #70501e;
+    --warning-text: #70501e;
+    --info-color: #30596a;
+    --sidebar-bg: #173d32;
+    --sidebar-width: 260px;
+    --surface-shadow: 0 8px 24px rgb(35 56 46 / 9%);
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+}
+
+/* Force persistent scrollbar — prevents layout shift when SweetAlert2
+   sets overflow:hidden on <body> via inline style */
+html,
+body {
+    overflow-y: scroll !important;
+}
+
+/* Bounded caterer screens scroll within their panels, never the document. */
+html:has(body.bounded-caterer-page),
+body.bounded-caterer-page,
+html:has(.event-preparation-page),
+body:has(.event-preparation-page) {
+    overflow: hidden !important;
+    scrollbar-gutter: auto;
+}
+body.bounded-caterer-page,
+body:has(.event-preparation-page) {
+    height: 100dvh;
+    min-height: 0;
+    box-sizing: border-box;
+}
+/* Allow sidebar to properly lock scroll on mobile */
+html:has(body.store-sidebar-open),
+body.store-sidebar-open {
+    overflow: hidden !important;
+}
+
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-main);
+    margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.btn,
+button,
+input[type="submit"],
+input[type="button"] {
+    border-radius: var(--radius-sm);
+}
+
+.form-control,
+input,
+select,
+textarea {
+    border-radius: var(--radius-sm);
+}
+
+.card,
+.content-body,
+.stat-card,
+.container-card {
+    border-radius: var(--radius-md);
+    box-shadow: var(--surface-shadow);
+}
+
+img,
+video,
+canvas,
+svg,
+iframe {
+    max-width: 100%;
+}
+
+table {
+    width: 100%;
+    max-width: 100%;
+}
+
+.table-container,
+.content-body,
+.container-card,
+.card {
+    max-width: 100%;
+}
+
+input,
+select,
+textarea,
+button {
+    max-width: 100%;
+    font: inherit;
+}
+
+@media (max-width: 992px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .content-header,
+    .dashboard-grid,
+    .stats-grid,
+    .hero-section,
+    .content-body,
+    .container-card,
+    .card {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+
+    .btn,
+    button,
+    input[type="submit"],
+    input[type="button"] {
+        min-height: 42px;
+    }
+
+    .content-body,
+    .container-card,
+    .card,
+    .stat-card {
+        padding: 18px;
+    }
+
+    .content-header {
+        gap: 12px;
+    }
+
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}

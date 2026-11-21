@@ -1,0 +1,92 @@
+/* Admin colors only. Existing print layouts and actions remain intact. */
+@media screen {
+.portal-sage-theme .sidebar #portalNotifDropdown :is(h4, a, div, span) { color: #20372b !important; opacity: 1 !important; -webkit-text-fill-color: currentColor; }
+.portal-sage-theme .sidebar #portalNotifDropdown .portal-notification-item > div > div:nth-child(2) > div:not(:first-child) { color: #425642 !important; }
+.portal-sage-theme .sidebar #portalNotifDropdown .portal-notification-item i { color: #f0f1e6 !important; -webkit-text-fill-color: currentColor; }
+.portal-sage-theme .main-content.subscription-settings-page .pricing-grid {
+    background: #d4dbcd !important;
+    border-color: #96a38e !important;
+    box-shadow: 0 12px 32px rgb(32 55 43 / 12%) !important;
+}
+.portal-sage-theme .main-content.subscription-settings-page :is(.pricing-overview, .pricing-overview-item, .pricing-card.subscription-price-card) { border-color: #96a38e !important; }
+.portal-sage-theme #portalNotifDropdown { --text-main: #20372b; --text-muted: #425642; --border-color: #96a38e; background: #d4dbcd !important; color: #20372b !important; border-color: #96a38e !important; }
+.portal-sage-theme #portalNotifDropdown .portal-notification-header { background: #c0ceb7 !important; border-color: #96a38e !important; }
+.portal-sage-theme #portalNotifDropdown .portal-notification-header :is(h4, a) { color: #173d32 !important; }
+.portal-sage-theme #portalNotifDropdown .portal-notification-item { background: #d4dbcd !important; color: #20372b !important; border-color: #96a38e !important; }
+.portal-sage-theme #portalNotifDropdown .portal-notification-item.unread { background: #c9d2c1 !important; }
+.portal-sage-theme #portalNotifDropdown .portal-notification-item:hover { background: #b7c8ae !important; }
+.portal-sage-theme #portalNotifDropdown .portal-notification-item > div > div:first-child { background: #173d32 !important; }
+.portal-sage-theme #portalNotifDropdown .portal-notification-item i { color: #f0f1e6 !important; }
+.portal-sage-theme #portalNotifDropdown .portal-notification-item > div > div:nth-child(2) > div:first-child { color: #20372b !important; }
+.portal-sage-theme #portalNotifDropdown .portal-notification-item > div > div:nth-child(2) > div:not(:first-child),
+.portal-sage-theme #portalNotifDropdown .portal-notification-empty { color: #425642 !important; }
+.portal-sage-theme #portalNotifDropdown .portal-notification-list { scrollbar-color: #708b6b #c9d2c1 !important; }
+.portal-sage-theme .main-content.subscription-settings-page { background: #c3cbbd !important; border-color: #96a38e !important; }
+.portal-sage-theme .main-content.settings-page #change-password .section-heading h2 { color: #173d32 !important; }
+.portal-sage-theme .main-content.settings-page #change-password .settings-security-kicker { color: #425642 !important; }
+.portal-sage-theme .main-content.settings-page .settings-section-button[aria-expanded="true"] { background: #173d32 !important; border-color: #426052 !important; }
+.portal-sage-theme .main-content.settings-page .settings-section-button[aria-expanded="true"] .settings-card-title { color: #f0f1e6 !important; }
+.portal-sage-theme .main-content .report-info-cell { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; }
+.portal-sage-theme .main-content :is(.report-info-cell-label, .report-reason-label, .report-action-note) { color: #425642 !important; }
+.portal-sage-theme .main-content .report-reason-box { background: #d4dbcd !important; color: #20372b !important; border-color: #96a38e !important; }
+.portal-sage-theme .main-content .btn-dismiss { background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; }
+.portal-sage-theme .main-content .finance-detail-profile small { color: #425642 !important; }
+.portal-sage-theme #messageModal { background: rgb(12 32 25 / 65%) !important; }
+.portal-sage-theme #messageModal > div { background: #d4dbcd !important; color: #20372b !important; border-color: #96a38e !important; }
+.portal-sage-theme #messageModal > div > div:first-child { background: #c9d2c1 !important; border-color: #96a38e !important; }
+.portal-sage-theme #messageModal > div > div:first-child > a { background: #c0ceb7 !important; color: #173d32 !important; border-color: #708b6b !important; }
+.portal-sage-theme #messageModal .message-thread { background: #c9d2c1 !important; scrollbar-color: #708b6b #c9d2c1; }
+.portal-sage-theme #messageModal .received-message { background: #d4dbcd !important; border-color: #96a38e !important; }
+.portal-sage-theme #messageModal .sent-message { background: #b7c8ae !important; border-color: #708b6b !important; }
+.portal-sage-theme #messageModal :is(.chat-body, .contact-copy strong, .message-sender, .reply-form h4) { color: #20372b !important; }
+.portal-sage-theme #messageModal :is(.thread-subject, .message-time, .reply-form label) { color: #425642 !important; }
+.portal-sage-theme #messageModal .reply-form { background: #d4dbcd !important; border-color: #96a38e !important; }
+.portal-sage-theme .sidebar-menu { scrollbar-color: #8da58a #173d32 !important; }
+.portal-sage-theme .sidebar-menu::-webkit-scrollbar-track { background: #173d32 !important; }
+.portal-sage-theme .sidebar-menu::-webkit-scrollbar-thumb { background: #8da58a !important; border-color: #173d32 !important; }
+.portal-sage-theme .sidebar-menu::-webkit-scrollbar-thumb:hover { background: #adc0a4 !important; }
+.portal-sage-theme .main-content :is(.subscription-pricing, .pricing-card, .pricing-overview, .settings-page, #change-password) { background: #d4dbcd !important; color: #20372b !important; border-color: #96a38e !important; }
+.portal-sage-theme .main-content :is(.qr-preview, .manage-users-page .data-table tbody tr) { background: #c9d2c1 !important; border-color: #96a38e !important; }
+.portal-sage-theme .main-content :is(.pricing-overview-label, .pricing-overview-description, .settings-security-description) { color: #425642 !important; }
+.portal-sage-theme .main-content .pricing-overview-value { color: #000 !important; }
+.portal-sage-theme .main-content :is(.subscription-pricing button[type="submit"], .dashboard-action, .report-actions .btn) { background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; }
+.portal-sage-theme .main-content :is(.subscription-pricing button[type="submit"], .dashboard-action, .report-actions .btn):hover { background: #2b5544 !important; color: #f0f1e6 !important; }
+.portal-sage-theme .main-content .settings-section-button .settings-card-title { color: #20372b !important; }
+.portal-sage-theme .main-content .settings-section-button[aria-expanded="true"] .settings-card-title { color: #f0f1e6 !important; }
+.portal-sage-theme body.portal-layout {
+    --primary-bg: #c3cbbd; --secondary-bg: #c9d2c1; --card-bg: #d4dbcd;
+    --input-bg: #c9d2c1; --text-main: #20372b; --text-muted: #425642;
+    --border-color: #96a38e;
+}
+.portal-sage-theme .main-content :is(.content-body, .stat-card, .revenue-card, .finance-kpi-card, .finance-section, .finance-hero, .finance-side-panel, .table-container, .reports-table-wrap, .ur-summary-bar, .report-card, .report-card-header, .report-card-body, .setting-category, .settings-actions, .settings-security-card) {
+    background: #d4dbcd !important; color: #20372b !important; border-color: #96a38e !important;
+}
+.portal-sage-theme .main-content :is(.user-filters, .user-type-tabs, .account-name-toggle, .workspace-empty, .workspace-records tbody tr, .finance-profile-card, .finance-detail-profile, .finance-table td, .reports-table td, .report-info-grid, .settings-section-button) {
+    background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important;
+}
+.portal-sage-theme .main-content :is(h1, h2, h3, h4, .finance-section-title, .finance-caterer-copy strong, .account-name-toggle, .report-name, .report-info-cell-value, .settings-card-title, .workspace-empty-icon) { color: #20372b !important; }
+.portal-sage-theme .main-content :is(p, label, .info-label, .finance-kpi-label, .finance-kpi-note, .finance-caption, .settings-eyebrow, .settings-card-description, .workspace-eyebrow) { color: #425642 !important; }
+.portal-sage-theme .main-content :is([data-report-stat], .finance-kpi-value, .finance-money, .stat-info h3, .stat-card > p, .revenue-card > p) { color: #000 !important; }
+.portal-sage-theme .main-content :is(.form-control, select, input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]), textarea) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; color-scheme: light; }
+.portal-sage-theme .main-content :is(input, textarea)::placeholder { color: #425642 !important; opacity: 1; }
+.portal-sage-theme .main-content input::file-selector-button { background: #173d32 !important; color: #f0f1e6 !important; border: 1px solid #426052; border-radius: 6px; padding: 7px 10px; }
+.portal-sage-theme .main-content :is(.btn-primary, .btn-upload, .btn-verify, .btn-success, .btn-approve, .compose-trigger, .report-view-button, button[type="submit"].btn:not(.btn-danger):not(.btn-secondary):not(.btn-outline)) { background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; }
+.portal-sage-theme .main-content :is(.btn-primary, .btn-upload, .btn-verify, .btn-success, .btn-approve, .compose-trigger, .report-view-button) i { color: inherit !important; }
+.portal-sage-theme .main-content :is(.btn-primary, .btn-upload, .btn-verify, .compose-trigger, .report-view-button):hover { background: #2b5544 !important; color: #f0f1e6 !important; }
+.portal-sage-theme .main-content :is(.btn-secondary, .btn-outline, .finance-manage, .finance-back-btn, .filter-btn, .message-tab, .user-type-tab, .settings-password-toggle, .compose-close) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; }
+.portal-sage-theme .main-content :is(.message-tab.active, .user-type-tab.active, .filter-btn.active, .settings-section-button[aria-expanded="true"]) { background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; }
+.portal-sage-theme .main-content :is(.message-tab, .user-type-tab) i { color: inherit !important; }
+.portal-sage-theme .main-content .settings-section-button[aria-expanded="true"] span { color: #f0f1e6 !important; }
+.portal-sage-theme .main-content :is(.btn-danger, .btn-reject, .btn-deactivate) { background: #e3c9bf !important; color: #71342d !important; border-color: #b7897b !important; }
+.portal-sage-theme .main-content :is(.btn-danger, .btn-reject, .btn-deactivate) i { color: inherit !important; }
+.portal-sage-theme .main-content :is(.status-active, .caterer-open, .finance-status.paid, .coverage-active) { background: #bacdb4 !important; color: #173d32 !important; border-color: #708b6b !important; }
+.portal-sage-theme .main-content :is(.status-pending, .status-expiring, .badge-pending, .ur-pill-pending, .coverage-expiring, .finance-status.pending) { background: #ded1ad !important; color: #604719 !important; border-color: #ad9660 !important; }
+.portal-sage-theme .main-content :is(.finance-table th, .reports-table th, .data-table th) { background: #c0ceb7 !important; color: #20372b !important; border-color: #96a38e !important; }
+.portal-sage-theme .main-content :is(.finance-table td, .reports-table td, .data-table td) { color: #20372b !important; border-color: #96a38e !important; }
+.portal-sage-theme .main-content .finance-table .finance-money { color: #000 !important; }
+.portal-sage-theme .main-content .finance-avatar:not(img) { background: #173d32 !important; color: #f0f1e6 !important; }
+.portal-sage-theme :is(.portal-modal-content, .modal-content, .compose-card, .compose-modal) { background: #d4dbcd !important; color: #20372b !important; border-color: #96a38e !important; }
+.portal-sage-theme .main-content :is(.thread-message, .reply-form, .recipient-menu, .recipient-option) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; }
+.portal-sage-theme .main-content .btn:disabled { background: #b9c5b1 !important; color: #425642 !important; border-color: #96a38e !important; opacity: 1 !important; }
+.portal-sage-theme .main-content :is(button, a, input, select, textarea):focus-visible { outline: 2px solid #173d32; outline-offset: 3px; }
+}

@@ -1,0 +1,304 @@
+/* One bounded work area above the footer for the management pages. */
+html:has(body.bounded-caterer-page) { height: 100%; overflow: hidden; }
+body.bounded-caterer-page { position: relative; height: 100dvh; min-height: 0; overflow: hidden; display: flex; flex-direction: column; }
+body.bounded-caterer-page > .main-content {
+    display: flex; flex-direction: column; flex: 1 1 0; min-height: 0 !important;
+    height: auto !important; overflow: hidden; padding: 10px !important; box-sizing: border-box;
+}
+.bounded-caterer-page > .main-footer { flex: 0 0 auto; margin-top: 0; }
+.bounded-caterer-page .caterer-workspace {
+    flex: 1 1 0; min-height: 0; min-width: 0; width: 100%; box-sizing: border-box;
+    overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain;
+    scrollbar-width: thin; scrollbar-color: #84977e #d4dbcd; scrollbar-gutter: stable;
+    padding: 16px; border: 1px solid #96a38e; border-radius: 14px; background: #d4dbcd;
+    box-shadow: 0 6px 20px rgb(23 61 50 / 8%); font-size: 13px;
+}
+.caterer-workspace > :is(.container, .container-fluid, .inventory-container, .reviews-page, .reports-page, .layout-grid) {
+    width: 100%; max-width: none; min-width: 0; margin: 0; padding: 0;
+}
+.caterer-workspace :is(.card, .report-section, .payment-step, .summary-card, .overview-card, .kpi-card, .review-card, .mapping-details, .service-list, .profile-avatar, .profile-info-grid) {
+    min-width: 0; box-sizing: border-box; border-radius: 10px; box-shadow: none;
+}
+.bounded-caterer-page .caterer-workspace :is(.card, .report-section, .payment-step, .mapping-details) { padding: 14px; margin-bottom: 12px; }
+.caterer-workspace :is(h1, h2) { font-size: 20px; line-height: 1.3; margin-top: 0; }
+.caterer-workspace h3 { font-size: 16px; line-height: 1.4; }
+.caterer-workspace h4 { font-size: 14px; }
+.caterer-workspace :is(label, .form-label) { font-size: 12px; line-height: 1.4; }
+.caterer-workspace :is(.form-control, .form-select) { min-width: 0; max-width: 100%; min-height: 40px; padding: 9px 12px; font-size: 13px; box-sizing: border-box; }
+.caterer-workspace textarea.form-control { min-height: 84px; height: 84px; }
+.caterer-workspace .btn { min-height: 40px; padding: 9px 14px; font-size: 12px; white-space: normal; }
+.caterer-workspace :is(.page-header, .mapping-toolbar, .content-header) { padding: 12px; margin-bottom: 12px; gap: 10px; }
+.caterer-workspace :is(.overview-grid, .kpi-grid, .summary-grid, .status-summary, .subscription-payment-grid, .profile-grid, .form-grid) { gap: 10px; margin-bottom: 12px; }
+.caterer-workspace :is(.overview-card, .kpi-card, .summary-card) { padding: 12px; }
+.caterer-workspace :is(.overview-value, .kpi-card .value, .membership-price) { font-size: 24px; line-height: 1.25; overflow-wrap: anywhere; }
+.caterer-workspace :is(.overview-note, .overview-label) { font-size: 11px; line-height: 1.4; }
+.caterer-workspace .booking-customer-summary { padding: 12px 14px; min-height: 56px; }
+.caterer-workspace .mapping-container { gap: 14px; grid-template-columns: minmax(220px, .8fr) minmax(0, 2fr); }
+.caterer-workspace .mapping-details { min-height: 240px; }
+.caterer-workspace .profile-info-grid { padding: 12px; gap: 14px; }
+.caterer-workspace .profile-info-grid > div { padding: 8px; min-width: 0; overflow-wrap: anywhere; }
+.caterer-workspace .profile-avatar { padding: 16px; }
+.caterer-workspace .profile-avatar img { width: 72px; height: 72px; object-fit: cover; }
+.caterer-workspace .profile-card .profile-grid { align-items: start; }
+.caterer-workspace .profile-card .profile-info-grid { row-gap: 8px; }
+.bounded-caterer-page .caterer-workspace .profile-card .info-item { min-height: 0; padding: 8px; font-size: 12px; }
+.bounded-caterer-page .caterer-workspace .profile-card .info-item strong { margin-bottom: 3px; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace .layout-grid { max-width: none; width: 100%; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .caterer-step-panel textarea.form-control { min-height: 84px; }
+.caterer-workspace #storeMenuStepper { padding: 10px; }
+@media (max-width: 992px) {
+    body.bounded-caterer-page > .main-content { padding: 68px 8px 8px !important; }
+    .bounded-caterer-page .caterer-workspace { padding: 12px; border-radius: 12px; }
+}
+@media (max-width: 600px) {
+    .bounded-caterer-page .caterer-workspace { padding: 10px; }
+    .bounded-caterer-page .caterer-workspace :is(.card, .report-section, .payment-step, .mapping-details) { padding: 10px; }
+    .caterer-workspace :is(.mapping-container, .subscription-payment-grid, .status-summary, .profile-grid, .form-grid) { grid-template-columns: minmax(0, 1fr); }
+    .caterer-workspace :is(.overview-grid, .kpi-grid, .summary-grid) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .caterer-workspace .kpi-grid .kpi-card:first-child { grid-column: 1 / -1; }
+    .caterer-workspace .kpi-card .value { font-size: 21px; }
+    .caterer-workspace .mapping-details { min-height: 160px; }
+    .caterer-workspace :is(.form-control, .form-select) { font-size: 16px; }
+    .caterer-workspace .btn { min-height: 44px; }
+    .caterer-workspace :is(h1, h2) { font-size: 18px; }
+}
+/* The service editor uses the workspace as its single outer container. */
+.bounded-caterer-page.menu-editor-page .caterer-workspace .service-editor-header {
+    display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+    padding-bottom: 12px; margin-bottom: 14px; border-bottom: 1px solid #a4b19b;
+}
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .service-editor-header #storeMenuStepper {
+    order: 0; flex: 1; min-width: 0; margin: 0 !important; padding: 0;
+    background: transparent !important; border: 0 !important; box-shadow: none !important;
+}
+.bounded-caterer-page.menu-editor-page .caterer-workspace .service-editor-header .service-library-toolbar { order: 1; flex: 0 0 auto; margin: 0; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace .service-editor-header #storeMenuStepper > div { display: grid !important; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 6px !important; }
+@media (max-width: 600px) {
+    .bounded-caterer-page.menu-editor-page .caterer-workspace .service-editor-header { gap: 5px; }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .service-editor-header #viewServicesButton { width: 58px; min-height: 52px; padding: 5px !important; font-size: 10px !important; }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace .service-editor-header #storeMenuStepper > div { gap: 4px !important; }
+}
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm :is(.remove-btn, .category-remove, .service-photo-remove) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 36px;
+    width: 36px !important;
+    min-width: 36px;
+    height: 36px !important;
+    min-height: 36px;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #425642 !important;
+    font-size: 24px !important;
+    line-height: 1;
+}
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm :is(.remove-btn, .category-remove, .service-photo-remove):hover { color: #913b34 !important; filter: none; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm :is(.remove-btn, .category-remove, .service-photo-remove):focus-visible { outline: 2px solid #173d32; outline-offset: 2px; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .service-photo-remove[hidden] { display: none; }
+@media (max-width: 600px) {
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm :is(.remove-btn, .category-remove, .service-photo-remove) { flex-basis: 44px; width: 44px !important; min-width: 44px; height: 44px !important; min-height: 44px; }
+}
+.service-photo-control { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.service-photo-control input { flex: 1; width: 0; min-width: 0; }
+.service-photo-remove {
+    display: inline-flex; align-items: center; justify-content: center; flex: 0 0 36px;
+    width: 36px; height: 36px; padding: 0; border: 1px solid #96a38e; border-radius: 8px;
+    background: transparent; color: #913b34; font-size: 24px; cursor: pointer;
+}
+.service-photo-remove[hidden] { display: none; }
+.service-photo-remove:hover { background: #dfc6bc; border-color: #aa7566; }
+.service-photo-remove:focus-visible { outline: 2px solid #173d32; outline-offset: 2px; }
+@media (max-width: 600px) { .service-photo-remove { flex-basis: 44px; width: 44px; height: 44px; } }
+.bounded-caterer-page.menu-editor-page .caterer-workspace .service-library-toolbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm #viewServicesButton {
+    flex: 0 0 auto;
+    width: auto;
+    min-height: 34px;
+    padding: 6px 10px !important;
+    font-size: 11px !important;
+    line-height: 1.4;
+}
+@media (max-width: 600px) {
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm #viewServicesButton { min-height: 44px; }
+}
+.bounded-caterer-page.menu-editor-page .caterer-workspace { display: flex; flex-direction: column; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace > .layout-grid { flex: 1 0 auto; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace .layout-grid > div:first-child { display: flex; flex-direction: column; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm { display: flex; flex-direction: column; flex: 1 0 auto; min-width: 0; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace .service-editor-actions { display: flex; align-items: center; justify-content: flex-end; gap: 10px; margin-top: auto; padding-top: 14px; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm #storeStepBack {
+    background: transparent !important; border: 0 !important; box-shadow: none !important;
+    color: #365342 !important; min-width: 0; padding: 7px 10px !important;
+}
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm #storeStepBack:hover { color: #173d32 !important; text-decoration: underline; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm #storePublishBtn { width: auto !important; min-width: 160px; margin: 0; }
+@media (max-width: 600px) {
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .service-editor-actions #storeStepNav { flex: 1; }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm[data-step="3"] .service-editor-actions #storeStepNav { flex: 0 0 auto; }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm #storePublishBtn { flex: 1; min-width: 0; }
+}
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .service-editor-actions #storeStepNav { margin-top: 0; margin-bottom: 0 !important; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm > .card,
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm #cateringFields > .card {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0;
+    box-shadow: none !important;
+    padding: 0;
+    margin-bottom: 14px;
+}
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm #storeMenuStepper {
+    padding: 0 0 12px;
+    border-bottom: 1px solid #a4b19b !important;
+    margin-bottom: 14px !important;
+}
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .caterer-step-panel[data-caterer-panel="1"] { gap: 12px 16px; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm[data-step="1"] > .caterer-step-panel {
+    margin-block: auto !important;
+    width: 100%;
+    flex-shrink: 0;
+}
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm[data-step="1"] .service-editor-actions { margin-top: 0; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .form-group { margin-bottom: 12px; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .form-label { margin-bottom: 5px; font-size: 12px; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .form-control {
+    min-height: 38px; padding: 7px 10px; font-size: 13px; border-radius: 8px;
+}
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .caterer-step-panel textarea.form-control { height: 68px; min-height: 68px; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm input[type="file"] { padding: 6px 8px; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm input[type="file"]::file-selector-button {
+    padding: 6px 10px; margin-right: 10px; background: #173d32; color: #f0f1e6; border: 0; border-radius: 6px; font-size: 12px;
+}
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .btn {
+    min-height: 38px; padding: 7px 12px !important; font-size: 12px !important; border-radius: 8px;
+}
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm #storeMenuStepper .caterer-step-btn { min-height: 40px; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm #storeStepNav { margin-top: 12px; gap: 8px; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm #storeStepNext { min-width: 150px; }
+.bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm #storeStepBack { min-width: 80px; }
+@media (max-width: 600px) {
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .form-control { min-height: 44px; font-size: 16px; }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .btn { min-height: 44px; }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm #storeMenuStepper .caterer-step-btn { min-height: 52px; gap: 3px; font-size: 10px !important; padding: 6px 4px !important; }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm #storeStepNext { min-width: 0; }
+}
+@media print {
+    html:has(body.bounded-caterer-page), body.bounded-caterer-page { height: auto; overflow: visible; }
+    body.bounded-caterer-page > .main-content, .bounded-caterer-page .caterer-workspace { display: block; height: auto !important; overflow: visible; border: 0; box-shadow: none; padding: 0 !important; }
+}
+
+/* Keep the editor actions visible while scrolling on phones. */
+@media screen and (max-width: 600px) {
+    .bounded-caterer-page.menu-editor-page .caterer-workspace .service-editor-header { gap: 6px; align-items: stretch; }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace .service-editor-header .service-library-toolbar { display: flex; align-items: stretch; }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .service-editor-header #storeMenuStepper .caterer-step-btn {
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        min-width: 0; min-height: 48px; height: 100%; padding: 4px 3px !important;
+        gap: 2px; font-size: 10px !important; line-height: 1.2;
+        text-align: center; overflow-wrap: normal; word-break: normal;
+    }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .service-editor-header .caterer-step-btn .step-number { font-size: 9px; line-height: 1; }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .service-editor-header .caterer-step-btn > span:last-child { width: 100%; white-space: normal; text-wrap: balance; }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .service-editor-header #viewServicesButton {
+        width: 54px; min-height: 48px; height: 100%; padding: 4px !important;
+        font-size: 10px !important; line-height: 1.2; text-align: center; text-wrap: balance;
+    }
+}
+.bounded-caterer-page.menu-editor-page #mainForm #setsContainer > .dynamic-item {
+    position: relative; padding: 12px; margin-bottom: 12px; border-radius: 10px;
+}
+.bounded-caterer-page.menu-editor-page #mainForm #setsContainer > .dynamic-item > div:first-of-type { padding-right: 40px; }
+.bounded-caterer-page.menu-editor-page #mainForm #setsContainer .nested-panel {
+    padding: 10px; margin-top: 10px; border-radius: 8px;
+}
+.bounded-caterer-page.menu-editor-page #mainForm #setsContainer .nested-panel h5 {
+    margin: 0 0 8px; padding-bottom: 6px; font-size: 13px; line-height: 1.4;
+}
+.bounded-caterer-page.menu-editor-page #mainForm #setsContainer .package-price-grid { gap: 10px; margin: 10px 0; }
+.bounded-caterer-page.menu-editor-page #mainForm #setsContainer label { font-size: 12px !important; margin-bottom: 4px; }
+.bounded-caterer-page.menu-editor-page #mainForm #setsContainer .dynamic-list { gap: 8px; }
+.bounded-caterer-page.menu-editor-page #mainForm #setsContainer :is(.menu-category-card, .nested-panel .dynamic-item) {
+    position: relative; padding: 10px 48px 10px 10px !important; margin-bottom: 8px; border-radius: 8px;
+}
+.bounded-caterer-page.menu-editor-page #mainForm #setsContainer :is(.remove-btn, .category-remove) {
+    position: absolute !important; top: 4px; right: 4px; margin: 0;
+}
+.bounded-caterer-page.menu-editor-page #mainForm #setsContainer .menu-category-grid {
+    grid-template-columns: repeat(auto-fit,minmax(min(100%,260px),1fr)) !important; gap: 8px !important; margin-bottom: 8px !important;
+}
+.bounded-caterer-page.menu-editor-page #mainForm #setsContainer textarea.form-control { height: 62px; min-height: 62px; }
+.bounded-caterer-page.menu-editor-page #mainForm #setsContainer :is(.inventory-mapping-fields, .swap-rule-fields) { gap: 8px !important; }
+.bounded-caterer-page.menu-editor-page #mainForm #setsContainer [id$="_addons"] > div {
+    position: relative; padding-right: 44px; gap: 8px !important;
+}
+.bounded-caterer-page.menu-editor-page #mainForm #setsContainer [id$="_addons"] input { width: 0; min-width: 0; }
+@media (max-width: 600px) {
+    .bounded-caterer-page.menu-editor-page #mainForm #setsContainer > .dynamic-item { padding: 8px; }
+    .bounded-caterer-page.menu-editor-page #mainForm #setsContainer .nested-panel { padding: 8px; }
+    .bounded-caterer-page.menu-editor-page #mainForm #setsContainer :is(.inventory-mapping-fields, .swap-rule-fields) { grid-template-columns: minmax(0,1fr) !important; }
+    .bounded-caterer-page.menu-editor-page #mainForm #setsContainer :is(.menu-category-card, .nested-panel .dynamic-item) { padding-right: 48px !important; }
+}
+@media screen and (max-width: 600px) {
+    .bounded-caterer-page.menu-editor-page .caterer-workspace > .layout-grid {
+        min-height: 0;
+        flex: 1 1 0;
+        overflow: hidden;
+    }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace .layout-grid > div:first-child { min-height: 0; }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm {
+        flex: 1 1 0;
+        min-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        scrollbar-width: thin;
+        scroll-padding-bottom: 80px;
+    }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm .service-editor-actions {
+        position: sticky;
+        bottom: 0;
+        z-index: 5;
+        flex-shrink: 0;
+        margin-top: auto;
+        padding: 10px 0 max(4px, env(safe-area-inset-bottom));
+        background: #d4dbcd;
+        border-top: 1px solid #a4b19b;
+    }
+    .bounded-caterer-page.menu-editor-page .caterer-workspace #mainForm > :not(.service-editor-actions) { flex-shrink: 0; }
+}
+
+/* Bound nested workspaces to their parent instead of the browser window. */
+body.bounded-caterer-page { box-sizing: border-box; max-height: 100dvh; }
+.bounded-caterer-page > .main-content { min-width: 0; }
+.bounded-caterer-page .caterer-workspace:has(> .mapping-workspace) {
+    display: flex; flex-direction: column; overflow: hidden;
+}
+.bounded-caterer-page .caterer-workspace > .mapping-workspace {
+    flex: 1 1 0; min-height: 0; min-width: 0; max-height: 100%;
+    height: auto; margin: 0; overflow: hidden; box-sizing: border-box;
+}
+.bounded-caterer-page .mapping-workspace .mapping-container {
+    flex: 1 1 0; height: auto; min-height: 0; overflow: hidden;
+}
+.bounded-caterer-page .mapping-workspace .mapping-details { margin-bottom: 0; min-height: 0; }
+.bounded-caterer-page .mapping-workspace #mapping-list {
+    overflow-y: auto; overflow-x: hidden; min-height: 0; overscroll-behavior: contain;
+}
+.bounded-caterer-page .mapping-workspace .service-list > div:last-child {
+    flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain;
+}
+@media (max-width: 768px) {
+    .bounded-caterer-page .mapping-workspace .mapping-container {
+        grid-template-rows: minmax(0, auto) minmax(0, 1fr);
+    }
+    .bounded-caterer-page .mapping-workspace .service-list { max-height: min(180px, 25dvh); }
+}

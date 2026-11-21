@@ -1,0 +1,100 @@
+/* Caterer palette only. Screen rules preserve the existing printed reports. */
+@media screen {
+.caterer-sage-theme .sidebar-menu { scrollbar-color: #8da58a #173d32 !important; }
+.caterer-sage-theme .sidebar-menu::-webkit-scrollbar-track { background: #173d32 !important; }
+.caterer-sage-theme .sidebar-menu::-webkit-scrollbar-thumb { background: #8da58a !important; border-color: #173d32 !important; }
+.caterer-sage-theme .sidebar-menu::-webkit-scrollbar-thumb:hover { background: #adc0a4 !important; }
+.caterer-sage-theme .sidebar-menu::-webkit-scrollbar-button { background: #173d32 !important; color: #8da58a !important; }
+.caterer-sage-theme #logoutConfirmModal { background: rgb(12 32 25 / 65%) !important; }
+.caterer-sage-theme #logoutConfirmModal > div { background: #d4dbcd !important; border-color: #96a38e !important; box-shadow: 0 24px 60px rgb(12 32 25 / 28%) !important; }
+.caterer-sage-theme #logoutConfirmModal > div > div:first-child { background: #c0ceb7 !important; border-color: #708b6b !important; }
+.caterer-sage-theme #logoutConfirmModal > div > div:first-child i,
+.caterer-sage-theme #logoutConfirmModal h3 { color: #173d32 !important; }
+.caterer-sage-theme #logoutConfirmModal p { color: #425642 !important; }
+.caterer-sage-theme #logoutConfirmModal button { background: #c9d2c1 !important; color: #20372b !important; border: 1px solid #96a38e !important; }
+.caterer-sage-theme #logoutConfirmModal button:last-child { background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; }
+.caterer-sage-theme #logoutConfirmModal button i { color: inherit !important; }
+.caterer-sage-theme #logoutConfirmModal button:hover { background: #b7c8ae !important; }
+.caterer-sage-theme #logoutConfirmModal button:last-child:hover { background: #2b5544 !important; }
+.caterer-sage-theme #logoutConfirmModal button:focus-visible { outline: 2px solid #173d32; outline-offset: 3px; }
+/* Dialogs can live outside the main content container. */
+.caterer-sage-theme #composeModal .compose-content { background: #d4dbcd !important; color: #20372b !important; border-color: #96a38e !important; }
+.caterer-sage-theme #composeModal :is(h3, label) { color: #20372b !important; }
+.caterer-sage-theme #composeModal :is(input, select, textarea) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; color-scheme: light; }
+.caterer-sage-theme #composeModal :is(input, textarea)::placeholder { color: #425642 !important; opacity: 1; }
+.caterer-sage-theme #composeModal .modern-close-btn { background: #c0ceb7 !important; color: #173d32 !important; }
+.caterer-sage-theme #composeModal :is(button[type="submit"], .modern-btn-primary) { background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; }
+.caterer-sage-theme #composeModal button[type="submit"] i { color: inherit !important; }
+.caterer-sage-theme .main-content :is(.alert-warning, .alert-info) { background: #c9d2c1 !important; color: #20372b !important; border-color: #708b6b !important; }
+.caterer-sage-theme .main-content :is(.alert-warning, .alert-info) :is(i, strong) { color: inherit !important; }
+.caterer-sage-theme .main-content .event-preparation-page :is(.event-card, .prep-event-name) { background: #c9d2c1 !important; color: #173d32 !important; border-color: #96a38e !important; }
+.caterer-sage-theme .main-content .event-preparation-page .prep-event-name :is(span, strong) { color: #173d32 !important; }
+.caterer-sage-theme .main-content .gold-input-icon { color: #20372b !important; }
+.caterer-sage-theme .main-content :is(.remove-btn, .category-remove) { background: #e3c9bf !important; color: #71342d !important; border-color: #b7897b !important; opacity: 1 !important; }
+.caterer-sage-theme .main-content .mapping-container .service-list > div:first-child,
+.caterer-sage-theme .main-content #mapping-list > div > h3 { background: #c0ceb7 !important; color: #173d32 !important; border-color: #96a38e !important; }
+.caterer-sage-theme .main-content .mapping-details :is(.mapping-table, .mapping-table tbody, .mapping-table tr, .mapping-table td) { background: #d4dbcd !important; color: #20372b !important; border-color: #96a38e !important; }
+.caterer-sage-theme .main-content .mapping-details .mapping-table th { background: #c0ceb7 !important; color: #20372b !important; }
+.caterer-sage-theme .main-content .mapping-details .mapping-table td:nth-child(4) span { background: transparent !important; color: #173d32 !important; border: 0 !important; box-shadow: none !important; }
+.caterer-sage-theme .main-content :is(.section-stat span, .item-subtitle, .metric-caption, .inventory-type-button span) { color: #425642 !important; }
+.caterer-sage-theme .main-content :is(.section-stat strong, .metric-value, .payment-booking dd, .payment-booking .amount-paid) { color: #000 !important; }
+.caterer-sage-theme .main-content :is(.type-pill, .inventory-type-button[aria-pressed="true"], .status-badge.badge-paid, .status-badge.badge-verified) { background: #bacdb4 !important; color: #173d32 !important; border-color: #708b6b !important; }
+.caterer-sage-theme .main-content :is(.status-badge.badge-partial, .status-badge.badge-pending) { background: #ded1ad !important; color: #604719 !important; border-color: #ad9660 !important; }
+.caterer-sage-theme .main-content .booking-actions .btn-view { background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; }
+.caterer-sage-theme .main-content .booking-actions .btn-view i { color: inherit !important; }
+html.caterer-sage-theme { --text-main: #20372b; --text-muted: #425642; --text-secondary: #425642; --card-bg: #d4dbcd; --border-color: #96a38e; }
+.caterer-sage-theme .main-content { --warning-bg: #c9d2c1; --warning-text: #20372b; }
+.caterer-sage-theme .main-content #mapping-list > div { background: #d4dbcd !important; border-color: #96a38e !important; }
+.caterer-sage-theme .main-content :is(.form-label, .info-label, .total-label, label, .stat-label) { color: #425642 !important; }
+.caterer-sage-theme .main-content :is(.card-title, .card-title i, .info-value, .service-name, .info-item span, .info-item strong) { color: #20372b !important; }
+.caterer-sage-theme .main-content :is(.form-control, .form-input, .modern-form-control, .date-input) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; color-scheme: light; }
+.caterer-sage-theme .main-content :is(input, textarea)::placeholder { color: #425642 !important; opacity: 1; }
+.caterer-sage-theme .main-content input::file-selector-button { background: #173d32; color: #f0f1e6; border: 1px solid #426052; border-radius: 6px; padding: 7px 10px; }
+.caterer-sage-theme .main-content :is(.btn-primary, .btn-gold, .btn-save, .btn-submit, .btn-pay-now, .details-link, .modern-btn-primary, .chat-send, .btn-do-print, button[type="submit"].btn:not(.btn-danger):not(.btn-secondary):not(.btn-outline)) {
+    background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; box-shadow: none !important;
+}
+.caterer-sage-theme .main-content :is(.btn-primary, .btn-gold, .btn-save, .btn-submit, .btn-pay-now, .details-link, .modern-btn-primary, .chat-send, button[type="submit"].btn) i { color: inherit !important; }
+.caterer-sage-theme .main-content :is(.btn-primary, .btn-pay-now, .details-link, .modern-btn-primary, .chat-send):hover { background: #2b5544 !important; color: #f0f1e6 !important; }
+.caterer-sage-theme .main-content :is(.btn-outline, .btn-secondary, .modern-close-btn, .close-btn, .modal-close, .btn-cancel-modal, .message-tab, .filter-btn, .chat-attach) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; }
+.caterer-sage-theme .main-content :is(.btn-outline, .btn-secondary, .modern-close-btn, .close-btn, .modal-close, .message-tab, .filter-btn) i { color: inherit !important; }
+.caterer-sage-theme .main-content :is(.btn-delete, .btn-delete-all, .btn-danger, .remove-btn) { background: #e3c9bf !important; color: #71342d !important; border-color: #b7897b !important; }
+.caterer-sage-theme .main-content :is(.btn-delete, .btn-delete-all, .btn-danger) i { color: inherit !important; }
+.caterer-sage-theme .main-content :is(.btn, .btn-primary, .btn-secondary):disabled { background: #b9c5b1 !important; color: #425642 !important; border-color: #96a38e !important; opacity: 1 !important; }
+.caterer-sage-theme .main-content .alert-warning { background: #c9d2c1 !important; color: #20372b !important; border-color: #708b6b !important; }
+.caterer-sage-theme .main-content .alert-warning :is(i, strong) { color: inherit !important; }
+.caterer-sage-theme .main-content :is(.payment-summary, .membership-renewal, .day-summary, .profile-avatar, .service-list, .mapping-details, .event-preparation-page, .event-toolbar, .prep-empty, .modern-modal, .modern-modal-header, .modern-left-col, .modern-right-col, .modern-card, .modern-reply-area, .reports-page .filter-bar, .reports-page .summary-card, .reports-page .report-section, .print-modal, #servicesModal) { background: #d4dbcd !important; color: #20372b !important; border-color: #96a38e !important; }
+.caterer-sage-theme .main-content :is(.service-item, .menu-list-item, .modern-chat-area, .profile-info-grid, .info-item, .payment-step, .payment-qr, .prep-empty) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; }
+.caterer-sage-theme .main-content .service-item:is(:hover, .active) { background: #b7c8ae !important; border-color: #708b6b !important; }
+.caterer-sage-theme .main-content :is(.modern-message-bubble, .modern-message.customer .modern-message-bubble) { background: #d4dbcd !important; color: #20372b !important; border-color: #96a38e !important; }
+.caterer-sage-theme .main-content .modern-message.caterer .modern-message-bubble { background: #b7c8ae !important; color: #20372b !important; border-color: #708b6b !important; }
+.caterer-sage-theme .main-content :is(.modern-message-bubble p, .modern-message-bubble div, .conversation-identity h3, .modern-modal-header h3, .profile-avatar h3, .service-item > div:first-child) { color: #20372b !important; }
+.caterer-sage-theme .main-content :is(.modern-message-time, .conversation-identity p, .profile-avatar p, .prep-empty p, .compose-description, .reports-period, .summary-card span) { color: #425642 !important; }
+.caterer-sage-theme .main-content :is(.prep-empty h3, .prep-empty i, .compose-emblem, .compose-eyebrow) { color: #173d32 !important; }
+.caterer-sage-theme .main-content :is(.caterer-step-btn, .services-tabs a, .tab-btn, .rev-tab) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; opacity: 1 !important; }
+.caterer-sage-theme .main-content :is(.caterer-step-btn.active, .services-tabs a.selected, .tab-btn.active, .rev-tab.active, .filter-btn.active, #trashTabButton.active) { background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; }
+.caterer-sage-theme .main-content .caterer-step-btn span { color: inherit !important; }
+.caterer-sage-theme .main-content :is(#balance-display, #total-display, #paid-display, .total-amount, .stat-value, .service-price, .price-tag, .membership-price, .customer-balance strong, .activity-payment strong, .payment-amount, .summary-row.balance, .summary-card strong, #payment-history-container .text-success) { color: #000 !important; }
+.caterer-sage-theme .main-content :is(.report-table th, .report-table td, .report-customer-profile, .reports-page h2, .service-list > div:first-child) { color: #20372b !important; border-color: #96a38e !important; }
+.caterer-sage-theme .main-content :is(.report-table th, .report-table .customer-group-row, .report-table tbody tr) { background: #c9d2c1 !important; }
+.caterer-sage-theme .main-content .report-table a { color: #173d32 !important; }
+.caterer-sage-theme .main-content .report-btn { background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; }
+.caterer-sage-theme .main-content :is(.report-btn.dark, #btnOpenPrintModal) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; }
+.caterer-sage-theme .main-content :is(.service-edit, .services-tabs a.selected) { background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; }
+.caterer-sage-theme .main-content :is(.day-overview, .day-booking-card, .day-empty) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; }
+.caterer-sage-theme .main-content :is(.day-eyebrow, .day-view, .day-booking-meta, .day-booking-meta i, .day-order) { color: #425642 !important; }
+.caterer-sage-theme .main-content :is(.day-metrics strong, .customer-balance, .amount-balance, .kpi-info .value, .report-table td.right) { color: #000 !important; }
+.caterer-sage-theme .main-content .capacity-modal-close { background: #c9d2c1 !important; color: #173d32 !important; border-color: #708b6b !important; }
+/* Legacy form and information fragments use literal dark-theme colors. */
+.caterer-sage-theme .main-content :is([style*="color: #999" i], [style*="color:#999" i], [style*="color: #aaa" i], [style*="color:#aaa" i], [style*="color: #888" i], [style*="color:#888" i], [style*="color: #bbb" i], [style*="color: #ccc" i]):not(button):not(a):not(button *):not(a *) { color: #425642 !important; }
+.caterer-sage-theme .main-content :is(.profile-info-grid, .profile-avatar, .service-list, .mapping-details, .reports-page, #servicesModal) :is(h2, h3, h4, strong) { color: #20372b !important; }
+.caterer-sage-theme .main-content :is(.profile-info-grid, #servicesModal .menu-item-info) :is(span, div):not(.service-price) { color: #20372b !important; }
+.caterer-sage-theme .main-content :is(.profile-info-grid, #servicesModal .menu-item-info) .service-price { color: #000 !important; }
+.caterer-sage-theme .main-content .service-item > div:last-child :is(span, small) { color: #425642 !important; }
+.caterer-sage-theme .main-content .reports-page :is(.report-picker, .report-table-scroll) { background: #d4dbcd !important; border-color: #96a38e !important; }
+.caterer-sage-theme .main-content .report-picker select { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; color-scheme: light; }
+.caterer-sage-theme .main-content .reports-page .report-table td.right .cell-value { color: #000 !important; }
+.caterer-sage-theme .main-content .reports-page .report-table td::before { color: #425642 !important; }
+.caterer-sage-theme .main-content #financial-summary .stat-value { overflow-wrap: anywhere; }
+.caterer-sage-theme .main-content :is([style*="background: #1a1a1a" i], [style*="background:#1a1a1a" i], [style*="background: #222" i], [style*="background: #252525" i]) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; }
+.caterer-sage-theme .main-content :is(button, a, input, select, textarea):focus-visible { outline: 2px solid #173d32; outline-offset: 3px; }
+}

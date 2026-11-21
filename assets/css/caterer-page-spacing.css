@@ -1,0 +1,20 @@
+/* Consistent narrow gutters for the main working panels. */
+body > .main-content:has(:is(.dashboard-layout, .reservations-card, .capacity-page, .messages-inbox, .conversation-view)) {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    box-sizing: border-box;
+    min-width: 0;
+}
+.main-content > :is(.dashboard-layout, .reservations-card, .capacity-page, .messages-inbox, .conversation-view) {
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
+}
+@media (max-width: 600px) {
+    body > .main-content:has(:is(.dashboard-layout, .reservations-card, .capacity-page, .messages-inbox, .conversation-view)) {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+}

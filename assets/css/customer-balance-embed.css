@@ -1,0 +1,331 @@
+/* Compact layout used only inside the booking balance dialog. */
+html, body { min-height: 0 !important; height: auto !important; overflow-x: hidden !important; }
+body { margin: 0 !important; font-size: 13px !important; }
+.navbar, .main-footer, .payment-details-heading > a { display: none !important; }
+.customer-page-shell { padding: 0 !important; min-height: 0 !important; }
+.customer-page-shell > .container { width: 100% !important; max-width: none !important; padding: 10px !important; margin: 0 !important; box-sizing: border-box; }
+.payment-details-container { padding: 0 !important; margin: 0 !important; width: 100%; box-sizing: border-box; border-radius: 10px !important; font-size: 13px !important; }
+.payment-details-container *, .payment-details-container *::before { box-sizing: border-box; }
+.payment-details-container :is(p, span, label, td, th, .btn, .stat-row) { font-size: 12px !important; line-height: 1.45 !important; }
+.payment-details-container :is(h1,h2,h3,h4) { font-size: 12px !important; line-height: 1.4 !important; margin: 0 0 10px !important; padding-bottom: 8px !important; }
+.payment-details-container .payment-details-heading { padding: 10px !important; }
+.payment-details-container .payment-details-title { gap: 8px !important; }
+.payment-details-container .finance-grid { display: flex !important; flex-direction: column !important; gap: 0 !important; }
+/* Put the balance and payment action before the longer breakdown and history. */
+.payment-details-container .finance-right-col { order: -1; border-left: 0 !important; border-top: 0 !important; border-bottom: 1px solid var(--border-color); }
+.payment-details-container :is(.finance-left-col,.finance-right-col) { display: flex !important; flex-direction: column !important; gap: 0 !important; min-width: 0; }
+.payment-details-container .stat-card { padding: 10px !important; margin: 0 !important; }
+.payment-details-container .stat-row { display: flex !important; align-items: baseline; justify-content: space-between; gap: 10px; padding: 5px 0 !important; margin: 0 !important; }
+.payment-details-container .stat-row > :last-child { text-align: right; }
+.payment-details-container .finance-right-col > .stat-card:first-child { display: grid !important; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 6px 12px; text-align: left !important; }
+.payment-details-container .finance-right-col > .stat-card:first-child > div:first-child { font-size: 12px !important; margin: 0 !important; }
+.payment-details-container .finance-right-col > .stat-card:first-child > .balance { justify-content: flex-end !important; }
+.payment-details-container #balance-disp { font-size: 18px !important; font-weight: 700; }
+.payment-details-container .finance-right-col > .stat-card:first-child > .stat-row:not(.balance) { grid-column: 1 / -1; justify-content: flex-start !important; padding: 0 !important; }
+.payment-details-container .finance-right-col > .stat-card:first-child > div[style*="border-top"] { grid-column: 1 / -1; margin-top: 6px !important; padding-top: 10px !important; }
+.payment-details-container .finance-right-col > .stat-card:first-child > div[style*="border-top"] > div:first-child { font-size: 12px !important; margin-bottom: 3px !important; }
+.payment-details-container #amount-to-upload-disp { font-size: 18px !important; line-height: 1.3; }
+.payment-details-container .btn { min-height: 40px !important; padding: 9px 12px !important; border-radius: 8px !important; }
+.payment-details-container #pay-action-btn { grid-column: 1 / -1; margin-top: 6px !important; }
+.payment-details-container .badge-status { padding: 4px 8px !important; font-size: 11px !important; letter-spacing: normal !important; text-transform: none !important; }
+.payment-details-container .table-custom-wrap { overflow: visible !important; }
+/* Use a readable two-column receipt card rather than a tall single-column table. */
+.payment-details-container .table-custom { display: block !important; min-width: 0 !important; width: 100% !important; }
+.payment-details-container .table-custom thead { display: none !important; }
+.payment-details-container .table-custom tbody { display: block !important; width: 100%; }
+.payment-details-container .table-custom tr { display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)) !important; gap: 10px 16px !important; padding: 10px !important; margin: 0 0 8px !important; border: 1px solid var(--border-color); border-radius: 8px !important; }
+.payment-details-container .table-custom td { display: block !important; width: auto !important; min-width: 0 !important; padding: 0 !important; border: 0 !important; text-align: left !important; overflow-wrap: anywhere; }
+.payment-details-container .table-custom td::before { content: attr(data-label); display: block !important; font-size: 10px !important; font-weight: 600; line-height: 1.4; margin: 0 0 3px !important; color: var(--text-muted); letter-spacing: .02em !important; text-transform: uppercase; }
+/* Keep fields readable and avoid focus zoom on phones. */
+:is(input,select,textarea) { font-size: 16px !important; max-width: 100%; }
+@media(max-width:380px) {
+ .customer-page-shell > .container { padding: 6px !important; }
+ .payment-details-container .stat-card { padding: 10px !important; }
+ .payment-details-container .table-custom tr { gap: 8px !important; padding: 8px !important; }
+}
+
+/* Payment form replaces the summary inside the existing dialog. */
+body.balance-payment-form-active .payment-details-container { display: none !important; }
+body.balance-payment-form-active #payModal {
+    display: block !important; position: static !important; inset: auto !important;
+    padding: 0 !important; background: transparent !important; height: auto !important;
+    min-height: 0 !important; overflow: visible !important;
+}
+#payModal .payment-modal {
+    width: 100% !important; max-width: none !important; max-height: none !important;
+    margin: 0 !important; border: 1px solid #96a38e !important; border-radius: 10px !important;
+    background: #d4dbcd !important; color: #20372b !important; box-shadow: none !important;
+    overflow: visible !important;
+}
+#payModal .modal-header {
+    padding: 10px 12px !important; display: flex !important; align-items: center;
+    justify-content: space-between; gap: 10px; background: #c9d2c1 !important;
+    border-bottom: 1px solid #96a38e !important;
+}
+#payModal .modal-header h3 { font-size: 12px !important; margin: 0 !important; color: #173d32 !important; }
+#payModal .close-btn { min-height: 40px; padding: 8px 10px !important; font-size: 12px !important; white-space: nowrap; color: #173d32 !important; background: #e2e7dc !important; border: 1px solid #96a38e !important; border-radius: 7px; }
+#payModal .modal-body { padding: 0 !important; max-height: none !important; overflow: visible !important; }
+#payModal .payment-modal-shell { display: grid !important; grid-template-columns: minmax(0,1fr) !important; max-height: none !important; }
+#payModal :is(.payment-side-panel,.payment-main-panel) { padding: 10px !important; overflow: visible !important; background: transparent !important; border: 0 !important; min-width: 0; }
+#payModal .payment-side-panel { gap: 10px !important; border-bottom: 1px solid #96a38e !important; }
+#payModal :is(.payment-side-card,.instruction-card,.terms-card,.payment-upload-block,.terms-agreement) { padding: 10px !important; margin: 0 0 12px !important; border: 1px solid #96a38e !important; border-radius: 8px !important; background: #e2e7dc !important; color: #20372b !important; }
+#payModal :is(p,li,label,span,.payment-side-note,.payment-upload-helper,.payment-qr-helper) { font-size: 12px !important; line-height: 1.5 !important; color: #425642 !important; }
+#payModal :is(h4,.payment-amount-label,.payment-qr-number) { font-size: 13px !important; color: #173d32 !important; }
+#payModal .payment-amount-value { font-size: 20px !important; color: #70501e !important; }
+#payModal .payment-qr-wrap img { display: block; width: 150px !important; max-width: 100%; height: auto !important; margin: 0 auto 10px; background: white; border-radius: 8px; }
+#payModal .instruction-list { padding-left: 18px !important; margin: 6px 0 0 !important; }
+#payModal .terms-toggle { padding: 0 !important; background: transparent !important; color: #173d32 !important; }
+#payModal .terms-body { padding: 10px 0 0 !important; color: #425642 !important; border-color: #96a38e !important; }
+#payModal .form-control { width: 100%; min-height: 44px; padding: 10px !important; border: 1px solid #96a38e !important; border-radius: 8px; background: #f0f1e6 !important; color: #20372b !important; }
+#payModal .payment-submit-bar { padding: 0 !important; margin: 12px 0 0 !important; background: transparent !important; border: 0 !important; }
+#payModal .payment-submit-btn { width: 100%; min-height: 44px; padding: 10px 12px !important; font-size: 13px !important; border-radius: 8px; background: #173d32 !important; color: #f0f1e6 !important; border: 1px solid #426052 !important; box-shadow: none !important; }
+#payModal .payment-submit-btn:hover { background: #2b5544 !important; }
+#payModal :is(button,input,summary):focus-visible { outline: 2px solid #70501e; outline-offset: 3px; }
+@media(min-width:500px) {
+    #payModal .payment-side-panel { grid-template-columns: repeat(2,minmax(0,1fr)); align-items: start; }
+}
+
+/* Keep the summary and timeline compact at every viewport size. */
+.customer-page-shell > .container { padding: 6px !important; }
+.payment-details-container { font-size: 12px !important; }
+.payment-details-container :is(p,span,label,td,th,.stat-row) { font-size: 11px !important; }
+.payment-details-container .payment-details-heading { padding: 9px 10px !important; }
+.payment-details-container :is(h1,h2,h3,h4) { margin-bottom: 7px !important; padding-bottom: 5px !important; }
+.payment-details-container .finance-right-col > .stat-card:first-child { gap: 4px 10px; }
+.payment-details-container .finance-right-col > .stat-card:first-child > div[style*="border-top"] { margin-top: 4px !important; padding-top: 7px !important; }
+.payment-details-container #balance-disp { font-size: 18px !important; }
+.payment-details-container #timeline-container { padding-left: 16px !important; margin: 8px 0 0 !important; }
+.payment-details-container .timeline-item { padding: 0 0 12px 14px !important; margin-bottom: 0 !important; }
+.payment-details-container .timeline-date { font-size: 10px !important; line-height: 1.4 !important; margin-bottom: 3px !important; }
+.payment-details-container :is(.timeline-title,.timeline-amount) { font-size: 11px !important; line-height: 1.4 !important; }
+.payment-details-container .timeline-dot { width: 8px !important; height: 8px !important; left: -5px !important; }
+.payment-details-container .timeline-item > div[style*="display: flex"] { gap: 8px; flex-wrap: wrap; }
+#payModal :is(.payment-side-panel,.payment-main-panel) { padding: 10px !important; }
+#payModal :is(.payment-side-card,.instruction-card,.terms-card,.payment-upload-block,.terms-agreement) { margin-bottom: 8px !important; }
+#payModal :is(p,li,label,span,.payment-side-note,.payment-upload-helper,.payment-qr-helper) { font-size: 11px !important; }
+#payModal .payment-qr-wrap img { width: 120px !important; }
+
+/* Dense payment layout: QR and amount share a row on regular phones. */
+#payModal .payment-side-panel { display: grid !important; gap: 8px !important; padding: 8px !important; }
+#payModal :is(.payment-side-card,.instruction-card,.terms-card,.payment-upload-block,.terms-agreement) { padding: 8px !important; margin-bottom: 6px !important; border-radius: 6px !important; }
+#payModal .payment-main-panel { padding: 8px !important; }
+#payModal .modal-header { padding: 5px 8px !important; }
+#payModal :is(h4,.payment-amount-label,.payment-qr-number) { font-size: 11px !important; margin: 0 0 6px !important; line-height: 1.4 !important; letter-spacing: normal !important; }
+#payModal .payment-amount-value { font-size: 18px !important; line-height: 1.3 !important; }
+#payModal :is(.payment-side-note,.payment-qr-helper,.payment-upload-helper) { font-size: 10px !important; line-height: 1.4 !important; margin-top: 6px !important; }
+#payModal .payment-qr-wrap img { width: 104px !important; margin: 0 auto 6px !important; }
+#payModal .payment-side-card { min-width: 0; }
+#payModal .payment-upload-block .form-label { margin-bottom: 6px !important; }
+.payment-details-container .stat-card { padding: 8px !important; }
+.payment-details-container .table-custom tr { gap: 6px 10px !important; padding: 8px !important; margin-bottom: 6px !important; border-radius: 6px !important; }
+.payment-details-container .table-custom td { font-size: 11px !important; line-height: 1.35 !important; }
+.payment-details-container .table-custom td::before { font-size: 9px !important; margin-bottom: 2px !important; letter-spacing: 0 !important; }
+.payment-details-container .table-custom td :is(span,a,strong) { font-size: 11px !important; }
+.payment-details-container .table-custom td a { display: inline-flex; align-items: center; min-height: 32px; }
+@media(min-width:340px) {
+ #payModal .payment-side-panel { grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important; align-items: start; }
+}
+@media(min-width:360px) {
+ .payment-details-container .table-custom tr { grid-template-columns: repeat(3,minmax(0,1fr)) !important; }
+}
+
+/* Sentence-case labels with a small, consistent gap above their values. */
+.payment-details-container .table-custom td::before {
+    text-transform: none !important;
+    letter-spacing: normal !important;
+    font-size: 10px !important;
+    font-weight: 500 !important;
+    line-height: 1.3 !important;
+    margin-bottom: 3px !important;
+    color: #425642 !important;
+}
+.payment-details-container .table-custom tr {
+    gap: 9px 12px !important;
+    padding: 10px !important;
+    margin-bottom: 7px !important;
+    align-items: start;
+}
+.payment-details-container .table-custom td {
+    line-height: 1.4 !important;
+    text-transform: none !important;
+}
+.payment-details-container .table-custom td a {
+    min-height: 0;
+    padding-block: 2px;
+    gap: 3px;
+    line-height: 1.4;
+}
+.payment-details-container .table-custom td :is(.badge,.badge-status) {
+    padding: 0 !important;
+    line-height: 1.4 !important;
+    text-transform: none !important;
+}
+
+/* Compact guide, terms, consent, and upload sections inside the payment form. */
+#payModal .payment-upload-form { display: flex !important; flex-direction: column; gap: 8px !important; }
+#payModal .payment-upload-form > :is(.instruction-card,.terms-card,.terms-agreement,.payment-upload-block) {
+    width: 100%; min-width: 0; box-sizing: border-box;
+    padding: 8px !important; margin: 0 !important;
+    border-radius: 6px !important; box-shadow: none !important;
+}
+#payModal .payment-upload-form :is(h4,.form-label,.terms-toggle h4) {
+    font-size: 11px !important; line-height: 1.35 !important;
+    margin: 0 0 5px !important; padding: 0 !important;
+}
+#payModal .instruction-list { margin: 0 !important; padding-left: 16px !important; }
+#payModal .instruction-list li {
+    font-size: 10px !important; line-height: 1.45 !important;
+    margin: 0 0 3px !important; padding: 0 !important;
+}
+#payModal .instruction-list li:last-child { margin-bottom: 0 !important; }
+#payModal .terms-toggle { min-height: 36px; gap: 8px !important; }
+#payModal .terms-toggle-text { min-width: 0; }
+#payModal .terms-toggle h4 { overflow-wrap: anywhere; }
+#payModal :is(.terms-toggle-hint,.terms-body) { font-size: 10px !important; line-height: 1.4 !important; }
+#payModal .terms-toggle-arrow { width: 28px !important; height: 28px !important; flex: 0 0 28px !important; }
+#payModal .terms-agreement { display: flex !important; align-items: flex-start !important; gap: 8px !important; }
+#payModal .terms-agreement input[type="checkbox"] {
+    width: 16px !important; height: 16px !important; min-height: 16px !important;
+    flex: 0 0 16px; margin: 2px 0 0 !important; accent-color: #173d32;
+}
+#payModal .terms-agreement span { font-size: 10px !important; line-height: 1.45 !important; }
+#payModal .payment-upload-block input[type="file"] {
+    min-height: 40px !important; padding: 7px !important;
+    font-size: 11px !important; line-height: 1.4 !important;
+}
+#payModal input[type="file"]::file-selector-button {
+    padding: 5px 7px; margin-right: 7px; font-size: 11px;
+    border: 1px solid #96a38e; border-radius: 4px;
+    background: #d4dbcd; color: #173d32;
+}
+#payModal .payment-upload-helper { font-size: 10px !important; line-height: 1.4 !important; margin-top: 5px !important; }
+#payModal .proof-preview { margin-top: 8px !important; padding: 6px !important; }
+#payModal .proof-preview img { max-width: 100%; max-height: 160px !important; object-fit: contain; }
+#payModal .payment-submit-bar { margin-top: 0 !important; }
+@media(max-width:359px) {
+    #payModal .payment-main-panel { padding: 6px !important; }
+    #payModal .payment-upload-form { gap: 6px !important; }
+}
+
+/* Give transaction cards a clear header, detail grid, and amount footer. */
+.payment-details-container .payment-transaction-cards tr {
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr) !important;
+    grid-template-areas: "booking status" "date type" "method receipt" "amount amount";
+    gap: 9px 16px !important;
+    padding: 10px 12px !important;
+    background: #dce2d5;
+}
+.payment-details-container .payment-transaction-cards td:nth-child(1) { grid-area: booking; }
+.payment-details-container .payment-transaction-cards td:nth-child(2) { grid-area: date; }
+.payment-details-container .payment-transaction-cards td:nth-child(3) { grid-area: type; }
+.payment-details-container .payment-transaction-cards td:nth-child(4) { grid-area: method; }
+.payment-details-container .payment-transaction-cards td:nth-child(5) { grid-area: receipt; }
+.payment-details-container .payment-transaction-cards td:nth-child(6) { grid-area: status; text-align: right !important; }
+.payment-details-container .payment-transaction-cards td:nth-child(7) {
+    grid-area: amount; display: flex !important; justify-content: space-between;
+    align-items: baseline; gap: 12px; border-top: 1px solid #aab7a0 !important;
+    padding-top: 7px !important; margin-top: 1px; font-weight: 700; color: #173d32 !important;
+}
+.payment-details-container .payment-transaction-cards td:nth-child(7)::before {
+    margin: 0 !important; font-weight: 500 !important;
+}
+.payment-details-container .payment-transaction-cards td[colspan] {
+    grid-column: 1 / -1; grid-area: auto; text-align: center !important;
+}
+@media(max-width:359px) {
+    .payment-details-container .payment-transaction-cards tr { gap: 8px 12px !important; padding: 9px !important; }
+}
+
+/* Text-only payment details and form; preserve close and disclosure controls. */
+.payment-details-container i,
+#payModal .modal-header h3 i,
+#payModal .payment-side-card h4 i,
+#payModal .instruction-card h4 i,
+#payModal .terms-toggle-text i,
+#payModal .payment-submit-btn i {
+    display: none !important;
+}
+
+/* Pending payment status is plain red text. */
+.payment-details-container .payment-details-title .badge-status.bg-pending {
+    background: transparent !important; background-image: none !important;
+    border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
+    padding: 0 !important; min-width: 0 !important; min-height: 0 !important;
+    color: #b42318 !important; -webkit-text-fill-color: #b42318 !important;
+}
+
+/* Status indicators use plain sentence-case text. */
+:is(.payments-center,.payment-details-container) :is(.status-badge,.badge-status) {
+ background: transparent !important; background-image: none !important;
+ border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
+ padding: 0 !important; min-width: 0 !important; min-height: 0 !important;
+ text-transform: none !important; letter-spacing: normal !important;
+}
+
+/* Use one document scroller for the payment form, without nested scroll panels. */
+html:has(body.balance-payment-form-active) { height: auto !important; overflow-x: hidden !important; overflow-y: auto !important; scrollbar-width: none; }
+html:has(body.balance-payment-form-active)::-webkit-scrollbar { display: none; }
+body.balance-embedded.balance-payment-form-active { height: auto !important; min-height: 100dvh; overflow: visible !important; margin: 0 !important; }
+body.balance-embedded.balance-payment-form-active #payModal {
+    position: static !important;
+    inset: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    box-sizing: border-box;
+}
+body.balance-embedded.balance-payment-form-active #payModal :is(.modal-content,.modal-body,.payment-modal-shell,.payment-side-panel,.payment-main-panel) {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    min-width: 0 !important;
+    overflow: visible !important;
+    box-sizing: border-box;
+}
+body.balance-embedded.balance-payment-form-active #payModal .modal-content { width: 100% !important; margin: 0 !important; }
+@media(max-width:600px) {
+    body.balance-embedded.balance-payment-form-active #payModal .payment-modal-shell { display: grid !important; grid-template-columns: minmax(0,1fr) !important; gap: 12px; }
+    body.balance-embedded.balance-payment-form-active #payModal .modal-body { padding: 12px !important; }
+}
+
+/* Keep the balance, timeline, and cost details visually distinct. */
+.payment-details-container .finance-grid { gap: 8px !important; padding: 8px; }
+.payment-details-container :is(.finance-left-col, .finance-right-col) { gap: 8px !important; border: 0 !important; }
+.payment-details-container .finance-grid .stat-card {
+    background: #cbd7c5 !important;
+    border: 1px solid #9baa94 !important;
+    border-radius: 9px !important;
+    min-width: 0;
+}
+.payment-details-container .balance-summary-card .balance-due {
+    background: #b9cdb2;
+    border: 0 !important;
+    border-radius: 7px;
+    padding: 8px 10px !important;
+}
+.payment-details-container .balance-summary-card .balance-locked {
+    background: #ddd4bd;
+    border: 0 !important;
+    border-radius: 7px;
+    padding: 8px 10px !important;
+    color: #573e19 !important;
+}
+.payment-details-container .balance-timeline-card #timeline-container {
+    max-height: none !important;
+    overflow: visible !important;
+}
+.payment-details-container .balance-timeline-card .timeline-item { margin-bottom: 0; }
+.payment-details-container .balance-breakdown-card .stat-row.total {
+    background: #b9cdb2;
+    border-radius: 6px;
+    padding: 7px 9px !important;
+    margin-top: 5px !important;
+}
+body.balance-payment-form-active #payModal .modal-header {
+    justify-content: flex-start;
+    border-bottom: 0;
+}
+body.balance-payment-form-active #payModal .modal-header h3 { display: none; }

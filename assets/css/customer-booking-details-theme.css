@@ -1,0 +1,455 @@
+/* Full booking details: colors only, including panels refreshed by AJAX. */
+.soft-sage-theme .booking-details-container { --danger-color: #84352f; color: #20372b; }
+.soft-sage-theme .booking-details-container .back-link { color: #173d32 !important; }
+.soft-sage-theme .booking-details-container :is(.detail-card, .overview-card, .payment-summary) { background: #d4dbcd !important; border-color: #96a38e !important; color: #20372b !important; box-shadow: 0 6px 20px rgb(32 55 43 / 9%); }
+.soft-sage-theme .booking-details-container :is(h1, h3, .order-number, .overview-value, .detail-value, .step-label) { color: #20372b !important; }
+.soft-sage-theme .booking-details-container :is(.overview-label, .overview-help, .detail-label, .step-description, .hint) { color: #425642 !important; }
+.soft-sage-theme .booking-details-container :is(.balance-reminder, .next-action-card) { background: #c0ceb7 !important; border-color: #96a38e !important; color: #20372b !important; }
+.soft-sage-theme .booking-details-container .next-action-card { background: #c2d0cb !important; border-color: #82998b !important; }
+.soft-sage-theme .booking-details-container :is(.balance-reminder strong, .next-action-card strong) { color: #173d32 !important; }
+.soft-sage-theme .booking-details-container .balance-reminder .amount { color: #000 !important; -webkit-text-fill-color: #000 !important; }
+.soft-sage-theme .booking-details-container .balance-reminder.paid { background: #bcd0b3 !important; }
+.soft-sage-theme .booking-details-container .sidebar-financial #financial-status-container > div[style*="255, 193, 7"] { background: #ddcba4 !important; color: #664719 !important; border: 1px solid #ad9568; }
+.soft-sage-theme .booking-details-container .sidebar-financial #financial-status-container > div[style*="255, 193, 7"] * { color: #664719 !important; }
+.soft-sage-theme .booking-details-container .sidebar-financial #financial-status-container > div > div[style*="font-size: 28px"] { color: #000 !important; }
+.soft-sage-theme .booking-details-container .order-timeline::before { background: #829577 !important; }
+.soft-sage-theme .booking-details-container .step-icon { background: #c9d2c1 !important; color: #425642 !important; border-color: #829577 !important; }
+.soft-sage-theme .booking-details-container :is(.timeline-step.current, .timeline-step.completed) .step-icon { background: #173d32 !important; color: #f0f1e6 !important; border-color: #173d32 !important; box-shadow: none !important; }
+.soft-sage-theme .booking-details-container :is(.timeline-step.current, .timeline-step.completed) .step-icon i { color: #f0f1e6 !important; }
+.soft-sage-theme .booking-details-container .btn-primary { background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; }
+.soft-sage-theme .booking-details-container .btn-primary:hover { background: #2b5544 !important; }
+.soft-sage-theme .booking-details-container .btn-outline { background: #c9d2c1 !important; color: #20372b !important; border-color: #708b6b !important; }
+.soft-sage-theme .booking-details-container :is(.status-pending, .status-preparing) { background: #ddcba4 !important; color: #664719 !important; }
+.soft-sage-theme .booking-details-container :is(.status-confirmed, .status-completed) { background: #bcd0b3 !important; color: #245539 !important; }
+.soft-sage-theme .booking-details-container .status-cancelled { background: #dfc6bc !important; color: #84352f !important; }
+.soft-sage-theme .booking-details-container .sidebar-policy { border-left-color: #70501e !important; }
+.soft-sage-theme .booking-details-container .progress-bar-container { background: #b4c0a9 !important; }
+.soft-sage-theme .booking-details-container .progress-bar-fill { background: #173d32 !important; }
+.customer-page-shell > .container:has(.booking-details-container) { max-width: none; padding-inline: 12px; box-sizing: border-box; }
+.customer-page-shell .booking-details-container {
+    max-width: none;
+    padding: 14px;
+    border: 1px solid #96a38e;
+    border-radius: 12px;
+    background: #d4dbcd;
+    font-size: 12px;
+}
+.customer-page-shell .booking-details-container .detail-card {
+    padding: 12px 0;
+    border: 0;
+    border-bottom: 1px solid #96a38e;
+    border-radius: 0;
+    background: transparent !important;
+    box-shadow: none !important;
+    margin-bottom: 12px;
+}
+.customer-page-shell .booking-details-container .page-header { margin-bottom: 12px; padding-bottom: 12px; gap: 10px; }
+.customer-page-shell .booking-details-container h1 { font-size: 20px; }
+.customer-page-shell .booking-details-container h3 { font-size: 14px; margin-bottom: 10px; padding-bottom: 8px; }
+.customer-page-shell .booking-details-container .back-link { font-size: 12px; margin-bottom: 12px; }
+.customer-page-shell .booking-details-container :is(.detail-label, .detail-value, .overview-value, .btn, .order-number, .step-label) { font-size: 12px; }
+.customer-page-shell .booking-details-container :is(.overview-label, .overview-help, .step-description) { font-size: 10px; }
+.customer-page-shell .booking-details-container .detail-row { padding: 7px 0; }
+.customer-page-shell .booking-details-container .overview-card { padding: 10px; }
+.customer-page-shell .booking-details-container .order-timeline { margin: 12px 0; padding: 12px 0; }
+.customer-page-shell .booking-details-container .step-icon { width: 30px; height: 30px; font-size: 12px; }
+.customer-page-shell .booking-details-container .btn { padding: 7px 10px; }
+.customer-page-shell .booking-details-container #header-status-badge {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    text-transform: none;
+    letter-spacing: normal;
+    font-size: 12px;
+}
+.booking-details-container #header-status-badge i { display: none; }
+html:has(.booking-details-container) { overflow-y: auto !important; }
+body:has(.booking-details-container) {
+    overflow-x: clip;
+    overflow-y: visible !important;
+}
+.customer-page-shell > .container:has(.booking-details-container) {
+    margin-bottom: 12px;
+}
+
+.customer-page-shell .booking-details-container .booking-progress-panel { padding: 8px 0; margin-bottom: 8px; }
+.customer-page-shell .booking-details-container .booking-progress-panel h3 { font-size: 12px; padding-bottom: 6px; margin-bottom: 6px; }
+.customer-page-shell .booking-details-container .booking-progress-panel .order-timeline { margin: 5px 0; padding: 0; }
+.customer-page-shell .booking-details-container .booking-progress-panel .step-icon { width: 20px; height: 20px; font-size: 9px; margin-bottom: 3px; }
+.customer-page-shell .booking-details-container .booking-progress-panel .step-label { font-size: 9px; }
+.customer-page-shell .booking-details-container .booking-progress-panel .step-description { display: none; }
+@media (min-width: 601px) {
+    .customer-page-shell .booking-details-container .booking-progress-panel .order-timeline::before { top: 10px; }
+}
+@media (max-width: 600px) {
+    .customer-page-shell .booking-details-container .booking-progress-panel .order-timeline { gap: 10px; }
+    .customer-page-shell .booking-details-container .booking-progress-panel .order-timeline::before { left: 10px; }
+}
+.customer-page-shell .booking-details-container .overview-grid { gap: 10px; margin-bottom: 12px; }
+.customer-page-shell .booking-details-container .overview-grid .overview-card { padding: 8px 10px; min-height: 0; border-radius: 9px; }
+.customer-page-shell .booking-details-container .overview-grid .overview-help { display: none; }
+.customer-page-shell .booking-details-container .overview-grid .overview-label { font-size: 10px; margin-bottom: 5px; }
+.customer-page-shell .booking-details-container .overview-grid .overview-value { font-size: 11px; line-height: 1.35; }
+.soft-sage-theme .overview-label { text-transform: none !important; letter-spacing: normal !important; }
+.soft-sage-theme .customer-page-shell .booking-details-container .overview-grid .overview-schedule { display: flex; align-items: baseline; gap: 6px; flex-wrap: nowrap; white-space: nowrap; font-size: 11px !important; line-height: 1.35; }
+.soft-sage-theme .customer-page-shell .booking-details-container .overview-schedule span { font-size: 11px !important; }
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-info-card h3 { font-size: 14px !important; }
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-info-card :is(.detail-label, .detail-value) { font-size: 11px !important; line-height: 1.45; }
+.soft-sage-theme .customer-page-shell #rescheduleRequestCard { padding: 12px !important; }
+.soft-sage-theme .customer-page-shell #rescheduleRequestCard h3 { font-size: 14px !important; margin-bottom: 8px !important; }
+.soft-sage-theme .customer-page-shell #rescheduleRequestCard .reschedule-content { gap: 8px !important; }
+.soft-sage-theme .customer-page-shell #rescheduleRequestCard .reschedule-summary { background: transparent !important; border: 0 !important; border-radius: 0 !important; padding: 0 !important; box-shadow: none !important; }
+.soft-sage-theme .customer-page-shell #rescheduleRequestCard :is(div, span, strong, label, input, textarea, button) { font-size: 11px !important; line-height: 1.45; text-transform: none !important; letter-spacing: normal !important; }
+.soft-sage-theme .customer-page-shell #rescheduleRequestCard .reschedule-summary .status-badge { background: transparent !important; border: 0 !important; box-shadow: none !important; padding: 0 !important; border-radius: 0 !important; color: #425642 !important; }
+.soft-sage-theme .customer-page-shell #rescheduleRequestCard .reschedule-unavailable-notice { background: #c9d2c1 !important; color: #20372b !important; border: 1px solid #96a38e !important; line-height: 1.6; }
+.soft-sage-theme .customer-page-shell .booking-info-card { padding: 12px !important; }
+.soft-sage-theme .customer-page-shell .booking-info-menu { margin-top: 10px; padding-top: 8px; border-top: 1px solid #96a38e; }
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-menu h3 { font-size: 12px !important; margin: 0 0 8px !important; padding-bottom: 6px; }
+.soft-sage-theme .customer-page-shell .booking-info-menu :is(div, span, strong, button) { font-size: 11px !important; line-height: 1.45; text-transform: none !important; letter-spacing: normal !important; }
+.soft-sage-theme .customer-page-shell .booking-info-menu .menu-list-item { padding: 7px 9px !important; min-height: 0; }
+.soft-sage-theme .customer-page-shell .booking-info-menu #menu-details-container > div { margin-bottom: 10px !important; }
+.soft-sage-theme .customer-page-shell .booking-info-menu #menu-details-container > div:first-child { padding: 8px 10px !important; }
+.soft-sage-theme .customer-page-shell .booking-info-menu #menu-details-container > div { margin-bottom: 8px !important; }
+.soft-sage-theme .customer-page-shell .booking-info-menu .menu-list-item { padding: 5px 8px !important; }
+.soft-sage-theme .customer-page-shell .booking-info-menu #menu-details-container [style*="padding: 10px 14px 4px"] { padding: 5px 8px 2px !important; }
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-menu .menu-list-item { padding: 3px 8px !important; margin: 0 !important; min-height: 0 !important; line-height: 1.3 !important; }
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-menu .package-category-label { padding: 3px 8px 0 !important; margin: 0 !important; line-height: 1.3 !important; }
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-menu .menu-list-item :is(div, span) { line-height: 1.3 !important; }
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-menu .menu-icon { margin-right: 5px; }
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-menu #menu-details-container > .package-summary-compact { padding: 4px 8px !important; margin-bottom: 6px !important; border-left-width: 2px !important; }
+.soft-sage-theme .customer-page-shell .booking-info-card .package-summary-compact > div { font-size: 11px !important; line-height: 1.3 !important; margin-top: 2px !important; }
+.soft-sage-theme .customer-page-shell .booking-info-card .package-summary-compact { display: flex; align-items: baseline; gap: 10px; flex-wrap: nowrap; }
+.soft-sage-theme .customer-page-shell .booking-info-card .package-summary-compact > div { white-space: nowrap; }
+.soft-sage-theme .customer-page-shell .booking-info-card .package-inclusion-row { display: grid; grid-template-columns: 100px minmax(0, 1fr); align-items: baseline; gap: 8px; border-bottom: 1px solid #96a38e; padding: 3px 7px; }
+.soft-sage-theme .customer-page-shell .booking-info-card .package-inclusion-row:last-child { border-bottom: 0; }
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-menu .package-inclusion-row .package-category-label { padding: 0 !important; flex: 0 0 auto; }
+.soft-sage-theme .customer-page-shell .booking-info-card .package-inclusion-items { min-width: 0; flex: 1; }
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-menu .package-inclusion-row .menu-list-item { padding: 0 !important; border: 0 !important; }
+.soft-sage-theme .customer-page-shell .booking-info-card .package-inclusion-items .menu-list-item > div { display: grid; grid-template-columns: 14px minmax(0, 1fr); align-items: baseline; gap: 5px; }
+.soft-sage-theme .customer-page-shell .booking-info-card .package-inclusion-items .menu-icon { margin: 0; width: 14px; text-align: center; }
+@media (max-width: 480px) {
+    .soft-sage-theme .customer-page-shell .booking-info-card .package-inclusion-row { grid-template-columns: 82px minmax(0, 1fr); gap: 6px; }
+}
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-incident { margin-top: 10px; padding-top: 8px; border-top: 1px solid #96a38e; }
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-incident h3 { font-size: 12px !important; margin-bottom: 8px; }
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-incident :is(td, th, div, span, p) { font-size: 11px !important; line-height: 1.45; }
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-incident :is(td, th) { padding: 5px 8px !important; }
+.soft-sage-theme .customer-page-shell .booking-info-menu :is(h3 > i, .menu-icon),
+.soft-sage-theme .customer-page-shell .booking-info-incident h3 > i { display: none !important; }
+.soft-sage-theme .customer-page-shell .booking-info-card .package-inclusion-items .menu-list-item > div { grid-template-columns: minmax(0, 1fr); gap: 0; }
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions { margin-bottom: 10px; }
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .sidebar-actions { padding: 6px 0 !important; margin-bottom: 6px; }
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .sidebar-actions h3 { font-size: 12px; margin-bottom: 6px; padding-bottom: 5px; }
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons { display: flex; flex-direction: row !important; flex-wrap: nowrap; align-items: center; gap: 6px; overflow-x: auto; padding: 2px 0 5px; }
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons .btn { flex: 0 0 auto !important; width: auto !important; height: auto !important; min-height: 34px; padding: 7px 10px !important; font-size: 11px !important; line-height: 1.3; white-space: nowrap; justify-content: center; gap: 5px; box-sizing: border-box; }
+.soft-sage-theme .customer-page-shell .booking-details-container .details-grid { display: block !important; width: 100% !important; max-width: none !important; }
+.soft-sage-theme .customer-page-shell .booking-details-container .details-grid > .left-column,
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-info-card { width: 100% !important; max-width: none !important; min-width: 0; box-sizing: border-box; }
+@media (max-width: 600px) {
+    .soft-sage-theme .customer-page-shell > .container:has(.booking-details-container) { width: 100%; padding-inline: 6px; min-width: 0; }
+    .soft-sage-theme .customer-page-shell .booking-details-container { padding: 8px; box-sizing: border-box; min-width: 0; max-width: 100%; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .overview-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; gap: 6px; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .overview-card { min-width: 0; padding: 7px !important; overflow-wrap: anywhere; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .overview-grid .overview-schedule { flex-wrap: wrap !important; white-space: normal !important; gap: 2px 5px; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions { min-width: 0; max-width: 100%; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 36px; max-width: 100%; overflow-x: visible !important; gap: 5px; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons .btn { width: 100% !important; height: 36px !important; min-height: 0 !important; min-width: 0; white-space: normal !important; text-align: center; padding: 5px 7px !important; font-size: 10px !important; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-progress-panel .order-timeline { display: flex !important; flex-direction: row !important; gap: 2px !important; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-progress-panel .timeline-step { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; padding: 0; text-align: center; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-progress-panel .order-timeline::before { top: 10px; left: 10%; right: 10%; width: auto; height: 2px; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-progress-panel .step-label { font-size: 8px !important; overflow-wrap: anywhere; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-info-card { padding: 8px 0 !important; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .detail-row { gap: 8px; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .detail-value { min-width: 0; overflow-wrap: anywhere; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .package-inclusion-row { grid-template-columns: 80px minmax(0, 1fr) !important; gap: 5px; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .package-inclusion-items { overflow-wrap: anywhere; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-info-reference { display: flex; flex-direction: row; justify-content: space-between; gap: 8px; }
+    .soft-sage-theme .customer-page-shell #rescheduleRequestCard .reschedule-summary > div:first-child { flex-wrap: wrap; gap: 5px !important; }
+}
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-incident :is(th, thead tr) { text-transform: none !important; letter-spacing: normal !important; }
+.soft-sage-theme .customer-page-shell .booking-info-card .package-inclusions-list { border: 0 !important; background: transparent !important; border-radius: 0 !important; }
+.soft-sage-theme .customer-page-shell .booking-info-card .package-inclusions-list .package-inclusion-row { border: 0 !important; background: transparent !important; padding: 2px 0 !important; margin: 0 !important; min-height: 0 !important; }
+.soft-sage-theme .customer-page-shell .booking-info-card .package-inclusions-list .package-inclusion-row :is(.package-category-label, .menu-list-item, .menu-list-item > div, .menu-list-item span) { line-height: 1.25 !important; margin-block: 0 !important; }
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-menu { border-top: 0 !important; }
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-menu h3 { border: 0 !important; }
+.soft-sage-theme .customer-page-shell .booking-info-card .booking-info-reference { border-bottom: 0 !important; }
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-info-card > h3 { margin: 0 0 6px !important; padding: 0 0 6px !important; }
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-info-card > .detail-row { padding: 4px 0 !important; margin: 0 !important; min-height: 0 !important; }
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-info-card .booking-info-reference { margin: 3px 0 5px !important; padding: 3px 0 !important; min-height: 0 !important; }
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-info-card .booking-info-menu { margin-top: 5px !important; padding-top: 3px !important; }
+
+/* Keep category labels separate from dishes on narrow screens. */
+@media (max-width: 768px) {
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-info-card .package-inclusions-list .package-inclusion-row {
+        grid-template-columns: minmax(88px, 32%) minmax(0, 1fr) !important;
+        column-gap: 14px;
+        align-items: start;
+        padding: 5px 0 !important;
+    }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-info-card .package-inclusion-row .package-category-label {
+        min-width: 0;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        letter-spacing: normal;
+    }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-info-card .package-inclusion-row :is(.package-category-label, .menu-list-item, .menu-list-item > div, .menu-list-item span) {
+        line-height: 1.5 !important;
+    }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-info-card .package-inclusion-items { min-width: 0; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-info-card .package-inclusion-items .menu-list-item + .menu-list-item { margin-top: 4px !important; }
+}
+/* Keep icon actions together in a compact, aligned toolbar. */
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions {
+    display: flex;
+    justify-content: flex-start;
+    min-width: 0;
+    margin: 8px 0 16px;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .sidebar-actions {
+    width: fit-content;
+    max-width: 100%;
+    min-width: 0;
+    padding: 5px !important;
+    margin: 0;
+    box-sizing: border-box;
+    border: 1px solid #96a38e !important;
+    border-radius: 12px;
+    background: #c9d2c1 !important;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5px;
+    padding: 0;
+    margin: 0;
+    overflow-x: auto !important;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 34px !important;
+    width: 34px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    min-width: 34px;
+    padding: 0 !important;
+    margin: 0;
+    border-radius: 8px;
+    font-size: 13px !important;
+    line-height: 1;
+    box-shadow: none;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons .btn i {
+    margin: 0;
+    width: 20px;
+    text-align: center;
+    line-height: 1;
+}
+@media (max-width: 600px) {
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions { justify-content: flex-start; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons { justify-content: flex-start; }
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions {
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+    margin: 0 0 12px;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions > .back-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 30px;
+    width: 30px;
+    height: 34px;
+    min-height: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+/* Keep the action row above booking progress in the page layout. */
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions {
+    align-self: start;
+    padding: 8px 0;
+    background: #d4dbcd;
+    border-bottom: 1px solid #a9b6a1;
+    box-shadow: 0 4px 8px rgb(32 55 43 / 5%);
+    box-sizing: border-box;
+    width: 100%;
+}
+@media (max-width:600px) {
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions {
+        gap: 6px;
+        padding: 6px 0;
+        flex-wrap: nowrap;
+    }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .sidebar-actions { min-width: 0; max-width: calc(100% - 36px); }
+}
+@media print {
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions { display: none !important; }
+}
+
+.soft-sage-theme .customer-page-shell .booking-details-container :is(.detail-value,.menu-list-item) {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+@media(max-width:600px) {
+    .soft-sage-theme .customer-page-shell > .container > .booking-details-container { scroll-padding-top: 64px; }
+}
+
+/* Keep booking content inside the panel without horizontal scrolling. */
+.soft-sage-theme .customer-page-shell > .container > .booking-details-container {
+    box-sizing: border-box;
+    max-width: 100%;
+    min-width: 0;
+    overflow-x: hidden;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions::before {
+    inset: 0;
+    box-shadow: -30px 0 #d4dbcd, 30px 0 #d4dbcd;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container :is(.booking-layout,.booking-main,.booking-sidebar,.detail-card,.detail-row) {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container :is(.detail-value,.reschedule-summary,.menu-list-item) {
+    overflow-wrap: anywhere;
+}
+
+/* Clear action contrast against the sage toolbar, including inline gold styles. */
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons .btn {
+    background: #edf2e7 !important;
+    color: #173d32 !important;
+    border: 1px solid #70876a !important;
+    box-shadow: 0 1px 3px rgb(23 61 50 / 10%);
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons .btn i {
+    color: inherit !important;
+    opacity: 1;
+    font-size: 15px;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons .btn-primary,
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons .btn[aria-label="Pay Balance"] {
+    background: #173d32 !important;
+    color: #fff !important;
+    border-color: #173d32 !important;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons .btn:hover:not(:disabled) {
+    background: #315f49 !important;
+    color: #fff !important;
+    border-color: #315f49 !important;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons .btn:focus-visible {
+    outline: 2px solid #173d32;
+    outline-offset: 2px;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons .btn:disabled {
+    opacity: 1 !important;
+    background: #cbd3c4 !important;
+    color: #52634c !important;
+    border-color: #9ba991 !important;
+    box-shadow: none;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons .pay-balance-icon {
+    display: block; flex: 0 0 20px; width: 20px; height: 20px;
+    color: inherit; stroke: currentColor; visibility: visible; opacity: 1;
+}
+
+/* Named booking actions remain readable and wrap on smaller screens. */
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions {
+    align-items: flex-start;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .sidebar-actions {
+    min-width: 0; max-width: calc(100% - 38px); flex: 0 1 auto;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons {
+    display: flex !important; flex-wrap: wrap !important; overflow: visible !important; gap: 6px;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons .btn {
+    flex: 0 1 auto !important; width: auto !important; height: auto !important;
+    min-width: 0; min-height: 40px !important; padding: 9px 12px !important;
+    gap: 7px; font-size: 12px !important; line-height: 1.35; white-space: normal !important;
+}
+.booking-action-label { display: inline; }
+@media (max-width: 600px) {
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .sidebar-actions { flex: 1 1 0; }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons {
+        display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: auto;
+    }
+    .soft-sage-theme .customer-page-shell .booking-details-container .booking-top-actions .action-buttons .btn {
+        width: 100% !important; min-height: 44px !important; padding: 8px !important; font-size: 11px !important;
+    }
+}
+
+.soft-sage-theme .booking-details-container .booking-info-card .booking-info-reference {
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.soft-sage-theme .booking-details-container .booking-info-menu {
+    background: #cbd7c5;
+    border-radius: 12px;
+    padding: 12px !important;
+}
+.soft-sage-theme .booking-details-container .booking-info-menu .package-summary-compact {
+    background: #becfb8 !important;
+    padding: 9px 12px !important;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .package-inclusions-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 245px), 1fr));
+    align-items: start;
+    gap: 8px;
+}
+.soft-sage-theme .customer-page-shell .booking-details-container .booking-info-card .package-inclusions-list .package-inclusion-row {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 5px;
+    background: #d7e0d2 !important;
+    border: 1px solid #b3c2ab !important;
+    border-radius: 8px;
+    padding: 8px 10px !important;
+    overflow-wrap: anywhere;
+}
+.soft-sage-theme .booking-details-container .package-inclusion-row .menu-list-item.is-swapped {
+    background: transparent;
+}
+.soft-sage-theme .booking-details-container .package-dish-replacement {
+    margin-top: 4px;
+    padding: 5px 8px;
+    background: #c3d5bc;
+    border-radius: 5px;
+    color: #214d35;
+    font-size: 13px;
+}
+.booking-confirmation-note {
+    margin: 8px 0;
+    padding: 10px 12px;
+    border: 1px solid #aab99f;
+    border-radius: 8px;
+    background: #cbd7c5;
+    color: #20372b;
+    font-size: 13px;
+    line-height: 1.45;
+}
+.booking-confirmation-note strong { display: block; margin-bottom: 3px; }
+#bookingPayBalance[data-downpayment-open] {
+    outline: 2px solid #729369;
+    outline-offset: 2px;
+}
+#bookingPayBalance[data-downpayment-open]:focus-visible { outline-color: #173d32; }
+@media (prefers-reduced-motion: no-preference) {
+    #bookingPayBalance[data-downpayment-open] .pay-balance-icon {
+        animation: booking-wallet-nudge 4s ease-in-out infinite;
+    }
+    @keyframes booking-wallet-nudge {
+        0%, 22%, 100% { transform: translateX(0); }
+        5%, 15% { transform: translateX(-2px); }
+        10%, 19% { transform: translateX(2px); }
+    }
+}

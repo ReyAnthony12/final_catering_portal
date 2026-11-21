@@ -1,0 +1,92 @@
+/* Booking payment detail: keep intrinsic content inside its grid track. */
+.container-fluid { width: 100%; min-width: 0; padding: 8px 0 24px; }
+.grid-container { grid-template-columns: minmax(0, 340px) minmax(0, 1fr); }
+.grid-container > *, .card, .timeline-content { min-width: 0; }
+.header-flex { gap: 20px; flex-wrap: wrap; padding: 22px 24px; border: 1px solid #393327; border-radius: 18px; background: linear-gradient(120deg, #292318, #151515 75%); }
+.header-title h1 { font-size: clamp(22px, 3vw, 30px); letter-spacing: -.7px; }
+.header-title p { line-height: 1.6; overflow-wrap: anywhere; }
+.card { border-color: #303030; border-radius: 18px; background: linear-gradient(145deg, #222, #191919); box-shadow: 0 10px 30px #0003; }
+.card h3 { display: flex; align-items: center; gap: 9px; font-size: 12px; letter-spacing: .8px; line-height: 1.5; color: #d8d3c7; }
+.card h3 i { color: var(--accent-gold); }
+.summary-row { gap: 12px; line-height: 1.6; align-items: baseline; }
+.summary-row > :first-child { min-width: 0; }
+.summary-row > :last-child { flex-shrink: 0; text-align: right; font-variant-numeric: tabular-nums; }
+.summary-row.balance { margin: 16px -4px -4px; padding: 14px 12px; border: 1px solid #d4af3738; border-radius: 12px; background: #d4af370c; color: #f3cf69; font-size: 18px; flex-wrap: wrap; }
+.action-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.action-grid .btn { min-width: 0; min-height: 84px; padding: 12px 5px !important; border-radius: 12px; font-size: 12px; }
+.action-grid .btn-primary { background: linear-gradient(135deg, #e7c65b, #c5a032); color: #19150b; }
+.btn:focus-visible, .receipt-preview-btn:focus-visible, .proof-link-btn:focus-visible { outline: 2px solid #f3cf69; outline-offset: 3px; }
+.section-subtext { line-height: 1.7; overflow-wrap: anywhere; }
+.receipt-gallery { grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); }
+.receipt-card { min-width: 0; }
+.receipt-card-top, .receipt-card-footer { flex-wrap: wrap; }
+.receipt-card-meta, .receipt-card-footer { line-height: 1.6; overflow-wrap: anywhere; }
+.receipt-preview-btn img { height: 190px; object-fit: contain; }
+.data-table { min-width: 650px; }
+.timeline-item { gap: 10px; flex-wrap: wrap; }
+.timeline-content { flex: 1 1 150px; margin-right: 0; overflow-wrap: anywhere; }
+.timeline-amount { max-width: 100%; overflow-wrap: anywhere; }
+.modal { padding: 16px; overflow-y: auto; overscroll-behavior: contain; z-index: 3000; }
+.modal-content { max-height: calc(100dvh - 32px); overflow-y: auto; }
+.proof-modal-shell { max-height: calc(100dvh - 32px); overflow-y: auto; }
+.proof-modal-title { padding-right: 38px; overflow-wrap: anywhere; }
+.form-control { min-height: 46px; font-size: 16px; }
+.payment-action-label { display: none; }
+/* Compact transaction cards keep related details together on phones. */
+@media (max-width: 768px) {
+    .payment-transactions-table { display: block; min-width: 0; width: 100%; border-collapse: separate; background: transparent; }
+    .payment-transactions-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+    .payment-transactions-table tbody { display: grid; gap: 12px; width: 100%; }
+    .payment-transactions-table tr {
+        display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-areas: "reference reference" "amount status" "date date" "type method" "receipt receipt" "action action";
+        gap: 0 14px; padding: 16px; border: 1px solid #3b382e; border-radius: 16px;
+        background: #1c1c1a; overflow: hidden; box-shadow: 0 4px 16px #0002;
+    }
+    .payment-transactions-table tr.payment-row-highlight { border-color: #b99a3e66; background: linear-gradient(145deg, #26241c, #1c1c1a 70%); }
+    .payment-transactions-table td {
+        display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+        gap: 5px; min-width: 0; padding: 10px 0; border: 0; background: transparent;
+        font-size: 13px; line-height: 1.5; overflow-wrap: anywhere;
+    }
+    .payment-transactions-table td::before { content: attr(data-label); color: #aaa79c; font-size: 10px; font-weight: 500; letter-spacing: .7px; text-transform: uppercase; }
+    .payment-transactions-table td:nth-child(1) { grid-area: reference; padding: 0 0 12px; border-bottom: 1px solid #ffffff12; font-size: 13px; }
+    .payment-transactions-table td:nth-child(2) { grid-area: date; padding-top: 0; }
+    .payment-transactions-table td:nth-child(2) > div:last-child:not(:first-child) { margin-top: 0 !important; font-size: 10px !important; color: #c5ad68 !important; }
+    .payment-transactions-table td:nth-child(3) { grid-area: type; border-top: 1px solid #ffffff0c; }
+    .payment-transactions-table td:nth-child(4) { grid-area: method; border-top: 1px solid #ffffff0c; }
+    .payment-transactions-table td:nth-child(5) { grid-area: amount; padding: 14px 0 10px; font-size: clamp(20px, 6vw, 26px); letter-spacing: -.5px; color: #f2d47c; font-variant-numeric: tabular-nums; }
+    .payment-transactions-table td:nth-child(6) { grid-area: status; align-items: flex-end; padding: 14px 0 10px; }
+    .payment-transactions-table td:nth-child(6)::before { display: none; }
+    .payment-transactions-table td:nth-child(6) > span { padding: 5px 9px; border: 1px solid #ffffff1c; background: #ffffff04; border-radius: 999px; font-size: 9px; letter-spacing: .4px; }
+    .payment-transactions-table td:nth-child(7) { grid-area: receipt; padding: 8px 0 0; }
+    .payment-transactions-table td:nth-child(7)::before, .payment-transactions-table td:nth-child(8)::before { display: none; }
+    .payment-transactions-table td:nth-child(8) { grid-area: action; padding: 8px 0 0; align-items: center; }
+    .payment-transactions-table td:nth-child(8) > span { font-size: 11px !important; color: #969488 !important; }
+    .payment-transactions-table td form { display: flex !important; flex-wrap: wrap; gap: 8px; width: 100%; }
+    .payment-transactions-table td form button { flex: 1; min-height: 44px; border: 1px solid #ffffff14; border-radius: 10px; padding: 10px; cursor: pointer; font-weight: 600; }
+    .payment-transactions-table .payment-action-label { display: inline; }
+    .payment-transactions-table .proof-link-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; width: 100%; min-height: 44px; border: 1px solid #c9ad5345; border-radius: 10px; background: #c9ad5310; color: #ead79d; font-size: 12px; font-weight: 600; cursor: pointer; }
+    .payment-transactions-table .proof-link-btn:hover { background: #c9ad5320; border-color: #c9ad5380; }
+    .payment-transactions-table td[colspan] { grid-column: 1 / -1; grid-area: auto; align-items: center; padding: 20px 0; }
+    .payment-transactions-table td[colspan]::before { display: none; }
+}
+@media (max-width: 1100px) {
+    .grid-container { grid-template-columns: minmax(0, 1fr); gap: 0; }
+}
+@media (max-width: 576px) {
+    .container-fluid { padding: 4px 0 16px; }
+    .header-flex { padding: 18px; margin-bottom: 16px; gap: 14px; }
+    .header-flex > div:last-child { width: 100%; }
+    .header-flex .btn { width: 100%; justify-content: center; min-height: 44px; }
+    .card { padding: 16px; margin-bottom: 16px; border-radius: 16px; }
+    .summary-row { font-size: 13px; }
+    .summary-row.total { font-size: 15px; }
+    .summary-row.balance { font-size: 17px; }
+    .page-stack { margin-top: 0; }
+    .timeline { padding-left: 10px; }
+    .timeline-item { padding-left: 20px; }
+    .empty-receipt-state { flex-wrap: wrap; text-align: center; line-height: 1.6; }
+    .proof-modal { padding: 12px; }
+    .proof-modal-shell { padding: 16px; }
+}

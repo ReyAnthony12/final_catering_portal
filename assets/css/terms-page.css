@@ -1,0 +1,28 @@
+html.terms-sage-theme { background: #c3cbbd; color-scheme: light; overflow-x: hidden !important; overflow-y: auto !important; }
+.terms-sage-theme body { overflow: visible !important; min-width: 0; }
+.terms-sage-theme body { background: #c3cbbd !important; color: #20372b; padding: 32px 20px; min-height: 100dvh; box-sizing: border-box; }
+.terms-sage-theme .container.terms-page { width: 100%; max-width: 1000px; margin: 0 auto; padding: 0; box-sizing: border-box; overflow: hidden; border: 1px solid #96a38e !important; border-radius: 22px; background: #edf1e7 !important; box-shadow: 0 12px 36px #173d3212; }
+.terms-sage-theme .terms-header { padding: 28px 40px 32px; background: #d4dbcd; border-bottom: 1px solid #a4b299; }
+.terms-sage-theme .terms-back { display: inline-flex; align-items: center; gap: 9px; min-height: 44px; padding: 10px 16px; border: 1px solid #426052; border-radius: 10px; background: #173d32; color: #f0f1e6; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+.terms-sage-theme .terms-back:hover { background: #2b5544; }
+.terms-sage-theme .terms-back:focus-visible, .terms-sage-theme .terms-content a:focus-visible { outline: 3px solid #426b53; outline-offset: 4px; }
+.terms-sage-theme .terms-header .terms-brand { margin: 28px 0 8px; color: #425642 !important; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+.terms-sage-theme .terms-header h1 { margin: 0; padding: 0; border: 0; color: #173d32 !important; font-size: clamp(28px,4vw,38px); line-height: 1.2; letter-spacing: -.7px; text-align: left; }
+.terms-sage-theme .terms-content { padding: 8px 40px 28px; overflow-wrap: anywhere; }
+.terms-sage-theme .terms-content :is(h2,h3,h4) { margin: 28px 0 16px; padding: 13px 16px; border-left: 4px solid #426b53; border-radius: 0 9px 9px 0; background: #dce3d5; color: #173d32 !important; font-size: 19px; line-height: 1.45; font-weight: 700; }
+.terms-sage-theme .terms-content :is(p,ul,ol,li) { color: #334d3e !important; font-size: 16px; line-height: 1.85; }
+.terms-sage-theme .terms-content :is(p,ul,ol) { margin: 0 0 18px; }
+.terms-sage-theme .terms-content :is(ul,ol) { padding-left: 25px; }
+.terms-sage-theme .terms-content li { margin-bottom: 10px; padding-left: 3px; }
+.terms-sage-theme .terms-content li::marker { color: #426b53; }
+.terms-sage-theme .terms-content strong { color: #173d32; }
+.terms-sage-theme .terms-content a { color: #245539; text-decoration: underline; text-underline-offset: 3px; }
+.terms-sage-theme .terms-page .footer-note { margin: 0; padding: 20px 24px; border-top: 1px solid #a4b299; background: #d4dbcd; color: #425642 !important; font-size: 13px; }
+@media(max-width:600px) {
+    .terms-sage-theme body { padding: 14px 12px; }
+    .terms-sage-theme .container.terms-page { border-radius: 16px; }
+    .terms-sage-theme .terms-header { padding: 20px 20px 26px; }
+    .terms-sage-theme .terms-content { padding: 2px 20px 20px; }
+    .terms-sage-theme .terms-content :is(h2,h3,h4) { padding: 12px; font-size: 17px; margin-top: 24px; }
+    .terms-sage-theme .terms-content :is(p,ul,ol,li) { font-size: 15px; line-height: 1.8; }
+}

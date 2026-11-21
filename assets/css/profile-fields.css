@@ -1,0 +1,12 @@
+.profile-current-address { font-size: 13px; line-height: 1.5; color: #425642; overflow-wrap: anywhere; }
+.ph-address-picker { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 14px; }
+.ph-address-picker > div { min-width: 0; }
+.ph-address-islands { grid-column: 1/-1; }
+.ph-address-picker label { display: block; margin-bottom: 7px; color: #425642; font-size: 14px; }
+.ph-address-picker select { width: 100%; min-height: 48px; box-sizing: border-box; border: 1px solid #96a38e; border-radius: 10px; padding: 10px 12px; background: #c9d2c1; color: #20372b; font: inherit; font-size: 16px; color-scheme: light; }
+.ph-address-picker select option { background: #d4dbcd; color: #20372b; }
+.ph-address-picker select:disabled { opacity: .65; }
+.ph-address-picker select:focus-visible { outline: 2px solid #426b53; outline-offset: 2px; }
+.ph-address-help { display: block; color: #425642; font-size: 13px; line-height: 1.5; margin-top: 10px; }
+#address-retry[hidden] { display: none; }
+@media(max-width:540px) { .ph-address-picker { grid-template-columns: minmax(0,1fr); } }

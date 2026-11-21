@@ -1,0 +1,99 @@
+/* Render the same layout on initial load and every live refresh. */
+.admin-workspace .payouts-page .finance-shell { display: grid; gap: 20px; width: 100%; max-width: 1440px; margin-inline: auto; }
+.payouts-page .finance-heading h1 { margin: 0 0 10px; font-size: clamp(22px, 2.1vw, 30px); line-height: 1.2; letter-spacing: -.035em; color: #f5f5f5; }
+.payouts-page .finance-heading p, .payouts-page .finance-caption { margin: 0; color: #a7adb7; font-size: 13px; line-height: 1.65; }
+.admin-workspace .payouts-page .finance-kpi-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.admin-workspace .payouts-page .finance-kpi-card { display: flex; flex-direction: column; min-width: 0; padding: 12px 14px; border: 1px solid #303640; border-radius: 14px; background: linear-gradient(145deg, #20252c, #171b20); }
+.payouts-page .finance-kpi-card:first-child { border-color: #756137; }
+.payouts-page .finance-kpi-label { color: #c4c9d0; font-size: 12px; line-height: 1.5; }
+.admin-workspace .payouts-page .finance-kpi-value { margin: 8px 0 0; font-size: clamp(20px, 1.6vw, 25px); font-weight: 800; line-height: 1.2; color: #fff; letter-spacing: -.035em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.payouts-page .finance-kpi-card .finance-caption { margin-top: auto; font-size: 12px; }
+.payouts-page .finance-section h3 { margin: 0 0 20px; font-size: 20px; line-height: 1.35; color: #f5f5f5; letter-spacing: -.025em; }
+.payouts-page .finance-section > .finance-caption { margin-bottom: 22px; }
+.payouts-page .finance-table-wrap { overflow-x: auto; border: 1px solid #303640; border-radius: 12px; }
+.payouts-page .finance-table { width: 100%; min-width: 900px; border-collapse: collapse; }
+.payouts-page .finance-table th { padding: 16px; color: #cbb680; text-align: left; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; background: #14181e; }
+.payouts-page .finance-table td { padding: 18px 16px; border-top: 1px solid #2b3038; color: #e5e7eb; font-size: 13px; line-height: 1.6; overflow-wrap: anywhere; }
+.payouts-page .finance-table td small { display: block; color: #a7adb7; margin-top: 5px; }
+.payouts-page .finance-money { font-weight: 700; font-variant-numeric: tabular-nums; }
+.payouts-page .finance-status { display: inline-block; max-width: 100%; padding: 4px 8px; border-radius: 8px; background: #30343b; color: #c8ccd3; font-size: 10px; line-height: 1.4; }
+.payouts-page .finance-status.paid { background: #203c30; color: #9ed8b3; }
+.payouts-page .finance-status.pending { background: #3c3421; color: #e4c674; }
+.payouts-page .finance-status.rejected { background: #3c282a; color: #e8a3a9; }
+.payouts-page .finance-link { display: inline-flex; align-items: center; min-height: 44px; color: #e2bf63; margin-top: 14px; font-size: 13px; text-underline-offset: 4px; }
+.payouts-page .finance-empty { text-align: center; color: #a7adb7; }
+.payouts-page .finance-caterer { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.payouts-page .finance-avatar { display: flex; align-items: center; justify-content: center; flex: 0 0 34px; width: 34px; height: 34px; border-radius: 50%; object-fit: cover; background: #e2bf6318; border: 1px solid #e2bf6340; color: #e2bf63; font-size: 16px; font-weight: 700; }
+.payouts-page .finance-caterer-copy { min-width: 0; overflow-wrap: anywhere; }
+.payouts-page .finance-history-header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
+.payouts-page .finance-history-header h3 { margin: 0; }
+.payouts-page .finance-coverage-filter { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.payouts-page .finance-coverage-filter label { font-size: 12px; color: #a7adb7; }
+.payouts-page .finance-coverage-filter select { min-height: 44px; max-width: 100%; padding: 8px 12px; border: 1px solid #353c46; border-radius: 10px; background: #171b20; color: #e5e7eb; font: inherit; font-size: 14px; }
+.payouts-page .finance-manage { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 12px; border: 1px solid #e2bf6340; border-radius: 9px; color: #e2bf63; font-size: 12px; text-decoration: none; }
+.payouts-page .coverage-expiring { background: #48371f; color: #ffd18a; }
+.payouts-page .coverage-expired { background: #3c282a; color: #e8a3a9; }
+.payouts-page .coverage-active { background: #203c30; color: #9ed8b3; }
+@media (min-width: 1101px) {
+    .payouts-page .finance-table { min-width: 0; table-layout: fixed; }
+    .payouts-page .finance-table th:first-child { width: 24%; }
+    .payouts-page .finance-table th:nth-child(6) { width: 18%; }
+    .payouts-page .finance-table th, .payouts-page .finance-table td { padding: 12px 10px; }
+}
+@media (max-width: 1200px) {
+    .admin-workspace .payouts-page .finance-kpi-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 768px) {
+    .payouts-page .finance-coverage-filter { width: 100%; }
+    .payouts-page .finance-coverage-filter label { width: 100%; }
+    .payouts-page .finance-coverage-filter select { flex: 1; min-width: 0; font-size: 16px; }
+    .admin-workspace .payouts-page .finance-shell { gap: 16px; }
+    .payouts-page .finance-heading h1 { font-size: clamp(22px, 5.5vw, 26px); }
+    .admin-workspace .payouts-page .finance-kpi-grid { gap: 10px; }
+    .admin-workspace .payouts-page .finance-kpi-card { padding: 12px; border-radius: 12px; }
+    .payouts-page .finance-kpi-label { min-height: 32px; font-size: 11px; }
+    .admin-workspace .payouts-page .finance-kpi-value { font-size: clamp(20px, 5vw, 24px); margin-top: 6px; }
+    .admin-workspace .payouts-page .workspace-records tbody > tr { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 10px; padding: 14px 12px; }
+    .admin-workspace .payouts-page .workspace-records td:first-child { grid-column: 1 / -1; padding-bottom: 10px; border-bottom: 1px solid #303640; }
+    .admin-workspace .payouts-page .workspace-records td[colspan] { grid-column: 1 / -1; border: 0; }
+    .payouts-page .finance-section h3 { font-size: 17px; }
+}
+@media (max-width: 299px) {
+    .admin-workspace .payouts-page .finance-kpi-grid,
+    .admin-workspace .payouts-page .workspace-records tbody > tr { grid-template-columns: minmax(0, 1fr); }
+    .payouts-page .finance-kpi-label { min-height: 0; }
+}
+
+/* Compact sizing is scoped to this page so shared workspace rules cannot enlarge it. */
+.payouts-page .finance-profile-link { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 44px; color: inherit; text-decoration: none; border-radius: 8px; }
+.payouts-page .finance-profile-link:hover strong { color: #e2bf63; text-decoration: underline; text-underline-offset: 3px; }
+.payouts-page .finance-expired-badge { display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 999px; background: #c83e49; color: #fff; font-size: 11px; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.payouts-page .finance-expired-link { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; color: #f0a7ae; font-size: 12px; text-decoration: none; }
+.payouts-page .finance-profile-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr)); gap: 10px; }
+.payouts-page .finance-profile-card { padding: 12px; border: 1px solid #303640; background: #181d23; border-radius: 12px; }
+.payouts-page .finance-profile-card:hover { border-color: #e2bf6370; background: #1e232a; }
+.payouts-page .finance-detail-profile { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid #303640; }
+.payouts-page .finance-detail-profile small { display: block; margin-top: 6px; color: #a7adb7; font-size: 12px; }
+.payouts-page .finance-caterer-list { min-width: 620px; }
+@media (min-width: 1101px) {
+    .payouts-page .finance-caterer-list { min-width: 0; }
+    .payouts-page .finance-caterer-list th:first-child { width: 36%; }
+    .payouts-page .finance-payment-records th:first-child { width: 16%; }
+}
+.admin-workspace .payouts-page .finance-section { padding: 20px; border-radius: 16px; }
+.admin-workspace .payouts-page .finance-table td { font-size: 12px; line-height: 1.45; vertical-align: middle; }
+.payouts-page .finance-table td small { font-size: 11px; line-height: 1.45; margin-top: 4px; }
+.payouts-page .finance-table th { font-size: 9px; line-height: 1.5; letter-spacing: .04em; }
+.payouts-page .finance-caterer-copy strong { font-size: 12px; line-height: 1.45; }
+.payouts-page .finance-manage { font-size: 11px; padding: 6px 10px; }
+@media (max-width: 768px) {
+    .admin-workspace .payouts-page .finance-section { padding: 12px; border-radius: 14px; }
+    .admin-workspace .payouts-page .finance-kpi-grid { gap: 8px; }
+    .admin-workspace .payouts-page .finance-kpi-card { padding: 10px 11px; border-radius: 10px; }
+    .admin-workspace .payouts-page .finance-kpi-label { min-height: 0; font-size: 10px; line-height: 1.4; }
+    .admin-workspace .payouts-page .finance-kpi-value { margin-top: 7px; font-size: 18px; line-height: 1.2; }
+    .admin-workspace .payouts-page .workspace-records tbody { gap: 10px; }
+    .admin-workspace .payouts-page .workspace-records td[data-label]::before { font-size: 9px; letter-spacing: .6px; margin-bottom: 4px; line-height: 1.4; }
+    .payouts-page .finance-history-header { gap: 10px; margin-bottom: 14px; }
+    .payouts-page .finance-avatar { flex-basis: 32px; width: 32px; height: 32px; }
+}

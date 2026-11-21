@@ -1,0 +1,126 @@
+/* Standalone payment details; embedded dialogs retain their own layout. */
+body:not(.balance-embedded) .customer-page-shell > .container:has(.payment-details-container) { width:100%; max-width:none; padding:12px; box-sizing:border-box; }
+body:not(.balance-embedded) .payment-details-container {
+    width:100%; box-sizing:border-box; min-width:0;
+    overflow-y:auto; overflow-x:hidden; overscroll-behavior-y:contain;
+    scrollbar-gutter:stable; scrollbar-width:thin; scrollbar-color:#708b6b #c9d2c1;
+    border-radius:10px; font-size:12px; line-height:1.45;
+}
+body:not(.balance-embedded) .payment-details-container .payment-details-heading { padding:10px 12px; }
+body:not(.balance-embedded) .payment-details-heading > a { font-size:12px; margin-bottom:8px !important; }
+body:not(.balance-embedded) .payment-details-container :is(h1,h2) { font-size:20px !important; margin:0 !important; }
+body:not(.balance-embedded) .payment-details-container :is(h3,h4) { font-size:14px !important; margin-bottom:10px !important; padding-bottom:7px !important; }
+body:not(.balance-embedded) .payment-details-container .stat-card { padding:12px; min-width:0; }
+body:not(.balance-embedded) .payment-details-container .stat-row { font-size:12px; margin-bottom:8px; gap:10px; }
+body:not(.balance-embedded) .payment-details-container .stat-row.total { padding-top:9px; font-size:14px; }
+body:not(.balance-embedded) .payment-details-container :is(.badge-status,.timeline-title,.timeline-amount) { font-size:11px; }
+body:not(.balance-embedded) .payment-details-container .timeline-date { font-size:10px; }
+body:not(.balance-embedded) .payment-details-container .timeline-item { padding-left:18px; margin-bottom:12px; }
+body:not(.balance-embedded) .payment-details-container :is(td,th) { padding:8px !important; font-size:11px !important; overflow-wrap:anywhere; }
+body:not(.balance-embedded) .payment-details-container #timeline-container { max-height:none !important; overflow:visible !important; }
+body:not(.balance-embedded) .payment-details-container :is(#balance-disp,#amount-to-upload-disp) { font-size:18px !important; }
+body:not(.balance-embedded) .payment-details-container .finance-right-col > .stat-card > div[style*="border-top"] { margin-top:10px !important; padding-top:10px !important; }
+body:not(.balance-embedded) .payment-details-container .btn { min-height:40px; padding:8px 10px; font-size:12px; }
+@media(max-width:600px) {
+ body:not(.balance-embedded) .payment-details-container .stat-card { padding:10px; }
+ body:not(.balance-embedded) .payment-details-container :is(h1,h2) { font-size:17px !important; }
+ body:not(.balance-embedded) .payment-details-container .table-custom tr { padding:8px !important; margin-bottom:8px; }
+}
+
+/* Fill the available page area while keeping the whole panel scrollable. */
+body:not(.balance-embedded) .customer-page-shell > .container:has(.payment-details-container) {
+    width: 100% !important; max-width: none !important;
+    padding: 10px 12px !important; margin-inline: 0 !important;
+    margin-bottom: 0 !important;
+    display: flex; flex-direction: column;
+}
+body:not(.balance-embedded) .payment-details-container {
+    width: 100% !important; max-width: none !important; margin: 0 !important;
+    flex: 1 0 auto;
+    display: flex; flex-direction: column;
+}
+body:not(.balance-embedded) .payment-details-container .payment-details-heading { flex: 0 0 auto; }
+body:not(.balance-embedded) .payment-details-container .finance-grid { flex: 1 0 auto; min-width: 0; width: 100%; }
+@media(max-width:600px) {
+    body:not(.balance-embedded) .customer-page-shell > .container:has(.payment-details-container) { padding: 8px !important; }
+}
+
+/* Bound the mobile panel so long details scroll inside its border. */
+@media (max-width: 768px) {
+    html:has(body:not(.balance-embedded) .payment-details-container),
+    body:not(.balance-embedded):has(.payment-details-container) {
+        height: 100%;
+        overflow: hidden !important;
+    }
+
+    body:not(.balance-embedded):has(.payment-details-container) .customer-page-shell {
+        height: 100vh;
+        height: 100dvh;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    body:not(.balance-embedded) .customer-page-shell > .container:has(.payment-details-container) {
+        flex: 1 1 0;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    body:not(.balance-embedded) .payment-details-container {
+        flex: 1 1 0;
+        height: auto;
+        min-height: 0;
+        overflow-y: scroll;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    body:not(.balance-embedded) .payment-details-container::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    body:not(.balance-embedded) .payment-details-container::-webkit-scrollbar-track {
+        background: #c9d2c1;
+    }
+
+    body:not(.balance-embedded) .payment-details-container::-webkit-scrollbar-thumb {
+        background: #708b6b;
+        border-radius: 6px;
+    }
+}
+
+/* Compact booking title. */
+body:not(.balance-embedded) .payment-details-container .payment-details-heading :is(h1,h2) {
+    font-size: 16px !important; line-height: 1.3 !important;
+}
+@media(max-width:600px) {
+    body:not(.balance-embedded) .payment-details-container .payment-details-heading :is(h1,h2) { font-size: 14px !important; }
+}
+
+/* Pending payment status is plain red text. */
+.payment-details-container .payment-details-title .badge-status.bg-pending {
+    background: transparent !important; background-image: none !important;
+    border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
+    padding: 0 !important; min-width: 0 !important; min-height: 0 !important;
+    color: #b42318 !important; -webkit-text-fill-color: #b42318 !important;
+}
+
+/* Status indicators use plain sentence-case text. */
+:is(.payments-center,.payment-details-container) :is(.status-badge,.badge-status) {
+ background: transparent !important; background-image: none !important;
+ border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
+ padding: 0 !important; min-width: 0 !important; min-height: 0 !important;
+ text-transform: none !important; letter-spacing: normal !important;
+}
+
+.payment-proof-received { display: none; }
+.balance-embedded .payment-proof-received {
+    display: grid;
+    gap: 4px;
+    margin: 8px 8px 0;
+    padding: 10px 12px;
+    border: 1px solid #8ca285;
+    border-radius: 8px;
+    background: #bacdb3;
+    color: #173d32;
+}

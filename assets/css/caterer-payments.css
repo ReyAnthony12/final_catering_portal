@@ -1,0 +1,974 @@
+/* Compact payment inbox and booking details. */
+body.bounded-caterer-page .main-content :is(.fas,.far,.fab,.fa) { display: none !important; }
+body.bounded-caterer-page .caterer-workspace .kpi-grid { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; margin-bottom: 8px; }
+body.bounded-caterer-page .caterer-workspace .kpi-card { padding: 7px 10px; min-width: 0; gap: 0; }
+body.bounded-caterer-page .caterer-workspace .kpi-card:hover { transform: none; }
+body.bounded-caterer-page .kpi-info h3 { font-size: 11px; line-height: 1.3; }
+body.bounded-caterer-page .kpi-info .value { font-size: 17px; line-height: 1.2; margin-top: 3px; overflow-wrap: anywhere; }
+body.bounded-caterer-page .payment-status-card .section-header { margin-bottom: 12px; }
+body.bounded-caterer-page .payment-customer { border-radius: 10px; margin-top: 8px; background: transparent; }
+body.bounded-caterer-page .payment-customer .booking-customer-summary { min-height: 58px; padding: 10px 14px; gap: 10px; }
+body.bounded-caterer-page .payment-customer .customer-avatar { width: 34px; height: 34px; flex: 0 0 34px; border-radius: 50%; overflow: hidden; }
+body.bounded-caterer-page .payment-customer .customer-heading { flex: 1; min-width: 0; }
+body.bounded-caterer-page .payment-customer .customer-heading strong { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-size: 14px; overflow-wrap: anywhere; }
+body.bounded-caterer-page .payment-name-badge { display: inline-block; margin-inline-start: 6px; padding: 2px 7px; border-radius: 9px; background: #e1d5b5; color: #523b15; font-size: 11px; font-weight: 700; vertical-align: middle; }
+body.bounded-caterer-page .payment-customer .customer-balance { margin-left: auto; font-size: 13px; overflow-wrap: anywhere; }
+body.bounded-caterer-page .payment-customer .customer-bookings { padding: 0 12px 12px; }
+body.bounded-caterer-page .payment-booking { padding: 12px; margin-top: 8px; border-radius: 8px; }
+body.bounded-caterer-page .payment-booking .booking-amounts { margin: 10px 0; gap: 10px; }
+body.bounded-caterer-page .payment-booking .booking-top { gap: 8px; }
+body.bounded-caterer-page .payment-booking .status-badge { text-transform: none !important; background: transparent !important; border: 0 !important; box-shadow: none !important; border-radius: 0; padding: 0; font-size: 12px; }
+@media (max-width: 600px) {
+ body.bounded-caterer-page .caterer-workspace .kpi-card { padding: 7px 8px; }
+ body.bounded-caterer-page .kpi-info h3 { font-size: 11px; }
+ body.bounded-caterer-page .kpi-info .value { font-size: 15px; }
+ body.bounded-caterer-page .payment-customer .booking-customer-summary { padding: 9px 10px; gap: 8px; flex-wrap: wrap; }
+ body.bounded-caterer-page .payment-customer .customer-balance { max-width: 100%; }
+ body.bounded-caterer-page .payment-booking .booking-amounts { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); }
+ body.bounded-caterer-page .payment-booking .booking-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+ body.bounded-caterer-page .payment-booking .booking-top { flex-wrap: wrap; }
+}
+
+/* Fill the available panel while the categories stay above the scrolling list. */
+body.bounded-caterer-page .caterer-workspace:has(.payment-status-card) { display: flex; flex-direction: column; overflow: hidden; }
+body.bounded-caterer-page .caterer-workspace > .container-fluid:has(.payment-status-card) { display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; overflow: hidden; }
+body.bounded-caterer-page .caterer-workspace .kpi-grid { flex-shrink: 0; }
+body.bounded-caterer-page .caterer-workspace .payment-status-card { display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; margin-bottom: 0; overflow: hidden; }
+body.bounded-caterer-page .payment-status-card > .section-header,
+body.bounded-caterer-page .payment-status-card > .payment-tabs { flex-shrink: 0; }
+body.bounded-caterer-page .payment-status-card > .tab-content { flex: 1 1 0; min-height: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-gutter: stable; padding-right: 4px; }
+/* Keep all payment metrics on one row at every screen width. */
+body.bounded-caterer-page .caterer-workspace .container-fluid > .kpi-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+body.bounded-caterer-page .caterer-workspace .container-fluid > .kpi-grid > .kpi-card { grid-column: auto; width: auto; min-width: 0; }
+@media (max-width: 600px) {
+ body.bounded-caterer-page .caterer-workspace .container-fluid > .kpi-grid { gap: 5px; }
+ body.bounded-caterer-page .caterer-workspace .container-fluid > .kpi-grid > .kpi-card { padding: 7px 5px; }
+ body.bounded-caterer-page .kpi-info { min-width: 0; width: 100%; }
+ body.bounded-caterer-page .kpi-info h3 { font-size: 10px; min-height: 26px; }
+ body.bounded-caterer-page .kpi-info .value { font-size: clamp(10px, 2.7vw, 15px); white-space: nowrap; overflow-wrap: normal; }
+}
+body.bounded-caterer-page .main-content .payment-back-symbol { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; margin: 0 0 10px; padding: 0; border: 0; background: transparent; box-shadow: none; color: #173d32; text-decoration: none; font-size: 26px; line-height: 1; }
+body.bounded-caterer-page .main-content .payment-back-symbol:focus-visible { outline: 2px solid #173d32; outline-offset: 2px; border-radius: 6px; }
+@media (pointer: coarse) { body.bounded-caterer-page .main-content .payment-back-symbol { width: 44px; height: 44px; } }
+/* Adapt the booking row to the actual space inside its customer panel. */
+body.bounded-caterer-page .payment-customer .customer-bookings { container-type: inline-size; overflow-x: hidden; }
+body.bounded-caterer-page .payment-customer .payment-booking { display: grid; grid-template-columns: minmax(115px,.8fr) 88px minmax(0,3fr) auto; align-items: center; gap: 14px; min-width: 0; width: 100%; box-sizing: border-box; padding: 12px; }
+body.bounded-caterer-page .payment-booking .booking-top { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 4px; min-width: 0; }
+body.bounded-caterer-page .payment-booking .booking-top .status-badge { white-space: normal; background: transparent !important; background-image: none !important; line-height: 1.4; }
+body.bounded-caterer-page .payment-booking .booking-date { margin: 0; font-size: 12px; white-space: normal; }
+body.bounded-caterer-page .payment-booking .booking-amounts { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; margin: 0; min-width: 0; }
+body.bounded-caterer-page .payment-booking .booking-amounts > div { min-width: 0; }
+body.bounded-caterer-page .payment-booking .booking-amounts dt { font-size: 11px; }
+body.bounded-caterer-page .payment-booking .booking-amounts dd { font-size: 13px; white-space: normal; overflow-wrap: anywhere; }
+body.bounded-caterer-page .payment-booking .booking-actions { display: flex; flex-wrap: nowrap; gap: 8px; margin: 0; }
+body.bounded-caterer-page .payment-booking .booking-actions .action-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; padding: 9px 10px; font-size: 12px; white-space: nowrap; }
+@container (max-width: 900px) {
+ body.bounded-caterer-page .payment-customer .payment-booking { grid-template-columns: minmax(0,1fr) auto; gap: 12px; }
+ body.bounded-caterer-page .payment-booking .booking-date { text-align: right; }
+ body.bounded-caterer-page .payment-booking .booking-amounts { grid-column: 1 / -1; }
+ body.bounded-caterer-page .payment-booking .booking-actions { grid-column: 1 / -1; justify-content: flex-end; }
+}
+@container (max-width: 450px) {
+ body.bounded-caterer-page .payment-customer .payment-booking { padding: 10px; }
+ body.bounded-caterer-page .payment-booking .booking-amounts { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+ body.bounded-caterer-page .payment-booking .booking-actions > a { flex: 1; }
+ body.bounded-caterer-page .payment-booking .booking-actions .action-btn { min-height: 44px; }
+}
+/* Tighter summary strip while retaining three columns. */
+body.bounded-caterer-page .caterer-workspace .container-fluid > .kpi-grid { gap: 5px; margin-bottom: 6px; }
+body.bounded-caterer-page .caterer-workspace .container-fluid > .kpi-grid > .kpi-card { padding: 5px 8px; border-radius: 7px; }
+body.bounded-caterer-page .caterer-workspace .kpi-info h3 { font-size: 10px; line-height: 1.2; min-height: 0; }
+body.bounded-caterer-page .caterer-workspace .kpi-info .value { font-size: 15px; line-height: 1.15; margin-top: 2px; }
+@media (max-width: 600px) {
+ body.bounded-caterer-page .caterer-workspace .container-fluid > .kpi-grid { gap: 4px; }
+ body.bounded-caterer-page .caterer-workspace .container-fluid > .kpi-grid > .kpi-card { padding: 5px; }
+ body.bounded-caterer-page .caterer-workspace .kpi-info h3 { font-size: 9px; min-height: 22px; }
+ body.bounded-caterer-page .caterer-workspace .kpi-info .value { font-size: clamp(10px, 2.5vw, 13px); }
+}
+/* Remove remaining inherited height from the compact payment summaries. */
+body.bounded-caterer-page .caterer-workspace .container-fluid > .kpi-grid { gap: 4px; margin-bottom: 5px; }
+body.bounded-caterer-page .caterer-workspace .container-fluid > .kpi-grid > .kpi-card { min-height: 0; padding: 4px 6px; border-radius: 6px; }
+body.bounded-caterer-page .caterer-workspace .kpi-info h3 { min-height: 0; margin: 0; font-size: 9px; line-height: 1.15; }
+body.bounded-caterer-page .caterer-workspace .kpi-info .value { margin-top: 2px; font-size: 13px; line-height: 1.1; }
+@media (max-width: 600px) {
+ body.bounded-caterer-page .caterer-workspace .container-fluid > .kpi-grid > .kpi-card { padding: 4px; }
+ body.bounded-caterer-page .caterer-workspace .kpi-info h3 { font-size: 8px; min-height: 0; }
+ body.bounded-caterer-page .caterer-workspace .kpi-info .value { font-size: clamp(9px, 2.4vw, 12px); }
+}
+/* Keep the booking reference and its status together on a single line. */
+body.bounded-caterer-page .payment-booking .booking-top { flex-direction: row; align-items: center; flex-wrap: nowrap; gap: 8px; }
+body.bounded-caterer-page .payment-booking .booking-top > a,
+body.bounded-caterer-page .payment-booking .booking-top .status-badge { white-space: nowrap; flex-shrink: 0; }
+body.bounded-caterer-page .payment-customer .payment-booking { grid-template-columns: minmax(155px,1fr) 88px minmax(0,3fr) auto; }
+@container (max-width: 900px) {
+ body.bounded-caterer-page .payment-customer .payment-booking { grid-template-columns: minmax(155px,1fr) auto; }
+}
+@container (max-width: 320px) {
+ body.bounded-caterer-page .payment-booking .booking-top { grid-column: 1 / -1; }
+ body.bounded-caterer-page .payment-booking .booking-date { grid-column: 1 / -1; text-align: left; }
+}
+body.bounded-caterer-page .payment-name-badge[hidden] { display: none !important; }
+
+/* Align booking reference and status with the left edge of the row. */
+body.bounded-caterer-page .payment-booking .booking-top { justify-content: flex-start; text-align: left; margin: 0; padding: 0; }
+body.bounded-caterer-page .payment-booking .booking-top > a { margin: 0; padding: 0; text-align: left; }
+/* Slightly larger metrics for comfortable reading. */
+body.bounded-caterer-page .caterer-workspace .container-fluid > .kpi-grid > .kpi-card { padding: 8px 10px; }
+body.bounded-caterer-page .caterer-workspace .kpi-info h3 { font-size: 11px; line-height: 1.3; }
+body.bounded-caterer-page .caterer-workspace .kpi-info .value { font-size: 17px; line-height: 1.2; margin-top: 3px; }
+@media (max-width: 600px) {
+ body.bounded-caterer-page .caterer-workspace .container-fluid > .kpi-grid > .kpi-card { padding: 7px 5px; }
+ body.bounded-caterer-page .caterer-workspace .kpi-info h3 { font-size: 10px; }
+ body.bounded-caterer-page .caterer-workspace .kpi-info .value { font-size: clamp(10px, 2.7vw, 14px); }
+}
+/* Confirmation dialog matches the existing sage modals. */
+dialog#booking-action-confirm { box-sizing: border-box; width: min(380px,calc(100% - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: 52px 24px 24px; border: 1px solid #96a38e; border-radius: 16px; background: #e4eadf; color: #20372b; box-shadow: 0 20px 60px #0004; overflow-y: auto; }
+dialog#booking-action-confirm::backdrop { background: #10251ccc; backdrop-filter: blur(4px); }
+#booking-action-confirm h2 { margin: 0 0 10px; font-size: 20px; line-height: 1.3; }
+#booking-action-confirm p { margin: 0 0 22px; font-size: 14px; line-height: 1.5; }
+#booking-action-confirm .booking-confirm-close { position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; border: 0; background: transparent; color: #173d32; font-size: 24px; cursor: pointer; }
+.booking-confirm-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; }
+.booking-confirm-actions button { min-height: 44px; padding: 10px 16px; border: 1px solid #173d32; border-radius: 8px; background: #173d32; color: #fff; font: inherit; font-size: 13px; cursor: pointer; }
+.booking-confirm-actions .booking-confirm-cancel { background: transparent; color: #173d32; border-color: #96a38e; }
+#booking-action-confirm button:focus-visible { outline: 2px solid #173d32; outline-offset: 2px; }
+
+/* Plain black booking references and payment statuses. */
+body.bounded-caterer-page .main-content .payment-booking .booking-top > a,
+body.bounded-caterer-page .main-content .payment-booking .booking-top .status-badge { color: #000 !important; }
+/* Show completion only after the booking update succeeds. */
+dialog#payment-action-success { box-sizing: border-box; width: min(340px,calc(100% - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: 54px 24px 26px; border: 1px solid #96a38e; border-radius: 18px; background: #e4eadf; color: #20372b; text-align: center; box-shadow: 0 20px 60px #0004; overflow-y: auto; }
+dialog#payment-action-success::backdrop { background: #10251ccc; backdrop-filter: blur(4px); }
+#payment-action-success .payment-success-close { position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; border: 0; background: transparent; color: #173d32; font-size: 24px; cursor: pointer; }
+#payment-action-success .payment-success-check { display: grid; place-items: center; width: 48px; height: 48px; margin: 0 auto 14px; border-radius: 50%; background: #c5d8c5; color: #173d32; font-size: 22px; }
+#payment-action-success h2 { margin: 0 0 8px; font-size: 21px; }
+#payment-action-success p { margin: 0; font-size: 14px; line-height: 1.6; }
+#payment-action-success button:focus-visible { outline: 2px solid #173d32; outline-offset: 2px; }
+
+/* Acknowledge completed payment actions with an OK button. */
+dialog#payment-action-success { padding-top: 28px; }
+#payment-action-success .payment-success-ok { min-width: 100px; min-height: 44px; margin-top: 20px; padding: 10px 24px; border: 0; border-radius: 9px; background: #173d32; color: #fff; font: inherit; font-size: 14px; cursor: pointer; }
+/* Compact customer and expanded booking containers. */
+body.bounded-caterer-page .payment-customer { margin-top: 6px; border-radius: 8px; }
+body.bounded-caterer-page .payment-customer .booking-customer-summary { min-height: 46px; padding: 7px 12px; gap: 8px; }
+body.bounded-caterer-page .payment-customer .customer-avatar { width: 30px; height: 30px; flex-basis: 30px; }
+body.bounded-caterer-page .payment-customer .customer-bookings { padding: 0 8px 8px; }
+body.bounded-caterer-page .payment-customer .payment-booking { padding: 8px 10px; gap: 10px; margin-top: 6px; border-radius: 7px; }
+body.bounded-caterer-page .payment-booking .booking-amounts { gap: 10px; }
+body.bounded-caterer-page .payment-booking .booking-amounts dt { margin-bottom: 3px; }
+body.bounded-caterer-page .payment-booking .booking-actions { gap: 6px; }
+body.bounded-caterer-page .payment-booking .booking-actions .action-btn { min-height: 36px; padding: 7px 9px; }
+@media (pointer: coarse) {
+ body.bounded-caterer-page .payment-booking .booking-actions .action-btn { min-height: 44px; }
+}
+/* Booking detail sections open only when their heading button is selected. */
+body.bounded-caterer-page .caterer-workspace .card.payment-detail-section { padding: 0; overflow: hidden; }
+.payment-detail-toggle { display: block; width: 100%; min-height: 46px; padding: 12px 14px; border: 0; background: transparent; color: #20372b; font: inherit; font-size: 14px; font-weight: 650; text-align: left; cursor: pointer; }
+.payment-detail-toggle[aria-expanded="true"] { border-bottom: 1px solid #96a38e; }
+.payment-detail-toggle:focus-visible { outline: 2px solid #173d32; outline-offset: -3px; }
+.payment-detail-panel { padding: 14px; min-width: 0; overflow-wrap: anywhere; }
+.payment-detail-panel[hidden] { display: none !important; }
+@media (max-width: 600px) { .payment-detail-panel { padding: 10px; } }
+
+/* Use the portal palette and readable symbols throughout booking details. */
+body.bounded-caterer-page .payment-detail-toggle { border-radius: 0; background: #c9d2c1; color: #20372b; text-transform: none; }
+body.bounded-caterer-page .payment-detail-toggle:hover { background: #bdcdb5; }
+body.bounded-caterer-page .payment-detail-panel .summary-row.balance { background: #c5d8c5; border-color: #96a38e; color: #173d32; border-radius: 9px; font-size: 16px; }
+body.bounded-caterer-page .receipt-card { background: #d4dbcd !important; border: 1px solid #96a38e !important; box-shadow: none; border-radius: 12px; }
+body.bounded-caterer-page .receipt-card .receipt-card-title { color: #20372b; }
+body.bounded-caterer-page .receipt-card .receipt-card-amount { color: #173d32; font-size: 20px; }
+body.bounded-caterer-page .receipt-status-chip { font-size: 11px; padding: 5px 9px; }
+body.bounded-caterer-page .receipt-status-pending { background: #e3dcc2 !important; color: #624819 !important; }
+body.bounded-caterer-page .receipt-status-verified { background: #c5d8c5 !important; color: #245539 !important; }
+body.bounded-caterer-page .receipt-status-rejected { background: #e5cec8 !important; color: #81362e !important; }
+body.bounded-caterer-page .receipt-preview-btn { background: #c3cbbd; border: 1px solid #96a38e; border-radius: 10px; }
+body.bounded-caterer-page .payment-detail-panel .action-grid .btn { min-height: 44px; padding: 10px !important; border-radius: 8px; }
+body.bounded-caterer-page .payment-transactions-table td[data-label="Action"] form { display: inline-flex !important; gap: 8px; align-items: center; }
+body.bounded-caterer-page .payment-transactions-table button[name="verify_payment"],
+body.bounded-caterer-page .payment-transactions-table button[name="reject_payment"] { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; padding: 0; min-width: 38px; border: 0; border-radius: 8px; background: transparent !important; box-shadow: none; cursor: pointer; }
+body.bounded-caterer-page .payment-transactions-table button[name="verify_payment"] { color: #173d32 !important; }
+body.bounded-caterer-page .payment-transactions-table button[name="reject_payment"] { color: #913b34 !important; }
+body.bounded-caterer-page .payment-action-symbol { display: inline-block; font-size: 24px; line-height: 1; color: inherit !important; }
+body.bounded-caterer-page .payment-transactions-table td[data-label="Status"] > span { text-transform: none !important; background: transparent; color: #20372b !important; }
+@media (max-width: 768px) {
+ body.bounded-caterer-page .payment-transactions-table tr { background: #d4dbcd !important; border-color: #96a38e; box-shadow: none; border-radius: 10px; padding: 12px; }
+ body.bounded-caterer-page .payment-transactions-table .proof-link-btn { background: #c9d2c1; color: #173d32; border-color: #96a38e; }
+ body.bounded-caterer-page .payment-transactions-table button[name="verify_payment"],
+ body.bounded-caterer-page .payment-transactions-table button[name="reject_payment"] { width: 44px; height: 44px; }
+}
+
+/* Section controls use symbols while keeping accessible names. */
+body.bounded-caterer-page .payment-detail-toggle { display: inline-flex; align-items: center; justify-content: center; width: 44px; min-height: 44px; padding: 0; border: 0; border-radius: 8px; background: transparent; color: #173d32; font-size: 24px; line-height: 1; }
+body.bounded-caterer-page .payment-detail-toggle[aria-expanded="true"] { border: 0; }
+body.bounded-caterer-page .payment-detail-toggle:hover { background: #bdcdb5; }
+/* Booking tools share the history heading and open independent modals. */
+.payment-history-heading { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; border-bottom: 1px solid #96a38e; padding-bottom: 8px; margin-bottom: 12px; }
+.payment-history-heading > h3 { margin: 0 !important; padding: 0 !important; border: 0 !important; }
+.payment-history-tools { display: flex; align-items: center; gap: 4px; }
+body.bounded-caterer-page .payment-history-tools .payment-detail-toggle { width: 40px; min-height: 40px; font-size: 23px; background: transparent; border: 0; box-shadow: none; }
+dialog.payment-section-dialog { box-sizing: border-box; width: min(860px,calc(100% - 32px)); max-height: calc(100dvh - 32px); margin: auto; padding: 0; border: 1px solid #96a38e; border-radius: 14px; background: #d4dbcd; color: #20372b; box-shadow: 0 20px 60px #0004; overflow-y: auto; }
+dialog.payment-section-dialog::backdrop { background: #10251ccc; backdrop-filter: blur(4px); }
+.payment-section-dialog-header { position: sticky; top: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; border-bottom: 1px solid #96a38e; background: #d4dbcd; }
+.payment-section-dialog-header h2 { margin: 0; font-size: 18px; line-height: 1.4; }
+.payment-section-close { flex-shrink: 0; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: #173d32; font-size: 24px; cursor: pointer; }
+.payment-section-dialog .payment-detail-panel { padding: 16px; }
+.payment-section-dialog .fas, .payment-section-dialog .far { display: none !important; }
+.payment-section-dialog .data-table { width: 100%; }
+@media (max-width: 600px) {
+ dialog.payment-section-dialog { width: calc(100% - 20px); max-height: calc(100dvh - 20px); }
+ .payment-section-dialog .payment-detail-panel { padding: 12px; }
+ .payment-section-dialog-header { padding: 10px 12px; }
+ body.bounded-caterer-page .payment-history-tools .payment-detail-toggle { width: 44px; min-height: 44px; }
+}
+
+/* History fills the available height with a separate scrolling timeline. */
+body.bounded-caterer-page .caterer-workspace:has(.payment-history-card) { display: flex; flex-direction: column; overflow: hidden; }
+body.bounded-caterer-page .caterer-workspace > .container-fluid:has(.payment-history-card) { display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; overflow: hidden; gap: 14px; padding-bottom: 0; }
+body.bounded-caterer-page .container-fluid:has(.payment-history-card) > .payment-back-symbol { flex: 0 0 40px; margin: 0; }
+body.bounded-caterer-page .container-fluid:has(.payment-history-card) > .page-stack { display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; margin: 0; }
+body.bounded-caterer-page .caterer-workspace .payment-history-card { display: flex; flex-direction: column; flex: 1 1 0; min-height: 0; margin-bottom: 0; overflow: hidden; }
+.payment-history-card > .payment-history-heading,
+.payment-history-card > .section-subtext { flex-shrink: 0; }
+.payment-history-card > .timeline { flex: 1 1 0; min-height: 0; overflow-y: scroll; overflow-x: hidden; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-gutter: stable; scrollbar-color: #6d8268 #c3cbbd; padding-right: 10px; margin-bottom: 0; }
+@media (max-width: 600px) {
+ body.bounded-caterer-page .caterer-workspace > .container-fluid:has(.payment-history-card) { gap: 10px; }
+ .payment-history-card > .timeline { padding-right: 6px; }
+}
+
+/* Keep the history outline and timeline connector continuous to the bottom. */
+body.bounded-caterer-page .caterer-workspace .payment-history-card { border: 1px solid #96a38e; box-sizing: border-box; }
+.payment-history-card > .timeline { background-image: linear-gradient(#96a38e, #96a38e); background-size: 2px 100%; background-position: 20px 0; background-repeat: no-repeat; }
+.payment-history-card .timeline-item::before { display: none; }
+/* Keep the heading outside the timeline's scroll area. */
+.payment-history-card > .payment-history-heading { flex: 0 0 auto; background: #d4dbcd; }
+.payment-history-card > .timeline::-webkit-scrollbar { width: 8px; }
+.payment-history-card > .timeline::-webkit-scrollbar-track { background: #c3cbbd; border-radius: 6px; }
+.payment-history-card > .timeline::-webkit-scrollbar-thumb { background: #6d8268; border-radius: 6px; border: 2px solid #c3cbbd; }
+/* Consistent compact action forms in the portal palette. */
+dialog.payment-section-dialog[data-section="Quick Actions"] { width: min(520px,calc(100% - 24px)); }
+.payment-section-dialog[data-section="Quick Actions"] .action-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 8px; }
+body.bounded-caterer-page .payment-section-dialog .action-grid .btn { min-height: 44px; padding: 10px 8px !important; border-radius: 8px; font-size: 13px; }
+body.bounded-caterer-page .payment-section-dialog .action-grid .btn-danger { background: #c9d2c1 !important; border-color: #96a38e !important; color: #20372b !important; }
+body.bounded-caterer-page :is(#feeModal,#damageModal) { box-sizing: border-box; inset: 0; width: 100%; height: 100dvh; padding: 16px; align-items: center; justify-content: center; overflow: hidden; background: #10251ccc; backdrop-filter: blur(4px); }
+body.bounded-caterer-page :is(#feeModal,#damageModal) .modal-content { box-sizing: border-box; width: min(420px,100%); max-height: calc(100dvh - 32px); padding: 20px; margin: 0; overflow-y: auto; border: 1px solid #96a38e; border-radius: 14px; background: #d4dbcd !important; color: #20372b; box-shadow: 0 20px 60px #0004; }
+body.bounded-caterer-page :is(#feeModal,#damageModal) .modal-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 0 12px; margin-bottom: 16px; border-bottom: 1px solid #96a38e; }
+body.bounded-caterer-page :is(#feeModal,#damageModal) h2 { margin: 0; font-size: 19px; line-height: 1.4; color: #20372b; }
+body.bounded-caterer-page :is(#feeModal,#damageModal) .close-btn { flex-shrink: 0; width: 44px; height: 44px; border: 0; background: transparent; color: #173d32; font-size: 24px; cursor: pointer; }
+body.bounded-caterer-page :is(#feeModal,#damageModal) .form-group { margin-bottom: 14px; }
+body.bounded-caterer-page :is(#feeModal,#damageModal) .form-label { display: block; margin-bottom: 6px; color: #425642; font-size: 13px; }
+body.bounded-caterer-page :is(#feeModal,#damageModal) .form-control { box-sizing: border-box; width: 100%; min-width: 0; min-height: 44px; padding: 10px 12px; border: 1px solid #96a38e; border-radius: 8px; background: #c9d2c1 !important; color: #20372b !important; font-size: 16px; }
+body.bounded-caterer-page #damageModal textarea { min-height: 80px; resize: vertical; }
+body.bounded-caterer-page :is(#feeModal,#damageModal) button[type="submit"] { min-height: 44px; border: 1px solid #426052 !important; border-radius: 8px; background: #173d32 !important; color: #f0f1e6 !important; }
+body.bounded-caterer-page :is(#feeModal,#damageModal) :is(button,input,textarea):focus-visible { outline: 2px solid #173d32; outline-offset: 2px; }
+@media (max-width: 480px) {
+ body.bounded-caterer-page :is(#feeModal,#damageModal) { padding: 12px; }
+ body.bounded-caterer-page :is(#feeModal,#damageModal) .modal-content { padding: 16px; max-height: calc(100dvh - 24px); }
+ .payment-section-dialog[data-section="Quick Actions"] .action-grid { gap: 6px; }
+}
+
+/* Cohesive sage surfaces, forest accents, and readable modal content. */
+body.bounded-caterer-page dialog.payment-section-dialog {
+ --border-color: #96a38e; --text-main: #20372b; --text-muted: #425642;
+ --accent-gold: #70501e; --success-color: #245539; --error-color: #913b34;
+ background: #e4eadf; border-color: #96a38e; color: #20372b;
+}
+.payment-section-dialog .payment-section-dialog-header { background: #c9d2c1; border-color: #96a38e; }
+.payment-section-dialog .payment-section-dialog-header h2 { color: #173d32; font-size: 18px; }
+.payment-section-dialog .payment-section-close { border-radius: 8px; background: transparent; color: #173d32; }
+.payment-section-dialog .payment-section-close:focus-visible { outline: 2px solid #173d32 !important; outline-offset: -3px; }
+.payment-section-dialog .section-subtext { margin: 0 0 14px; color: #425642; font-size: 13px; line-height: 1.5; }
+.payment-section-dialog .summary-row { padding: 9px 0; font-size: 14px; }
+.payment-section-dialog .summary-row.total { border-top: 1px solid #96a38e; color: #173d32; }
+body.bounded-caterer-page .payment-section-dialog .summary-row.balance { margin: 14px 0 0; padding: 14px; border: 1px solid #96a38e; background: #c5d8c5; color: #173d32; border-radius: 9px; }
+body.bounded-caterer-page .payment-section-dialog .receipt-card { background: #d4dbcd !important; border-color: #96a38e !important; }
+.payment-section-dialog .receipt-card-meta,
+.payment-section-dialog .receipt-card-footer { color: #425642; }
+body.bounded-caterer-page .payment-section-dialog .receipt-preview-btn { background: #c3cbbd; border-color: #96a38e; }
+.payment-section-dialog .receipt-preview-btn img { object-fit: contain; }
+body.bounded-caterer-page .payment-section-dialog .payment-transactions-table { width: 100%; min-width: 740px; table-layout: auto; border-collapse: collapse; }
+body.bounded-caterer-page .payment-section-dialog .payment-transactions-table th { background: #c9d2c1; color: #20372b; font-size: 12px; padding: 12px 10px; border-bottom: 1px solid #96a38e; white-space: nowrap; word-break: normal; overflow-wrap: normal; }
+body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td { padding: 12px 10px; color: #20372b; font-size: 13px; border-bottom: 1px solid #aab6a3; word-break: normal; overflow-wrap: normal; }
+body.bounded-caterer-page .payment-section-dialog .payment-transactions-table tr.payment-row-highlight { background: #d4decc !important; }
+body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td:is([data-label="Amount"],[data-label="Type"],[data-label="Status"],[data-label="Method"]) { white-space: nowrap; }
+body.bounded-caterer-page .payment-section-dialog .proof-link-btn { min-height: 40px; padding: 8px 12px; background: #c9d2c1; color: #173d32; border: 1px solid #96a38e; border-radius: 8px; white-space: nowrap; }
+@media (max-width: 768px) {
+ body.bounded-caterer-page .payment-section-dialog .payment-transactions-table { min-width: 0; border-collapse: separate; }
+ body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td { padding: 8px 0; border: 0; white-space: normal; }
+ body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td::before { color: #425642; text-transform: none; letter-spacing: 0; font-size: 11px; }
+ body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Amount"] { color: #173d32; font-size: 21px; overflow-wrap: anywhere; white-space: normal; }
+ body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Status"] > span { color: #20372b !important; border: 0; padding: 0; font-size: 12px; letter-spacing: 0; }
+ body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Date & Time"] > div:last-child:not(:first-child) { color: #70501e !important; }
+ body.bounded-caterer-page .payment-section-dialog .payment-transactions-table .proof-link-btn { width: 100%; min-height: 44px; }
+}
+/* Direct booking actions beside Back, outside the section dialogs. */
+.payment-direct-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 18px;
+    min-width: 0;
+}
+.payment-direct-actions .payment-back-symbol { margin: 0 auto 0 0; flex-shrink: 0; }
+.payment-direct-actions .action-grid {
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    min-width: 0;
+}
+.payment-direct-actions .action-grid .btn {
+    flex-direction: row !important;
+    padding: 10px 14px !important;
+    min-height: 44px;
+    gap: 6px !important;
+    white-space: nowrap;
+    border-radius: 10px;
+}
+.payment-direct-actions .action-grid .btn i { font-size: 14px !important; }
+@media (max-width: 600px) {
+    .payment-direct-actions { gap: 6px; }
+    .payment-direct-actions .action-grid { flex: 1; gap: 5px; }
+    .payment-direct-actions .action-grid .btn {
+        flex: 1;
+        min-width: 0;
+        padding: 8px 5px !important;
+        font-size: 12px;
+        gap: 4px !important;
+    }
+    .payment-direct-actions .action-grid .btn i { font-size: 12px !important; }
+}
+/* Desktop booking toolbar: Back at the start, compact actions at the end. */
+@media screen and (min-width: 601px) {
+    body.bounded-caterer-page .container-fluid .payment-direct-actions {
+        width: 100%;
+        flex: 0 0 auto;
+        box-sizing: border-box;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding-bottom: 16px;
+        margin-bottom: 18px;
+        border-bottom: 1px solid #96a38e;
+    }
+    body.bounded-caterer-page .main-content .payment-direct-actions .payment-back-symbol {
+        margin: 0 auto 0 0;
+    }
+    body.bounded-caterer-page .payment-direct-actions .action-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+        flex: 0 0 auto;
+        gap: 10px;
+        margin: 0 0 0 auto;
+    }
+    body.bounded-caterer-page .payment-direct-actions .action-grid .btn {
+        min-height: 44px;
+        height: 44px;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 10px 16px !important;
+        justify-content: center;
+    }
+    body.bounded-caterer-page .payment-direct-actions .action-grid .btn-danger {
+        background: #c9d2c1 !important;
+        color: #20372b !important;
+        border: 1px solid #96a38e !important;
+    }
+}
+/* Tight spacing between the action toolbar and history panel. */
+@media screen {
+    body.bounded-caterer-page .caterer-workspace > .container-fluid:has(.payment-history-card) {
+        gap: 8px;
+    }
+    body.bounded-caterer-page .container-fluid .payment-direct-actions {
+        padding-bottom: 8px;
+        margin-bottom: 0;
+    }
+}
+/* Financial summary stays beside the transaction history with one divider. */
+@media screen {
+    body.bounded-caterer-page .payment-history-summary-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+        flex: 1 1 0;
+        min-height: 0;
+        gap: 20px;
+        overflow: hidden;
+    }
+    body.bounded-caterer-page .caterer-workspace .payment-history-summary-layout .payment-history-card {
+        min-width: 0;
+        min-height: 0;
+        margin: 0;
+    }
+    body.bounded-caterer-page .caterer-workspace .payment-inline-summary {
+        min-width: 0;
+        min-height: 0;
+        overflow-y: auto;
+        padding: 14px 0 14px 20px;
+        margin: 0;
+        border: 0;
+        border-left: 1px solid #96a38e;
+        border-radius: 0;
+        box-shadow: none;
+        background: transparent;
+        scrollbar-width: thin;
+    }
+    .payment-inline-summary > h3 { margin: 0 0 18px; font-size: 16px; color: #20372b; }
+    .payment-inline-summary .summary-row { gap: 12px; }
+    .payment-inline-summary .summary-row > :last-child { text-align: right; white-space: nowrap; }
+}
+@media screen and (max-width: 800px) {
+    body.bounded-caterer-page .payment-history-summary-layout {
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        gap: 16px;
+    }
+    body.bounded-caterer-page .caterer-workspace .payment-history-summary-layout .payment-history-card {
+        flex: 0 0 auto;
+        overflow: visible;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout .payment-history-card > .timeline {
+        max-height: 320px;
+        flex: 0 0 auto;
+    }
+    body.bounded-caterer-page .caterer-workspace .payment-inline-summary {
+        flex: 0 0 auto;
+        overflow: visible;
+        border-left: 0;
+        border-top: 1px solid #96a38e;
+        padding: 16px 0 0;
+    }
+}
+/* Keep payment content within its columns without an outer horizontal bar. */
+@media screen {
+    body.bounded-caterer-page .caterer-workspace:has(.payment-history-summary-layout),
+    body.bounded-caterer-page .container-fluid:has(.payment-history-summary-layout),
+    body.bounded-caterer-page .payment-history-summary-layout,
+    body.bounded-caterer-page .payment-history-summary-layout .payment-history-card,
+    body.bounded-caterer-page .payment-history-summary-layout .payment-inline-summary {
+        min-width: 0;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+    .payment-history-summary-layout .timeline > *,
+    .payment-history-summary-layout .summary-row > * { min-width: 0; overflow-wrap: anywhere; }
+    .payment-history-summary-layout .timeline-desc { white-space: normal; overflow-wrap: anywhere; }
+}
+/* History and summary share the outer workspace, separated only by a divider. */
+@media screen {
+    body.bounded-caterer-page .caterer-workspace .payment-history-summary-layout .payment-history-card {
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 0;
+        margin: 0;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout .payment-history-heading {
+        padding-top: 14px;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout .payment-history-card > .timeline {
+        padding-left: 4px;
+    }
+}
+/* One aligned heading rule across both desktop columns. */
+@media screen and (min-width: 801px) {
+    body.bounded-caterer-page .payment-history-summary-layout {
+        position: relative;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout::after {
+        content: '';
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: #96a38e;
+        pointer-events: none;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout .payment-history-heading {
+        height: 61px;
+        min-height: 61px;
+        box-sizing: border-box;
+        padding: 8px 0;
+        margin: 0 0 12px;
+        border-bottom: 0;
+        flex-wrap: nowrap;
+    }
+    body.bounded-caterer-page .caterer-workspace .payment-inline-summary {
+        padding-top: 0;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout .payment-inline-summary > h3 {
+        display: flex;
+        align-items: center;
+        height: 61px;
+        min-height: 61px;
+        box-sizing: border-box;
+        padding: 8px 0;
+        margin: 0 0 12px;
+        border-bottom: 0;
+    }
+}
+/* Identical action colors on mobile and desktop. */
+@media screen {
+    body.bounded-caterer-page .payment-direct-actions .action-grid .btn-primary {
+        background: #173d32 !important;
+        color: #f0f1e6 !important;
+        border: 1px solid #426052 !important;
+    }
+    body.bounded-caterer-page .payment-direct-actions .action-grid .btn-outline,
+    body.bounded-caterer-page .payment-direct-actions .action-grid .btn-danger {
+        background: #c9d2c1 !important;
+        color: #20372b !important;
+        border: 1px solid #96a38e !important;
+    }
+    body.bounded-caterer-page .payment-direct-actions .action-grid .btn * { color: inherit !important; }
+}
+/* Reduce the space above the history heading on narrow screens. */
+@media screen and (max-width: 800px) {
+    body.bounded-caterer-page .caterer-workspace > .container-fluid:has(.payment-history-card) { gap: 4px; }
+    body.bounded-caterer-page .container-fluid .payment-direct-actions {
+        padding-bottom: 4px;
+        margin-bottom: 0;
+    }
+    body.bounded-caterer-page .main-content .payment-direct-actions .payment-back-symbol { margin: 0; }
+    body.bounded-caterer-page .container-fluid:has(.payment-history-card) > .page-stack {
+        margin-top: 0;
+        padding-top: 0;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout .payment-history-heading {
+        padding-top: 0;
+        padding-bottom: 6px;
+        margin-top: 0;
+        margin-bottom: 8px;
+        min-height: 40px;
+    }
+}
+/* One continuous mobile scroller for history and the full financial summary. */
+@media screen and (max-width: 800px) {
+    body.bounded-caterer-page .caterer-workspace:has(.payment-history-summary-layout),
+    body.bounded-caterer-page .caterer-workspace > .container-fluid:has(.payment-history-summary-layout),
+    body.bounded-caterer-page .container-fluid:has(.payment-history-summary-layout) > .page-stack {
+        min-height: 0;
+        overflow: hidden;
+    }
+    body.bounded-caterer-page .container-fluid .payment-direct-actions { flex: 0 0 auto; }
+    body.bounded-caterer-page .payment-history-summary-layout {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 0;
+        height: 0;
+        min-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        overscroll-behavior-y: contain;
+        touch-action: pan-y;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: max(20px, env(safe-area-inset-bottom));
+        scrollbar-width: thin;
+    }
+    body.bounded-caterer-page .caterer-workspace .payment-history-summary-layout .payment-history-card,
+    body.bounded-caterer-page .caterer-workspace .payment-history-summary-layout .payment-inline-summary {
+        flex: 0 0 auto;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout .payment-history-card > .timeline {
+        flex: 0 0 auto;
+        height: auto;
+        max-height: none;
+        overflow: visible;
+        scrollbar-gutter: auto;
+    }
+}
+/* Let mobile timeline entries use the full panel width and wrap naturally. */
+@media screen and (max-width: 800px) {
+    body.bounded-caterer-page .payment-history-summary-layout { align-items: stretch; }
+    body.bounded-caterer-page .caterer-workspace .payment-history-summary-layout .payment-history-card,
+    body.bounded-caterer-page .caterer-workspace .payment-history-summary-layout .payment-inline-summary {
+        width: 100%;
+        min-width: 0;
+        align-self: stretch;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout .payment-history-card > .timeline {
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding: 0 4px 0 12px;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout .timeline-item {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        width: 100%;
+        min-width: 0;
+        box-sizing: border-box;
+        padding-left: 22px;
+        gap: 5px;
+        margin-bottom: 20px;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout .timeline-content {
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout :is(.timeline-header, .timeline-title, .timeline-date, .timeline-desc) {
+        min-width: 0;
+        max-width: 100%;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        text-overflow: clip;
+        overflow: visible;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout .timeline-amount {
+        grid-column: 1;
+        text-align: left;
+        white-space: normal;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout .timeline-icon { left: -9px; }
+}
+/* Keep timeline circles fully inside the scrolling panel. */
+@media screen {
+    body.bounded-caterer-page .payment-history-summary-layout .payment-history-card > .timeline {
+        padding-left: 12px;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout .timeline-item {
+        padding-left: 28px;
+    }
+    body.bounded-caterer-page .payment-history-summary-layout .timeline-icon {
+        left: 0;
+        width: 20px;
+        height: 20px;
+        box-sizing: border-box;
+    }
+}
+.caterer-sage-theme .receipt-status-chip.receipt-newest-label {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0;
+    padding: 0;
+    color: #425642 !important;
+    font-weight: 500;
+}
+@media screen {
+    #proofModal { padding: 20px; box-sizing: border-box; background: rgb(12 24 18 / 85%); }
+    #proofModal .proof-modal-shell {
+        display: flex;
+        flex-direction: column;
+        width: min(760px, 100%);
+        max-height: calc(100dvh - 40px);
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 16px;
+        background: #d4dbcd;
+        border: 1px solid #96a38e;
+        border-radius: 16px;
+    }
+    #proofModal .proof-modal-title {
+        flex: 0 0 auto;
+        min-height: 36px;
+        margin: 0 0 12px;
+        padding-right: 44px;
+        display: flex;
+        align-items: center;
+        color: #20372b;
+        overflow-wrap: anywhere;
+    }
+    #proofModal .proof-modal-shell img {
+        display: block;
+        min-height: 0;
+        width: 100%;
+        max-height: calc(100dvh - 124px);
+        object-fit: contain;
+        background: #c4cebe;
+    }
+    #proofModal .proof-modal-close {
+        width: 44px;
+        height: 44px;
+        top: 10px;
+        right: 10px;
+        background: transparent;
+        border: 0;
+        color: #20372b;
+        font-size: 26px;
+    }
+}
+@media screen and (max-width: 600px) {
+    #proofModal { padding: 12px; }
+    #proofModal .proof-modal-shell { padding: 12px; max-height: calc(100dvh - 24px); }
+}
+/* Smaller receipt preview with a contained image on every screen. */
+@media screen {
+    #proofModal .proof-modal-shell {
+        width: min(480px, 100%);
+        max-height: calc(100dvh - 40px);
+        padding: 12px;
+        border-radius: 14px;
+    }
+    #proofModal .proof-modal-title {
+        min-height: 36px;
+        font-size: 14px;
+        margin-bottom: 8px;
+    }
+    #proofModal .proof-modal-shell img {
+        width: 100%;
+        height: auto;
+        max-height: min(580px, calc(100dvh - 116px));
+        object-fit: contain;
+        background: transparent;
+        border-radius: 8px;
+    }
+}
+@media screen and (max-width: 600px) {
+    #proofModal { padding: 16px; }
+    #proofModal .proof-modal-shell {
+        width: min(400px, 100%);
+        padding: 10px;
+        max-height: calc(100dvh - 32px);
+    }
+    #proofModal .proof-modal-shell img { max-height: calc(100dvh - 108px); }
+    #proofModal .proof-modal-close { top: 6px; right: 6px; }
+}
+/* Clear transaction typography and responsive receipt/review controls. */
+@media screen {
+    .payment-section-dialog[data-section="Payment Transactions"] { width: min(1040px, calc(100% - 32px)); }
+    .payment-section-dialog[data-section="Payment Transactions"] .section-subtext { display: none; }
+    .payment-section-dialog .payment-transactions-table { width: 100%; border-collapse: collapse; table-layout: auto; }
+    .payment-section-dialog .payment-transactions-table th {
+        padding: 12px 10px;
+        color: #425642;
+        background: #c4cfbc;
+        font-size: 11px;
+        font-weight: 600;
+        text-align: left;
+        white-space: nowrap;
+    }
+    .payment-section-dialog .payment-transactions-table td {
+        padding: 14px 10px;
+        font-size: 13px;
+        line-height: 1.5;
+        vertical-align: middle;
+        color: #20372b;
+        border-bottom: 1px solid #b0bea6;
+    }
+    .payment-section-dialog .payment-transactions-table .payment-row-highlight { background: #d4ddcd; }
+    .payment-section-dialog .payment-transactions-table td[data-label="Status"] > span {
+        text-transform: capitalize !important;
+        font-weight: 600 !important;
+        color: #765619 !important;
+    }
+    .payment-section-dialog .payment-transactions-table td[data-label="Amount"] { color: #173d32; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .payment-section-dialog .payment-transactions-table .proof-link-btn {
+        padding: 8px 12px; min-height: 40px; border: 1px solid #96a38e;
+        border-radius: 8px; background: #c9d2c1; color: #173d32; font-weight: 600;
+    }
+    .payment-section-dialog .payment-transactions-table td[data-label="Action"] form { display: flex !important; gap: 6px; }
+    .payment-section-dialog .payment-transactions-table .btn-xs { min-width: 40px; min-height: 40px; border-radius: 8px; }
+}
+@media screen and (max-width: 768px) {
+    .payment-section-dialog .payment-transactions-table,
+    .payment-section-dialog .payment-transactions-table tbody { display: block; width: 100%; }
+    .payment-section-dialog .payment-transactions-table thead { display: none; }
+    .payment-section-dialog .payment-transactions-table tr {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas: 'reference date' 'type method' 'amount status' 'receipt action';
+        gap: 12px;
+        padding: 14px;
+        margin-bottom: 12px;
+        background: #d4ddcd;
+        border: 1px solid #a8b69d;
+        border-radius: 12px;
+        box-shadow: none;
+    }
+    .payment-section-dialog .payment-transactions-table td {
+        padding: 0;
+        border: 0;
+        background: transparent;
+        min-width: 0;
+        align-items: flex-start;
+        overflow-wrap: anywhere;
+    }
+    .payment-section-dialog .payment-transactions-table td::before { color: #425642; text-transform: none; letter-spacing: normal; font-size: 11px; }
+    .payment-section-dialog .payment-transactions-table td[data-label="Amount"] { font-size: 20px; white-space: normal; }
+    .payment-section-dialog .payment-transactions-table td[data-label="Status"] { align-items: flex-end; }
+    .payment-section-dialog .payment-transactions-table td[data-label="Status"] > span { background: transparent; border: 0; padding: 0; font-size: 12px; }
+    .payment-section-dialog .payment-transactions-table td[data-label="Date & Time"] > div { color: #425642 !important; }
+    .payment-section-dialog .payment-transactions-table .proof-link-btn { width: 100%; min-height: 44px; }
+    .payment-section-dialog .payment-transactions-table td form button { min-height: 44px; background: #c9d2c1; border: 1px solid #96a38e; }
+}
+@media screen {
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table .proof-link-btn,
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Action"] button {
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0;
+        padding: 6px 4px !important;
+        min-width: 0;
+        font-size: 13px;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Action"] .btn-success { color: #246044 !important; }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Action"] .btn-danger { color: #963e35 !important; }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Action"] form { gap: 10px; }
+}
+/* Mobile transaction layout with readable details and a tidy text-action footer. */
+@media screen and (max-width: 768px) {
+    .payment-section-dialog[data-section="Payment Transactions"] .payment-detail-panel { padding: 14px; }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table tr {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas: 'reference status' 'date date' 'type method' 'amount amount' 'receipt action';
+        column-gap: 16px;
+        row-gap: 16px;
+        padding: 16px;
+        background: #d4ddcd;
+        border: 1px solid #a8b69d;
+        border-radius: 12px;
+    }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td {
+        gap: 4px;
+        padding: 0;
+        font-size: 14px;
+        line-height: 1.5;
+        justify-content: flex-start;
+    }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td::before {
+        font-size: 11px;
+        font-weight: 500;
+        color: #52644c;
+        line-height: 1.4;
+    }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Booking Ref"] {
+        border: 0;
+        font-size: 16px;
+        font-weight: 700;
+    }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Date & Time"] {
+        padding-bottom: 12px;
+        border-bottom: 1px solid #b2bfa9;
+    }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Status"] {
+        align-items: flex-end;
+        justify-content: center;
+    }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Status"] > span { font-size: 13px; }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Amount"] {
+        font-size: 24px;
+        font-weight: 700;
+        padding-bottom: 14px;
+        border-bottom: 1px solid #b2bfa9;
+    }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Receipt"],
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Action"] {
+        align-items: stretch;
+        justify-content: center;
+    }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Receipt"] .proof-link-btn {
+        width: auto;
+        align-self: flex-start;
+        justify-content: flex-start;
+        font-size: 14px;
+    }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Action"] form {
+        display: flex !important;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 14px;
+        width: 100%;
+    }
+    body.bounded-caterer-page .payment-section-dialog .payment-transactions-table td[data-label="Action"] form button {
+        flex: 0 0 auto;
+        font-size: 14px;
+        min-height: 44px;
+    }
+}
+/* Compact gutters for the payment inbox without affecting detail pages. */
+@media screen {
+    body.bounded-caterer-page > .main-content:has(.payment-status-card) { padding: 6px !important; }
+    body.bounded-caterer-page .caterer-workspace:has(.payment-status-card) {
+        padding: 6px !important;
+        scrollbar-gutter: auto !important;
+    }
+    body.bounded-caterer-page .caterer-workspace > .container-fluid:has(.payment-status-card) {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body.bounded-caterer-page .caterer-workspace .payment-status-card {
+        padding: 8px;
+        margin: 0;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    body.bounded-caterer-page .payment-status-card > .tab-content {
+        scrollbar-gutter: auto;
+        padding-right: 0;
+    }
+}
+@media screen and (max-width: 992px) {
+    body.bounded-caterer-page > .main-content:has(.payment-status-card) { padding: 68px 6px 6px !important; }
+}
+/* Keep each expanded customer's name visible within the payment list. */
+@media screen {
+    body.bounded-caterer-page .payment-status-card .payment-customer {
+        overflow: visible;
+    }
+    body.bounded-caterer-page .payment-status-card .payment-customer > summary {
+        position: sticky;
+        top: 0;
+        z-index: 5;
+        background: #d4dbcd !important;
+        border-radius: 8px;
+        box-shadow: 0 1px 0 #96a38e;
+    }
+    body.bounded-caterer-page .payment-status-card .payment-customer[open] > summary {
+        background: #c0ceb7 !important;
+    }
+}
+@media screen and (min-width: 601px) {
+    body.bounded-caterer-page .payment-direct-actions .action-grid {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+    }
+}
+@media screen and (min-width: 601px) {
+    body.bounded-caterer-page .payment-direct-actions .action-grid {
+        grid-template-columns: minmax(100px, 1fr);
+    }
+}
+/* Close icons retain their touch target without a visible container. */
+body button[aria-label^="Close"],
+body .close-btn,
+body .proof-modal-close {
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Show payment tools as readable buttons with their full labels. */
+body.bounded-caterer-page .payment-history-tools .payment-detail-toggle {
+    width: auto; min-width: 180px; min-height: 46px; padding: 10px 16px;
+    gap: 10px; font-size: 14px; line-height: 1.4; font-weight: 600;
+    border: 1px solid #96a38e; border-radius: 10px; background: #c9d2c1;
+}
+body.bounded-caterer-page .payment-history-tools .payment-detail-toggle > span:first-child {
+    font-size: 24px; line-height: 1; flex-shrink: 0;
+}
+body.bounded-caterer-page .payment-history-tools { flex-wrap: wrap; }
+@media (max-width: 540px) {
+    body.bounded-caterer-page .payment-history-tools { width: 100%; }
+    body.bounded-caterer-page .payment-history-tools .payment-detail-toggle { width: 100%; min-width: 0; }
+}
+
+.caterer-price-calculation {
+    padding: 12px 14px; margin: 12px 0 16px; border: 1px solid #96a38e;
+    border-radius: 10px; background: #c9d2c1; color: #20372b;
+    font-size: 12px; line-height: 1.7; overflow-wrap: anywhere; font-variant-numeric: tabular-nums;
+}
+.caterer-price-calculation > div + div { margin-top: 5px; }
+.caterer-price-calculation > div:last-child { border-top: 1px solid #a5b29b; padding-top: 8px; margin-top: 8px; font-weight: 600; }

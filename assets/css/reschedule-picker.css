@@ -1,0 +1,18 @@
+.reschedule-picker{position:relative;min-width:0;}
+.reschedule-picker-source{position:absolute!important;width:1px!important;height:1px!important;opacity:0;pointer-events:none;}
+.reschedule-picker-trigger{width:100%;min-height:46px;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:12px;background:#c9d2c1;color:#20372b;border:1px solid #96a38e;border-radius:8px;font:inherit;font-size:14px;text-align:left;cursor:pointer;}
+.reschedule-picker-trigger::after{content:'⌄';}
+.reschedule-picker-panel{margin-top:8px;padding:14px;background:#e0e6da;border:1px solid #96a38e;border-radius:10px;box-sizing:border-box;color:#20372b;width:100%;max-width:360px;}
+.reschedule-picker-panel[hidden]{display:none;}
+.reschedule-calendar-header{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px;}
+.reschedule-calendar-header button{width:40px;height:40px;font-size:24px;}
+.reschedule-picker-panel button{border:0;background:transparent;color:inherit;border-radius:6px;cursor:pointer;}
+.reschedule-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:3px;text-align:center;}
+.reschedule-calendar-grid span{padding:6px 0;font-size:12px;}
+.reschedule-calendar-grid button{min-height:38px;padding:4px;font:inherit;font-size:13px;}
+.reschedule-calendar-grid button:disabled{opacity:.3;cursor:default;}
+.reschedule-picker-panel button.selected,.reschedule-picker-panel button:not(:disabled):hover{background:#173d32;color:#fff;}
+.reschedule-time-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:12px;max-height:240px;overflow-y:auto;}
+.reschedule-time-options button{min-height:44px;padding:10px;font:inherit;font-size:13px;text-align:left;}
+.reschedule-picker button:focus-visible{outline:2px solid #173d32;outline-offset:2px;}
+@media(max-width:600px){.reschedule-picker-panel{max-width:none;padding:10px;}.reschedule-schedule-fields{grid-template-columns:minmax(0,1fr)!important;}}

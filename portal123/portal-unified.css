@@ -1,0 +1,111 @@
+/* Final shared spacing and dialog palette for every admin destination. */
+@media screen {
+ html.portal-sage-theme body.portal-layout > .main-content { padding: 8px !important; scrollbar-gutter: auto; }
+ body.portal-layout .main-content > :is(.content-header,.content-body,.finance-shell,.settings-layout,.messages-layout) { max-width: none; margin-inline: 0; }
+ body.portal-layout .main-content :is(.content-body,.finance-section,.settings-card,.report-card,.dashboard-calendar) { border-radius: 10px; }
+}
+body.portal-layout dialog.portal-dialog { position: fixed; inset: 0; margin: auto; width: min(480px, calc(100% - 24px)); max-height: calc(100dvh - 32px); padding: 0; border: 1px solid #96a38e; border-radius: 12px; background: #d4dbcd; color: #20372b; box-shadow: 0 16px 50px #173d3233; font: inherit; overflow-y: auto; }
+body.portal-layout dialog.portal-dialog::backdrop { background: rgb(23 61 50 / 48%); }
+.portal-dialog-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px; border-bottom: 1px solid #96a38e; }
+.portal-dialog-heading h2 { margin: 0; font-size: 18px; }
+.portal-dialog-copy { padding: 20px 16px; white-space: pre-line; overflow-wrap: anywhere; }
+.portal-dialog-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; padding: 0 16px 16px; }
+.portal-dialog button { min-height: 44px; padding: 8px 16px; border-radius: 8px; border: 1px solid #426052; background: #173d32; color: #f0f1e6; cursor: pointer; font: inherit; }
+.portal-dialog button.portal-dialog-cancel { background: #c2cdb9; color: #20372b; }
+.portal-dialog button:focus-visible { outline: 2px solid #76591f; outline-offset: 2px; }
+body.portal-layout .portal-dialog #portalNotifDropdown { display: block !important; position: static !important; width: 100% !important; max-width: none; border: 0; box-shadow: none; background: transparent; }
+body.portal-layout .portal-dialog .portal-notification-list { max-height: 60dvh; overflow-y: auto; }
+@media(max-width:600px) { html.portal-sage-theme body.portal-layout > .main-content { padding: 6px !important; } .portal-dialog-actions button { flex: 1; } }
+
+/* Match the compact caterer navigation shown on mobile. */
+.portal-mobile-topbar { display: none; }
+@media (max-width: 992px) {
+    body.portal-layout .portal-mobile-topbar {
+        display: flex; align-items: center; justify-content: space-between;
+        position: fixed; inset: 0 0 auto; height: 58px;
+        padding: 10px 14px; box-sizing: border-box;
+        background: #173d32 !important; color: #f0f1e6 !important;
+        border-bottom: 1px solid #426052; z-index: 995;
+    }
+    body.portal-layout .portal-mobile-topbar span {
+        font-size: 15px; line-height: 1.3; font-weight: 700; color: #f0f1e6 !important; margin-left: auto;
+    }
+    html.portal-sage-theme body.portal-layout #sidebarToggle {
+        display: inline-flex; align-items: center; justify-content: center;
+        position: static; flex: 0 0 38px; margin: 0;
+        width: 38px; height: 38px; min-height: 38px; padding: 0;
+        background: #2b5041 !important; color: #f0f1e6 !important;
+        border: 1px solid #708b6b !important; border-radius: 8px;
+        box-shadow: none; font-size: 18px; line-height: 1; z-index: 1100;
+    }
+    html.portal-sage-theme body.portal-layout #sidebarToggle:hover { background: #365849 !important; }
+    html.portal-sage-theme body.portal-layout #sidebarToggle:focus-visible {
+        outline: 2px solid #dcc389; outline-offset: 2px;
+    }
+}
+
+/* The workspace already supplies the outer container. Keep page wrappers flat. */
+@media screen {
+    html.portal-sage-theme body.portal-layout > .main-content > .content-body {
+        border: 0 !important; border-radius: 0 !important;
+        background: transparent !important; box-shadow: none !important;
+        margin: 0 !important; padding: 8px !important;
+    }
+    html.portal-sage-theme body.portal-layout .approvals-page .workspace-empty {
+        background: transparent !important; border: 0 !important;
+        border-radius: 0 !important; box-shadow: none !important;
+    }
+    @media (max-width: 600px) {
+        html.portal-sage-theme body.portal-layout > .main-content > .content-body {
+            padding: 6px !important;
+        }
+    }
+}
+
+/* Align availability inside the account heading with a consistent right inset. */
+html.portal-sage-theme body.portal-layout .manage-users-page .account-name-toggle {
+    justify-content: flex-start; gap: 10px; padding: 10px 12px;
+}
+html.portal-sage-theme body.portal-layout .manage-users-page .account-name-toggle > span:first-child {
+    flex: 1 1 0; min-width: 0;
+}
+html.portal-sage-theme body.portal-layout .manage-users-page .account-name-toggle > .caterer-status {
+    display: inline-flex !important; align-items: center; justify-content: center;
+    flex: 0 0 auto; position: static; margin: 0; padding: 3px 9px;
+    min-width: 48px; min-height: 24px; box-sizing: border-box;
+    line-height: 16px; font-size: 11px; border-radius: 6px;
+    white-space: nowrap; align-self: center;
+}
+
+/* One shared frame for every admin sidebar destination, including dashboard. */
+@media screen {
+    html.portal-sage-theme:has(body.portal-layout),
+    html.portal-sage-theme body.portal-layout {
+        scrollbar-gutter: auto !important;
+        overflow: hidden !important;
+        margin: 0 !important;
+    }
+    html.portal-sage-theme body.portal-layout {
+        --portal-frame-gap: 10px;
+        width: 100% !important; max-width: none !important;
+        height: 100dvh; min-height: 0; box-sizing: border-box;
+        padding: var(--portal-frame-gap) var(--portal-frame-gap) 0 calc(260px + var(--portal-frame-gap)) !important;
+    }
+    html.portal-sage-theme body.portal-layout > .main-content {
+        width: 100% !important; max-width: none !important;
+        margin: 0 !important; min-height: 0 !important;
+        flex: 1 1 0 !important;
+        border: 1px solid #96a38e; border-radius: 14px;
+    }
+    html.portal-sage-theme body.portal-layout > .portal-footer {
+        flex: 0 0 auto; width: auto;
+        margin-inline: calc(-1 * var(--portal-frame-gap)) !important;
+        margin-top: 6px;
+    }
+    @media (max-width: 992px) {
+        html.portal-sage-theme body.portal-layout {
+            --portal-frame-gap: 8px;
+            padding: calc(58px + var(--portal-frame-gap)) var(--portal-frame-gap) 0 !important;
+        }
+    }
+}

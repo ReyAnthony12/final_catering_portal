@@ -1,0 +1,13 @@
+.ph-address-picker { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ph-address-picker > div { min-width: 0; }
+.ph-address-islands { grid-column: 1 / -1; }
+.ph-address-picker label { font-size: 13px; }
+.ph-address-picker input, .ph-address-picker select { width: 100%; min-height: 50px; box-sizing: border-box; }
+.form-group .ph-address-picker select, .form-group .ph-address-picker input { color-scheme: dark; background-color: #292a25; color: #f5f5ef; border: 1px solid #414237; border-radius: 12px; padding: 12px; font: inherit; font-size: 14px; }
+.form-group .ph-address-picker select option, .form-group .ph-address-picker select optgroup { background-color: #292a25; color: #f5f5ef; }
+.form-group .ph-address-picker select:focus, .form-group .ph-address-picker input:focus { background-color: #303129; border-color: #d4af37; }
+.ph-address-picker select:focus { outline: 2px solid #d4af37; outline-offset: 2px; }
+.ph-address-picker select:disabled { opacity: .55; }
+.ph-address-help { display: block; color: #bdbdb5; font-size: 12px; line-height: 1.5; margin: 8px 0 0; }
+#address-retry[hidden] { display: none; }
+@media (max-width: 540px) { .ph-address-picker { grid-template-columns: 1fr; } }

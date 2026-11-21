@@ -1,0 +1,375 @@
+/* Scoped to the service editor, including dynamically added packages. */
+.menu-editor-page .layout-grid { grid-template-columns: minmax(0, 1.8fr) minmax(280px, 1fr); gap: 24px; }
+.menu-editor-page .layout-grid > div, .menu-editor-page .dynamic-item, .menu-editor-page .package-price-grid > div { min-width: 0; }
+.menu-editor-page .content-header { padding: 24px; border: 1px solid #52472b; border-radius: 20px; background: radial-gradient(ellipse at top right, #40351e, transparent 70%), #191b20; margin-bottom: 24px; }
+.menu-editor-page .page-title h1 { font-size: clamp(24px, 3vw, 34px); letter-spacing: -.8px; color: #f5e5b3; }
+.menu-editor-page .page-title p { line-height: 1.65; max-width: 560px; }
+.menu-editor-page .layout-grid .card { padding: 24px; border-radius: 20px; border: 1px solid #34353b; box-shadow: 0 12px 32px #0002; }
+.menu-editor-page #storeMenuStepper { background: linear-gradient(135deg, #27251d, #1c1e24); }
+.menu-editor-page #storeMenuStepper > div:last-of-type { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px !important; }
+.menu-editor-page .caterer-step-btn { white-space: normal; line-height: 1.4; padding: 12px 8px; border-radius: 12px; min-height: 52px; font-size: 13px; }
+.menu-editor-page .caterer-step-btn.active { background: linear-gradient(135deg, #f3d780, #d4af37); color: #171717; }
+.menu-editor-page .form-group { margin-bottom: 22px; }
+.menu-editor-page .form-control { min-height: 48px; font-size: 16px; line-height: 1.5; border-radius: 11px; background: #171b24; border-color: #3b404c; padding: 12px; }
+.menu-editor-page .form-control::placeholder { color: #9299a8; }
+.menu-editor-page .form-control:focus { outline: 3px solid #d4af3726; outline-offset: 1px; border-color: #d4af37; }
+.menu-editor-page textarea.form-control { resize: vertical; min-height: 108px; }
+.menu-editor-page small { line-height: 1.6; display: block; margin-top: 6px; }
+.menu-editor-page .catering-panel { padding: 0; margin: 0; border: 0; background: transparent; }
+.menu-editor-page .catering-panel > p { line-height: 1.6; margin-bottom: 20px; }
+.menu-editor-page #setsContainer > .dynamic-item { padding: 22px; border-radius: 16px; background: #202229; border: 1px solid #414039; border-top: 3px solid #d4af37; }
+.menu-editor-page #setsContainer > .dynamic-item > div:first-of-type { padding-right: 42px; }
+.menu-editor-page .remove-btn { width: 36px; height: 36px; border-radius: 10px; background: #ef44441a; top: 12px; right: 12px; }
+.menu-editor-page .gold-input { background: #191c22 !important; border-color: #7d6b36 !important; font-family: inherit; padding-left: 32px; }
+.menu-editor-page .gold-input-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #e7c768; pointer-events: none; }
+.menu-editor-page .menu-category-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 14px !important; margin-top: 12px; }
+.menu-editor-page .menu-category-grid:not(:has(.menu-category-card)) { display: none !important; }
+.menu-editor-page .menu-category-card { min-width: 0; padding: 12px !important; border: 1px solid #3b404c !important; border-radius: 14px !important; background: #191c23 !important; }
+.menu-editor-page .menu-category-card input { padding: 8px 42px 8px 10px !important; font-size: 16px !important; margin-bottom: 8px; background: transparent; border-color: transparent; color: #f5e5b3; }
+.menu-editor-page .category-remove { top: 12px !important; right: 12px !important; width: 32px !important; height: 32px !important; border-radius: 9px !important; background: #43272c !important; color: #ffb4b4 !important; box-shadow: none !important; }
+.menu-editor-page .nested-panel { padding: 16px; border-radius: 14px; }
+.menu-editor-page .btn { min-height: 44px; border-radius: 11px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; white-space: normal; }
+.menu-editor-page #storeStepNav { margin-top: 20px; }
+.menu-editor-page .menu-list-item { padding: 16px 0; gap: 12px; align-items: flex-start; }
+.menu-editor-page .menu-item-info { min-width: 0; gap: 12px; flex-direction: row; align-items: center; }
+.menu-editor-page .menu-item-info > div { min-width: 0; overflow-wrap: anywhere; }
+.menu-editor-page .menu-thumb { width: 56px; height: 56px; flex-shrink: 0; border-radius: 12px; }
+@media (max-width: 1100px) { .menu-editor-page .layout-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (max-width: 600px) {
+    .menu-editor-page .main-content { padding-left: 12px; padding-right: 12px; }
+    .menu-editor-page .content-header { padding: 20px 16px; border-radius: 16px; }
+    .menu-editor-page .layout-grid { gap: 18px; }
+    .menu-editor-page .layout-grid .card { padding: 16px; border-radius: 16px; }
+    .menu-editor-page #setsContainer > .dynamic-item { padding: 12px; }
+    .menu-editor-page .package-price-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    .menu-editor-page .menu-category-grid { grid-template-columns: minmax(0, 1fr) !important; }
+    .menu-editor-page .nested-panel { padding: 12px; }
+    .menu-editor-page .nested-panel > .dynamic-list > div[style*="display: flex"] { flex-wrap: wrap; }
+    .menu-editor-page .nested-panel > .dynamic-list > div > input { flex-basis: 100% !important; min-width: 0; }
+    .menu-editor-page .menu-list-item { flex-direction: column; }
+    .menu-editor-page #storeStepNav .btn { min-height: 50px; }
+}
+/* Service collection cards */
+.menu-editor-page .services-heading > span { display:block; color:#d9ba64; font-size:10px; font-weight:700; letter-spacing:1.8px; margin-bottom:8px; }
+.menu-editor-page .services-heading h3 { color:#fff0c6; font-size:21px; margin:0; }
+.menu-editor-page .services-heading h3 i { color:#e0bf62; margin-right:6px; }
+.menu-editor-page .services-heading p { color:#abb0bc; font-size:13px; line-height:1.5; margin:8px 0 0; }
+.menu-editor-page .services-list { display:grid; gap:14px; max-height:720px; overflow-y:auto; padding:3px; }
+.menu-editor-page .services-list .menu-list-item { display:flex; flex-direction:column; align-items:stretch; gap:18px; padding:16px; border:1px solid #454139; border-radius:16px; background:linear-gradient(135deg,#2c2b27,#202126); box-shadow:0 6px 16px #0002; }
+.menu-editor-page .services-list .menu-item-info { display:flex; flex-direction:row; align-items:center; gap:14px; width:100%; }
+.menu-editor-page .services-list .menu-thumb { width:72px; height:80px; border-radius:12px; object-fit:cover; border:1px solid #ffffff16; }
+.menu-editor-page .service-name { color:#f4f4f5; font-size:15px; font-weight:600; line-height:1.45; margin-bottom:8px; overflow-wrap:anywhere; }
+.menu-editor-page .service-price { color:#ebcb73; font-size:14px; font-weight:600; line-height:1.5; }
+.menu-editor-page .service-actions { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,.8fr); gap:10px; padding-top:14px; border-top:1px solid #ffffff12; }
+.menu-editor-page .service-actions .btn { padding:10px 8px; font-size:13px; min-height:44px; text-decoration:none; }
+.menu-editor-page .service-edit { background:#e6c56b; color:#211b0e; border:1px solid #e6c56b; font-weight:700; }
+.menu-editor-page .service-edit:hover { background:#f5d887; }
+.menu-editor-page .service-delete { background:#e86c6810; border:1px solid #a9595966; color:#f39a97; }
+.menu-editor-page .service-delete:hover { background:#e86c6826; }
+.menu-editor-page .service-actions .btn:focus-visible { outline:3px solid #fff0b1; outline-offset:3px; }
+@media (min-width:701px) and (max-width:1100px) { .menu-editor-page .services-list { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:600px) {
+ .menu-editor-page .services-list { max-height:none; overflow:visible; }
+ .menu-editor-page .services-list .menu-list-item { padding:14px; }
+ .menu-editor-page .services-heading h3 { font-size:19px; }
+}
+.menu-editor-page .services-tabs { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.menu-editor-page .services-tabs a { display:inline-flex; align-items:center; gap:7px; padding:10px 14px; min-height:44px; border:1px solid #565044; border-radius:10px; color:#bfc0c7; text-decoration:none; font-size:13px; }
+.menu-editor-page .services-tabs a.selected { background:#e6c56b; border-color:#e6c56b; color:#211b0e; font-weight:700; }
+.menu-editor-page .service-action-form { margin:0; min-width:0; }
+.menu-editor-page .service-action-form .btn { width:100%; cursor:pointer; }
+.menu-editor-page .service-actions:has(> .service-action-form:only-child) { grid-template-columns:1fr; }
+.menu-editor-page .services-tabs { flex-wrap:nowrap; width:100%; }
+.menu-editor-page .services-tabs a { justify-content:center; flex:1; white-space:nowrap; padding:10px 8px; }
+.menu-editor-page .collection-status { color:#ebcb73; font-size:13px; line-height:1.5; overflow-wrap:anywhere; }
+.menu-editor-page .collection-status:not(:empty) { margin-bottom:12px; }
+.menu-editor-page #serviceCollection { overflow-anchor:none; }
+.menu-editor-page #serviceCollection[aria-busy="true"] .services-tabs { pointer-events:none; }
+
+/* Refined, icon-free service creation flow. */
+.menu-editor-page #mainForm { --editor-gold: #e7ce92; --editor-muted: #a7a7a2; color-scheme: dark; }
+.menu-editor-page #mainForm i { display: none !important; }
+.menu-editor-page #mainForm > .card,
+.menu-editor-page #mainForm #cateringFields > .card { background: linear-gradient(145deg, #242522, #1a1c1c); border: 1px solid #ffffff14; box-shadow: 0 16px 40px #00000026, inset 0 1px #ffffff06; padding: 20px; border-radius: 16px; }
+.menu-editor-page #mainForm .card-header { border: 0; padding: 0 0 14px; margin-bottom: 16px; border-bottom: 1px solid #ffffff10; }
+.menu-editor-page #mainForm .editor-eyebrow { color: var(--editor-gold); font-size: 10px; font-weight: 700; letter-spacing: 1.6px; margin-bottom: 7px; }
+.menu-editor-page #mainForm .card-header h3 { color: #f5f0e6; font-size: 21px; font-weight: 600; letter-spacing: -.7px; line-height: 1.2; margin: 0; }
+.menu-editor-page #mainForm .editor-intro { color: var(--editor-muted); font-size: 13px; line-height: 1.7; margin: 6px 0 0; max-width: 420px; text-wrap: pretty; }
+.menu-editor-page #mainForm #storeMenuStepper { background: radial-gradient(ellipse at top right, #b59b4f14, transparent 65%), #20221f; margin-bottom: 22px !important; }
+.menu-editor-page #storeMenuStepper > div:last-of-type { gap: 10px !important; }
+.menu-editor-page #mainForm .caterer-step-btn { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 5px; padding: 10px; min-height: 70px; min-width: 0; text-align: left; border: 1px solid #ffffff14; border-radius: 13px; background: #ffffff03; color: #b6b8b2; font-size: 12px; font-weight: 500; line-height: 1.45; }
+.menu-editor-page #mainForm .step-number { font-size: 11px; letter-spacing: 1.5px; opacity: .65; }
+.menu-editor-page #mainForm .caterer-step-btn.active { background: linear-gradient(135deg, #efdda9, #d6b970); color: #29251b; border-color: #efdda9; box-shadow: 0 6px 20px #d6b97014; }
+.menu-editor-page #mainForm .caterer-step-btn:hover:not(.active) { background: #ffffff08; border-color: #e7ce9266; color: #f5f0e6; }
+.menu-editor-page #mainForm #storeStepHint { font-size: 12px !important; line-height: 1.7; margin-top: 12px !important; color: #aaa99f !important; }
+.menu-editor-page #mainForm .form-group { margin-bottom: 18px; }
+.menu-editor-page #mainForm label.form-label { color: #e5e3dc; font-size: 13px; font-weight: 500; margin-bottom: 10px; }
+.menu-editor-page #mainForm .form-control { background: #141716; border: 1px solid #ffffff1c; border-radius: 11px; padding: 11px 12px; min-height: 44px; color: #f0eee6; font-size: 14px; box-shadow: inset 0 2px 4px #00000016; transition: border-color .2s, box-shadow .2s; }
+.menu-editor-page #mainForm .form-control::placeholder { color: #797f79; }
+.menu-editor-page #mainForm .form-control:focus { border-color: #d6b970; outline: 0; box-shadow: 0 0 0 3px #d6b97015; }
+.menu-editor-page #mainForm small { font-size: 12px; line-height: 1.7; margin-top: 10px; color: #999e96 !important; }
+.menu-editor-page #mainForm input[type=file] { border-style: dashed; padding: 12px; }
+.menu-editor-page #mainForm input[type=file]::file-selector-button { background: #e7ce9212; border: 1px solid #e7ce9233; border-radius: 7px; color: #e7ce92; padding: 9px 12px; margin-right: 12px; cursor: pointer; }
+.menu-editor-page #mainForm .btn-primary { background: linear-gradient(135deg, #efdda9, #d6b970); border: 1px solid #e7ce92; color: #29251b; font-weight: 700; box-shadow: 0 6px 20px #0002; }
+.menu-editor-page #mainForm .remove-btn,
+.menu-editor-page #mainForm .category-remove { width: auto !important; min-width: 60px; padding: 6px 9px; height: 32px !important; border-radius: 7px !important; font-size: 11px !important; }
+.menu-editor-page #mainForm #setsContainer > .dynamic-item > div:first-of-type { padding-right: 74px; }
+.menu-editor-page #mainForm .menu-category-card input { padding-right: 74px !important; }
+.menu-editor-page #mainForm .btn:focus-visible { outline: 2px solid #efdda9; outline-offset: 4px; }
+@media (max-width: 400px) {
+ .menu-editor-page #mainForm > .card { padding: 16px; border-radius: 14px; }
+ .menu-editor-page #storeMenuStepper > div:last-of-type { gap: 6px !important; }
+ .menu-editor-page #mainForm .caterer-step-btn { padding: 9px 7px; font-size: 11px; min-height: 68px; }
+}
+
+/* Compact text layout across desktop and mobile. */
+.menu-editor-page #mainForm .card-header h3 { line-height: 1.35; letter-spacing: -.35px; }
+.menu-editor-page #mainForm .editor-intro { font-size: 12px; line-height: 1.55; }
+.menu-editor-page #mainForm .caterer-step-btn > span:last-child { display: block; text-wrap: balance; }
+.menu-editor-page #mainForm label.form-label { margin-bottom: 7px; }
+.menu-editor-page #mainForm small { line-height: 1.55; margin-top: 7px; }
+.menu-editor-page #mainForm textarea.form-control { min-height: 88px; line-height: 1.55; }
+.menu-editor-page #mainForm .form-group:last-child { margin-bottom: 0; }
+.menu-editor-page #mainForm select.form-control { padding-right: 28px; text-overflow: ellipsis; }
+@media (max-width: 600px) {
+ .menu-editor-page #mainForm .card-header h3 { font-size: 19px; }
+ .menu-editor-page #mainForm .form-control { font-size: 16px; }
+}
+
+/* Keep each service step on a single line. */
+.menu-editor-page #storeMenuStepper > div:last-of-type {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+}
+.menu-editor-page #mainForm #storeMenuStepper .caterer-step-btn {
+    flex: 1 0 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 40px;
+    padding: 10px 12px;
+    white-space: nowrap;
+    font-size: 12px;
+    line-height: 1.4;
+}
+.menu-editor-page #mainForm #storeMenuStepper .caterer-step-btn > span {
+    white-space: nowrap;
+    text-wrap: nowrap;
+}
+.menu-editor-page #mainForm #storeMenuStepper .step-number {
+    font-size: 10px;
+    letter-spacing: .5px;
+    flex-shrink: 0;
+}
+
+/* Service library dialog */
+.menu-editor-page .layout-grid { grid-template-columns: minmax(0, 1fr); max-width: 880px; margin-inline: auto; }
+.menu-editor-page .service-library-toolbar { display: flex; justify-content: flex-end; margin-bottom: 12px; }
+.menu-editor-page .service-library-toolbar .btn { padding: 10px 18px; border: 1px solid #e7ce9244; background: #e7ce920b; color: #e7ce92; font-size: 13px; }
+.menu-editor-page #servicesModal { box-sizing: border-box; width: min(600px, calc(100% - 28px)); max-height: 85dvh; padding: 22px; border: 1px solid #e7ce9233; border-radius: 20px; background: linear-gradient(145deg, #252620, #171a19); color: #f5f0e6; box-shadow: 0 30px 90px #0009; overflow-y: auto; }
+.menu-editor-page #servicesModal::backdrop { background: #090b0bd1; backdrop-filter: blur(6px); }
+.menu-editor-page .services-modal-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 18px; }
+.menu-editor-page .services-modal-heading h2 { margin: 0; font-size: 21px; font-weight: 600; letter-spacing: -.4px; }
+.menu-editor-page .services-modal-heading .btn { padding: 8px 14px; font-size: 12px; background: #ffffff06; border: 1px solid #ffffff20; color: #e7e3d8; }
+.menu-editor-page #servicesModal #serviceCollection { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.menu-editor-page #servicesModal .card-header { padding: 0; margin-bottom: 16px; border: 0; }
+.menu-editor-page #servicesModal .services-tabs { margin-top: 0; }
+.menu-editor-page #servicesModal .services-list { grid-template-columns: minmax(0, 1fr); max-height: none; overflow: visible; gap: 12px; }
+.menu-editor-page #servicesModal .services-list .menu-list-item { padding: 14px; gap: 12px; border-color: #ffffff14; background: #ffffff03; }
+.menu-editor-page #servicesModal .services-list .menu-thumb { width: 60px; height: 64px; }
+.menu-editor-page #servicesModal .btn:focus-visible { outline: 2px solid #e7ce92; outline-offset: 3px; }
+body.services-modal-open { overflow: hidden; }
+/* Destructive actions occupy their own row so they never cover editable fields. */
+.menu-editor-page #mainForm .remove-btn,
+.menu-editor-page #mainForm .category-remove {
+ position: static !important;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ margin: 0 0 12px auto;
+ min-height: 40px;
+ height: auto !important;
+ min-width: 72px;
+ border: 1px solid #f0787833;
+ color: #ffaaa4 !important;
+ background: #ef444412 !important;
+ cursor: pointer;
+}
+.menu-editor-page #mainForm .remove-btn:hover,
+.menu-editor-page #mainForm .category-remove:hover { background: #ef444428 !important; }
+.menu-editor-page #mainForm .remove-btn:focus-visible,
+.menu-editor-page #mainForm .category-remove:focus-visible { outline: 2px solid #efdda9; outline-offset: 3px; }
+.menu-editor-page #mainForm #setsContainer > .dynamic-item > div:first-of-type { padding-right: 0; }
+.menu-editor-page #mainForm .menu-category-card input { padding-right: 10px !important; }
+.menu-editor-page #mainForm .inventory-mapping-fields > div,
+.menu-editor-page #mainForm .swap-rule-fields > div { min-width: 0; }
+.menu-editor-page #mainForm .inventory-mapping-fields label,
+.menu-editor-page #mainForm .swap-rule-fields label { display: block; margin-bottom: 7px; line-height: 1.5; }
+.menu-editor-page #mainForm input[type="checkbox"] { width: 18px; height: 18px; flex-shrink: 0; accent-color: #d6b970; }
+@media (max-width: 768px) {
+ .menu-editor-page #mainForm .inventory-mapping-fields,
+ .menu-editor-page #mainForm .swap-rule-fields { display: grid !important; grid-template-columns: minmax(0, 1fr) !important; gap: 16px !important; }
+}
+@media (max-width: 600px) {
+ .menu-editor-page .main-content { padding-inline: 12px; }
+ .menu-editor-page #mainForm > .card,
+ .menu-editor-page #mainForm #cateringFields > .card { padding: 16px; }
+ .menu-editor-page #mainForm #setsContainer > .dynamic-item { padding: 14px; border-radius: 14px; }
+ .menu-editor-page #mainForm .nested-panel { padding: 12px; margin-top: 18px; background: #ffffff03; }
+ .menu-editor-page #mainForm .nested-panel h5 { line-height: 1.5; padding-bottom: 10px; font-size: 13px; }
+ .menu-editor-page #mainForm .nested-panel .dynamic-item { padding: 12px; border-radius: 12px; }
+ .menu-editor-page #mainForm .form-control { min-height: 48px; }
+ .menu-editor-page #mainForm .remove-btn,
+ .menu-editor-page #mainForm .category-remove { min-height: 44px; }
+ .menu-editor-page #mainForm #storeMenuStepper > div:last-of-type { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px !important; }
+ .menu-editor-page #mainForm #storeMenuStepper .caterer-step-btn { flex-direction: column; padding: 10px 5px; min-height: 76px; gap: 6px; font-size: 11px; white-space: normal; }
+ .menu-editor-page #mainForm #storeMenuStepper .caterer-step-btn > span { white-space: normal; text-wrap: balance; }
+ .menu-editor-page #mainForm #storeStepNav { gap: 10px; }
+}
+/* Desktop editor: use the available workspace without changing the mobile flow. */
+@media (min-width: 993px) {
+ .menu-editor-page .layout-grid { width: 100%; max-width: 1120px; }
+ .menu-editor-page #mainForm > .card,
+ .menu-editor-page #mainForm #cateringFields > .card { padding: 24px; }
+ .menu-editor-page #mainForm #storeMenuStepper { padding: 16px; margin-bottom: 20px !important; }
+ .menu-editor-page #storeMenuStepper > div:last-of-type { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+ .menu-editor-page #mainForm #storeMenuStepper .caterer-step-btn { min-height: 46px; }
+ .menu-editor-page #mainForm .caterer-step-panel[data-caterer-panel="1"] {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px 24px;
+  align-items: start;
+ }
+ .menu-editor-page #mainForm .caterer-step-panel[data-caterer-panel="1"] > .form-group { min-width: 0; margin-bottom: 0; }
+ .menu-editor-page #mainForm .caterer-step-panel[data-caterer-panel="1"] > .form-group:last-child { grid-column: 1 / -1; }
+ .menu-editor-page #mainForm .caterer-step-panel textarea.form-control { min-height: 132px; }
+ .menu-editor-page #mainForm #storeStepNav { justify-content: flex-end; margin-top: 20px; }
+ .menu-editor-page #mainForm #storeStepNext { flex: 0 0 auto !important; min-width: 180px; padding-inline: 28px; }
+ .menu-editor-page #mainForm #storeStepBack { min-width: 110px; }
+ .menu-editor-page #mainForm #storePublishBtn { display: block; width: auto !important; min-width: 200px; margin-left: auto; }
+}
+@media (max-width: 600px) {
+ .menu-editor-page .service-library-toolbar .btn { width: 100%; box-sizing: border-box; }
+ .menu-editor-page #servicesModal { padding: 16px; border-radius: 16px; }
+ .menu-editor-page #servicesModal .service-name { font-size: 14px; }
+}
+/* Stable library dimensions on both tabs; only the collection body scrolls. */
+.menu-editor-page #servicesModal {
+ box-sizing: border-box; width: min(580px, calc(100% - 28px));
+ height: min(500px, calc(100dvh - 32px)); max-height: calc(100dvh - 32px);
+ max-width: none; padding: 20px; border-radius: 18px; overflow: hidden;
+}
+.menu-editor-page #servicesModal[open] { display: flex; flex-direction: column; }
+.menu-editor-page #servicesModal .services-modal-heading { flex: 0 0 auto; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
+.menu-editor-page #servicesModal .library-eyebrow { display: block; font-size: 9px; font-weight: 700; letter-spacing: 1.5px; margin-bottom: 5px; color: #7c987e; }
+.menu-editor-page #servicesModal h2 { margin: 0; font-size: 21px; line-height: 1.3; letter-spacing: -.4px; }
+.menu-editor-page #servicesModal .services-modal-heading p { margin: 6px 0 0; color: #a6b5a8; font-size: 12px; line-height: 1.5; }
+.menu-editor-page #servicesModal #closeServicesButton { flex-shrink: 0; min-height: 44px; padding: 8px 12px; font-size: 12px; }
+.menu-editor-page #servicesModal #serviceCollection { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; overflow: hidden; }
+.menu-editor-page #servicesModal .card-header { flex: 0 0 auto; margin-bottom: 12px; }
+.menu-editor-page #servicesModal .services-tabs { gap: 6px; }
+.menu-editor-page #servicesModal .services-tabs a { box-sizing: border-box; min-width: 0; min-height: 44px; padding: 8px; font-size: 12px; }
+.menu-editor-page #servicesModal .collection-status { flex-shrink: 0; font-size: 12px; }
+.menu-editor-page #servicesModal .services-list { display: grid; grid-template-columns: minmax(0, 1fr); align-content: start; min-height: 0; overflow-y: auto; scrollbar-width: thin; scrollbar-gutter: stable; padding: 1px 3px 4px; gap: 10px; }
+.menu-editor-page #servicesModal .services-list .menu-list-item { padding: 12px; gap: 10px; border-radius: 13px; box-shadow: none; }
+.menu-editor-page #servicesModal .menu-item-info { min-width: 0; gap: 11px; }
+.menu-editor-page #servicesModal .menu-item-info > div:last-child { min-width: 0; flex: 1; }
+.menu-editor-page #servicesModal .services-list .menu-thumb { width: 50px; height: 50px; flex-shrink: 0; border-radius: 9px; }
+.menu-editor-page #servicesModal .service-name { font-size: 13px; line-height: 1.45; margin-bottom: 4px; }
+.menu-editor-page #servicesModal .service-price { font-size: 12px; line-height: 1.5; }
+.menu-editor-page #servicesModal .service-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding-top: 10px; border-color: #71887533; }
+.menu-editor-page #servicesModal .service-actions:has(> .service-action-form:only-child) { grid-template-columns: 1fr; }
+.menu-editor-page #servicesModal .service-actions .btn { box-sizing: border-box; min-height: 44px; padding: 8px; font-size: 12px; }
+.menu-editor-page #servicesModal .collection-empty { flex: 1 1 auto; min-height: 0; overflow-y: auto; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 16px; }
+.menu-editor-page #servicesModal .collection-empty-icon { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; margin-bottom: 12px; border: 1px solid #71887544; border-radius: 14px; background: #71887515; color: #7c987e; font-size: 18px; }
+.menu-editor-page #servicesModal .collection-empty h3 { margin: 0 0 7px; font-size: 16px; line-height: 1.4; }
+.menu-editor-page #servicesModal .collection-empty p { max-width: 280px; margin: 0; color: #a6b5a8; font-size: 12px; line-height: 1.6; }
+.caterer-sage-theme .main-content #servicesModal .services-modal-heading p,
+.caterer-sage-theme .main-content #servicesModal .collection-empty p,
+.caterer-sage-theme .main-content #servicesModal .library-eyebrow { color: #4c6352 !important; }
+.caterer-sage-theme .main-content #servicesModal .service-actions .service-delete { background: #f2e6df !important; color: #8b3f35 !important; border: 1px solid #cda99c !important; }
+@media (max-width: 600px) {
+ .menu-editor-page #servicesModal { width: calc(100% - 24px); height: min(500px, calc(100dvh - 24px)); max-height: calc(100dvh - 24px); padding: 16px; border-radius: 16px; }
+ .menu-editor-page #servicesModal h2 { font-size: 19px; }
+ .menu-editor-page #servicesModal .services-modal-heading p { font-size: 11px; }
+ .menu-editor-page #servicesModal .service-name { font-size: 13px; }
+}/* Compact cards shared by the active and trash collections. */
+.menu-editor-page #servicesModal .services-tabs a { min-height: 38px; padding: 6px 8px; }
+.menu-editor-page #servicesModal .services-list .menu-list-item { padding: 10px; gap: 8px; border-radius: 11px; }
+.menu-editor-page #servicesModal .services-list .menu-thumb { width: 42px; height: 42px; border-radius: 8px; }
+.menu-editor-page #servicesModal .service-name { font-size: 12px; margin-bottom: 3px; }
+.menu-editor-page #servicesModal .service-price { font-size: 11px; }
+.menu-editor-page #servicesModal .service-actions { padding-top: 8px; gap: 8px; }
+.menu-editor-page #servicesModal .service-actions .btn { min-height: 36px; padding: 6px 8px; font-size: 11px; border-radius: 8px; }
+.menu-editor-page #servicesModal #closeServicesButton {
+ display: inline-flex; align-items: center; justify-content: center;
+ flex: 0 0 32px; width: 32px; height: 32px; min-height: 0; padding: 0;
+ border: 0 !important; border-radius: 0; background: transparent !important;
+ box-shadow: none !important; color: inherit !important; font: 28px/1 Arial, sans-serif;
+ cursor: pointer;
+}
+.menu-editor-page #servicesModal #closeServicesButton:hover { opacity: .65; }
+.menu-editor-page #servicesModal #closeServicesButton:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+@media (pointer: coarse) {
+ .menu-editor-page #servicesModal .service-actions .btn,
+ .menu-editor-page #servicesModal .services-tabs a { min-height: 44px; }
+ .menu-editor-page #servicesModal #closeServicesButton { flex-basis: 44px; width: 44px; height: 44px; }
+}
+/* Compact service rows, including restored/deleted services in Trash. */
+.menu-editor-page #servicesModal .services-list .menu-list-item {
+ display: grid; grid-template-columns: minmax(0, 1fr) auto;
+ align-items: center; gap: 10px; padding: 9px 10px;
+}
+.menu-editor-page #servicesModal .services-list { gap: 8px; }
+.menu-editor-page #servicesModal .menu-item-info { gap: 9px; }
+.menu-editor-page #servicesModal .services-list .menu-thumb { width: 38px; height: 38px; }
+.menu-editor-page #servicesModal .service-actions {
+ display: flex; align-items: center; gap: 6px;
+ padding: 0; border: 0; margin: 0;
+}
+.menu-editor-page #servicesModal .service-actions .btn {
+ width: auto; min-height: 32px; padding: 6px 10px;
+ font-size: 11px; white-space: nowrap;
+}
+@media (max-width: 480px) {
+ .menu-editor-page #servicesModal .services-list .menu-list-item { grid-template-columns: minmax(0, 1fr); gap: 7px; padding: 8px; }
+ .menu-editor-page #servicesModal .service-actions { justify-content: flex-end; gap: 6px; }
+ .menu-editor-page #servicesModal .service-actions .btn { min-height: 34px; padding: 6px 12px; }
+}
+@media (pointer: coarse) {
+ .menu-editor-page #servicesModal .service-actions .btn { min-height: 44px; }
+}
+/* Keep mobile library cards in a single row. */
+@media (max-width: 480px) {
+ .menu-editor-page #servicesModal .services-list .menu-list-item {
+  grid-template-columns: minmax(0, 1fr) auto; gap: 5px; padding: 7px;
+ }
+ .menu-editor-page #servicesModal .menu-item-info { gap: 6px; }
+ .menu-editor-page #servicesModal .services-list .menu-thumb { width: 30px; height: 30px; border-radius: 6px; }
+ .menu-editor-page #servicesModal .service-name { font-size: 10px; line-height: 1.35; margin-bottom: 2px; }
+ .menu-editor-page #servicesModal .service-price { font-size: 10px; }
+ .menu-editor-page #servicesModal .service-actions { gap: 4px; }
+ .menu-editor-page #servicesModal .service-actions .btn { padding: 5px 6px; font-size: 10px; min-height: 36px; }
+}
+/* Centered success confirmation for service creation and updates. */
+.menu-editor-page dialog.service-success-modal {
+ box-sizing: border-box; position: fixed; inset: 0; margin: auto;
+ width: min(340px, calc(100% - 32px)); max-height: calc(100dvh - 32px);
+ padding: 28px 24px; border: 1px solid #96a38e; border-radius: 18px;
+ background: #e4eadf; color: #20372b; text-align: center;
+ box-shadow: 0 20px 60px #0004; overflow-y: auto;
+}
+.menu-editor-page dialog.service-success-modal::backdrop { background: #10251ccc; backdrop-filter: blur(4px); }
+.menu-editor-page .service-success-modal .service-success-icon { display: grid; place-items: center; width: 48px; height: 48px; margin: 0 auto 14px; border-radius: 50%; background: #c5d8c5; color: #173d32; font-size: 22px; }
+.menu-editor-page .service-success-modal h2 { margin: 0 0 8px; font-size: 21px; line-height: 1.3; color: #20372b !important; }
+.menu-editor-page .service-success-modal p { margin: 0 0 20px; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; color: #425642 !important; }
+.menu-editor-page .service-success-modal .service-success-dismiss { min-height: 44px; min-width: 100px; padding: 10px 24px; border: 0; border-radius: 10px; background: #173d32; color: #f0f1e6; font-size: 14px; cursor: pointer; }
+.menu-editor-page .service-success-modal .service-success-dismiss:focus-visible { outline: 2px solid #173d32; outline-offset: 3px; }
+body.service-success-open { overflow: hidden; }
+/* Clear optional event selection without losing the typed service name. */
+.menu-editor-page .event-type-label-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; margin-bottom: 6px; }
+.menu-editor-page .event-type-label-row .form-label { margin-bottom: 0; }
+.menu-editor-page .event-type-undo { min-height: 36px; padding: 6px 10px; font-size: 12px; }
+.menu-editor-page .event-type-undo[hidden] { display: none !important; }

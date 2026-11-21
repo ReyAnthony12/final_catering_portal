@@ -1,0 +1,21 @@
+@media (max-width:992px) {
+    body.portal-layout .main-content.subscription-settings-page { min-width:0; width:auto; padding:14px!important; }
+    .subscription-settings-page .subscription-pricing { max-width:100%!important; width:100%; min-width:0; }
+    .subscription-settings-page .pricing-grid { display:grid; grid-template-columns:minmax(0,1fr)!important; gap:18px; min-width:0; }
+    .subscription-settings-page .pricing-overview { display:grid!important; grid-template-columns:repeat(2,minmax(0,1fr))!important; gap:12px!important; padding:0!important; border:0!important; background:transparent!important; }
+    .subscription-settings-page .pricing-overview-item { display:flex; flex-direction:column; align-items:flex-start; min-width:0; padding:16px!important; border:1px solid #96a38e!important; border-radius:14px; background:#c9d2c1!important; box-shadow:0 3px 10px #173d3209; }
+    .subscription-settings-page .pricing-overview-label { display:block; min-height:36px; color:#245548!important; font-size:12px!important; font-weight:700; line-height:1.5; }
+    html.portal-sage-theme .subscription-settings-page .pricing-overview-value { display:block; margin:10px 0 8px; color:#173d32!important; font-size:30px!important; font-weight:750; line-height:1.1; font-variant-numeric:tabular-nums; }
+    .subscription-settings-page .pricing-overview-description { display:block; margin:0; color:#425642!important; font-size:12px!important; line-height:1.6; overflow-wrap:break-word; }
+    .subscription-settings-page .pricing-card { width:100%; padding:18px!important; margin:0; border-radius:14px; background:#d4dbcd!important; border:1px solid #96a38e!important; box-shadow:none; }
+    .subscription-settings-page .pricing-card h3 { color:#173d32!important; font-size:16px!important; line-height:1.5; margin:0 0 14px!important; }
+    .subscription-settings-page .pricing-card button { width:100%; min-height:46px!important; margin-top:16px!important; padding:12px!important; background:#173d32!important; border:1px solid #173d32!important; color:#edf1e7!important; font-size:13px!important; white-space:normal; }
+    .subscription-settings-page .pricing-card input:not([type=hidden]) { min-height:46px; background:#c9d2c1!important; color:#20372b!important; border:1px solid #96a38e!important; }
+    .subscription-settings-page .qr-preview { background:#c9d2c1!important; padding:16px; border:1px solid #96a38e!important; }
+    .subscription-settings-page input[type=file]::file-selector-button { background:#d4dbcd; color:#173d32; border-color:#96a38e; }
+}
+@media(max-width:360px) {
+    .subscription-settings-page .pricing-overview { gap:10px!important; }
+    .subscription-settings-page .pricing-overview-item { padding:12px!important; }
+    .subscription-settings-page .pricing-overview-label { font-size:11px!important; }
+}

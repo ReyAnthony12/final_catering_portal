@@ -1,0 +1,541 @@
+/* Approved soft sage palette. Presentation only; existing layouts and interactions stay intact. */
+html.soft-sage-theme {
+    --primary-bg: #c3cbbd !important;
+    --page-bg: #c3cbbd !important;
+    --secondary-bg: #c9d2c1 !important;
+    --card-bg: #d4dbcd !important;
+    --input-bg: #c9d2c1 !important;
+    --text-main: #20372b !important;
+    --text-muted: #425642 !important;
+    --border-color: #96a38e !important;
+    --accent-gold: #70501e !important;
+    --accent-gold-hover: #5c4018 !important;
+    --primary-color: #173d32 !important;
+    --secondary-color: #c9d2c1 !important;
+    --sidebar-bg: #173d32 !important;
+    --sidebar-panel: #20483b !important;
+    --accent-blue: #30596a !important;
+    --success: #245539 !important;
+    --success-color: #245539 !important;
+    --danger: #913b34 !important;
+    --error-color: #913b34 !important;
+    --warning: #70501e !important;
+    --warning-color: #70501e !important;
+    --warning-text: #70501e !important;
+    --info-color: #30596a !important;
+    --surface-shadow: 0 8px 24px rgb(35 56 46 / 9%) !important;
+    --sage-gold: #ba9b62;
+    color-scheme: light;
+}
+.soft-sage-theme body { background: var(--page-bg) !important; color: var(--text-main); }
+.soft-sage-theme :is(.card, .content-card, .content-body, .stat-card, .container-card,
+    .calendar-card, .capacity-calendar-card, .dashboard-summary-card, .caterer-card,
+    .item-card, .modal-content, .portal-modal-content, .notification-dropdown,
+    .notifications-dropdown, .notif-dropdown, .caterer-dialog, .final-cta-card) {
+    background: var(--card-bg) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-main);
+    box-shadow: var(--surface-shadow) !important;
+}
+.soft-sage-theme :is(.main-content, .customer-page-shell, .content-section) {
+    background: var(--page-bg) !important;
+}
+.soft-sage-theme :is(.sidebar, .navbar, .main-header, .main-footer, .mobile-topbar) {
+    --text-main: #f0f1e6;
+    --text-muted: #c5d0c1;
+    --accent-gold: #d4b778;
+    --accent-gold-hover: #e0c58b;
+    --border-color: #426052;
+    background: #173d32 !important;
+    color: #f0f1e6 !important;
+    border-color: #426052 !important;
+}
+.soft-sage-theme :is(.sidebar, .navbar, .main-header, .main-footer) :is(a, .logo, .logo span) {
+    color: #f0f1e6;
+}
+.soft-sage-theme :is(.sidebar-menu a.active, .sidebar-menu a:hover, .nav-links a.active, .nav-links a:hover) {
+    background: #365849 !important;
+    color: #f0f1e6 !important;
+    border-color: #ba9b62 !important;
+}
+.soft-sage-theme :is(.sidebar-brand-card, .portal-utility-card, .sidebar-utility-card) {
+    background: #20483b !important;
+    border-color: #426052 !important;
+    box-shadow: none !important;
+}
+.soft-sage-theme :is(.sidebar-caterer-meta, .sidebar-brand-eyebrow, .nav-section-title) { color: #c5d0c1 !important; }
+.soft-sage-theme :is(.sidebar-caterer-name, .sidebar-header h3, .navbar .logo span, .main-header .logo h1) {
+    color: #f0f1e6 !important;
+    background: none !important;
+    -webkit-text-fill-color: currentColor;
+}
+.soft-sage-theme :is(.content-card, .card, .content-body, .stat-card, .calendar-card) :is(h1, h2, h3, h4),
+.soft-sage-theme :is(.section-title, .caterer-name, .item-title, .stat-value) { color: var(--text-main) !important; }
+.soft-sage-theme :is(.section-desc, .caterer-meta, .calendar-heading p, .calendar-caption, .stat-desc) { color: var(--text-muted) !important; }
+.soft-sage-theme :is(.quick-action-card, .summary-stat-box, .upcoming-event-row, .calendar-container) {
+    background: #c9d2c1 !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-main);
+}
+.soft-sage-theme :is(.calendar-eyebrow, .calendar-month-count, .section-kicker, .item-price) { color: #684b1d !important; }
+.soft-sage-theme .calendar-month-count { background: #ded7bf !important; border-color: #baa77e !important; }
+.soft-sage-theme :is(input:not([type=checkbox]):not([type=radio]):not([type=submit]):not([type=button]):not([type=range]):not([type=color]), select, textarea) {
+    background-color: var(--input-bg) !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-color) !important;
+}
+.soft-sage-theme :is(input, textarea)::placeholder { color: #425642 !important; opacity: 1; }
+.soft-sage-theme :is(input, select, textarea):focus-visible { outline: 2px solid #496d53; outline-offset: 2px; }
+.soft-sage-theme :is(.btn-primary, .hero-btn, .search-btn, .dashboard-action, .btn-view-modal) {
+    background: #ba9b62 !important;
+    color: #20372b !important;
+    border-color: #a98a51 !important;
+}
+.soft-sage-theme :is(.btn-primary, .hero-btn, .search-btn, .dashboard-action, .btn-view-modal):hover { background: #c7aa75 !important; }
+.soft-sage-theme :is(.btn-secondary, .section-link, .view-all-link, .quick-action-btn, .close-btn, .close-modal) {
+    background-color: #c9d2c1 !important;
+    color: #20372b !important;
+    border-color: #96a38e !important;
+}
+.soft-sage-theme :is(th, .table thead, .data-table thead) { background-color: #c6d0bf !important; color: #20372b !important; border-color: #96a38e !important; }
+.soft-sage-theme :is(td, .table, .data-table) { border-color: #96a38e !important; }
+.soft-sage-theme :is(.table, .data-table) tr:hover { background-color: #ccd5c5 !important; }
+/* FullCalendar: use tinted surfaces, with no overlay that could block clicks. */
+.soft-sage-theme .fc {
+    --fc-border-color: #96a38e;
+    --fc-page-bg-color: #d4dbcd;
+    --fc-neutral-bg-color: #c9d2c1;
+    --fc-today-bg-color: #c8d2bd;
+    --fc-event-bg-color: #bdcfb8;
+    --fc-event-border-color: #57765b;
+    --fc-event-text-color: #20372b;
+    --fc-button-bg-color: #173d32;
+    --fc-button-border-color: #173d32;
+    --fc-button-hover-bg-color: #2b5544;
+    --fc-button-hover-border-color: #2b5544;
+    --fc-button-active-bg-color: #365849;
+    --fc-button-active-border-color: #365849;
+}
+.soft-sage-theme :is(#calendar, #largeCalendar, #booking-capacity-calendar) {
+    --fc-border-color: #96a38e;
+    --fc-today-bg-color: #c8d2bd;
+    --fc-page-bg-color: #d4dbcd;
+}
+.soft-sage-theme .fc :is(.fc-toolbar-title, .fc-daygrid-day-number, .fc-col-header-cell-cushion, .fc-list-day-text, .fc-list-day-side-text) { color: #20372b !important; }
+.soft-sage-theme .fc :is(.fc-scrollgrid, td, th) { border-color: #96a38e !important; }
+.soft-sage-theme .fc .fc-button-primary { background: #173d32 !important; border-color: #173d32 !important; color: #f0f1e6 !important; box-shadow: none !important; }
+.soft-sage-theme .fc .fc-button-primary:hover { background: #2b5544 !important; }
+.soft-sage-theme .fc .fc-button-primary.fc-button-active { background: #365849 !important; }
+.soft-sage-theme .fc .fc-daygrid-day { background-color: #d4dbcd !important; }
+.soft-sage-theme .fc .fc-day-today { background-color: #c8d2bd !important; }
+.soft-sage-theme .fc :is(.calendar-selected-day, .capacity-selected) { background-color: #c0cdb4 !important; box-shadow: inset 0 0 0 1px #57765b !important; }
+.soft-sage-theme .fc .fc-day-today .fc-daygrid-day-number { background: #ba9b62 !important; color: #20372b !important; }
+.soft-sage-theme .fc :is(.fc-daygrid-event, .calendar-day-bookings, .capacity-event) { background: #bdcfb8 !important; color: #20372b !important; }
+.soft-sage-theme .fc :is(.fc-event-title, .fc-event-time, .fc-daygrid-more-link) { color: #20372b !important; }
+/* Customer search hero is a surface; the public photo hero keeps its image. */
+.soft-sage-theme .customer-page-shell .hero-section { background: #c9d2c1 !important; border-color: #96a38e !important; }
+.soft-sage-theme .customer-page-shell .hero-title { color: #20372b !important; }
+.soft-sage-theme .caterer-dialog { background: #d4dbcd !important; }
+.soft-sage-theme #storesModal .caterer-card-modal { background: #c9d2c1 !important; border-color: #96a38e !important; }
+.soft-sage-theme #storesModal .close-modal { background: #c3cbbd !important; color: #20372b !important; }
+.soft-sage-theme .main-header .search-container { background: #2b5041 !important; border-color: #577362 !important; }
+.soft-sage-theme .main-header input { background: #2b5041 !important; color: #f0f1e6 !important; }
+.soft-sage-theme .main-header input::placeholder { color: #c5d0c1 !important; }
+.soft-sage-theme .main-header .search-btn { background: transparent !important; color: #d4b778 !important; }
+.soft-sage-theme .main-header .header-nav { background-color: #173d32 !important; }
+.soft-sage-theme .hero-content :is(.hero-title, .hero-subtitle) { color: #f0f1e6 !important; }
+.soft-sage-theme .hero-content .highlight-text { background: none !important; color: #dcc389 !important; -webkit-text-fill-color: currentColor; }
+.soft-sage-theme .final-cta-card { background: #c9d2c1 !important; }
+.soft-sage-theme .final-cta-card h2 { color: #142f25 !important; text-shadow: none; }
+.soft-sage-theme .final-cta-card p { color: #2d4335 !important; font-weight: 500; }
+.soft-sage-theme .final-cta-card .hero-btn { color: #ffffff !important; text-shadow: none; }
+.soft-sage-theme .final-cta-card .secondary-cta {
+    background: #e4eadd !important;
+    color: #173d32 !important;
+    border: 1px solid #536c56 !important;
+    text-shadow: none;
+}
+.soft-sage-theme .final-cta-card .secondary-cta:hover {
+    background: #d5dfcd !important;
+    color: #142f25 !important;
+    border-color: #173d32 !important;
+}
+.soft-sage-theme .final-cta-actions a:focus-visible { outline: 3px solid #173d32; outline-offset: 4px; }
+.soft-sage-theme .main-footer :is(a, p, .copyright) { color: #d3ddce !important; }
+.soft-sage-theme :is(.main-content, .customer-page-shell) .hero-section input { background: #c9d2c1 !important; color: #20372b !important; }
+.soft-sage-theme #searchForm #searchInput { background: #2b5041 !important; color: #f0f1e6 !important; }
+.soft-sage-theme #searchForm #searchInput::placeholder { color: #c5d0c1 !important; }
+.soft-sage-theme .main-header :is(.btn-dashboard, .btn-register) { background: #ba9b62 !important; color: #20372b !important; }
+.soft-sage-theme .quick-action-card:not(.attention) > div > div > div:last-child { color: #684b1d !important; }
+.soft-sage-theme button[name="toggle_auto_schedule"] { background: #c0cdbb !important; color: #173d32 !important; border-color: #57765b !important; }
+.soft-sage-theme .sidebar .sidebar-status-pill.status-open { background: #24583e !important; color: #c6e2b9 !important; border-color: #64936a !important; }
+.soft-sage-theme .sidebar .sidebar-status-pill.status-closed { background: #5c3530 !important; color: #f2c9b9 !important; }
+.soft-sage-theme :is(.notification-dropdown, .notifications-dropdown, .notif-dropdown, .modal-content, .portal-modal-content) {
+    --text-main: #20372b;
+    --text-muted: #425642;
+    --border-color: #96a38e;
+    color: #20372b !important;
+}
+.soft-sage-theme :is(.notification-dropdown, .notifications-dropdown, .notif-dropdown) a { color: #20372b !important; }
+.soft-sage-theme #caterer-modal .modal-dialog { background: #d4dbcd !important; border-color: #96a38e !important; }
+.soft-sage-theme #caterer-modal :is(h2, td, .orders-reference-link, .orders-heading-eyebrow) { color: #20372b !important; }
+.soft-sage-theme #caterer-modal .close-btn { background: #c3cbbd !important; color: #20372b !important; border-color: #96a38e !important; }
+.soft-sage-theme :is(.main-content, .customer-page-shell) :is([style*="color: white"], [style*="color: #fff"], [style*="color: #f4f4f5"], [style*="color: #e4e4e7"]) { color: #20372b !important; }
+.soft-sage-theme :is(.main-content, .customer-page-shell) :is(.btn-danger, .btn-success, .btn-info) [style*="color: white"] { color: #f0f1e6 !important; }
+.soft-sage-theme { scrollbar-color: #6d8268 #c3cbbd; }
+.soft-sage-theme ::-webkit-scrollbar-track { background: #c3cbbd !important; }
+.soft-sage-theme ::-webkit-scrollbar-thumb { background: #6d8268 !important; border-color: #c3cbbd !important; }
+.soft-sage-theme .sidebar ::-webkit-scrollbar-track { background: #173d32 !important; }
+.soft-sage-theme .sidebar ::-webkit-scrollbar-thumb { background: #6f8d71 !important; border-color: #173d32 !important; }
+.soft-sage-theme :is(#calendar, #booking-capacity-calendar, #largeCalendar) :is(.fc-daygrid-event, .calendar-day-bookings, .capacity-event) { background: #bdcfb8 !important; color: #20372b !important; }
+.soft-sage-theme :is(#calendar, #booking-capacity-calendar, #largeCalendar) .fc-button-primary { background: #173d32 !important; color: #f0f1e6 !important; border-color: #173d32 !important; }
+.soft-sage-theme :is(#calendar, #booking-capacity-calendar, #largeCalendar) .fc-button-primary.fc-button-active { background: #365849 !important; }
+.soft-sage-theme :is(#calendar, #booking-capacity-calendar, #largeCalendar) .fc-day-today .fc-daygrid-day-number { background: #ba9b62 !important; color: #20372b !important; }
+/* Carry the same surface palette into the existing management screens. */
+.soft-sage-theme :is(.inventory-container .page-header, .inventory-container .overview-card,
+    .inventory-container .inventory-section-card, .inventory-container .inventory-table tr,
+    .menu-editor-page .content-header, .menu-editor-page #mainForm #storeMenuStepper,
+    .menu-editor-page #setsContainer > .dynamic-item, .menu-editor-page .menu-category-card,
+    .menu-editor-page #servicesModal, .settings-page .setting-category,
+    .settings-page .settings-actions, .settings-page .settings-section-button,
+    .settings-page #change-password, .finance-card, .header-flex, .modal-dialog) {
+    background: #d4dbcd !important;
+    border-color: #96a38e !important;
+    color: #20372b !important;
+}
+.soft-sage-theme :is(.inventory-container .page-header-copy h1, .inventory-container .page-header-copy p,
+    .inventory-container .overview-value, .inventory-container .overview-label,
+    .inventory-section-title, .inventory-section-copy, .menu-editor-page label,
+    .settings-page .settings-section-button, .settings-page .setting-category h3) { color: #20372b !important; }
+.soft-sage-theme .inventory-type-button { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; }
+.soft-sage-theme .inventory-type-button[aria-pressed="true"] { background: #bdcfb8 !important; border-color: #57765b !important; }
+.soft-sage-theme .settings-page .editor-shell :is(.note-editor, .note-editable, .note-statusbar) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; }
+.soft-sage-theme :is(.status-active, .status-confirmed, .payment-badge.paid) { background-color: #bfd2b8 !important; color: #245539 !important; }
+.soft-sage-theme :is(.status-pending, .payment-badge.partial) { background-color: #ddd1ae !important; color: #74511d !important; }
+.soft-sage-theme :is(.status-rejected, .status-closed, .payment-badge.unpaid) { background-color: #dfc6bc !important; color: #8c3030 !important; }
+.soft-sage-theme .caterer-overlay-info .status-text {
+    background: transparent !important;
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+}
+.soft-sage-theme .caterer-overlay-info .status-text.status-closed {
+    color: #ffb4ab !important;
+    font-weight: 700;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+}
+.soft-sage-theme .caterer-overlay-info .status-closed .status-dot {
+    background: #ff786b;
+    box-shadow: none;
+}
+/* Existing mobile navigation keeps its original sizing and open/close behavior. */
+@media (max-width: 992px) {
+    .soft-sage-theme .navbar .nav-links { background: #173d32 !important; border-color: #426052 !important; }
+}
+
+/* Contrast pass: pair dark text with sage surfaces, and cream text with forest. */
+.soft-sage-theme :is(.card, .content-card, .content-body, .stat-card, .modal-content,
+    .modal-dialog, .portal-modal-content, .notification-dropdown, .notifications-dropdown,
+    .notif-dropdown, .caterer-dialog) {
+    --text-main: #20372b;
+    --text-muted: #425642;
+    --accent-gold: #70501e;
+    --accent-gold-hover: #5c4018;
+    --border-color: #96a38e;
+}
+.soft-sage-theme :is(.section-kicker, .calendar-eyebrow, .menu-count-modal, .registration-eyebrow,
+    .payment-group-action, .reviews-count, .review-rating, .inventory-eyebrow) { color: #684b1d !important; }
+.soft-sage-theme :is(.caterer-overlay-btn, .btn-gold, .btn-book, .btn-add, .btn-save, .btn-submit,
+    .btn-login, .btn-register, .item-link) {
+    background: #ba9b62 !important;
+    color: #20372b !important;
+    border-color: #8b713f !important;
+}
+.soft-sage-theme :is(.caterer-overlay-btn, .btn-gold, .btn-book, .btn-add, .btn-save, .btn-submit,
+    .btn-login, .btn-register, .item-link):hover,
+.soft-sage-theme .caterer-overlay-card:hover .caterer-overlay-btn {
+    background: #c5aa76 !important;
+    color: #20372b !important;
+}
+/* Search package dialogs contain legacy inline text colors. */
+.soft-sage-theme [id^="searchMenuModal_"] .modal-content { background: #d4dbcd !important; color: #20372b !important; border-color: #96a38e !important; }
+.soft-sage-theme [id^="searchMenuModal_"] :is(h3, h4, h3 i) { color: #173d32 !important; }
+.soft-sage-theme [id^="searchMenuModal_"] :is(.modal-header, .modal-footer, .catering-package-row) { border-color: #96a38e !important; }
+.soft-sage-theme [id^="searchMenuModal_"] .catering-package-row { background: #c9d2c1 !important; }
+.soft-sage-theme [id^="searchMenuModal_"] .catering-package-row > div > p { color: #000 !important; }
+.soft-sage-theme [id^="searchMenuModal_"] .catering-package-row > div > div,
+.soft-sage-theme [id^="searchMenuModal_"] .catering-package-row strong,
+.soft-sage-theme [id^="searchMenuModal_"] .modal-body > p { color: #425642 !important; }
+.soft-sage-theme [id^="searchMenuModal_"] .close { background: #c0ceb7 !important; color: #173d32 !important; border-radius: 6px; }
+.soft-sage-theme [id^="searchMenuModal_"] .modal-footer a { background: #173d32 !important; color: #f0f1e6 !important; }
+.soft-sage-theme [id^="searchMenuModal_"] .modal-footer a i { color: #f0f1e6 !important; }
+.soft-sage-theme [id^="searchMenuModal_"] .modal-footer a:hover { background: #2b5544 !important; }
+.soft-sage-theme [id^="searchMenuModal_"] .modal-footer a:focus-visible { outline: 2px solid #173d32; outline-offset: 3px; }
+
+/* Search cards retain readable prices and a complete menu action button. */
+.soft-sage-theme .search-results-section .item-card { background: #d4dbcd !important; border-color: #96a38e !important; }
+.soft-sage-theme .search-results-section :is(.item-title, .item-category) { color: #173d32 !important; }
+.soft-sage-theme .search-results-section :is(.item-details, .item-details span, .item-caterer, .search-results-meta) { color: #425642 !important; }
+.soft-sage-theme .search-results-section .item-price { color: #000 !important; }
+.soft-sage-theme .search-results-section .item-footer { border-color: #96a38e !important; }
+.soft-sage-theme .search-results-section .item-link {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: #173d32 !important; color: #f0f1e6 !important;
+    border: 1px solid #426052 !important; border-radius: 8px;
+    padding: 10px 16px !important; text-decoration: none;
+}
+.soft-sage-theme .search-results-section .item-link i { color: #f0f1e6 !important; }
+.soft-sage-theme .search-results-section .item-link:hover { background: #2b5544 !important; color: #f0f1e6 !important; }
+.soft-sage-theme .search-results-section .item-link:focus-visible { outline: 2px solid #173d32; outline-offset: 3px; }
+
+/* Landing navigation, featured cards and menu booking actions. */
+.soft-sage-theme :is(.caterer-overlay-card .caterer-overlay-btn, .main-header .btn-login, .main-header .btn-register),
+.soft-sage-theme #catererMenuModal .btn-primary {
+    background: #173d32 !important;
+    color: #f0f1e6 !important;
+    border-color: #708b6b !important;
+}
+.soft-sage-theme :is(.caterer-overlay-card .caterer-overlay-btn, .main-header .btn-login, .main-header .btn-register) i,
+.soft-sage-theme #catererMenuModal .btn-primary i { color: #f0f1e6 !important; }
+.soft-sage-theme :is(.caterer-overlay-card:hover .caterer-overlay-btn, .main-header .btn-login:hover, .main-header .btn-register:hover),
+.soft-sage-theme #catererMenuModal .btn-primary:hover { background: #2b5544 !important; color: #f0f1e6 !important; }
+.soft-sage-theme :is(.caterer-overlay-card, .main-header .btn-login, .main-header .btn-register):focus-visible,
+.soft-sage-theme #catererMenuModal .btn-primary:focus-visible { outline: 2px solid #dcc389; outline-offset: 3px; }
+.soft-sage-theme :is(.btn-danger, .btn-error) { background: #913b34 !important; color: #f0f1e6 !important; border-color: #793029 !important; }
+.soft-sage-theme :is(.btn-success) { background: #285840 !important; color: #f0f1e6 !important; border-color: #204a35 !important; }
+.soft-sage-theme :is(.btn-info) { background: #30596a !important; color: #f0f1e6 !important; border-color: #284c5b !important; }
+.soft-sage-theme :is(.btn-danger, .btn-error):hover { background: #7c302a !important; }
+.soft-sage-theme .btn-success:hover { background: #204a35 !important; }
+.soft-sage-theme .btn-info:hover { background: #284c5b !important; }
+.soft-sage-theme :is(.btn, button, a):focus-visible { outline-color: #496a43; }
+.soft-sage-theme :is(.navbar, .main-header, .sidebar) :is(button, a):focus-visible { outline-color: #dcc389; }
+
+/* Customer totals used literal colors intended for the old dark theme. */
+.soft-sage-theme .customer-page-shell .summary-stat-box[href*="tab=history"] .summary-stat-number,
+.soft-sage-theme .customer-page-shell .payment-total-row [style*="color: #4caf50"],
+.soft-sage-theme .customer-page-shell [style*="color: #10b981"] { color: #245539 !important; }
+.soft-sage-theme .customer-page-shell .summary-stat-box[href*="tab=pending"] .summary-stat-number,
+.soft-sage-theme .customer-page-shell .payment-total-row [style*="color: #f44336"] { color: #913b34 !important; }
+.soft-sage-theme .customer-page-shell .summary-stat-box[href*="tab=history"] { background: #c4d2bb !important; }
+.soft-sage-theme .customer-page-shell .summary-stat-box[href*="tab=pending"] { background: #dbcbb4 !important; }
+.soft-sage-theme .customer-page-shell :is(.caterer-stats, .caterer-meta, .summary-stat-label, .payment-total-row) { color: #425642 !important; }
+.soft-sage-theme .customer-page-shell .caterer-stats :is(.fa-star, .fa-check-circle) { color: #684b1d !important; }
+.soft-sage-theme .customer-page-shell .hero-title { -webkit-text-fill-color: currentColor; }
+.soft-sage-theme .dashboard-calendar-card h3::after { color: #425642 !important; }
+
+/* Admin metrics and calendar legends have their own page-specific color rules. */
+.soft-sage-theme .portal-dashboard .dashboard-stats .stat-card { --metric: #70501e; background: #d4dbcd !important; }
+.soft-sage-theme .portal-dashboard .dashboard-stats .stat-card.orange { --metric: #865127; }
+.soft-sage-theme .portal-dashboard .dashboard-stats .stat-card.green { --metric: #285840; }
+.soft-sage-theme .portal-dashboard .dashboard-stats .stat-card.blue { --metric: #30596a; }
+.soft-sage-theme .portal-dashboard .dashboard-stats :is(.stat-header h3, .stat-desc),
+.soft-sage-theme :is(.dashboard-legend span, .dashboard-period, .dashboard-calendar-footer, .dashboard-calendar-heading p) { color: #425642 !important; }
+.soft-sage-theme .portal-dashboard .dashboard-stats .stat-value { color: #20372b !important; }
+.soft-sage-theme .portal-dashboard .dashboard-calendar { background: #d4dbcd !important; border-color: #96a38e !important; }
+.soft-sage-theme .portal-dashboard .fc .fc-col-header { background: #c6d0bf !important; }
+.soft-sage-theme .portal-dashboard .fc .fc-daygrid-event { color: #20372b !important; }
+
+/* Adjacent-month dates stay readable, with tone rather than opacity distinguishing them. */
+.soft-sage-theme .fc .fc-day-other .fc-daygrid-day-top { opacity: 1 !important; }
+.soft-sage-theme .fc .fc-day-other .fc-daygrid-day-number { color: #43573c !important; }
+.soft-sage-theme .fc .fc-day-other { background-color: #c6d0bf !important; }
+.soft-sage-theme .fc .fc-col-header-cell { background-color: #c6d0bf !important; }
+.soft-sage-theme .fc .fc-button:disabled { opacity: 1; background: #52694f !important; color: #f0f1e6 !important; }
+
+/* Dialog image panels and close controls should not reintroduce glaring white. */
+.soft-sage-theme #storesModal .caterer-image-modal { background: #c9d2c1 !important; }
+.soft-sage-theme :is(#storesModal, #catererMenuModal) :is(.modal-content, .caterer-info-modal) { background: #d4dbcd !important; color: #20372b !important; }
+.soft-sage-theme :is(#storesModal, #catererMenuModal) :is(h2, h3, h4, .menu-count-modal) { color: #20372b !important; }
+.soft-sage-theme :is(#storesModal, #catererMenuModal) :is(.close-modal, .close-caterer-menu) { background: #c3cbbd !important; color: #20372b !important; border-color: #96a38e !important; }
+.soft-sage-theme :is(.hero-section .hero-btn, .final-cta-card .hero-btn) { background: #173d32 !important; color: #f0f1e6 !important; border-color: #708b6b !important; }
+.soft-sage-theme :is(.hero-section .hero-btn, .final-cta-card .hero-btn) i { color: #f0f1e6 !important; }
+.soft-sage-theme :is(.hero-section .hero-btn, .final-cta-card .hero-btn):hover { background: #2b5544 !important; color: #f0f1e6 !important; }
+.soft-sage-theme #catererMenuModal .empty-state { background: #c9d2c1 !important; color: #20372b !important; }
+.soft-sage-theme #catererMenuModal :is(h2 i, .empty-state i, .empty-state p) { color: #173d32 !important; }
+.soft-sage-theme :is(#storesModal, #catererMenuModal) .btn-view-modal { background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; }
+.soft-sage-theme :is(#storesModal, #catererMenuModal) .btn-view-modal i { color: #f0f1e6 !important; }
+.soft-sage-theme :is(#storesModal, #catererMenuModal) .btn-view-modal:hover { background: #2b5544 !important; color: #f0f1e6 !important; }
+.soft-sage-theme #storesModal .modal-header { background: #d4dbcd !important; border-color: #96a38e !important; }
+.soft-sage-theme #storesModal :is(.caterer-dialog-heading h2, .caterer-dialog-heading h2 i, .caterer-info-modal h3) { color: #142f25 !important; text-shadow: none; }
+.soft-sage-theme #storesModal :is(.caterer-dialog-heading p, .caterer-info-modal p, .caterer-info-modal p i) { color: #2d4335 !important; text-shadow: none; }
+.soft-sage-theme #storesModal .caterer-info-modal .menu-count-modal { background: #bfceb5 !important; color: #142f25 !important; border-color: #788d6e !important; font-weight: 600; }
+.soft-sage-theme #storesModal .btn-view-modal,
+.soft-sage-theme #storesModal .btn-view-modal i { color: #ffffff !important; text-shadow: none; }
+.soft-sage-theme #storesModal .menu-count-modal i { color: #20372b !important; }
+.soft-sage-theme #storesModal .close-modal:hover { background: #b7c8ae !important; color: #173d32 !important; }
+.soft-sage-theme :is(#storesModal, #catererMenuModal) :is(.btn-view-modal, .close-modal):focus-visible { outline: 2px solid #173d32; outline-offset: 3px; }
+.soft-sage-theme .portal-close-btn { background: #c3cbbd !important; color: #20372b !important; border-color: #96a38e !important; }
+.soft-sage-theme :is(.settings-page .section-heading h2, .settings-disclosure summary,
+    .settings-page .setting-label, .settings-page .settings-actions h3, .settings-page .settings-password-toggle) { color: #20372b !important; }
+
+/* Service details share the customer theme, including the photo-cover exception. */
+.soft-sage-theme .customer-page-shell .caterer-hero-content { --text-main: #f0f1e6; --text-muted: #d3ddce; }
+.soft-sage-theme .customer-page-shell .caterer-hero-content :is(.caterer-title, .caterer-stat-pill, .caterer-stat-pill span) { color: #f0f1e6 !important; }
+.soft-sage-theme .customer-page-shell .caterer-stat-pill { background: #173d32 !important; border-color: #6a866c !important; }
+.soft-sage-theme .customer-page-shell .caterer-section-nav { background: #c9d2c1 !important; border-color: #96a38e !important; }
+.soft-sage-theme .customer-page-shell .caterer-section-nav a { background: #d4dbcd !important; color: #20372b !important; border-color: #96a38e !important; }
+.soft-sage-theme .customer-page-shell .caterer-section-nav a.active,
+.soft-sage-theme .customer-page-shell .caterer-section-nav a:hover { background: #173d32 !important; color: #f0f1e6 !important; border-color: #173d32 !important; }
+.soft-sage-theme :is(.caterer-message-btn, .btn-order-mini, .btn-order, .btn-book-now) { background: #ba9b62 !important; color: #20372b !important; border-color: #8b713f !important; }
+.soft-sage-theme :is(.caterer-message-btn, .btn-order-mini, .btn-order, .btn-book-now):hover { background: #c5aa76 !important; color: #20372b !important; }
+.soft-sage-theme :is(.available-menu-set, .catering-package-row, .service-set-card, .menu-set-card) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; }
+.soft-sage-theme :is(.available-menu-lines, .available-menu-lines strong, .available-menu-lines div, .catering-package-menu, .catering-package-menu span) { color: #20372b !important; }
+.soft-sage-theme :is(.catering-package-menu-more, .catering-package-price, .set-price, .package-price) { color: #684b1d !important; }
+
+/* Legacy AJAX dialogs contain inline dark-theme colors. Match only those colors;
+   no positioning, visibility, event handlers, or interaction styles are changed. */
+.soft-sage-theme :is(.main-content, .customer-page-shell, .modal-content, .modal-dialog, .portal-modal-content)
+    :is([style*="background: #2a2a2a" i], [style*="background:#2a2a2a" i],
+        [style*="background: #1a1a1a" i], [style*="background:#1a1a1a" i],
+        [style*="background: #222" i], [style*="background: #333" i],
+        [style*="background: #161616" i], [style*="background: #242424" i]) {
+    background: #c9d2c1 !important;
+    border-color: #96a38e !important;
+    color: #20372b !important;
+}
+.soft-sage-theme :is(.main-content, .customer-page-shell, .modal-content, .modal-dialog, .portal-modal-content)
+    :is([style*="color: #ccc" i], [style*="color:#ccc" i], [style*="color: #bbb" i],
+        [style*="color: #bdbdbd" i], [style*="color: #ddd" i], [style*="color: #e4e4e7" i]):not(.navbar *, .sidebar *, .main-footer *, .caterer-hero-content *) { color: #425642 !important; }
+.soft-sage-theme :is(.main-content, .customer-page-shell, .modal-content, .modal-dialog, .portal-modal-content)
+    :is([style*="color: #4caf50" i], [style*="color: #2ecc71" i], [style*="color: #10b981" i]):not(.navbar *, .sidebar *, .caterer-hero-content *) { color: #245539 !important; }
+.soft-sage-theme :is(.main-content, .customer-page-shell, .modal-content, .modal-dialog, .portal-modal-content)
+    :is([style*="color: #f44336" i], [style*="color: #ef4444" i], [style*="color: #e74c3c" i]):not(.navbar *, .sidebar *, .caterer-hero-content *) { color: #913b34 !important; }
+.soft-sage-theme :is(.main-content, .customer-page-shell, .modal-content, .modal-dialog, .portal-modal-content)
+    :is([style*="color: #d4af37" i], [style*="color: #f4d03f" i], [style*="color: #ffd700" i],
+        [style*="color: #ffc107" i], [style*="color: #ffd27f" i], [style*="color: #e67e22" i]):not(.navbar *, .sidebar *, .caterer-hero-content *) { color: #684b1d !important; }
+.soft-sage-theme :is(.stock-low, .stock-out, .stock-good, .stock-available) { background: #c9d2c1 !important; color: #20372b !important; }
+.soft-sage-theme :is(.main-header .mobile-menu-toggle, .navbar .mobile-nav-toggle, .mobile-topbar .mobile-menu-toggle, #sidebarToggle) {
+    background: #2b5041 !important;
+    color: #f0f1e6 !important;
+    border-color: #708b6b !important;
+}
+.soft-sage-theme :is(.main-header .mobile-menu-toggle, .navbar .mobile-nav-toggle, .mobile-topbar .mobile-menu-toggle, #sidebarToggle):hover { background: #365849 !important; }
+.soft-sage-theme .customer-page-shell .caterer-hero-content i { color: #dcc389 !important; }
+.soft-sage-theme :is(.upcoming-empty i, .empty-state i) { color: #425642 !important; opacity: 1 !important; }
+.soft-sage-theme :is(.notification-badge, #portal-notif-count) { background: #913b34 !important; color: #f0f1e6 !important; }
+.soft-sage-theme .nav-alert-dot { background-color: #e29b85 !important; }
+
+.soft-sage-theme .customer-page-shell .caterer-hero-content .caterer-message-btn i { color: #20372b !important; }
+
+/* Customer browsing, package booking and payment detail actions. */
+.soft-sage-theme .customer-page-shell :is(a.btn-primary, button.btn-primary),
+.soft-sage-theme .customer-page-shell .payments-center .payments-action-link,
+.soft-sage-theme #viewMenuBookBtn {
+    background: #173d32 !important;
+    color: #f0f1e6 !important;
+    border-color: #708b6b !important;
+}
+.soft-sage-theme .customer-page-shell :is(a.btn-primary, button.btn-primary) i,
+.soft-sage-theme .customer-page-shell .payments-center .payments-action-link i,
+.soft-sage-theme #viewMenuBookBtn i { color: #f0f1e6 !important; }
+.soft-sage-theme .customer-page-shell :is(a.btn-primary, button.btn-primary):hover,
+.soft-sage-theme .customer-page-shell .payments-center .payments-action-link:hover,
+.soft-sage-theme #viewMenuBookBtn:hover { background: #2b5544 !important; color: #f0f1e6 !important; }
+.soft-sage-theme .customer-page-shell button.btn-outline[name="favorites"] {
+    background: #c9d2c1 !important;
+    color: #173d32 !important;
+    border-color: #708b6b !important;
+}
+.soft-sage-theme .customer-page-shell button.btn-outline[name="favorites"] i { color: #173d32 !important; }
+.soft-sage-theme .customer-page-shell button.btn-outline[name="favorites"]:hover { background: #b7c8ae !important; }
+.soft-sage-theme .customer-page-shell :is(a.btn-primary, button.btn-primary, button[name="favorites"]):focus-visible,
+.soft-sage-theme #viewMenuBookBtn:focus-visible { outline: 2px solid #173d32; outline-offset: 3px; }
+
+/* Shared authentication confirmations retain their existing actions. */
+.soft-sage-theme .swal2-popup.auth-popup-card {
+    background: #d4dbcd !important;
+    color: #20372b !important;
+    border: 1px solid #96a38e;
+    border-radius: 16px;
+    box-shadow: 0 18px 48px rgb(12 32 25 / 24%);
+}
+.soft-sage-theme .auth-popup-card :is(.swal2-title, .swal2-html-container) { color: #20372b !important; }
+.soft-sage-theme .auth-popup-card .swal2-icon.swal2-question { color: #173d32 !important; border-color: #708b6b !important; background: #c9d2c1; }
+.soft-sage-theme .auth-popup-card .swal2-confirm { background: #173d32 !important; color: #f0f1e6 !important; border: 1px solid #426052 !important; border-radius: 8px; }
+.soft-sage-theme .auth-popup-card .swal2-confirm:hover { background: #2b5544 !important; }
+.soft-sage-theme .auth-popup-card .swal2-cancel { background: #c0ceb7 !important; color: #20372b !important; border: 1px solid #96a38e !important; border-radius: 8px; }
+.soft-sage-theme .auth-popup-card .swal2-cancel:hover { background: #b7c8ae !important; }
+.soft-sage-theme .auth-popup-card :is(.swal2-confirm, .swal2-cancel):focus-visible { outline: 2px solid #173d32; outline-offset: 3px; box-shadow: none !important; }
+.soft-sage-theme .auth-popup-card .swal2-timer-progress-bar { background: #708b6b !important; }
+
+/* Customer mobile logout remains readable within the navigation palette. */
+.soft-sage-theme .navbar .nav-links .mobile-nav-logout a {
+    background: #2b5544 !important;
+    color: #f0f1e6 !important;
+    border: 1px solid #708b6b !important;
+}
+.soft-sage-theme .navbar .nav-links .mobile-nav-logout a i { color: #f0f1e6 !important; }
+.soft-sage-theme .navbar .nav-links .mobile-nav-logout a:hover { background: #365f4c !important; color: #f0f1e6 !important; }
+.soft-sage-theme .navbar .nav-links .mobile-nav-logout a:focus-visible { outline: 2px solid #dcc389; outline-offset: 3px; }
+
+/* Customer action controls use the same forest/sage treatment across pages. */
+.soft-sage-theme .customer-page-shell :is(button[name="update_profile"], button[name="change_password"], .booking-view-tabs .btn-tab.active) {
+    background: #173d32 !important;
+    color: #f0f1e6 !important;
+    border-color: #426052 !important;
+}
+.soft-sage-theme .customer-page-shell :is(button[name="update_profile"], button[name="change_password"], .booking-view-tabs .btn-tab.active) :is(i, span) { color: #f0f1e6 !important; }
+.soft-sage-theme .customer-page-shell :is(button[name="update_profile"], button[name="change_password"], .booking-view-tabs .btn-tab.active):hover { background: #2b5544 !important; }
+.soft-sage-theme .customer-page-shell .booking-view-tabs .btn-tab:not(.active) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; }
+.soft-sage-theme .customer-page-shell .payments-center .tab-btn { background: #c9d2c1 !important; color: #000 !important; }
+.soft-sage-theme .customer-page-shell .payments-center .tab-btn.active { background: #b7c8ae !important; color: #000 !important; box-shadow: inset 0 -3px #173d32; }
+.soft-sage-theme .customer-page-shell .payments-center .tab-btn:hover { background: #bdcdb5 !important; }
+.soft-sage-theme .customer-page-shell .favorite-btn { background: #173d32 !important; color: #f0f1e6 !important; border: 1px solid #708b6b !important; box-shadow: 0 2px 8px rgb(23 61 50 / 16%); }
+.soft-sage-theme .customer-page-shell .favorite-btn:hover { background: #2b5544 !important; }
+.soft-sage-theme .customer-page-shell .favorite-btn i.far { color: #f0f1e6 !important; }
+.soft-sage-theme .customer-page-shell .favorite-btn i.fas { color: #dcc389 !important; }
+.soft-sage-theme .customer-page-shell :is(.favorite-btn, .booking-view-tabs .btn-tab, .payments-center .tab-btn, button[name="update_profile"], button[name="change_password"]):focus-visible { outline: 2px solid #70501e; outline-offset: 3px; }
+
+/* Palette refinement: forest actions, sage surfaces, and restrained gold accents. */
+html.soft-sage-theme {
+    --action-bg: #173d32;
+    --action-hover: #2b5544;
+    --on-action: #f0f1e6;
+    --surface-hover: #bdcdb5;
+    --focus-ring: #70501e;
+}
+.soft-sage-theme :is(.btn-primary, .hero-btn, .search-btn, .dashboard-action, .btn-view-modal) {
+    background: var(--action-bg) !important;
+    color: var(--on-action) !important;
+    border-color: #426052 !important;
+    box-shadow: 0 3px 10px rgb(23 61 50 / 12%);
+}
+.soft-sage-theme :is(.btn-primary, .hero-btn, .search-btn, .dashboard-action, .btn-view-modal) :is(i, span) {
+    color: inherit !important;
+}
+.soft-sage-theme :is(.btn-primary, .hero-btn, .search-btn, .dashboard-action, .btn-view-modal):hover {
+    background: var(--action-hover) !important;
+    color: var(--on-action) !important;
+    border-color: #708b6b !important;
+}
+.soft-sage-theme :is(.btn-secondary, .section-link, .view-all-link, .quick-action-btn):hover {
+    background-color: var(--surface-hover) !important;
+    color: #173d32 !important;
+    border-color: #708b6b !important;
+}
+.soft-sage-theme :is(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+}
+.soft-sage-theme :is(.sidebar, .navbar, .main-header, .main-footer, .mobile-topbar) {
+    --focus-ring: #dcc389;
+}
+.soft-sage-theme :is(.notification-dropdown, .notifications-dropdown, .notif-dropdown, .modal-content, .portal-modal-content) {
+    --focus-ring: #70501e;
+}
+.soft-sage-theme :is(.btn-primary, .hero-btn, .search-btn, .dashboard-action, .btn-view-modal):disabled,
+.soft-sage-theme :is(.btn-primary, .hero-btn, .search-btn, .dashboard-action, .btn-view-modal)[aria-disabled="true"] {
+    background: #b9c5b1 !important;
+    color: #425642 !important;
+    border-color: #96a38e !important;
+    box-shadow: none !important;
+    cursor: not-allowed;
+}
+.soft-sage-theme :is(.table, .data-table) tbody tr:hover > td {
+    background-color: #ccd5c5 !important;
+}
+.soft-sage-theme :is(input[type="checkbox"], input[type="radio"]) {
+    accent-color: #173d32;
+}
+.soft-sage-theme ::selection { background: #ba9b62; color: #173d32; }

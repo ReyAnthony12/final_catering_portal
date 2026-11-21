@@ -1,0 +1,222 @@
+/* Keep the existing tablet and mobile dashboard unchanged. */
+@media (min-width: 993px) {
+    .customer-page-shell > .container {
+        max-width: none;
+        width: 100%;
+        padding: 0 12px;
+    }
+
+    .hero-section,
+    .dashboard-stats-row,
+    .dashboard-grid {
+        max-width: none;
+    }
+
+    .hero-section {
+        min-height: 60px;
+        padding: 12px 18px;
+        margin-bottom: 20px;
+        border-radius: 12px;
+    }
+
+    .hero-title { font-size: 19px; white-space: normal; }
+    .hero-section .search-container { max-width: 420px; }
+    .hero-section .search-input { padding: 12px 48px 12px 16px; font-size: 14px; }
+    .hero-section .search-btn { width: 34px; height: 34px; right: 5px; font-size: 14px; }
+
+    .dashboard-stats-row {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) minmax(0, 1.3fr);
+        gap: 18px;
+        margin-bottom: 28px;
+    }
+
+    .dashboard-summary-card {
+        min-width: 0;
+        padding: 14px;
+        border-radius: 12px;
+    }
+
+    .dashboard-summary-card h3 { font-size: 14px; margin-bottom: 10px; }
+    .summary-stat-grid { gap: 8px; margin-bottom: 12px; }
+    .summary-stat-box { padding: 9px 6px; border-radius: 9px; }
+    .summary-stat-number { font-size: 21px; }
+    .summary-stat-label { font-size: 12px; margin-top: 6px; }
+    .payment-totals { padding-top: 10px; gap: 8px; font-size: 12px; }
+    .payment-total-row { gap: 10px; flex-wrap: wrap; }
+    .payment-total-row span { overflow-wrap: anywhere; }
+    .events-scroll { max-height: 220px; }
+    .upcoming-event-row { padding: 12px; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+    .upcoming-empty { min-height: 180px; display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+    .upcoming-empty i { font-size: 23px; }
+
+    .dashboard-calendar-card h3::after { font-size: 11px; }
+    .dashboard-calendar-card .calendar-container { height: auto; padding: 0; overflow: visible; }
+    .dashboard-calendar-card .fc .fc-toolbar { margin-bottom: 12px !important; }
+    .dashboard-calendar-card .fc .fc-toolbar-title { font-size: 15px !important; }
+    .dashboard-calendar-card .fc .fc-button { min-width: 30px; min-height: 30px; font-size: 12px !important; }
+    .dashboard-calendar-card .fc .fc-col-header-cell-cushion,
+    .dashboard-calendar-card .fc .fc-daygrid-day-number { font-size: 11px !important; }
+    .dashboard-calendar-card .fc .fc-daygrid-day-frame { min-height: 36px !important; }
+    .dashboard-calendar-card .fc-daygrid-day { height: 36px !important; }
+    .dashboard-calendar-card .fc .fc-daygrid-event { font-size: 9px !important; padding: 1px 2px; }
+
+    /* Remove the calendar's aspect-ratio spacer so it cannot stretch the cards. */
+    .dashboard-calendar-card .fc .fc-view-harness {
+        padding-bottom: 0 !important;
+        min-height: 0 !important;
+    }
+    .dashboard-calendar-card .fc .fc-view-harness > .fc-view { position: relative !important; }
+    .dashboard-calendar-card .fc .fc-daygrid-body tr { height: 36px !important; }
+    .dashboard-calendar-card .fc .fc-daygrid-day-events { min-height: 0; margin-bottom: 0; }
+    .dashboard-calendar-card .fc .fc-daygrid-day-bottom { padding: 0; }
+    .dashboard-calendar-card .calendar-container,
+    .dashboard-calendar-card #calendar { min-width: 0; max-width: 100%; }
+    .dashboard-calendar-card .fc .fc-scroller { overflow: hidden !important; }
+    .dashboard-calendar-card .fc .fc-daygrid-body,
+    .dashboard-calendar-card .fc .fc-daygrid-body table,
+    .dashboard-calendar-card .fc .fc-col-header { width: 100% !important; }
+
+    .section-header { margin-bottom: 16px; }
+    .section-title { font-size: 20px; }
+    .section-link { padding: 10px 15px; font-size: 14px; }
+    .caterer-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        grid-auto-flow: row;
+        grid-auto-columns: auto;
+        gap: 10px;
+        min-width: 0;
+        padding-bottom: 0;
+    }
+    .caterer-card {
+        grid-template-columns: 48px minmax(0, 1fr);
+        grid-template-rows: 60px minmax(34px, auto) auto 1fr;
+        align-items: start;
+        gap: 8px;
+        padding: 10px;
+        min-width: 0;
+        min-height: 190px;
+        box-sizing: border-box;
+    }
+    .caterer-image {
+        grid-column: 1;
+        grid-row: 1;
+        width: 48px;
+        height: 48px;
+        min-height: 0;
+        margin: 0;
+        padding: 4px;
+        border-radius: 8px;
+        border: 1px solid var(--border-color);
+        box-sizing: border-box;
+        object-fit: contain;
+        object-position: center;
+        background: #fff;
+    }
+    .caterer-content {
+        display: contents;
+    }
+    .caterer-name {
+        grid-column: 2;
+        grid-row: 1;
+        align-self: center;
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.35;
+        white-space: normal;
+        overflow: visible;
+        overflow-wrap: anywhere;
+    }
+    .caterer-meta {
+        grid-column: 1 / -1;
+        align-items: flex-start;
+        margin: 0;
+        line-height: 1.4;
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+    .caterer-meta i { flex-shrink: 0; margin-top: 2px; }
+    .caterer-meta, .caterer-stats { font-size: 12px; }
+    .caterer-stats {
+        grid-column: 1 / -1;
+        align-self: end;
+        width: 100%;
+        box-sizing: border-box;
+        margin-top: 0;
+        padding-top: 8px;
+        gap: 8px;
+    }
+
+}
+
+@media (min-width: 993px) and (max-width: 1199px) {
+    .customer-page-shell > .container { padding: 0 12px; }
+    .dashboard-stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .dashboard-calendar-card { grid-column: 1 / -1; }
+    .dashboard-calendar-card .fc .fc-daygrid-day-frame { min-height: 48px !important; }
+}
+
+/* Uploaded covers span the featured card above the existing logo and details. */
+#featured-caterers .caterer-card:has(.featured-cover-photo) { position: relative; padding-top: 126px !important; overflow: hidden; }
+#featured-caterers .caterer-card .featured-cover-photo { position: absolute; inset: 0 0 auto; display: block; width: 100%; height: 112px; object-fit: cover; border-bottom: 1px solid #96a38e; border-radius: 0; }
+@media(max-width:600px) {
+    #featured-caterers .caterer-card:has(.featured-cover-photo) { padding-top: 144px !important; }
+    #featured-caterers .caterer-card .featured-cover-photo { height: 130px; }
+}
+
+#featured-caterers .caterer-card img.featured-cover-photo {
+    width: 100% !important;
+    max-width: none !important;
+    height: 112px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    object-fit: cover !important;
+    box-sizing: border-box;
+}
+@media(max-width:600px) {
+    #featured-caterers .caterer-card img.featured-cover-photo { height: 130px !important; }
+}
+
+/* Compact featured cards with the logo overlapping the cover edge. */
+#featured-caterers .caterer-grid { align-items: stretch; }
+#featured-caterers .caterer-card {
+    display: grid;
+    grid-template-columns: 44px minmax(0,1fr);
+    grid-template-rows: 44px auto auto 1fr;
+    gap: 8px;
+    padding: 10px !important;
+    min-height: 190px;
+    height: auto;
+    align-content: start;
+}
+#featured-caterers .caterer-card:has(.featured-cover-photo) {
+    padding-top: 70px !important;
+    grid-template-rows: 30px auto auto 1fr;
+}
+#featured-caterers .caterer-card img.featured-cover-photo { height: 64px !important; }
+#featured-caterers .caterer-card .caterer-image {
+    grid-column: 1;
+    grid-row: 1;
+    width: 44px;
+    height: 44px;
+    min-height: 0;
+    padding: 3px;
+    margin: 0;
+    object-fit: contain;
+    background: #fff;
+    border: 2px solid #d4dbcd;
+    border-radius: 10px;
+    box-sizing: border-box;
+}
+#featured-caterers .caterer-card:has(.featured-cover-photo) .caterer-image {
+    position: relative;
+    top: -22px;
+    z-index: 1;
+}
+#featured-caterers .caterer-content { display: contents; }
+#featured-caterers .caterer-name { grid-column: 2; grid-row: 1; align-self: center; margin: 0; font-size: 13px; line-height: 1.4; white-space: normal; overflow-wrap: anywhere; }
+#featured-caterers .caterer-meta { grid-column: 1 / -1; margin: 0; font-size: 11px; line-height: 1.4; }
+#featured-caterers .caterer-stats { grid-column: 1 / -1; align-self: end; margin-top: 2px; font-size: 11px; }
+@media(max-width:600px) {
+    #featured-caterers .caterer-card:has(.featured-cover-photo) { padding-top: 78px !important; }
+    #featured-caterers .caterer-card img.featured-cover-photo { height: 72px !important; }
+}

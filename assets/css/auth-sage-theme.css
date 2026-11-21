@@ -1,0 +1,111 @@
+/* Account and legal pages: palette only, preserving existing forms and steps. */
+html.auth-sage-theme, html.terms-sage-theme { background: #c3cbbd; --gold: #70501e; --muted: #425642; }
+.auth-sage-theme body::before { background: none !important; }
+.auth-sage-theme .login-container, .terms-sage-theme .container {
+    background: #d4dbcd !important;
+    color: #20372b;
+    border-color: #96a38e !important;
+    box-shadow: 0 18px 48px rgb(32 55 43 / 14%) !important;
+}
+.auth-sage-theme .login-header { background: #173d32; color: #f0f1e6; border-color: #426052 !important; }
+.auth-sage-theme .login-header :is(h1,h2) { background: none !important; color: #f0f1e6 !important; -webkit-text-fill-color: currentColor; }
+.auth-sage-theme .login-header p { color: #d3ddce !important; }
+.auth-sage-theme .login-header .eyebrow { color: #dcc389 !important; }
+.auth-sage-theme .login-header .logo-wrap { background: #20483b; border-color: #708b6b; }
+.auth-sage-theme :is(.form-content, .form-group label, .role-selector h3, .role-option h4, .agreement-title, .strength-label) { color: #20372b !important; }
+.auth-sage-theme :is(.form-group small, .role-option p, .form-links a, .step-box, .file-info, .agreement-content, .form-note) { color: #425642 !important; }
+.auth-sage-theme :is(.role-option, .caterer-fields, .subscription-agreement, .customer-agreement,
+    .agreement-content, .step-box, .file-preview, .subscription-info, .info-box, .payment-info,
+    .file-upload-area) { background: #c9d2c1 !important; border-color: #96a38e !important; color: #20372b !important; }
+.auth-sage-theme :is(.role-option:hover, .role-option.active, .file-upload-area:hover) { background: #bdcdb5 !important; border-color: #496a43 !important; }
+.auth-sage-theme :is(.role-option i, .form-group label i, .password-toggle, .step-box strong, .agreement-content h4, .agreement-content h5) { color: #70501e !important; }
+.auth-sage-theme .password-toggle:hover { color: #20372b !important; }
+.auth-sage-theme :is(.btn, .additional-btn.home, .btn-next, .btn-submit), .terms-sage-theme .back-btn {
+    background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; box-shadow: none !important;
+}
+.auth-sage-theme :is(.btn, .additional-btn.home, .btn-next, .btn-submit):hover, .terms-sage-theme .back-btn:hover { background: #2b5544 !important; color: #f0f1e6 !important; filter: none; }
+.auth-sage-theme :is(.btn, .additional-btn.home, .btn-next, .btn-submit) i { color: inherit !important; }
+.auth-sage-theme :is(.btn, .btn-next, .btn-submit):disabled { background: #b9c5b1 !important; color: #425642 !important; border-color: #96a38e !important; opacity: 1 !important; box-shadow: none !important; }
+.auth-sage-theme :is(.btn-secondary, .additional-btn:not(.home), .btn-back) { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; }
+.auth-sage-theme :is(.btn-secondary, .additional-btn:not(.home), .btn-back):hover { background: #b7c8ae !important; color: #173d32 !important; }
+.auth-sage-theme .role-option i { color: #173d32 !important; }
+.auth-sage-theme :is(.form-links a, .forgot-link a, .agreement-content a, .agreement-checkbox a, .back-btn) { color: #173d32 !important; }
+.auth-sage-theme :is(.form-links a, .forgot-link a, .agreement-content a, .agreement-checkbox a) { color: #173d32 !important; }
+.auth-sage-theme :is(.form-links a, .forgot-link a, .agreement-content a, .agreement-checkbox a):hover { color: #20372b !important; text-decoration: underline; }
+.auth-sage-theme .form-links { border-color: #96a38e !important; }
+.auth-sage-theme .alert-error { background: #dfc6bc !important; color: #84352f !important; border-color: #aa7566 !important; }
+.auth-sage-theme .alert-success { background: #bfd2b8 !important; color: #245539 !important; border-color: #708b6b !important; }
+.auth-sage-theme :is(.alert-info, .info-note) { background: #c3d1d0 !important; color: #30596a !important; border-color: #77918f !important; }
+.auth-sage-theme input[type="checkbox"], .auth-sage-theme input[type="radio"] { accent-color: #173d32; }
+.auth-sage-theme input::file-selector-button { background: #173d32; color: #f0f1e6; border: 1px solid #426052; border-radius: 6px; padding: 8px 12px; }
+.auth-sage-theme :is(button, a, input, select, textarea):focus-visible { outline: 2px solid #496a43; outline-offset: 3px; }
+.terms-sage-theme :is(p, ul, li, .footer-note) { color: #425642 !important; }
+.terms-sage-theme :is(h1, h2, h3) { color: #20372b !important; border-color: #96a38e; }
+
+/* Keep account-page logos circular without decorative glow or shine. */
+.auth-sage-theme .login-header .logo-wrap { border-radius: 50%; background: transparent; box-shadow: none; animation: none; }
+.auth-sage-theme .login-header .logo-wrap::before,
+.auth-sage-theme .login-header .logo-wrap::after { content: none; }
+.auth-sage-theme .login-header .logo-wrap img,
+.auth-sage-theme .login-header .logo-wrap:hover img { border-radius: 50%; box-shadow: none; filter: none; animation: none; transform: none; }
+/* One logo treatment for login, registration and password recovery. */
+html.auth-sage-theme .login-page .login-header .logo-wrap {
+ display: inline-block; box-sizing: border-box; padding: 7px;
+ border: 1px solid #708b6b; border-radius: 50%;
+ background: transparent; margin: 0 0 16px;
+ vertical-align: middle; line-height: 0;
+}
+html.auth-sage-theme .login-page .login-header .logo-wrap img {
+ display: block; box-sizing: border-box; width: 64px; height: 64px;
+ padding: 4px; border: 2px solid #70501e; border-radius: 50%;
+ background: rgb(0 0 0 / 30%); object-fit: cover;
+ box-shadow: none; filter: none; animation: none;
+}
+@media (max-height: 820px) {
+ html.auth-sage-theme .login-page .login-header .logo-wrap { margin-bottom: 8px; }
+ html.auth-sage-theme .login-page .login-header .logo-wrap img { width: 44px; height: 44px; }
+}
+@media (max-height: 600px) {
+ html.auth-sage-theme .login-page .login-header .logo-wrap img { width: 32px; height: 32px; }
+}
+/* Refined account fields with a consistent, restrained focus treatment. */
+html.auth-sage-theme .login-page .form-group label {
+ font-weight: 600; letter-spacing: .015em;
+}
+html.auth-sage-theme .login-page .form-group input:not([type="file"]):not([type="checkbox"]):not([type="radio"]):not([type="hidden"]),
+html.auth-sage-theme .login-page .form-group select,
+html.auth-sage-theme .login-page .form-group textarea {
+ background: linear-gradient(180deg, #e3e8dd, #dce3d5) !important;
+ border: 1px solid #9ba991;
+ border-radius: 12px;
+ color: #20372b;
+ box-shadow: inset 0 1px 0 rgb(255 255 255 / 55%), 0 2px 4px rgb(23 61 50 / 4%);
+ transition: border-color .18s ease, box-shadow .18s ease;
+}
+html.auth-sage-theme .login-page .form-group input:not([type="file"]):not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):hover,
+html.auth-sage-theme .login-page .form-group select:hover,
+html.auth-sage-theme .login-page .form-group textarea:hover { border-color: #708b6b; }
+html.auth-sage-theme .login-page .form-group input:not([type="file"]):not([type="checkbox"]):not([type="radio"]):not([type="hidden"]):focus,
+html.auth-sage-theme .login-page .form-group select:focus,
+html.auth-sage-theme .login-page .form-group textarea:focus {
+ outline: none; border-color: #426b53;
+ box-shadow: 0 0 0 3px rgb(66 107 83 / 14%), inset 0 1px 0 rgb(255 255 255 / 60%);
+}
+html.auth-sage-theme .login-page input::placeholder,
+html.auth-sage-theme .login-page textarea::placeholder { color: #63745e !important; }
+html.auth-sage-theme .login-page .password-toggle { border-radius: 9px; transition: background-color .18s ease; }
+html.auth-sage-theme .login-page .password-toggle:hover { background: rgb(23 61 50 / 7%); }
+html.auth-sage-theme .login-page .btn:not(.btn-secondary) {
+ background: linear-gradient(135deg, #245341, #173d32) !important;
+ border-color: #365f4a !important;
+ border-radius: 12px;
+ box-shadow: 0 3px 8px rgb(23 61 50 / 12%) !important;
+ transition: background-color .18s ease, box-shadow .18s ease;
+}
+html.auth-sage-theme .login-page .btn:not(.btn-secondary):hover {
+ background: linear-gradient(135deg, #2d604b, #204938) !important;
+ box-shadow: 0 4px 10px rgb(23 61 50 / 17%) !important;
+}
+@media (prefers-reduced-motion: reduce) {
+ html.auth-sage-theme .login-page :is(input, select, textarea, button) { transition: none !important; }
+}

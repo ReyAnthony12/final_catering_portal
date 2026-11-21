@@ -1,0 +1,307 @@
+.settings-page { min-width: 0; }
+.settings-page .settings-success-notice {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0 0 18px;
+    padding: 14px 18px;
+    border: 1px solid #52794b;
+    border-left: 4px solid #8fbd7d;
+    border-radius: 12px;
+    background: #202d20;
+    color: #e1f0d9;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+.settings-page .settings-layout { display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; }
+.settings-preferences { min-width: 0; }
+.settings-page .settings-main { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+.settings-page .settings-disclosure[open] { grid-column: 1 / -1; }
+.settings-page .settings-disclosure summary { min-height: 52px; padding: 12px 14px; gap: 8px; font-size: 12px; }
+.settings-page .settings-disclosure summary > span:first-child { overflow-wrap: anywhere; }
+.settings-page .settings-actions { flex-direction: row; align-items: center; padding: 12px 14px; margin-top: 12px; gap: 12px; }
+.settings-page .settings-actions-buttons { width: auto; }
+.settings-page .settings-actions-buttons .btn { width: auto; min-height: 38px; padding: 8px 12px; font-size: 12px; }
+@media (min-width: 1100px) {
+    .settings-page .settings-layout { grid-template-columns: minmax(0, 1fr) 340px; gap: 20px; }
+    .settings-page #change-password .settings-grid { grid-template-columns: minmax(0, 1fr); }
+}
+.settings-page .content-body { padding: 0; border: 0; background: transparent; }
+.settings-page .settings-layout { max-width: 1120px; margin: 0 auto; gap: 22px; }
+.settings-page-heading { padding: 4px 0 8px; }
+.settings-eyebrow { color: var(--accent-gold); font-size: 10px; font-weight: 700; letter-spacing: .18em; }
+.settings-page-heading h1 { margin: 10px 0; font-size: clamp(25px, 3vw, 34px); letter-spacing: -.04em; font-weight: 600; }
+.settings-page-heading p { color: var(--text-muted); font-size: 13px; line-height: 1.7; }
+.settings-page .setting-category { background: linear-gradient(135deg, #20201e, #191919); border: 1px solid #36342c; border-radius: 16px; box-shadow: 0 8px 28px #00000018; }
+.settings-page #change-password { padding: 26px; }
+.settings-page .section-heading h2 { color: #eee7d3 !important; font-size: 18px !important; font-weight: 600; letter-spacing: -.02em; }
+.settings-page .settings-main { gap: 10px; }
+.settings-page .settings-disclosure { padding: 0; overflow: hidden; }
+.settings-disclosure summary { display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 64px; padding: 18px 24px; cursor: pointer; list-style: none; color: #e7e1d0; font-size: 14px; font-weight: 600; transition: background .18s, color .18s; }
+.settings-disclosure summary::-webkit-details-marker { display: none; }
+.settings-disclosure summary:hover { background: #d4af370a; color: #e8ca65; }
+.settings-disclosure summary:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: -4px; border-radius: 14px; }
+.settings-disclosure[open] summary { border-bottom: 1px solid #ffffff0b; color: #e8ca65; }
+.settings-disclosure-body { padding: 24px; min-width: 0; }
+.settings-page .settings-grid { gap: 20px; }
+.settings-page .setting-item { min-width: 0; }
+.settings-page .form-control { width: 100%; max-width: 100%; min-width: 0; background: #141414; border: 1px solid #383731; border-radius: 9px; min-height: 46px; font-size: 14px; color: #f3f0e8; transition: border-color .18s, box-shadow .18s; }
+.settings-page .form-control:focus { outline: none; border-color: #a68b3b; box-shadow: 0 0 0 3px #d4af3712; }
+.settings-page .setting-label { font-size: 12px; color: #cbc7bc; }
+.settings-page .settings-password-field .form-control { padding-right: 64px; }
+.settings-page .settings-password-toggle { width: 56px; font: inherit; font-size: 11px; color: #c8b678; }
+.settings-page .btn { border-radius: 9px; min-height: 44px; font-weight: 600; }
+.settings-page .btn-primary { background: linear-gradient(135deg, #e0c160, #c7a332); color: #19170e; border: 1px solid #d8b64c; }
+.settings-page .settings-actions { margin-top: 10px; padding: 18px 22px; background: #171717; border-radius: 14px; }
+.settings-page .settings-actions h3 { margin: 0; font-size: 13px; color: #bbb6a7; font-weight: 500; }
+.settings-page .note-editor { max-width: 100%; min-width: 0; }
+.settings-page .note-toolbar { white-space: normal; }
+.settings-page .note-editable { overflow-wrap: anywhere; }
+@media (max-width: 768px) {
+    .settings-page .settings-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+    .settings-page #change-password, .settings-disclosure-body { padding: 20px; }
+    .settings-disclosure summary { min-height: 60px; padding: 16px 20px; font-size: 13px; }
+    .settings-page .settings-actions { gap: 14px; }
+    .settings-page .settings-actions-buttons { width: 100%; }
+    .settings-page .settings-actions-buttons .btn { flex: 1; width: auto; }
+}
+@media (max-width: 400px) {
+    .settings-page #change-password, .settings-disclosure-body { padding: 16px; }
+    .settings-disclosure summary { padding: 16px; gap: 10px; }
+    .settings-page .settings-actions { padding: 16px; }
+    .settings-page .settings-actions-buttons { flex-direction: column; }
+}
+.settings-page #change-password { padding: 18px; }
+.settings-page #change-password .section-heading { margin-bottom: 12px; }
+.settings-page #change-password .section-heading h2 { font-size: 15px !important; margin-bottom: 0; }
+.settings-page #change-password .settings-grid { gap: 12px; }
+.settings-page #change-password .setting-item { gap: 5px; }
+.settings-page #change-password .setting-label { font-size: 11px; }
+.settings-page #change-password .form-control { min-height: 38px; padding: 8px 10px; font-size: 12px; }
+.settings-page #change-password .settings-password-field .form-control { padding-right: 58px; }
+.settings-page #change-password .settings-password-toggle { height: 36px; width: 50px; }
+.settings-page #change-password .btn { margin-top: 12px !important; min-height: 38px; padding: 8px 12px; font-size: 12px; }
+@media (max-width: 768px) {
+    .settings-page #change-password { padding: 14px; }
+    .settings-page #change-password .settings-grid { gap: 10px; }
+}
+.settings-page .settings-main { gap: 10px; }
+.settings-page .settings-disclosure { border-radius: 12px; box-shadow: none; }
+.settings-page .settings-disclosure summary {
+    justify-content: center;
+    text-align: center;
+    min-height: 54px;
+    padding: 12px;
+    font-size: 12px;
+    line-height: 1.5;
+    font-weight: 500;
+}
+.settings-page .settings-disclosure summary > span:first-child { overflow-wrap: normal; }
+.settings-page .settings-disclosure:last-child:not([open]) { grid-column: 1 / -1; }
+.settings-page .settings-disclosure[open] { border-color: #8b7538; }
+.settings-page .settings-disclosure[open] summary { background: #d4af370b; }
+.settings-page .settings-disclosure summary:focus-visible { outline-offset: -3px; border-radius: 10px; }
+.settings-page .settings-main { display: block; }
+.settings-section-buttons { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.settings-section-button { min-height: 54px; padding: 12px; border: 1px solid #36342c; border-radius: 12px; background: linear-gradient(135deg, #20201e, #191919); color: #e7e1d0; font: inherit; font-size: 12px; font-weight: 500; line-height: 1.5; cursor: pointer; }
+.settings-section-button:last-child { grid-column: 1 / -1; }
+.settings-section-button:hover { background: #29271f; }
+.settings-section-button[aria-expanded="true"] { border-color: #8b7538; color: #e8ca65; background: #28251a; }
+.settings-section-button:focus-visible { outline: 2px solid var(--accent-gold); outline-offset: 2px; }
+.settings-page .settings-section-panel { padding: 0; margin-top: 12px; overflow: hidden; }
+.settings-section-panel[hidden] { display: none !important; }
+html { scrollbar-gutter: stable; }
+
+/* Desktop presentation only: retain the existing mobile arrangement. */
+@media (min-width: 769px) {
+    .settings-page .settings-layout { width: 100%; max-width: none; margin: 0; gap: 24px; }
+    .settings-page .settings-section-buttons { gap: 16px; }
+    .settings-page .settings-section-button {
+        position: relative;
+        min-height: 76px;
+        padding: 20px 22px;
+        text-align: center;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: -.015em;
+        border-radius: 18px;
+        border-color: #3c392e;
+        background: radial-gradient(ellipse at top right, #d4af370b, transparent 70%), linear-gradient(135deg, #242420, #191a18);
+        box-shadow: 0 8px 24px #00000026, inset 0 1px 0 #ffffff05;
+        transition: border-color .2s, background .2s, box-shadow .2s;
+    }
+    .settings-page .settings-section-button:hover,
+    .settings-page .settings-section-button[aria-expanded="true"] {
+        border-color: #b49649;
+        background: radial-gradient(ellipse at top right, #d4af3716, transparent 75%), #24231d;
+        box-shadow: 0 10px 28px #00000033, inset 0 1px 0 #e0c16012;
+    }
+    .settings-page .settings-section-panel { margin-top: 18px; border-radius: 18px; border-color: #655733; }
+    .settings-page .settings-disclosure-body { padding: 28px; }
+    .settings-page #change-password {
+        padding: 26px;
+        border-radius: 20px;
+        border-color: #49412c;
+        background: radial-gradient(ellipse at top right, #d4af3712, transparent 65%), linear-gradient(155deg, #24241f, #191a18);
+        box-shadow: 0 16px 40px #00000030, inset 0 1px 0 #ffffff06;
+    }
+    .settings-page #change-password .section-heading { padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid #d4af371c; }
+    .settings-page #change-password .section-heading h2 { font-size: 18px !important; color: #eee7d3 !important; }
+    .settings-page #change-password .settings-grid { gap: 18px; }
+    .settings-page #change-password .setting-item { gap: 8px; }
+    .settings-page #change-password .setting-label { font-size: 12px; color: #c9c5b7; }
+    .settings-page #change-password .form-control { min-height: 44px; padding: 11px 12px; font-size: 12px; background: #121310; border-color: #3e3e33; border-radius: 10px; }
+    .settings-page #change-password .settings-password-toggle { height: 42px; }
+    .settings-page #change-password .btn { width: 100%; margin-top: 22px !important; min-height: 44px; }
+    .settings-page .settings-actions { margin-top: 18px; padding: 20px 24px; border: 1px solid #3d3829; border-radius: 16px; background: linear-gradient(110deg, #242219, #1a1b17); }
+    .settings-page .settings-actions h3 { font-size: 14px; color: #ded8c6; }
+    .settings-page .settings-actions-buttons .btn { min-height: 42px; padding: 10px 22px; font-size: 13px; box-shadow: 0 4px 14px #d4af3718; }
+    .settings-page .btn-primary:hover { filter: brightness(1.08); }
+}
+
+
+/* Keep every section at full column width without stretching its height. */
+@media (min-width: 769px) {
+    .settings-page .settings-preferences,
+    .settings-page .settings-form,
+    .settings-page .settings-main,
+    .settings-page .settings-section-buttons,
+    .settings-page .settings-section-panel { width: 100%; min-width: 0; }
+    .settings-page .settings-main { display: block; }
+    .settings-page .settings-section-buttons { align-items: stretch; }
+    .settings-page .settings-section-button { width: 100%; min-width: 0; overflow-wrap: anywhere; }
+    .settings-page .settings-section-panel { margin-top: 16px; }
+    .settings-page .settings-layout { align-items: start; min-height: 0; }
+    .settings-page #change-password { min-width: 0; height: auto; align-self: start; }
+    .settings-page .settings-password-field .form-control { padding-right: 64px !important; }
+}
+@media (min-width: 1100px) {
+    .settings-page .settings-layout { grid-template-columns: minmax(0, 1fr) minmax(300px, 360px); gap: 24px; }
+}
+/* Additional copy stays hidden on mobile; all visual changes are desktop only. */
+.settings-desktop-intro, .settings-card-description, .settings-security-kicker,
+.settings-page .section-heading .settings-security-description { display: none; }
+@media (min-width: 769px) {
+    .settings-page .settings-desktop-intro { display: block; padding: 10px 0 28px; margin-bottom: 28px; border-bottom: 1px solid #d4af3726; }
+    .settings-kicker, .settings-page .settings-security-kicker { display: block; color: #c5a85b; font-size: 10px; font-weight: 600; letter-spacing: .2em; }
+    .settings-desktop-intro h1 { margin: 12px 0 10px; color: #f6f2e7; font-size: clamp(32px, 3.2vw, 46px); font-weight: 500; line-height: 1.15; letter-spacing: -.045em; }
+    .settings-desktop-intro h1 span { color: #dfc577; }
+    .settings-desktop-intro p { margin: 0; color: #a6a397; font-size: 13px; line-height: 1.7; }
+    .settings-page .settings-section-buttons { gap: 18px; }
+    .settings-page .settings-section-button { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; position: relative; min-height: 146px; padding: 26px; text-align: left; border-radius: 16px; border-color: #ffffff12; background: radial-gradient(ellipse at 100% 0, #d4af3710, transparent 65%), linear-gradient(135deg, #20211e, #171916); box-shadow: 0 12px 30px #00000020; transition: border-color .2s, box-shadow .2s, background .2s; }
+    .settings-page .settings-section-button::before { content: ''; position: absolute; left: 26px; top: 0; width: 34px; height: 2px; background: #bca05b; }
+    .settings-card-title { font-size: 17px; font-weight: 600; color: #f1ecdf; letter-spacing: -.025em; }
+    .settings-page .settings-card-description { display: block; margin-top: 10px; max-width: 340px; color: #aaa997; font-size: 12px; font-weight: 400; letter-spacing: 0; line-height: 1.7; }
+    .settings-page .settings-section-button:hover, .settings-page .settings-section-button[aria-expanded="true"] { border-color: #bca05b88; background: radial-gradient(ellipse at 100% 0, #d4af371a, transparent 70%), #24251f; box-shadow: 0 14px 32px #00000032; }
+    .settings-page .settings-section-button[aria-expanded="true"] .settings-card-title { color: #e9ce80; }
+    .settings-page .settings-section-button:last-child { min-height: 124px; }
+    .settings-page .settings-section-button:last-child .settings-card-description { max-width: none; }
+    .settings-page #change-password { padding: 28px; background: linear-gradient(155deg, #22241e, #171916); border-color: #c5aa5e30; box-shadow: 0 18px 45px #00000030; }
+    .settings-page #change-password .section-heading h2 { margin-top: 12px; font-size: 21px !important; letter-spacing: -.035em; }
+    .settings-page .section-heading .settings-security-description { display: block; margin-top: 10px; color: #a6a797; font-size: 12px; line-height: 1.7; }
+    .settings-page #change-password .form-control { background: #10130f; border-color: #ffffff18; min-height: 46px; }
+    .settings-page #change-password .form-control:focus { border-color: #c5a85b; }
+    .settings-page .settings-actions { padding: 20px 24px; border-color: #ffffff12; background: #181b16; }
+    .settings-page .btn-primary { background: linear-gradient(110deg, #ecd48a, #c8a640); border-color: #dfc16b; box-shadow: 0 5px 18px #c8a64016; }
+}
+/* Keep the five desktop settings cards together in one row. */
+@media (min-width: 769px) {
+    .settings-page .settings-section-buttons { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; }
+    .settings-page .settings-section-button,
+    .settings-page .settings-section-button:last-child { grid-column: auto; min-height: 76px; padding: 14px 16px; justify-content: center; }
+    .settings-page .settings-section-button::before { left: 16px; }
+    .settings-page .settings-card-title { font-size: 14px; line-height: 1.5; }
+    .settings-page .settings-card-description { font-size: 11px; }
+}
+/* Give the desktop settings area more breathing room above. */
+@media (min-width: 769px) {
+    .settings-page .content-body { padding-top: 32px; }
+}
+/* Readable desktop agreement editors, including restored list indentation. */
+@media (min-width: 769px) {
+    .settings-page .editor-shell + .editor-shell { margin-top: 28px !important; }
+    .settings-page .editor-shell > .setting-label { margin-bottom: 6px; font-size: 13px; color: #ded6bf; }
+    .settings-page .editor-shell .note-editor { border: 1px solid #c5aa5e30 !important; border-radius: 12px; background: #141712 !important; }
+    .settings-page .editor-shell .note-editable { box-sizing: border-box; padding: 22px 26px !important; background: #141712 !important; color: #d8dacd !important; font-family: inherit !important; font-size: 14px !important; line-height: 1.8 !important; overflow-x: hidden; overflow-y: auto; scrollbar-width: thin; scrollbar-color: #766842 #141712; }
+    .settings-page .editor-shell .note-editable p { margin: 0 0 14px; line-height: inherit; }
+    .settings-page .editor-shell .note-editable ul,
+    .settings-page .editor-shell .note-editable ol { margin: 12px 0 18px; padding-left: 24px; list-style-position: outside; }
+    .settings-page .editor-shell .note-editable ul { list-style-type: disc; }
+    .settings-page .editor-shell .note-editable ol { list-style-type: decimal; }
+    .settings-page .editor-shell .note-editable li { margin: 0 0 10px; padding-left: 5px; line-height: inherit; }
+    .settings-page .editor-shell .note-editable li::marker { color: #c5aa5e; }
+    .settings-page .editor-shell .note-editable strong { color: #eee5cd; font-weight: 600; }
+    .settings-page .editor-shell .note-editable h2,
+    .settings-page .editor-shell .note-editable h3 { margin: 22px 0 12px; font-size: 18px; line-height: 1.4; color: #e3cb86; }
+    .settings-page .editor-shell .note-editable .highlight { margin-top: 20px; padding: 16px; border-left: 2px solid #bca05b; background: #c5aa5e0a; }
+    .settings-page .editor-shell .note-statusbar { background: #1a1d16 !important; border-color: #c5aa5e20 !important; }
+}
+/* Mobile registration agreements: readable copy and visible list markers. */
+@media (max-width: 768px) {
+    .settings-page #settings-panel-5 .settings-disclosure-body { padding: 16px 12px; }
+    .settings-page #settings-panel-5 .editor-shell { min-width: 0; }
+    .settings-page #settings-panel-5 .editor-shell + .editor-shell { margin-top: 24px !important; }
+    .settings-page #settings-panel-5 .setting-label { font-size: 13px; line-height: 1.5; margin-bottom: 8px; }
+    .settings-page #settings-panel-5 .note-editor { width: 100%; border-radius: 10px; overflow: hidden; }
+    .settings-page #settings-panel-5 .note-editable {
+        box-sizing: border-box;
+        padding: 16px !important;
+        height: 360px !important;
+        max-height: 65svh;
+        font-family: inherit !important;
+        font-size: 14px !important;
+        line-height: 1.75 !important;
+        overflow-wrap: anywhere;
+        overflow-x: hidden;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #8b7538 #2a2a2a;
+    }
+    .settings-page #settings-panel-5 .note-editable :is(p, li, span, strong, b, font, div) { font-size: inherit !important; line-height: inherit !important; }
+    .settings-page #settings-panel-5 .note-editable p { margin: 0 0 14px; }
+    .settings-page #settings-panel-5 .note-editable :is(ul, ol) { margin: 12px 0 16px; padding-left: 22px; list-style-position: outside; }
+    .settings-page #settings-panel-5 .note-editable ul { list-style-type: disc; }
+    .settings-page #settings-panel-5 .note-editable ol { list-style-type: decimal; }
+    .settings-page #settings-panel-5 .note-editable li { margin-bottom: 12px; padding-left: 3px; }
+    .settings-page #settings-panel-5 .note-editable li::marker { color: #dfc577; }
+    .settings-page #settings-panel-5 .note-editable .highlight { margin-top: 16px; padding: 12px; border-left: 2px solid #bca05b; background: #c5aa5e0a; }
+}
+
+/* Compact desktop section selectors. */
+@media (min-width: 769px) {
+    .settings-page .settings-section-buttons { gap: 10px; }
+    .settings-page .settings-section-button,
+    .settings-page .settings-section-button:last-child { min-height: 56px; padding: 10px 12px; border-radius: 12px; }
+    .settings-page .settings-section-button::before { left: 12px; width: 26px; }
+    .settings-page .settings-card-title { font-size: 12px; line-height: 1.4; }
+}
+
+/* One shared desktop container fills the available page area. */
+@media (min-width: 769px) {
+    .main-content.settings-page {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        min-height: 100dvh;
+    }
+
+    .settings-page .content-body {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        width: 100%;
+        min-width: 0;
+        padding: 24px;
+        border: 1px solid #c5aa5e30;
+        border-radius: 20px;
+        background: linear-gradient(155deg, #1c1e19, #121410);
+        box-shadow: 0 16px 40px #00000030;
+    }
+
+    .settings-page .settings-layout {
+        flex: 1;
+        width: 100%;
+    }
+}

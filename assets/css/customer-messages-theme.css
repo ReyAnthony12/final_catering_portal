@@ -1,0 +1,386 @@
+/* Messages palette and page layout. */
+.customer-messages-page .proof-selection {
+    background: #c2cdb8 !important; border: 1px solid #899e7d !important;
+    color: #20372b !important; min-height: 44px;
+}
+.customer-messages-page .proof-selection button { color: #173d32 !important; font-weight: 600; }
+.customer-messages-page .proof-selection button:focus-visible { outline: 2px solid #426b53; outline-offset: 2px; }
+.customer-messages-page #refundToggleBtn { background: #c9d2c1 !important; color: #173d32 !important; border-color: #96a38e !important; }
+.customer-messages-page button[name="send_refund_request"] { background: #173d32 !important; color: #f0f1e6 !important; border: 1px solid #426052 !important; min-height: 44px; }
+.sage-refund-dialog {
+    position: fixed; inset: 0; margin: auto; width: min(430px,calc(100% - 32px));
+    box-sizing: border-box; max-height: calc(100dvh - 32px); overflow-y: auto;
+    padding: 24px; border: 1px solid #96a38e; border-radius: 16px;
+    background: #d4dbcd; color: #20372b; box-shadow: 0 20px 60px #0c201944;
+}
+.sage-refund-dialog::backdrop { background: rgb(12 32 25 / 60%); }
+.sage-refund-dialog h2 { margin: 0 0 12px; font-size: 20px; line-height: 1.3; color: #173d32; }
+.sage-refund-dialog p { margin: 0 0 22px; line-height: 1.6; color: #425642; }
+.refund-dialog-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; }
+.refund-dialog-actions button { min-height: 44px; padding: 10px 18px; border: 1px solid #426052; border-radius: 9px; background: #173d32; color: #f0f1e6; font: inherit; cursor: pointer; }
+.refund-dialog-actions .refund-dialog-secondary { background: #c9d2c1; color: #20372b; border-color: #96a38e; }
+.refund-dialog-actions button:focus-visible { outline: 2px solid #426b53; outline-offset: 3px; }
+.customer-page-shell .customer-messages-page :is(.sidebar-preview, .sidebar-time) { display: none; }
+.customer-page-shell .customer-messages-page .sidebar-meta { margin-top: 0; }
+.customer-page-shell .customer-messages-page .sidebar-message-card { align-items: center; }
+.customer-messages-page .section-tabs { padding: 8px !important; }
+.customer-messages-page .section-tabs .section-tab { padding: 6px 5px !important; min-height: 32px; }
+.customer-page-shell .customer-messages-page .sidebar-message-card { padding: 7px 10px; gap: 7px; }
+.customer-page-shell .customer-messages-page .sidebar-avatar { width: 24px; height: 24px; }
+.customer-page-shell .customer-messages-page :is(.sidebar-name, .sidebar-preview, .sidebar-time) { line-height: 1.25; margin-bottom: 3px; }
+.customer-page-shell .customer-messages-page .sidebar-meta { margin-top: 3px; }
+.customer-page-shell .customer-messages-page .section-tab { font-size: 11px !important; }
+.customer-page-shell .customer-messages-page .sidebar-name { font-size: 12px; }
+.customer-page-shell .customer-messages-page .sidebar-preview { font-size: 11px; }
+.customer-page-shell .customer-messages-page .sidebar-time { font-size: 9px; }
+.customer-page-shell .customer-messages-page #messages-main h3 { font-size: 15px; }
+.customer-page-shell .customer-messages-page #messages-main > div > p { font-size: 11px !important; }
+.customer-page-shell .customer-messages-page #messages-main a[href*="action="] { font-size: 10px !important; }
+.customer-messages-page .section-tabs :is(button, a, .tab-btn) { font-size: 12px; }
+.customer-messages-page .sidebar-name { font-size: 13px; }
+.customer-messages-page .sidebar-preview { font-size: 12px; }
+.customer-messages-page .sidebar-time { font-size: 10px; }
+.customer-messages-page #messages-main h3 { font-size: 17px; }
+.customer-messages-page #messages-main > div > p { font-size: 12px !important; }
+.customer-messages-page #messages-main a[href*="action="] { font-size: 11px !important; }
+.customer-messages-page #messages-main .conversation-header h2 { font-size: 15px !important; }
+.customer-messages-page #messages-main .modern-message-bubble { font-size: 13px; }
+#messages-main .modern-reply-area {
+    padding: 10px 14px !important;
+}
+#messages-main .modern-reply-area .modern-form-control {
+    min-height: 48px;
+    height: 48px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+#messages-main .modern-reply-area form > div {
+    gap: 8px !important;
+}
+#messages-main .reply-actions :is(.modern-upload-btn, .modern-btn-primary) {
+    min-height: 34px;
+    padding: 7px 12px;
+    border-radius: 9px;
+    font-size: 12px;
+}
+@media (max-width: 768px) {
+    #messages-main .modern-reply-area .modern-form-control { font-size: 16px; }
+    #messages-main .reply-actions :is(.modern-upload-btn, .modern-btn-primary) { min-height: 40px; }
+}
+    .customer-page-shell:has(.customer-messages-page) {
+        height: 100dvh;
+    }
+    .customer-page-shell > .container:has(.customer-messages-page) {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 0;
+        min-height: 0;
+        margin-bottom: 12px;
+    }
+    .customer-messages-page {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 0;
+        min-height: 0;
+    }
+    .customer-messages-page .messages-split-layout {
+        flex: 1 1 0;
+        height: auto !important;
+        min-height: 0 !important;
+        margin-bottom: 0;
+    }
+.soft-sage-theme #messages-main .conversation-back-btn {
+    background: #173d32 !important;
+    color: #f0f1e6 !important;
+    border-color: #426052 !important;
+    box-shadow: 0 2px 6px rgb(23 61 50 / 12%);
+}
+.soft-sage-theme #messages-main .conversation-back-btn :is(i, span) { color: #f0f1e6 !important; }
+.soft-sage-theme #messages-main .conversation-back-btn:hover { background: #2b5544 !important; border-color: #708b6b !important; }
+.soft-sage-theme #messages-main .conversation-back-btn:focus-visible { outline: 2px solid #70501e; outline-offset: 3px; }
+.soft-sage-theme #messages-main .conversation-header {
+    background: #c9d2c1 !important;
+    color: #20372b !important;
+    border-color: #96a38e !important;
+}
+.soft-sage-theme #messages-main .conversation-header-info h2 {
+    color: #20372b !important;
+    -webkit-text-fill-color: #20372b !important;
+}
+.soft-sage-theme #messages-main .conversation-header-info > div:first-child {
+    background: #173d32 !important;
+    color: #f0f1e6 !important;
+}
+.soft-sage-theme #messages-main .conversation-header-info > div:last-child > div { color: #425642 !important; }
+.soft-sage-theme .messages-split-layout { background: #d4dbcd !important; border-color: #96a38e !important; color: #20372b; }
+.soft-sage-theme .messages-split-layout :is(.messages-sidebar, .modern-left-col, .modern-reply-area, .section-tabs, .conversation-header) {
+    background: #c9d2c1 !important; border-color: #96a38e !important; color: #20372b !important;
+}
+.soft-sage-theme .messages-split-layout :is(.messages-main, .modern-chat-area, .conversation-body, .conversation-chat-column, .modern-card),
+.soft-sage-theme #messages-main > div[style*="background: #151515"] {
+    background: #d4dbcd !important; border-color: #96a38e !important; color: #20372b !important;
+}
+.soft-sage-theme .messages-split-layout :is(.sidebar-name, .modern-order-value, .modern-card-title, .conversation-header h2) { color: #20372b !important; }
+.soft-sage-theme .messages-split-layout :is(.sidebar-preview, .sidebar-time, .modern-order-label, .modern-message-time) { color: #3a4e3a !important; }
+.soft-sage-theme .messages-split-layout .sidebar-message-card { border-color: #aab5a2 !important; }
+.soft-sage-theme .messages-split-layout .sidebar-message-card:hover { background: #bdcdb5 !important; }
+.soft-sage-theme .messages-split-layout .sidebar-message-card.active { background: #b7c8ae !important; }
+.soft-sage-theme .messages-split-layout .sidebar-message-card.active::before { background: #173d32 !important; }
+.soft-sage-theme .messages-split-layout .sidebar-avatar { background: #173d32 !important; color: #f0f1e6 !important; }
+.soft-sage-theme .messages-split-layout .section-tab { background: transparent !important; color: #20372b !important; border-color: transparent !important; }
+.soft-sage-theme .messages-split-layout .section-tab.active { background: #173d32 !important; color: #f0f1e6 !important; border-color: #173d32 !important; }
+.soft-sage-theme .messages-split-layout .section-tab:hover { background: #b7c8ae !important; color: #20372b !important; }
+.soft-sage-theme .messages-split-layout .modern-message.customer .modern-message-bubble { background: #173d32 !important; color: #f0f1e6 !important; }
+.soft-sage-theme .messages-split-layout .modern-message.caterer .modern-message-bubble { background: #c0ceb7 !important; color: #20372b !important; border-color: #96a38e !important; }
+.soft-sage-theme .messages-split-layout .modern-message.customer .modern-message-time { color: #425642 !important; }
+.soft-sage-theme .messages-split-layout .modern-btn-primary { background: #ba9b62 !important; color: #20372b !important; border-color: #8b713f !important; }
+.soft-sage-theme .messages-split-layout .modern-btn-primary:hover { background: #c5aa76 !important; opacity: 1; }
+.soft-sage-theme .messages-split-layout .modern-upload-btn { background: #c9d2c1 !important; color: #20372b !important; border-color: #96a38e !important; }
+.soft-sage-theme .messages-split-layout :is(h3, p, [style*="color: #777"], [style*="color: #888"], [style*="color: #666"]) { color: #425642 !important; }
+.soft-sage-theme .messages-split-layout .modern-message-bubble :is(.modern-message-text, .modern-message-text *) { color: inherit !important; }
+.soft-sage-theme #messages-main a[href*="mark_all_read"] { background: #c9d2c1 !important; color: #20372b !important; }
+.soft-sage-theme #messages-main a[href*="delete_all_messages"],
+.soft-sage-theme .messages-split-layout a[href*="action=delete"] { background: #dfc6bc !important; color: #84352f !important; }
+.soft-sage-theme #messages-main > div > div > .fa-paper-plane { color: #70501e !important; opacity: 1 !important; }
+.soft-sage-theme .messages-split-layout :is(button, a, textarea, .modern-upload-btn):focus-visible { outline: 2px solid #496a43; outline-offset: 3px; }
+
+/* Keep the mobile reply composer consistent after conversation content reloads. */
+.soft-sage-theme #messages-main .modern-reply-area { background: #c9d2c1 !important; border-color: #96a38e !important; }
+.soft-sage-theme #messages-main .modern-reply-area .modern-form-control { background: #d4dbcd !important; color: #20372b !important; border-color: #829577 !important; box-shadow: none !important; }
+.soft-sage-theme #messages-main .modern-reply-area .modern-form-control::placeholder { color: #425642 !important; opacity: 1; }
+.soft-sage-theme #messages-main .modern-reply-area .modern-upload-btn { background: #c0ceb7 !important; color: #20372b !important; border-color: #708b6b !important; }
+.soft-sage-theme #messages-main .modern-reply-area .modern-upload-btn:hover { background: #b7c8ae !important; }
+.soft-sage-theme #messages-main .modern-reply-area .modern-btn-primary { background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; box-shadow: none !important; }
+.soft-sage-theme #messages-main .modern-reply-area .modern-btn-primary :is(i, span) { color: #f0f1e6 !important; }
+.soft-sage-theme #messages-main .modern-reply-area .modern-btn-primary:hover { background: #2b5544 !important; opacity: 1; }
+/* Payment QR dialog: retain the original QR image and its white scan area. */
+.soft-sage-theme #customerQRDisplay.qr-dialog { background: #d4dbcd !important; color: #20372b !important; border-color: #96a38e !important; box-shadow: 0 24px 60px rgb(12 32 25 / 28%) !important; }
+.soft-sage-theme #customerQRDisplay::backdrop { background: rgb(12 32 25 / 65%) !important; }
+.soft-sage-theme #customerQRDisplay .qr-dialog-title { color: #173d32 !important; }
+.soft-sage-theme #customerQRDisplay .qr-dialog-close { background: #173d32 !important; color: #f0f1e6 !important; border-color: #426052 !important; }
+.soft-sage-theme #customerQRDisplay .qr-dialog-close:hover { background: #2b5544 !important; }
+.soft-sage-theme #customerQRDisplay .qr-dialog-close:focus-visible { outline: 2px solid #173d32; outline-offset: 3px; }
+
+/* Compact conversation with scrolling confined to the message area. */
+.soft-sage-theme .messages-split-layout {
+    width: 100%; max-width: 1040px; margin-inline: auto;
+    height: min(600px,calc(100vh - 170px)) !important;
+    height: min(600px,calc(100dvh - 170px)) !important;
+    min-height: 0 !important; border-radius: 10px !important;
+}
+.soft-sage-theme .messages-main { min-height: 0; }
+.soft-sage-theme .conversation-header { padding: 8px 12px !important; gap: 10px !important; }
+.soft-sage-theme .conversation-header-info { gap: 8px !important; }
+.soft-sage-theme .conversation-header-info > div:first-child { width: 32px !important; height: 32px !important; font-size: 12px !important; flex-shrink: 0; }
+.soft-sage-theme .conversation-header :is(h2,h3,h4) { font-size: 14px !important; margin: 0 0 3px !important; }
+.soft-sage-theme .conversation-header :is(p,small) { font-size: 11px !important; margin: 0 !important; }
+.soft-sage-theme .conversation-header > a { padding: 7px 9px !important; font-size: 11px !important; }
+.soft-sage-theme .modern-chat-area { min-height: 0; overflow-y: auto !important; padding: 12px !important; gap: 12px !important; scrollbar-width: thin; scrollbar-color: #708b6b #c9d2c1; }
+/* Free space stays above short threads; long threads scroll in normal order. */
+.soft-sage-theme .modern-chat-area > :first-child { margin-top: auto; }
+.soft-sage-theme .modern-chat-area > * { flex-shrink: 0; }
+.soft-sage-theme .modern-message { max-width: 86% !important; }
+.soft-sage-theme .modern-message-bubble { font-size: 12px !important; line-height: 1.45 !important; padding: 10px 12px !important; border-radius: 10px !important; }
+.soft-sage-theme .modern-message-text { font-size: 12px !important; line-height: 1.45 !important; }
+.soft-sage-theme .modern-message-time { font-size: 10px !important; margin-top: 4px !important; }
+.soft-sage-theme .modern-reply-area { padding: 8px 10px !important; }
+.soft-sage-theme .modern-reply-area form > div { gap: 6px !important; }
+.soft-sage-theme .modern-reply-area textarea.modern-form-control { box-sizing: border-box; min-height: 44px !important; height: 48px; max-height: 96px; padding: 9px 10px !important; font-size: 13px !important; line-height: 1.4; border-radius: 8px !important; resize: vertical; }
+.soft-sage-theme .reply-actions { gap: 6px !important; flex-wrap: wrap; }
+.soft-sage-theme .reply-tools { display: flex; gap: 6px !important; flex-wrap: wrap; }
+.soft-sage-theme :is(.modern-upload-btn,.modern-btn-primary) { min-height: 40px; padding: 7px 10px !important; font-size: 11px !important; border-radius: 7px !important; }
+@media(max-width:600px) {
+    .soft-sage-theme .messages-split-layout { height: calc(100dvh - 130px) !important; max-height: 640px; }
+    .soft-sage-theme .conversation-header { padding: 7px 8px !important; }
+    .soft-sage-theme .modern-chat-area { padding: 9px !important; }
+    .soft-sage-theme .modern-reply-area { padding: 7px 8px max(7px,env(safe-area-inset-bottom)) !important; }
+    .soft-sage-theme .modern-reply-area textarea.modern-form-control { font-size: 16px !important; }
+}
+
+/* Match the full-width customer pages with equal side gutters. */
+.customer-page-shell > .container:has(.customer-messages-page) {
+    width: 100%; max-width: none !important;
+    padding-inline: 12px !important; box-sizing: border-box;
+}
+.customer-page-shell .customer-messages-page {
+    width: 100%; max-width: none !important; margin-inline: 0 !important; min-width: 0;
+}
+.soft-sage-theme .customer-messages-page .messages-split-layout {
+    width: 100% !important; max-width: none !important;
+    margin-inline: 0 !important; box-sizing: border-box;
+}
+@media(max-width:600px) {
+    .customer-page-shell > .container:has(.customer-messages-page) { padding-inline: 8px !important; }
+}
+
+/* Keep the conversation title beside Back instead of centered across the row. */
+.soft-sage-theme .customer-messages-page #messages-main .conversation-header {
+    display: flex !important; justify-content: flex-start !important;
+    align-items: center !important; gap: 9px !important; padding: 7px 10px !important;
+}
+.soft-sage-theme .customer-messages-page #messages-main .conversation-back-btn {
+    width: 34px !important; height: 34px !important; min-height: 34px !important;
+    flex: 0 0 34px !important; padding: 0 !important; border-radius: 7px !important;
+    font-size: 13px !important;
+}
+.soft-sage-theme .customer-messages-page #messages-main .conversation-back-btn i { font-size: 13px !important; }
+.soft-sage-theme .customer-messages-page #messages-main .conversation-header-info {
+    flex: 1 1 auto !important; min-width: 0 !important; gap: 8px !important;
+}
+.soft-sage-theme .customer-messages-page #messages-main .conversation-header-info > div:first-child {
+    width: 30px !important; height: 30px !important; flex: 0 0 30px !important; font-size: 11px !important;
+}
+.soft-sage-theme .customer-messages-page #messages-main .conversation-header-info > div:last-child { min-width: 0; }
+.soft-sage-theme .customer-messages-page #messages-main .conversation-header :is(h2,h3,h4) {
+    font-size: 13px !important; line-height: 1.35 !important; margin: 0 0 2px !important;
+    overflow-wrap: anywhere;
+}
+.soft-sage-theme .customer-messages-page #messages-main .conversation-header-info :is(p,small) {
+    font-size: 11px !important; line-height: 1.35 !important; margin: 0 !important; overflow-wrap: anywhere;
+}
+.soft-sage-theme .customer-messages-page #messages-main .conversation-header > a {
+    flex: 0 0 auto; margin-left: auto; padding: 7px 8px !important;
+    font-size: 10px !important; border-radius: 6px !important;
+}
+@media(max-width:480px) {
+ .soft-sage-theme .customer-messages-page #messages-main .conversation-header { padding: 6px 8px !important; gap: 7px !important; }
+ .soft-sage-theme .customer-messages-page #messages-main .conversation-header-info { gap: 6px !important; }
+}
+
+/* Mobile conversation delete action: plain icon and text. */
+@media(max-width:600px) {
+ .soft-sage-theme .customer-messages-page #messages-main .conversation-header a[href*="action=delete"] {
+    background: transparent !important; background-image: none !important;
+    border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
+    padding: 4px !important; color: #a3362c !important;
+ }
+}
+
+/* Keep attachment and QR controls beside each other on phones. */
+.soft-sage-theme .customer-messages-page #messages-main .reply-tools {
+    display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important;
+    align-items: center; gap: 6px !important; min-width: 0; max-width: 100%;
+}
+.soft-sage-theme .customer-messages-page #messages-main .reply-tools > :is(button,label,a) {
+    width: auto !important; flex: 0 1 auto; min-width: 0;
+    white-space: nowrap !important; font-size: 11px !important; padding: 7px 8px !important;
+}
+@media(max-width:360px) {
+ .soft-sage-theme .customer-messages-page #messages-main .reply-tools { gap: 4px !important; }
+ .soft-sage-theme .customer-messages-page #messages-main .reply-tools > :is(button,label,a) { font-size: 10px !important; padding-inline: 6px !important; }
+}
+
+.customer-messages-page .conversation-logo {
+ display:block; width:100%; height:100%; object-fit:cover; border-radius:50%;
+ border:1px solid #96a38e; box-sizing:border-box;
+}
+
+/* The two tools share the wide grid area; Send has its own row on phones. */
+@media(max-width:768px) {
+ .soft-sage-theme .customer-messages-page #messages-main .reply-actions {
+    display:flex !important; flex-wrap:wrap !important; gap:8px !important; align-items:center;
+ }
+ .soft-sage-theme .customer-messages-page #messages-main .reply-tools {
+    display:grid !important; grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    flex:1 0 100% !important; width:100%; gap:6px !important;
+ }
+ .soft-sage-theme .customer-messages-page #messages-main .reply-tools > :is(button,label,a) {
+    display:inline-flex !important; align-items:center; justify-content:center;
+    width:100% !important; min-width:0; box-sizing:border-box;
+    min-height:40px; padding:7px 5px !important; gap:5px !important;
+    font-size:11px !important; line-height:1.3; margin:0 !important;
+ }
+ .soft-sage-theme .customer-messages-page #messages-main .reply-tools > :is(button,label,a) span { font-size:inherit !important; }
+ .soft-sage-theme .customer-messages-page #messages-main .reply-tools > :is(button,label)::before { flex:0 0 auto; font-size:11px; }
+ .soft-sage-theme .customer-messages-page #messages-main .reply-actions > .modern-btn-primary { margin-left:auto; grid-column:auto; }
+}
+
+/* Slightly larger, readable conversation entries. */
+.customer-page-shell .customer-messages-page .sidebar-message-card { padding:10px 12px !important; gap:9px !important; }
+.customer-page-shell .customer-messages-page .sidebar-avatar { width:30px !important; height:30px !important; flex:0 0 30px; }
+.customer-page-shell .customer-messages-page .sidebar-name { font-size:13px !important; line-height:1.4 !important; margin:0 !important; }
+
+@media (max-width: 768px) {
+    .conversation-header-actions .mobile-refund-action {
+        width: auto !important; min-height: 36px; padding: 8px 10px !important;
+        font-size: 11px !important; white-space: nowrap; margin: 0;
+        background: #edf2e7 !important; color: #8c332b !important; border: 1px solid #a7786c !important;
+    }
+    .conversation-header-actions { flex-wrap: wrap; align-items: center; gap: 6px !important; }
+    #mobileRefundDialog {
+        box-sizing: border-box; width: calc(100% - 28px); max-width: 440px;
+        max-height: calc(100dvh - 40px); overflow-y: auto; padding: 20px;
+        border: 1px solid #98aa8e; border-radius: 16px; background: #e1e8d8; color: #20372b;
+        box-shadow: 0 20px 60px rgb(0 0 0 / 25%);
+    }
+    #mobileRefundDialog::backdrop { background: rgb(10 25 18 / 60%); }
+    #mobileRefundDialog .mobile-refund-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; border-bottom: 1px solid #abb99f; padding-bottom: 12px; }
+    #mobileRefundDialog h3 { margin: 0; font-size: 18px; }
+    #mobileRefundDialog .mobile-refund-heading button { min-width: 40px; min-height: 40px; background: transparent; border: 1px solid #98aa8e; border-radius: 8px; color: #20372b; font-size: 24px; }
+    #mobileRefundDialog .mobile-refund-card { padding: 0 !important; margin: 0 !important; background: transparent !important; border: 0 !important; box-shadow: none; }
+    #mobileRefundDialog input, #mobileRefundDialog textarea { background: #f4f7ee !important; color: #20372b !important; border-color: #98aa8e !important; font-size: 16px !important; }
+}
+@media (max-width: 768px) {
+    .modern-left-col:empty { display: none !important; }
+}
+@media (max-width: 768px) {
+    .conversation-header-actions .mobile-refund-action {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 36px !important; height: 36px; min-width: 36px;
+        padding: 8px !important; background: var(--secondary-bg, #c9d2c1) !important;
+        color: var(--primary-color, #173d32) !important;
+        border-color: var(--border-color, #96a38e) !important;
+    }
+    #mobileRefundDialog {
+        position: fixed; inset: 0; margin: auto;
+        background: var(--card-bg, #d4dbcd); color: var(--text-main, #20372b);
+        border-color: var(--border-color, #96a38e);
+    }
+    #mobileRefundDialog .mobile-refund-heading { border-color: var(--border-color, #96a38e); }
+    #mobileRefundDialog .mobile-refund-heading button {
+        background: var(--secondary-bg, #c9d2c1); color: var(--text-main, #20372b);
+        border-color: var(--border-color, #96a38e);
+    }
+    #mobileRefundDialog input, #mobileRefundDialog textarea {
+        background: var(--input-bg, #c9d2c1) !important;
+        color: var(--text-main, #20372b) !important;
+        border-color: var(--border-color, #96a38e) !important;
+    }
+    #mobileRefundDialog button[name="send_refund_request"] {
+        min-height: 44px; background: #173d32 !important; color: #f0f1e6 !important;
+        border: 1px solid #426052 !important; border-radius: 8px;
+    }
+    #mobileRefundDialog input:focus-visible, #mobileRefundDialog textarea:focus-visible,
+    #mobileRefundDialog button:focus-visible, .mobile-refund-action:focus-visible {
+        outline: 2px solid #426b53; outline-offset: 2px;
+    }
+}
+
+/* Remove the vacated refund panel and let mobile chat reach its lower edge. */
+@media (max-width: 768px) {
+    .customer-messages-page .modern-left-col.mobile-refund-column-empty {
+        display: none !important; padding: 0 !important; margin: 0 !important; border: 0 !important;
+    }
+    .customer-page-shell > .container:has(.customer-messages-page) { margin-bottom: 6px; padding-bottom: 0; }
+    .customer-messages-page .messages-split-layout { margin-bottom: 0 !important; }
+    .customer-messages-page #messages-main .conversation-body { gap: 0 !important; padding-bottom: 0 !important; }
+    .customer-messages-page #messages-main .conversation-chat-column { flex: 1 1 0; margin-bottom: 0; }
+    .customer-messages-page #messages-main .modern-reply-area { margin-bottom: 0 !important; padding-bottom: 6px !important; border-bottom: 0 !important; }
+}
+
+@media (max-width: 768px) {
+    .soft-sage-theme .customer-page-shell > .container:has(.customer-messages-page) {
+        padding-bottom: 0 !important; margin-bottom: 4px !important;
+    }
+    .soft-sage-theme .customer-messages-page .messages-split-layout {
+        flex: 1 1 0 !important; height: auto !important; min-height: 0 !important;
+        max-height: none !important; margin-bottom: 0 !important;
+    }
+    .customer-messages-page .modern-left-col:not(:has(.modern-card)) {
+        display: none !important; padding: 0 !important; border: 0 !important;
+    }
+    .soft-sage-theme .customer-messages-page #messages-main .modern-reply-area {
+        padding-bottom: 4px !important; margin-bottom: 0 !important; border-bottom: 0 !important;
+    }
+}

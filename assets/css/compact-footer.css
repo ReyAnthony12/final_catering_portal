@@ -1,0 +1,22 @@
+/* Compact public footer at desktop and mobile sizes. */
+.main-footer {
+ padding: 4px 0;
+ padding-bottom: max(4px, env(safe-area-inset-bottom));
+}
+.footer-content { row-gap: 0; column-gap: 12px; }
+.footer-section,
+.footer-section a,
+.footer-section:nth-child(3) a,
+.footer-section:nth-child(4) a { min-height: 20px; }
+.footer-section p,
+.footer-section:nth-child(1) p,
+.footer-section:nth-child(2) p { font-size: 10px !important; line-height: 1.25; }
+.footer-section:nth-child(even) { padding-left: 10px; }
+.footer-content .copyright { margin-top: 2px; padding-top: 3px; font-size: 9px; line-height: 1.25; }
+@media (max-width: 768px) {
+ .main-footer > .container { padding-inline: 12px; }
+ .footer-content { column-gap: 8px; }
+ .footer-section:nth-child(even) { padding-left: 8px; }
+ .footer-section:nth-child(1) p { font-size: min(10px, 5.5cqw) !important; }
+ .footer-section:nth-child(2) p { font-size: min(9px, 8.5cqw) !important; }
+}

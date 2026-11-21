@@ -1,0 +1,63 @@
+/* Keep the welcome card within the viewport; long forms scroll inside it. */
+html.register-layout { height: 100%; overflow: hidden !important; }
+html.register-layout > body.register-page {
+    height: 100vh; height: 100dvh; min-height: 0 !important; overflow: hidden !important; padding: 0;
+    background: radial-gradient(ellipse at top left, #e4e9da, transparent 65%), #c3cbbd;
+}
+.register-page .login-stage { flex: 1 1 0; min-height: 0; padding: 16px 12px; align-items: stretch; overflow: hidden; }
+.register-page .login-container { flex: 0 1 auto; width: 100%; max-width: 440px; height: auto; max-height: 100%; min-height: 0; margin: 0; border-radius: 24px; }
+.register-page .login-header { flex: 0 0 auto; padding: 18px 20px; position: relative; background: radial-gradient(ellipse at top right, #315c48, transparent 70%), #173d32; }
+.register-page .login-header h2 { font-size: clamp(25px, 4vw, 30px); }
+.register-page .login-header p { margin-bottom: 0; font-size: 14px; }
+.register-page .form-content { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; overflow-y: auto; overflow-x: hidden; padding: 20px 24px; scrollbar-gutter: auto; }
+.register-page .form-content > * { flex-shrink: 0; }
+.register-page #role-selection:not([style*="none"]) { display: flex !important; flex-direction: column; flex: 1 0 auto; }
+.register-page .welcome-step { display: block; color: #70501e; font-size: 10px; font-weight: 800; letter-spacing: .16em; text-align: center; }
+.register-page #role-selection > h3 { margin: 8px 0 8px; font-size: clamp(20px, 3vw, 24px); line-height: 1.3; text-align: center; }
+.register-page .welcome-intro { margin: 0 auto 16px; max-width: 390px; text-align: center; color: #425642; font-size: 12px; line-height: 1.5; }
+.register-page #role-selection .role-options { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; margin: 0; }
+html.auth-sage-theme .register-page #role-selection .role-option {
+    display: flex; flex-direction: row; align-items: center; width: 100%; min-width: 0; min-height: 0; padding: 12px 14px; gap: 12px;
+    text-align: left; background: #e9eee3 !important; border: 1px solid #a5b39a !important; border-radius: 16px;
+    box-shadow: 0 4px 12px rgb(23 61 50 / 4%); transition: transform .18s ease, box-shadow .18s ease; cursor: pointer;
+}
+html.auth-sage-theme .register-page #role-selection .role-option > i {
+    display: flex; align-items: center; justify-content: center; flex: 0 0 44px; width: 44px; height: 44px; margin: 0;
+    border-radius: 13px; background: #d4dfc9; color: #173d32 !important; font-size: 21px;
+}
+.register-page .role-copy { display: flex; flex-direction: column; gap: 4px; }
+.register-page .role-copy strong { font-size: 17px; color: #173d32; line-height: 1.3; }
+.register-page .role-copy > span { font-size: 12px; color: #425642; line-height: 1.6; }
+.register-page .role-copy em { margin-top: 2px; font-size: 11px; font-weight: 700; font-style: normal; color: #315d42; }
+.register-page .role-copy em span { margin-left: 5px; }
+html.auth-sage-theme .register-page #role-selection .role-option::after { content: none; }
+html.auth-sage-theme .register-page #role-selection .role-option:hover { transform: translateY(-3px); background: #f1f5eb !important; border-color: #426b53 !important; box-shadow: 0 8px 20px rgb(23 61 50 / 12%); }
+html.auth-sage-theme .register-page #role-selection .role-option:focus-visible { outline: 3px solid #426b53; outline-offset: 4px; }
+.register-page #role-selection .additional-buttons { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; width: 100%; margin: auto 0 0; padding-top: 10px; gap: 4px 16px; }
+.register-page #role-selection .additional-btn { width: auto; min-height: 44px; font-size: 12px; }
+@media (max-width: 540px) {
+    .register-page .login-stage { padding: 16px 12px; }
+    .register-page .login-header { padding: 16px 18px; }
+    .register-page .form-content { padding: 16px 18px; }
+    .register-page #role-selection .role-options { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    html.auth-sage-theme .register-page #role-selection .role-option { flex-direction: row; min-height: 0; padding: 12px; gap: 12px; }
+    .register-page .role-copy strong { font-size: 16px; }
+    .register-page .welcome-intro { margin-bottom: 12px; }
+    .register-page #role-selection .additional-buttons { margin-top: auto; gap: 4px 12px; }
+}
+@media (max-height: 650px) {
+    .register-page .login-stage { padding-block: 8px; }
+    .register-page .login-header { padding-block: 10px; }
+    html.auth-sage-theme .register-page .login-header .logo-wrap { margin-bottom: 4px; }
+    html.auth-sage-theme .register-page .login-header .logo-wrap img { width: 34px; height: 34px; }
+    .register-page .login-header h2 { font-size: 23px; margin-bottom: 4px; }
+    .register-page .form-content { padding-block: 12px; }
+    .register-page #role-selection > h3 { font-size: 19px; margin-block: 4px; }
+    .register-page .welcome-intro { margin-bottom: 10px; }
+    .register-page .role-copy em { display: none; }
+    .register-page #role-selection .role-options { gap: 8px; }
+    .register-page #role-selection .additional-buttons { margin-top: auto; padding-top: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html.auth-sage-theme .register-page #role-selection .role-option { transition: none; transform: none; }
+}
