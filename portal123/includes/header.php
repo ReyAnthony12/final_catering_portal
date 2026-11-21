@@ -1,13 +1,15 @@
 <?php
+require_once __DIR__ . '/logo_asset.php';
+
 // Fetch site logo for favicon if not already fetched
-$header_logo = '../uploads/logo.png';
+$header_logo = portalLogoUrl('uploads/logo.png');
 if (isset($conn)) {
     $logo_query = "SELECT setting_value FROM system_settings WHERE setting_key = 'site_logo'";
     $logo_result = mysqli_query($conn, $logo_query);
     if ($logo_result && mysqli_num_rows($logo_result) > 0) {
         $logo_row = mysqli_fetch_assoc($logo_result);
         if (!empty($logo_row['setting_value'])) {
-            $header_logo = '../' . $logo_row['setting_value'];
+            $header_logo = portalLogoUrl($logo_row['setting_value']);
         }
     }
 }

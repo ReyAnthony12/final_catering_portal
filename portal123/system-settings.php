@@ -587,7 +587,7 @@ require_once __DIR__ . '/includes/sidebar.php';
                                     <?php if (!empty($settings['site_logo'])): ?>
                                         <div style="margin-top: 10px;">
                                             <p style="font-size: 13px; color: var(--text-muted); margin-bottom: 5px;">Current Logo:</p>
-                                            <img src="../<?php echo htmlspecialchars($settings['site_logo']); ?>" alt="Current Logo" style="max-width: 150px; max-height: 80px; object-fit: contain; border-radius: 8px; border: 1px solid var(--border-color); background: #1e1e1e; padding: 10px;">
+                                            <img src="<?php echo htmlspecialchars(portalLogoUrl($settings['site_logo']), ENT_QUOTES, 'UTF-8'); ?>" alt="Current Logo" style="max-width: 150px; max-height: 80px; object-fit: contain; border-radius: 8px; border: 1px solid var(--border-color); background: #1e1e1e; padding: 10px;">
                                         </div>
                                     <?php endif; ?>
                                 </div>

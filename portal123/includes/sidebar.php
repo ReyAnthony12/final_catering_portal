@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/logo_asset.php';
+
 // Get current page for active state
 $current_page = basename($_SERVER['PHP_SELF']);
 $sidebar_unread_count = isset($conn, $_SESSION['user_id'])
@@ -12,14 +14,14 @@ if (isset($conn, $_SESSION['user_id'])) {
 }
 
 // Fetch site logo from settings
-$sidebar_logo = '../uploads/logo.png';
+$sidebar_logo = portalLogoUrl('uploads/logo.png');
 if (isset($conn)) {
     $logo_query = "SELECT setting_value FROM system_settings WHERE setting_key = 'site_logo'";
     $logo_result = mysqli_query($conn, $logo_query);
     if ($logo_result && mysqli_num_rows($logo_result) > 0) {
         $logo_row = mysqli_fetch_assoc($logo_result);
         if (!empty($logo_row['setting_value'])) {
-            $sidebar_logo = '../' . $logo_row['setting_value'];
+            $sidebar_logo = portalLogoUrl($logo_row['setting_value']);
         }
     }
 }
