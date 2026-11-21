@@ -6,6 +6,7 @@ require_once __DIR__ . '/../includes/financial_helper.php';
 require_once __DIR__ . '/../includes/booking_pricing_helper.php';
 require_once __DIR__ . '/../includes/booking_flow_helper.php';
 require_once __DIR__ . '/../includes/order_reference_helper.php';
+require_once __DIR__ . '/../includes/media_path_helper.php';
 
 // Check Caterer Login
 if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['store', 'caterer'])) {
@@ -32,6 +33,21 @@ if ($payment_return_query === ''
 function normalizePaymentReceiptPath($payment) {
     $path = $payment['proof_image'] ?? ($payment['receipt_image'] ?? '');
     return is_string($path) ? trim($path) : '';
+}
+
+function renderPaymentTimelineReceiptThumb(array $event): string {
+    if (($event['type'] ?? '') !== 'payment') {
+        return '';
+    }
+
+    $receipt_path = mediaUploadPath(normalizePaymentReceiptPath($event), '');
+    if ($receipt_path === '') {
+        return '';
+    }
+
+    $receipt_url = htmlspecialchars(mediaUploadUrl($receipt_path, '../', ''), ENT_QUOTES, 'UTF-8');
+    $receipt_title = htmlspecialchars((string) ($event['title'] ?? 'Payment Receipt'), ENT_QUOTES, 'UTF-8');
+    return '<button type="button" class="timeline-receipt-button" data-proof-url="' . $receipt_url . '" data-proof-title="' . $receipt_title . '" onclick="openProofModal(this.dataset.proofUrl, this.dataset.proofTitle)" aria-label="View payment receipt" title="Click to view payment receipt"><img src="' . $receipt_url . '" alt="Payment receipt thumbnail"></button>';
 }
 
 function getReceiptStatusLabel($status, $is_latest = false) {
@@ -1583,7 +1599,8 @@ function getStoreFinancialDetails($conn, $order_id, $fin, $order) {
             'desc' => 'Via ' . ucfirst($pay['payment_method']) . ($payment_notes !== '' ? ' - ' . $payment_notes : ''),
             'amount' => -$pay['amount'], // Negative because it reduces balance
             'status' => $pay['status'],
-            'id' => $pay['id'] // For verification actions
+            'id' => $pay['id'], // For verification actions
+            'proof_image' => normalizePaymentReceiptPath($pay)
         ];
     }
 
@@ -1744,6 +1761,7 @@ if (isset($_GET['fetch_data'])) {
                         <span class="timeline-date">'.date('M d, Y h:i A', strtotime($event['date'])).'</span>
                     </div>
                     <div class="timeline-desc">'.$event['desc'].'</div>
+                    '.renderPaymentTimelineReceiptThumb($event).'
                 </div>
                 <div class="timeline-amount" style="color: '.$color.'">
                     '.($event['amount'] > 0 ? '+' : '').'&#8369;'.number_format(abs($event['amount']), 2).'
@@ -1862,11 +1880,15 @@ require_once __DIR__ . '/includes/header.php';
     .timeline-icon { position: absolute; left: -9px; top: 0; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; color: white; z-index: 2; }
     
     .timeline-content { flex: 1; margin-right: 15px; }
+    .timeline-receipt-button { flex: 0 0 58px; width: 58px; height: 52px; margin: 0 14px 0 0; padding: 2px; overflow: hidden; border: 1px solid rgba(212,175,55,.65); border-radius: 8px; background: rgba(255,255,255,.04); cursor: pointer; }
+    .timeline-receipt-button:hover, .timeline-receipt-button:focus-visible { border-color: var(--accent-gold); box-shadow: 0 0 0 2px rgba(212,175,55,.2); outline: none; }
+    .timeline-receipt-button img { display: block; width: 100%; height: 100%; object-fit: cover; border-radius: 5px; }
     .timeline-header { display: flex; flex-direction: column; }
     .timeline-title { font-weight: bold; font-size: 14px; }
     .timeline-date { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
     .timeline-desc { font-size: 13px; color: var(--text-muted); margin-top: 5px; }
     .timeline-amount { font-weight: bold; font-family: monospace; font-size: 14px; }
+    @media (max-width: 520px) { .timeline-receipt-button { flex-basis: 48px; width: 48px; height: 46px; margin-right: 8px; } .timeline-content { margin-right: 8px; } }
     
     /* Modal */
     .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; justify-content: center; align-items: center; }
@@ -1956,6 +1978,7 @@ require_once __DIR__ . '/includes/header.php';
                                     <span class="timeline-date"><?php echo date('M d, Y h:i A', strtotime($event['date'])); ?></span>
                                 </div>
                                 <div class="timeline-desc"><?php echo htmlspecialchars($event['desc']); ?></div>
+<?php echo renderPaymentTimelineReceiptThumb($event); ?>
                             </div>
                             <div class="timeline-amount" style="color: <?php echo $color; ?>">
                                 <?php echo ($event['amount'] > 0 ? '+' : '') . '&#8369;' . number_format(abs($event['amount']), 2); ?>
@@ -2050,6 +2073,7 @@ require_once __DIR__ . '/includes/header.php';
                                 <span class="timeline-date"><?php echo date('M d, Y h:i A', strtotime($event['date'])); ?></span>
                             </div>
                             <div class="timeline-desc"><?php echo htmlspecialchars($event['desc']); ?></div>
+<?php echo renderPaymentTimelineReceiptThumb($event); ?>
                         </div>
                         <div class="timeline-amount" style="color: <?php echo $color; ?>">
                             <?php echo ($event['amount'] > 0 ? '+' : '') . '&#8369;' . number_format(abs($event['amount']), 2); ?>
@@ -2165,6 +2189,7 @@ require_once __DIR__ . '/includes/header.php';
                                 <span class="timeline-date"><?php echo date('M d, Y h:i A', strtotime($event['date'])); ?></span>
                             </div>
                             <div class="timeline-desc"><?php echo htmlspecialchars($event['desc']); ?></div>
+<?php echo renderPaymentTimelineReceiptThumb($event); ?>
                         </div>
                         <div class="timeline-amount" style="color: <?php echo $color; ?>">
                             <?php echo ($event['amount'] > 0 ? '+' : '') . '&#8369;' . number_format(abs($event['amount']), 2); ?>
